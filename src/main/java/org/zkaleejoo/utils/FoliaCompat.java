@@ -8,11 +8,6 @@ import org.bukkit.scheduler.BukkitTask;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * Compatibility layer for Folia and Paper schedulers.
- * Detects the server type at startup and delegates to the appropriate scheduler
- * API.
- */
 public final class FoliaCompat {
 
     private static final boolean IS_FOLIA;
@@ -31,20 +26,15 @@ public final class FoliaCompat {
     private FoliaCompat() {
     }
 
-    /** Returns {@code true} if the server is running Folia. */
     public static boolean isFolia() {
         return IS_FOLIA;
     }
 
-    /** A cancellable task handle that works on both Paper and Folia. */
     @FunctionalInterface
     public interface WrappedTask {
         void cancel();
     }
 
-    // ── Global-region tasks (not tied to any specific entity or location) ──
-
-    /** Runs a task on the global region thread (main thread on Paper). */
     public static void runGlobal(Plugin plugin, Runnable runnable) {
         if (IS_FOLIA) {
             Bukkit.getGlobalRegionScheduler().run(plugin, task -> runnable.run());
@@ -53,7 +43,6 @@ public final class FoliaCompat {
         }
     }
 
-    /** Runs a task on the global region thread after a delay. */
     public static void runGlobalLater(Plugin plugin, Runnable runnable, long delayTicks) {
         if (IS_FOLIA) {
             if (delayTicks <= 0) {
@@ -66,7 +55,6 @@ public final class FoliaCompat {
         }
     }
 
-    /** Runs a repeating task on the global region thread. */
     public static WrappedTask runGlobalTimer(Plugin plugin, Runnable runnable, long delayTicks, long periodTicks) {
         if (IS_FOLIA) {
             var task = Bukkit.getGlobalRegionScheduler().runAtFixedRate(
@@ -78,9 +66,6 @@ public final class FoliaCompat {
         }
     }
 
-    // ── Async tasks (I/O, database, network – never touch game state) ──
-
-    /** Runs a task asynchronously (off any game thread). */
     public static void runAsync(Plugin plugin, Runnable runnable) {
         if (IS_FOLIA) {
             Bukkit.getAsyncScheduler().runNow(plugin, task -> runnable.run());
@@ -89,7 +74,6 @@ public final class FoliaCompat {
         }
     }
 
-    /** Runs a repeating task asynchronously. Delay and period are in ticks. */
     public static WrappedTask runAsyncTimer(Plugin plugin, Runnable runnable, long delayTicks, long periodTicks) {
         if (IS_FOLIA) {
             long initialDelayMs = Math.max(50L, delayTicks * 50L);
@@ -104,9 +88,6 @@ public final class FoliaCompat {
         }
     }
 
-    // ── Entity-scoped tasks (run on the entity's owning region thread) ──
-
-    /** Runs a task on the region thread that owns the given entity. */
     public static void runForEntity(Plugin plugin, Entity entity, Runnable runnable) {
         if (IS_FOLIA) {
             entity.getScheduler().run(plugin, task -> runnable.run(), null);
@@ -115,7 +96,6 @@ public final class FoliaCompat {
         }
     }
 
-    /** Runs a delayed task on the region thread that owns the given entity. */
     public static WrappedTask runForEntityLater(Plugin plugin, Entity entity, Runnable runnable, long delayTicks) {
         if (IS_FOLIA) {
             if (delayTicks <= 0) {
@@ -132,9 +112,6 @@ public final class FoliaCompat {
         }
     }
 
-    /**
-     * Runs a repeating task on the region thread that owns the given entity.
-     */
     public static WrappedTask runForEntityTimer(Plugin plugin, Entity entity, Runnable runnable,
             long delayTicks, long periodTicks) {
         if (IS_FOLIA) {
@@ -148,12 +125,6 @@ public final class FoliaCompat {
         }
     }
 
-    // ── Teleport ──
-
-    /**
-     * Teleports an entity. Uses {@code teleportAsync} on Folia, sync teleport on
-     * Paper.
-     */
     public static void teleport(Entity entity, Location location) {
         if (IS_FOLIA) {
             entity.teleportAsync(location);
