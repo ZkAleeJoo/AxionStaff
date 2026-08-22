@@ -21,7 +21,7 @@ messages:
   player-no-history: "&#441BFAThat player has no punishment history."
   command-help-title: "&#8727F5&lAxionStaff &#E0E0E0Commands List: &#FFFFFF{version}"
   command-help-list: 
-    - '&#555555> &#FFFFFFhttps://docs.maxking.lat/en/maxstaff/'
+    - '&#555555> &#FFFFFFhttps://github.com/ZkAleeJoo/AxionStaff/blob/main/README.md'
   update-available: "&f&lNEW VERSION: &7{version}"
   update-current: "&7Your current version: &#441BFA{version}"
   update-download: "&eDownload it to get improvements and fixes."
