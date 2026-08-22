@@ -173,7 +173,6 @@ public class FreezeManager {
 
                     String initialText = getFrozenDisplayText(target, bans, mutes, kicks);
 
-                    @SuppressWarnings("null")
                     TextDisplay textDisplay = target.getWorld().spawn(calculateDisplayLocation(target),
                             TextDisplay.class,
                             display -> {
@@ -508,4 +507,3 @@ public class FreezeManager {
         }
     }
 }
-
