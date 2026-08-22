@@ -23,7 +23,7 @@ public class AxionStaffExpansion extends PlaceholderExpansion {
 
     @Override
     public @NotNull String getIdentifier() {
-        return "AxionStaff";
+        return "axionstaff";
     }
 
     @Override
@@ -48,46 +48,46 @@ public class AxionStaffExpansion extends PlaceholderExpansion {
 
         switch (params.toLowerCase()) {
 
-            // %axionStaff_in_staff_mode%
+            // %axionstaff_in_staff_mode%
             case "in_staff_mode":
                 return (online != null && plugin.getStaffManager().isInStaffMode(online)) ? textTrue : textFalse;
 
-            // %axionStaff_vanished%
+            // %axionstaff_vanished%
             case "vanished":
                 return (online != null && plugin.getStaffManager().isVanished(online)) ? textTrue : textFalse;
 
-            // %axionStaff_frozen%
+            // %axionstaff_frozen%
             case "frozen":
                 return (online != null && plugin.getFreezeManager().isFrozen(online)) ? textTrue : textFalse;
 
-            // %axionStaff_is_spy%
+            // %axionstaff_is_spy%
             case "is_spy":
                 return (online != null && plugin.getStaffManager().isSpying(online)) ? textTrue : textFalse;
 
-            // %axionStaff_warn_count%
+            // %axionstaff_warn_count%
             case "warn_count":
                 return String.valueOf(plugin.getPunishmentManager().getHistoryCount(player.getName(), "WARN"));
 
-            // %axionStaff_ban_count%
+            // %axionstaff_ban_count%
             case "ban_count":
                 return String.valueOf(plugin.getPunishmentManager().getHistoryCount(player.getName(), "BAN"));
 
-            // %axionStaff_mute_count%
+            // %axionstaff_mute_count%
             case "mute_count":
                 return String.valueOf(plugin.getPunishmentManager().getHistoryCount(player.getName(), "MUTE"));
 
-            // %axionStaff_kick_count%
+            // %axionstaff_kick_count%
             case "kick_count":
                 return String.valueOf(plugin.getPunishmentManager().getHistoryCount(player.getName(), "KICK"));
 
-            // %axionStaff_total_punishments%
+            // %axionstaff_total_punishments%
             case "total_punishments":
                 int total = plugin.getPunishmentManager().getHistoryCount(player.getName(), "BAN") +
                         plugin.getPunishmentManager().getHistoryCount(player.getName(), "MUTE") +
                         plugin.getPunishmentManager().getHistoryCount(player.getName(), "KICK");
                 return String.valueOf(total);
 
-            // %axionStaff_playtime%
+            // %axionstaff_playtime%
             case "playtime":
                 if (online == null)
                     return "0h 0m";
