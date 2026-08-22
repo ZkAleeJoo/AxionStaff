@@ -45,7 +45,7 @@ public class UpdateChecker {
                             FoliaCompat.runGlobal(plugin, () -> consumer.accept(trimmedVersion));
                         }
                     } else {
-                        plugin.getLogger().info("The version in BBB is empty.");
+                        plugin.getLogger().info("The version in BBB is empty");
                     }
                 }
             } catch (Exception exception) {
