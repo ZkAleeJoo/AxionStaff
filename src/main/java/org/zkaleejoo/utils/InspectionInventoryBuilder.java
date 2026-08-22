@@ -126,11 +126,6 @@ public final class InspectionInventoryBuilder {
         inventory.setItem(slot, createPlaceholder(label, config));
     }
 
-    /**
-     * Creates a placeholder {@link ItemStack} (gray stained glass pane) for an
-     * empty equipment slot. Reusable by sync tasks that need to restore
-     * placeholders when a slot becomes empty.
-     */
     public static ItemStack createPlaceholder(String label, MainConfigManager config) {
         ItemStack placeholder = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         ItemMeta meta = placeholder.getItemMeta();
@@ -288,4 +283,3 @@ public final class InspectionInventoryBuilder {
         return false;
     }
 }
-
