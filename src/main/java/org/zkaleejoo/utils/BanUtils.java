@@ -311,7 +311,8 @@ public final class BanUtils {
 
     private static String getEntryPlayerName(BanEntry<?> entry) {
         Object target = entry.getBanTarget();
-        if (target instanceof @SuppressWarnings("deprecation") org.bukkit.profile.PlayerProfile profile && profile.getName() != null) {
+        if (target instanceof @SuppressWarnings("deprecation") org.bukkit.profile.PlayerProfile profile
+                && profile.getName() != null) {
             return profile.getName();
         }
 
@@ -341,7 +342,6 @@ public final class BanUtils {
                 return address.getHostAddress();
             }
         } catch (Exception e) {
-            // getBanTarget() may throw if the stored value is not a valid IP
         }
 
         @SuppressWarnings("deprecation")
@@ -398,7 +398,6 @@ public final class BanUtils {
                 return true;
             }
         } catch (Exception e) {
-            // getBanTarget() may throw if the stored value is not a valid IP; fall through to text comparison
         }
 
         @SuppressWarnings("deprecation")
@@ -429,4 +428,3 @@ public final class BanUtils {
         return true;
     }
 }
-
