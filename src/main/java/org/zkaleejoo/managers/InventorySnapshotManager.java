@@ -136,7 +136,6 @@ public class InventorySnapshotManager {
         return Optional.of(buildSnapshot(config));
     }
 
-    @SuppressWarnings("null")
     public List<String> getCachedPlayerNames() {
         return snapshotEntriesByName.values().stream()
                 .map(IndexedSnapshotFile::playerName)
@@ -146,7 +145,6 @@ public class InventorySnapshotManager {
                 .toList();
     }
 
-    @SuppressWarnings("null")
     public List<DeathSnapshot> getDeathSnapshots() {
         List<DeathSnapshot> snapshots = new ArrayList<>();
         long now = System.currentTimeMillis();
@@ -500,4 +498,3 @@ public class InventorySnapshotManager {
             float xpProgress) {
     }
 }
-
