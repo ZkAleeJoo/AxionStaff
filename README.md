@@ -1,4 +1,4 @@
-# AxionStaff - Official Documentation and Wiki
+# AxionStaff - Official Documentation
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg) ![Java](https://img.shields.io/badge/Java-25%2B-red.svg) ![PaperMC](https://img.shields.io/badge/PaperMC-1.21--26.2%2B-green.svg) ![Languages](https://img.shields.io/badge/Languages-🇺🇸_EN_%7C_🇪🇸_ES-blue.svg)
 
