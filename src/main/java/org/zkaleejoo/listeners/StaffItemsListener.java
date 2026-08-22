@@ -93,7 +93,7 @@ public class StaffItemsListener implements Listener {
         }
     }
 
-    @EventHandler
+    @EventHandler(priority = org.bukkit.event.EventPriority.LOWEST)
     public void onInteract(PlayerInteractEvent event) {
         if (event.getHand() != EquipmentSlot.HAND)
             return;
@@ -107,11 +107,14 @@ public class StaffItemsListener implements Listener {
         String toolType = getStaffToolType(item);
 
         if (toolType != null) {
+            event.setCancelled(true);
+            event.setUseItemInHand(org.bukkit.event.Event.Result.DENY);
+            event.setUseInteractedBlock(org.bukkit.event.Event.Result.DENY);
+            
             Action action = event.getAction();
 
             if (action == Action.LEFT_CLICK_AIR || action == Action.LEFT_CLICK_BLOCK) {
                 if (toolType.equals("wall_compass_tool")) {
-                    event.setCancelled(true);
                     if (!isWallCompassReady(player))
                         return;
 
@@ -135,17 +138,14 @@ public class StaffItemsListener implements Listener {
             if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {
 
                 if (toolType.equals("vanish_tool")) {
-                    event.setCancelled(true);
                     plugin.getStaffManager().toggleVanish(player);
                 } else if (toolType.equals("players_tool")) {
-                    event.setCancelled(true);
                     plugin.getGuiManager().openPlayersMenu(player);
                     Location _loc3 = player.getLocation();
                     if (_loc3 != null)
                         player.playSound(_loc3, Objects.requireNonNull(Sound.BLOCK_NOTE_BLOCK_CHIME), 1.0f, 1.0f);
                     player.sendMessage(MessageUtils.getColoredMessage(config.getPrefix() + config.getMsgPlayers()));
                 } else if (toolType.equals("random_tp_tool")) {
-                    event.setCancelled(true);
 
                     List<? extends Player> candidates = Bukkit.getOnlinePlayers().stream()
                             .filter(target -> target != null && !target.getUniqueId().equals(player.getUniqueId()))
@@ -170,7 +170,6 @@ public class StaffItemsListener implements Listener {
                     player.sendMessage(MessageUtils.getColoredMessage(
                             config.getPrefix() + config.getMsgRandomTp().replace("{player}", target.getName())));
                 } else if (toolType.equals("wall_compass_tool")) {
-                    event.setCancelled(true);
                     if (!isWallCompassReady(player))
                         return;
 
@@ -197,7 +196,6 @@ public class StaffItemsListener implements Listener {
                     if (_loc != null)
                         player.playSound(_loc, Objects.requireNonNull(Sound.ENTITY_ENDERMAN_TELEPORT), 1.0f, 1.0f);
                 } else if (toolType.equals("punish_tool")) {
-                    event.setCancelled(true);
                     org.bukkit.util.RayTraceResult ray = player.getWorld().rayTraceEntities(
                             player.getEyeLocation(),
                             player.getEyeLocation().getDirection(),
