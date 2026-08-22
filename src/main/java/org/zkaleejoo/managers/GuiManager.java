@@ -204,7 +204,6 @@ public class GuiManager {
             return;
         }
 
-        @SuppressWarnings("null")
         List<String> permissions = target.getEffectivePermissions().stream()
                 .filter(PermissionAttachmentInfo::getValue)
                 .map(PermissionAttachmentInfo::getPermission)
@@ -1172,4 +1171,3 @@ public class GuiManager {
     }
 
 }
-
