@@ -3,13 +3,14 @@
 AxionStaff is an advanced moderation plugin designed for Minecraft servers. Built natively for PaperMC and compatible with Folia's multi-threading architecture, it provides a comprehensive suite of moderation tools including sanction systems, staff mode, anti-xray detection, and cross-server synchronization via MySQL databases.
 
 ## Table of Contents
-1. Main Features
-2. Installation Guide
-3. Configuration Files
-4. Commands List
-5. Permission Nodes
-6. PlaceholderAPI Variables
-7. Modules and Systems Details
+1. [Main Features](#1-main-features)
+2. [Installation Guide](#2-installation-guide)
+3. [Configuration Files](#3-configuration-files)
+4. [Commands List](#4-commands-list)
+5. [Permission Nodes](#5-permission-nodes)
+6. [PlaceholderAPI Variables](#6-placeholderapi-variables)
+7. [Modules and Systems Details](#7-modules-and-systems-details)
+8. [Discord Configuration Guide](#8-discord-configuration-guide)
 
 ---
 
@@ -182,3 +183,30 @@ The InvSee command generates a unified interface that renders the primary invent
 
 ### Restoration System (Death Revive)
 The plugin stores the exact inventory state and experience every time a player dies. If a death occurs due to a technical server failure or unauthorized third-party intervention, the `/revive` command opens an interactive panel allowing a complete rollback of the lost inventory with a single click.
+
+---
+
+## 8. Discord Configuration Guide
+
+To configure `discord.yml` and connect AxionStaff to your Discord server, follow these steps to set up Webhooks:
+
+1. **Open your Discord Server Settings**
+   Go to **Server Settings** > **Integrations** > **Webhooks**.
+
+2. **Create a New Webhook**
+   Click on **New Webhook**. Name it (e.g., "AxionStaff") and select the channel where you want the notifications to appear (like `#staff-chat` or `#punishments`).
+
+3. **Copy the Webhook URL**
+   Click the **Copy Webhook URL** button.
+
+4. **Paste it into `discord.yml`**
+   Open `plugins/AxionStaff/discord.yml` on your Minecraft server.
+   Locate the module you want to enable (for example, `sanctions` or `staff-chat`) and paste the URL in the `webhook-url` field:
+   ```yaml
+   sanctions:
+     enabled: true
+     webhook-url: "https://discord.com/api/webhooks/your_webhook_url_here"
+   ```
+
+5. **Reload the Plugin**
+   Save the file and run `/axionstaff reload` in your game or server console. Your Discord integration is now active!
