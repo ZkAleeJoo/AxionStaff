@@ -382,4 +382,3 @@ public class PunishmentManager extends AbstractPunishmentManager {
     }
 
 }
-
