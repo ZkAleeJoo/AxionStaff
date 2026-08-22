@@ -5,7 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.utils.MessageUtils;
 import java.util.Arrays;
 import java.io.IOException;
@@ -32,7 +32,7 @@ public class MainConfigManager {
 
     private CustomConfig configFile;
     private CustomConfig langFile;
-    private MaxStaff plugin;
+    private AxionStaff plugin;
     private boolean updateCheckEnabled;
     private boolean bStatsEnabled;
     private boolean isBroadcastEnabled;
@@ -211,7 +211,7 @@ public class MainConfigManager {
         }
     }
 
-    public MainConfigManager(MaxStaff plugin) {
+    public MainConfigManager(AxionStaff plugin) {
         this.plugin = plugin;
         configFile = new CustomConfig("config.yml", null, plugin, false);
         configFile.registerConfig();
@@ -228,7 +228,7 @@ public class MainConfigManager {
         langFile.registerConfig();
         FileConfiguration lang = langFile.getConfig();
 
-        prefix = config.getString("general.prefix", "&4&lMaxStaff &8» ");
+        prefix = config.getString("general.prefix", "&#5831F5&lAxionStaff &8» ");
         updateCheckEnabled = config.getBoolean("general.update-check", true);
         bStatsEnabled = config.getBoolean("general.bstats", true);
         modules = loadModules(config);
@@ -301,7 +301,7 @@ public class MainConfigManager {
             cmdSpySensitiveCommandPatterns = Arrays.asList("authme", "nlogin", "loginsecurity");
         }
         cmdSpySensitiveBypassPermission = config.getString("command-spy.sensitive-bypass-permission",
-                "maxstaff.cmdspy.raw");
+                "AxionStaff.cmdspy.raw");
         cmdSpyMaskedArgument = config.getString("command-spy.masked-argument", "******");
         guiInfoAltsMat = loadMaterial(config.getString("gui.info.items.alts.material"), Material.COMPASS);
         guiInfoInvMat = loadMaterial(config.getString("gui.info.items.inventory.material"), Material.CHEST);
@@ -369,7 +369,7 @@ public class MainConfigManager {
         dbEnabled = config.getBoolean("database.enabled", false);
         dbHost = config.getString("database.host", "localhost");
         dbPort = config.getInt("database.port", 3306);
-        dbDatabase = config.getString("database.database", "maxstaff_db");
+        dbDatabase = config.getString("database.database", "AxionStaff_db");
         dbUser = config.getString("database.username", "root");
         dbPassword = config.getString("database.password", "");
         dbUseSSL = config.getBoolean("database.use-ssl", false);
@@ -381,14 +381,14 @@ public class MainConfigManager {
         reportEnabled = config.getBoolean("reports.enabled", true);
         reportCooldownSeconds = config.getInt("reports.cooldown-seconds", 60);
         reportCooldownBypassPermission = config.getString("reports.cooldown-bypass-permission",
-                "maxstaff.report.bypass");
+                "AxionStaff.report.bypass");
         reportRequireOnlineTarget = config.getBoolean("reports.require-online-target", true);
         reportSelfAllowed = config.getBoolean("reports.allow-self-report", false);
         reportMinReasonLength = config.getInt("reports.min-reason-length", 5);
         reportMaxReasonLength = config.getInt("reports.max-reason-length", 120);
         reportStorageEnabled = config.getBoolean("reports.store-reports", true);
         reportNotifyEnabled = config.getBoolean("reports.notify.enabled", true);
-        reportNotifyPermission = config.getString("reports.notify.permission", "maxstaff.report.notify");
+        reportNotifyPermission = config.getString("reports.notify.permission", "AxionStaff.report.notify");
         reportStaffClickEnabled = config.getBoolean("reports.notify.click-action.enabled", true);
         reportStaffClickActionType = ClickActionType.fromConfig(
                 config.getString("reports.notify.click-action.type", "SUGGEST_COMMAND"));
@@ -397,16 +397,16 @@ public class MainConfigManager {
         clientTrackerEnabled = config.getBoolean("client-tracker.enabled", true);
         clientTrackerNotifyEnabled = config.getBoolean("client-tracker.notify-staff.enabled", true);
         clientTrackerNotifyPermission = config.getString("client-tracker.notify-staff.permission",
-                "maxstaff.client.notify");
+                "AxionStaff.client.notify");
         clientTrackerJoinMessage = lang.getString("messages.client-detected",
                 "&8[&dClient&8] &f{player} &7usa &d{client}");
         clientTrackerUnknownName = config.getString("client-tracker.unknown-client-name", "Unknown");
         clientTrackerTimeoutTicks = Math.max(20, config.getInt("client-tracker.detection-timeout-ticks", 80));
         clientTrackerCustomMappings = loadClientMappings(config);
         antiXrayIgnoreCreative = config.getBoolean("anti-xray.ignore-creative", true);
-        antiXrayBypassPermission = config.getString("anti-xray.bypass-permission", "maxstaff.antixray.bypass");
+        antiXrayBypassPermission = config.getString("anti-xray.bypass-permission", "AxionStaff.antixray.bypass");
         antiXrayNotifyEnabled = config.getBoolean("anti-xray.notify.enabled", true);
-        antiXrayNotifyPermission = config.getString("anti-xray.notify.permission", "maxstaff.antixray.alert");
+        antiXrayNotifyPermission = config.getString("anti-xray.notify.permission", "AxionStaff.antixray.alert");
         antiXrayClickEnabled = config.getBoolean("anti-xray.notify.click-action.enabled", true);
         antiXrayClickActionType = ClickActionType.fromConfig(
                 config.getString("anti-xray.notify.click-action.type", "RUN_COMMAND"));
@@ -421,7 +421,7 @@ public class MainConfigManager {
         antiXrayBlacklistedWorlds = loadNormalizedStringSet(config, "anti-xray.blacklisted-worlds");
         antiXrayDisplayNames = loadAntiXrayDisplayNames(config);
         loadPunishmentSectionLimits(config);
-        altsNotifyPermission = config.getString("alts.notify.permission", "maxstaff.alts.notify");
+        altsNotifyPermission = config.getString("alts.notify.permission", "AxionStaff.alts.notify");
 
         // TODO LO QUE TENGA QUE VER CON MENSAJES, ETC
         noPermission = lang.getString("messages.no-permission");
@@ -2912,3 +2912,4 @@ public class MainConfigManager {
         return Material.matchMaterial(matName != null ? matName : "PAPER");
     }
 }
+

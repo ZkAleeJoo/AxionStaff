@@ -1,6 +1,6 @@
 package org.zkaleejoo.utils;
 
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -13,9 +13,9 @@ import java.util.function.Consumer;
 public class UpdateChecker {
 
     private static final String GITHUB_VERSION_URL = "https://gist.githubusercontent.com/ZkAleeJoo/33cdd64e6c58a490e77284cf9fb1ceca/raw/MaxStaff-Version.txt";
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
 
-    public UpdateChecker(MaxStaff plugin) {
+    public UpdateChecker(AxionStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -57,3 +57,4 @@ public class UpdateChecker {
         });
     }
 }
+

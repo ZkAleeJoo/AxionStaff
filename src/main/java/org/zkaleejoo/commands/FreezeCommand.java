@@ -6,7 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.utils.MessageUtils;
 
 import java.util.ArrayList;
@@ -14,9 +14,9 @@ import java.util.List;
 
 public class FreezeCommand implements CommandExecutor, TabCompleter {
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
 
-    public FreezeCommand(MaxStaff plugin) {
+    public FreezeCommand(AxionStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -28,7 +28,7 @@ public class FreezeCommand implements CommandExecutor, TabCompleter {
         }
         String action = label.toLowerCase();
 
-        if (!CommandContextUtil.requirePermission(staff, "maxstaff.freeze", plugin.getMainConfigManager())) {
+        if (!CommandContextUtil.requirePermission(staff, "AxionStaff.freeze", plugin.getMainConfigManager())) {
             return true;
         }
 
@@ -44,7 +44,7 @@ public class FreezeCommand implements CommandExecutor, TabCompleter {
             return true;
         }
 
-        if (target.hasPermission("maxstaff.admin") || target.hasPermission("maxstaff.freeze")) {
+        if (target.hasPermission("AxionStaff.admin") || target.hasPermission("AxionStaff.freeze")) {
             staff.sendMessage(MessageUtils.getColoredMessage(plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getFreezeStaff()));
             return true;
         }

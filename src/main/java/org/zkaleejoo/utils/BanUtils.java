@@ -22,7 +22,7 @@ public final class BanUtils {
     private BanUtils() {
     }
 
-    private static final Logger LOGGER = java.util.logging.Logger.getLogger("MaxStaff");
+    private static final Logger LOGGER = java.util.logging.Logger.getLogger("AxionStaff");
 
     public static void banPlayerName(String targetName, String reason, Date expiry, String source) {
         PlayerProfile profile = playerProfile(targetName);
@@ -165,7 +165,7 @@ public final class BanUtils {
                         safeText(entry.getReason(), "No reason"),
                         expirationMillis(entry)));
             } catch (Exception e) {
-                LOGGER.log(Level.WARNING, "[MaxStaff] Skipping corrupt IP ban entry", e);
+                LOGGER.log(Level.WARNING, "[AxionStaff] Skipping corrupt IP ban entry", e);
             }
         }
         return records;
@@ -173,7 +173,7 @@ public final class BanUtils {
 
     public static void banIp(String ip, String reason, Date expiry, String source) {
         if (!IPUtils.isValidIp(ip)) {
-            LOGGER.warning("[MaxStaff] Blocked attempt to add non-IP value to IP ban list: " + ip);
+            LOGGER.warning("[AxionStaff] Blocked attempt to add non-IP value to IP ban list: " + ip);
             return;
         }
         ipBanList().addBan(inetAddress(ip), reason, expiry, source);
@@ -189,7 +189,7 @@ public final class BanUtils {
         try {
             address = inetAddress(ip);
         } catch (IllegalArgumentException e) {
-            LOGGER.warning("[MaxStaff] Cannot pardon invalid IP value: " + ip);
+            LOGGER.warning("[AxionStaff] Cannot pardon invalid IP value: " + ip);
             return;
         }
         IpBanList bans = ipBanList();
@@ -209,7 +209,7 @@ public final class BanUtils {
         try {
             address = inetAddress(ip);
         } catch (IllegalArgumentException e) {
-            LOGGER.warning("[MaxStaff] Cannot check IP ban reason for invalid IP: " + ip);
+            LOGGER.warning("[AxionStaff] Cannot check IP ban reason for invalid IP: " + ip);
             return null;
         }
         BanEntry<?> entry = findActiveMatchingIpEntry(ipBanList(), address);
@@ -226,7 +226,7 @@ public final class BanUtils {
         try {
             address = inetAddress(ip);
         } catch (IllegalArgumentException e) {
-            LOGGER.warning("[MaxStaff] Cannot check IP ban status for invalid IP: " + ip);
+            LOGGER.warning("[AxionStaff] Cannot check IP ban status for invalid IP: " + ip);
             return false;
         }
         IpBanList bans = ipBanList();
@@ -251,7 +251,7 @@ public final class BanUtils {
         OfflinePlayer player = Bukkit.getOfflinePlayer(targetName);
         PlayerProfile profile = player.getPlayerProfile();
         if (profile.getId() == null) {
-            Bukkit.getLogger().warning("[MaxStaff] Could not resolve UUID for player ban target: " + targetName);
+            Bukkit.getLogger().warning("[AxionStaff] Could not resolve UUID for player ban target: " + targetName);
             return null;
         }
         return profile;
@@ -369,7 +369,7 @@ public final class BanUtils {
                     entry.remove();
                 }
             } catch (Exception e) {
-                LOGGER.log(Level.WARNING, "[MaxStaff] Skipping corrupt IP ban entry during pardon", e);
+                LOGGER.log(Level.WARNING, "[AxionStaff] Skipping corrupt IP ban entry during pardon", e);
             }
         }
     }
@@ -385,7 +385,7 @@ public final class BanUtils {
                     return entry;
                 }
             } catch (Exception e) {
-                LOGGER.log(Level.WARNING, "[MaxStaff] Skipping corrupt IP ban entry during lookup", e);
+                LOGGER.log(Level.WARNING, "[AxionStaff] Skipping corrupt IP ban entry during lookup", e);
             }
         }
         return null;
@@ -429,3 +429,4 @@ public final class BanUtils {
         return true;
     }
 }
+

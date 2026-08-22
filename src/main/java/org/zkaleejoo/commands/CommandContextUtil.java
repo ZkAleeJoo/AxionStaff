@@ -35,7 +35,7 @@ public final class CommandContextUtil {
     }
 
     public static boolean hasPermissionOrAdmin(CommandSender sender, String permission) {
-        return sender.hasPermission("maxstaff.admin") || sender.hasPermission(permission);
+        return sender.hasPermission("AxionStaff.admin") || sender.hasPermission(permission);
     }
 
     public static void sendPrefixed(CommandSender sender, String message) {

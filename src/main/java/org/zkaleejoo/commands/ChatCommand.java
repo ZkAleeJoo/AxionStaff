@@ -4,7 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.utils.MessageUtils;
 
 import java.util.Arrays;
@@ -12,15 +12,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ChatCommand implements CommandExecutor, TabCompleter {
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
 
-    public ChatCommand(MaxStaff plugin) {
+    public ChatCommand(AxionStaff plugin) {
         this.plugin = plugin;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!sender.hasPermission("maxstaff.chat.admin")) {
+        if (!sender.hasPermission("AxionStaff.chat.admin")) {
             sender.sendMessage(MessageUtils.getColoredMessage(plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getNoPermission()));
             return true;
         }

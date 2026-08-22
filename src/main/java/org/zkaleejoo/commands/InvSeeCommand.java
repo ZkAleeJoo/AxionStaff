@@ -9,11 +9,11 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.config.MainConfigManager;
 import org.zkaleejoo.managers.InventorySnapshotManager;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
-import org.zkaleejoo.utils.MaxStaffHolder;
+import org.zkaleejoo.utils.AxionStaffHolder;
 import org.zkaleejoo.utils.MessageUtils;
 import org.zkaleejoo.listeners.GuiListener;
 
@@ -27,9 +27,9 @@ public class InvSeeCommand implements CommandExecutor, TabCompleter {
 
     private static final int SNAPSHOT_GUI_SIZE = InspectionInventoryBuilder.getInventorySize();
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
 
-    public InvSeeCommand(MaxStaff plugin) {
+    public InvSeeCommand(AxionStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -42,7 +42,7 @@ public class InvSeeCommand implements CommandExecutor, TabCompleter {
             return true;
         }
 
-        boolean canViewInventory = staff.hasPermission("maxstaff.invsee");
+        boolean canViewInventory = staff.hasPermission("AxionStaff.invsee");
         boolean canEditOnlineInventory = canViewInventory;
         if (!canViewInventory && !canEditOnlineInventory) {
             staff.sendMessage(MessageUtils.getColoredMessage(config.getPrefix() + config.getNoPermission()));
@@ -101,7 +101,7 @@ public class InvSeeCommand implements CommandExecutor, TabCompleter {
             return;
         }
 
-        MaxStaffHolder holder = new MaxStaffHolder("INVSEE_OFFLINE", snapshot.playerName());
+        AxionStaffHolder holder = new AxionStaffHolder("INVSEE_OFFLINE", snapshot.playerName());
         Inventory inventory = Bukkit.createInventory(holder, SNAPSHOT_GUI_SIZE,
                 LegacyComponentSerializer.legacySection().deserialize(
                         Objects.requireNonNull(MessageUtils.getColoredMessage(
@@ -142,7 +142,7 @@ public class InvSeeCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        if (!sender.hasPermission("maxstaff.invsee") && !sender.hasPermission("maxstaff.revive")) {
+        if (!sender.hasPermission("AxionStaff.invsee") && !sender.hasPermission("AxionStaff.revive")) {
             return Collections.emptyList();
         }
 
@@ -153,3 +153,4 @@ public class InvSeeCommand implements CommandExecutor, TabCompleter {
         return CommandContextUtil.filterOnlinePlayerNamesByPrefix(args[0]);
     }
 }
+

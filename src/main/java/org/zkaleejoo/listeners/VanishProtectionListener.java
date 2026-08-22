@@ -5,13 +5,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 
 public class VanishProtectionListener implements Listener {
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
 
-    public VanishProtectionListener(MaxStaff plugin) {
+    public VanishProtectionListener(AxionStaff plugin) {
         this.plugin = plugin;
     }
 

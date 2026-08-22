@@ -7,7 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.messaging.PluginMessageListener;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.utils.FoliaCompat;
 import org.zkaleejoo.utils.FoliaCompat.WrappedTask;
 import org.zkaleejoo.config.MainConfigManager;
@@ -36,11 +36,11 @@ public class ClientTrackerManager implements Listener, PluginMessageListener {
 
     private static final Map<String, List<String>> DEFAULT_SIGNATURES = createDefaultSignatures();
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
     private final Map<UUID, WrappedTask> pendingTimeouts = new ConcurrentHashMap<>();
     private final Map<UUID, String> detectedClients = new ConcurrentHashMap<>();
 
-    public ClientTrackerManager(MaxStaff plugin) {
+    public ClientTrackerManager(AxionStaff plugin) {
         this.plugin = plugin;
     }
 

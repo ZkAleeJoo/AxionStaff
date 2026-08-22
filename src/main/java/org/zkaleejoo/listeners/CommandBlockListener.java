@@ -5,14 +5,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.utils.MessageUtils;
 
 public class CommandBlockListener implements Listener {
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
 
-    public CommandBlockListener(MaxStaff plugin) {
+    public CommandBlockListener(AxionStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -50,3 +50,4 @@ public class CommandBlockListener implements Listener {
         player.sendMessage(MessageUtils.getColoredMessage(plugin.getMainConfigManager().getPrefix() + message));
     }
 }
+

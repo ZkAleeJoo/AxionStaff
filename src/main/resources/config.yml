@@ -1,10 +1,10 @@
 #==========================================
-#       MaxStaff - Technical Configuration
+#       AxionStaff - Technical Configuration
 #==========================================
 
 general:
   #The plugin's global prefix
-  prefix: "&4&lMaxStaff &8» "
+  prefix: "&#5831F5&lAxionStaff &8» "
   #Check for updates on startup and every hour?
   update-check: true
   #Send anonymous usage metrics to bStats?
@@ -32,7 +32,7 @@ modules:
   punishments: true
   client-tracker: true
   anti-xray: false
-  # Commands or aliases from MaxStaff that should be fully released by this plugin.
+  # Commands or aliases from AxionStaff that should be fully released by this plugin.
   # Supports entries like: fly, gamemode, gm, invsee
   disable-commands:
     - fly
@@ -62,7 +62,7 @@ freeze:
 reports:
   enabled: true
   cooldown-seconds: 60 #Waiting time between reports per player (in seconds)
-  cooldown-bypass-permission: "maxstaff.report.bypass" #Permission that ignores the cooldown
+  cooldown-bypass-permission: "AxionStaff.report.bypass" #Permission that ignores the cooldown
   require-online-target: true #Define whether the reported player must be online
   allow-self-report: false #Controls whether a player can report themselves
   min-reason-length: 5 #Minimum length of the reason for the report
@@ -70,7 +70,7 @@ reports:
   store-reports: true #Save the reports in reports.yml or not
   notify:
     enabled: true #Activate live notification to staff when someone reports
-    permission: "maxstaff.report.notify" #Permission required to receive those report notifications
+    permission: "AxionStaff.report.notify" #Permission required to receive those report notifications
     click-action:
       enabled: true #Allow click interaction in report notifications for staff
       type: "SUGGEST_COMMAND" #SUGGEST_COMMAND (suggest in chat) or RUN_COMMAND (execute directly on click)
@@ -83,11 +83,11 @@ command-spy:
   #Commands whose arguments should be hidden in cmdspy (without /)
   sensitive-commands: ["login", "register", "l", "reg", "token"]
   #Policy:
-  # - Grant maxstaff.cmdspy to regular staff who should use /cmdspy with masking.
-  # - Grant maxstaff.cmdspy.raw only to a highly restricted group (e.g. owners).
-  # - Do NOT include maxstaff.cmdspy.raw in broad admin groups.
+  # - Grant AxionStaff.cmdspy to regular staff who should use /cmdspy with masking.
+  # - Grant AxionStaff.cmdspy.raw only to a highly restricted group (e.g. owners).
+  # - Do NOT include AxionStaff.cmdspy.raw in broad admin groups.
   #Staff with this permission will see raw command arguments
-  sensitive-bypass-permission: "maxstaff.cmdspy.raw"
+  sensitive-bypass-permission: "AxionStaff.cmdspy.raw"
   #Replacement shown instead of sensitive arguments
   masked-argument: "******"
 
@@ -101,7 +101,7 @@ client-tracker:
   unknown-client-name: "Unknown"
   notify-staff:
     enabled: true
-    permission: "maxstaff.client.notify"
+    permission: "AxionStaff.client.notify"
   #Custom signatures (substring match, case-insensitive)
   #key = visible client name, values = possible brand fragments
   client-signatures:
@@ -113,14 +113,14 @@ client-tracker:
 #==========================================
 alts:
   notify:
-    permission: "maxstaff.alts.notify" #Permission required to receive those report notifications
+    permission: "AxionStaff.alts.notify" #Permission required to receive those report notifications
 
 #==========================================
 #       Anti Xray
 #==========================================
 anti-xray:
   ignore-creative: true
-  bypass-permission: "maxstaff.antixray.bypass"
+  bypass-permission: "AxionStaff.antixray.bypass"
   # Anti Xray does not count blocks or generate alerts in these worlds.
   # World names are matched case-insensitively. Example: ["mines", "world_event"]
   blacklisted-worlds: []
@@ -163,7 +163,7 @@ anti-xray:
     ANCIENT_DEBRIS: "Ancient Debris"
   notify:
     enabled: true
-    permission: "maxstaff.antixray.alert"
+    permission: "AxionStaff.antixray.alert"
     cooldown-seconds: 60
     click-action:
       enabled: true
@@ -195,7 +195,7 @@ database:
   #For a real network with synchronized sanctions, set enabled: true (MySQL).
   host: "localhost"
   port: 3306
-  database: "maxstaff_db"
+  database: "AxionStaff_db"
   username: "root"
   password: ""
   use-ssl: true
@@ -427,7 +427,7 @@ punishments:
     enabled: false
     groups:
       helper:
-        permission: "maxstaff.groups.helper"
+        permission: "AxionStaff.groups.helper"
         limits:
           tempban: "7d"
           tempmute: "7d"
@@ -435,7 +435,7 @@ punishments:
           mute: "7d"
           ban-ip: "7d"
       mod:
-        permission: "maxstaff.groups.mod"
+        permission: "AxionStaff.groups.mod"
         limits:
           tempban: "14d"
           tempmute: "14d"
@@ -555,3 +555,4 @@ punishment-reasons:
       name: "&dUser Trolling"
       material: "SLIME_BALL"
       durations: ["inst"] 
+

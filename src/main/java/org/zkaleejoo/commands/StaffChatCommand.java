@@ -5,16 +5,16 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.utils.MessageUtils;
 
 public class StaffChatCommand implements CommandExecutor {
 
-    private static final String STAFF_CHAT_PERMISSION = "maxstaff.staffchat";
+    private static final String STAFF_CHAT_PERMISSION = "AxionStaff.staffchat";
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
 
-    public StaffChatCommand(MaxStaff plugin) {
+    public StaffChatCommand(AxionStaff plugin) {
         this.plugin = plugin;
     }
 

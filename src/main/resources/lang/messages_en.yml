@@ -1,11 +1,11 @@
 #==========================================
-#       MaxStaff - English Messages
+#       AxionStaff - English Messages
 #==========================================
 
 messages:
   no-permission: "&#FF3333&l✖ &#FF5555You do not have permission to use this command."
   plugin-reload: "&#00E676&l✔ &#E0E0E0Configuration successfully reloaded."
-  subcommand-invalid: "&#FF3333&l✖ &#FF5555Invalid subcommand. Use &#FFD700/maxstaff help&#FF5555."
+  subcommand-invalid: "&#FF3333&l✖ &#FF5555Invalid subcommand. Use &#FFD700/AxionStaff help&#FF5555."
   subcommand-specified: "&#FF3333&l✖ &#FF5555Please specify a subcommand."
   player-click-pls: "&#FF3333&l✖ &#FF5555Please right-click on a player to sanction them."
   invalid-material: "&#FF3333&l[Error] &#E0E0E0Material '&#FFD700{path}&#E0E0E0' doesn't exist. Using: &#FFFFFF{default}"
@@ -19,7 +19,7 @@ messages:
   staff-take-success: "&#00E676&l✔ &#E0E0E0They have been removed &#FFFFFF{amount} &#E0E0E0sanctions of the type &#FFD700{type} &#E0E0E0to &#FFD700{target}."
   take-number-invalid: "&#FF3333&l✖ &#FF5555The quantity must be a valid number."
   player-no-history: "&#FF5555That player has no punishment history."
-  command-help-title: "&#FF3333&lMaxStaff &#E0E0E0Commands List: &#FFFFFF{version}"
+  command-help-title: "&#5831F5&lAxionStaff &#E0E0E0Commands List: &#FFFFFF{version}"
   command-help-list: 
     - '&#555555> &#FFFFFFhttps://docs.maxking.lat/en/maxstaff/'
   update-available: "&f&lNEW VERSION: &7{version}"
@@ -496,3 +496,4 @@ placeholders:
   status-true: "&#00E676Yes"
   status-false: "&#FF3333No"
   playtime-format: "{hours}h {minutes}m"
+

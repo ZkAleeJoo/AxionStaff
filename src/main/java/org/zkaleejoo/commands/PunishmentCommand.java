@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.utils.MessageUtils;
 import org.zkaleejoo.utils.TimeUtils;
 
@@ -16,9 +16,9 @@ import java.util.stream.Collectors;
 
 public class PunishmentCommand implements CommandExecutor, TabCompleter {
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
 
-    public PunishmentCommand(MaxStaff plugin) {
+    public PunishmentCommand(AxionStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -35,13 +35,13 @@ public class PunishmentCommand implements CommandExecutor, TabCompleter {
 
         String permission;
         if (baseLabel.equals("history")) {
-            permission = "maxstaff.history";
+            permission = "AxionStaff.history";
         } else if (baseLabel.equals("ban-ip")) {
-            permission = "maxstaff.punish.banip";
+            permission = "AxionStaff.punish.banip";
         } else if (baseLabel.equals("unban-ip")) {
-            permission = "maxstaff.punish.unbanip";
+            permission = "AxionStaff.punish.unbanip";
         } else {
-            permission = "maxstaff.punish." + baseLabel;
+            permission = "AxionStaff.punish." + baseLabel;
         }
 
         if (!CommandContextUtil.hasPermissionOrAdmin(sender, permission)) {
@@ -159,10 +159,10 @@ public class PunishmentCommand implements CommandExecutor, TabCompleter {
             baseLabel = "ban-ip";
 
         String permission = switch (baseLabel) {
-            case "history" -> "maxstaff.history";
-            case "ban-ip" -> "maxstaff.punish.banip";
-            case "unban-ip" -> "maxstaff.punish.unbanip";
-            default -> "maxstaff.punish." + baseLabel;
+            case "history" -> "AxionStaff.history";
+            case "ban-ip" -> "AxionStaff.punish.banip";
+            case "unban-ip" -> "AxionStaff.punish.unbanip";
+            default -> "AxionStaff.punish." + baseLabel;
         };
 
         if (!CommandContextUtil.hasPermissionOrAdmin(sender, permission))
@@ -215,3 +215,4 @@ public class PunishmentCommand implements CommandExecutor, TabCompleter {
         return false;
     }
 }
+

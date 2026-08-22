@@ -1,5 +1,5 @@
 #==========================================
-#       MaxStaff - Discord Webhooks
+#       AxionStaff - Discord Webhooks
 #==========================================
 webhook-url: "URL_AQUI"
 enabled: true
@@ -9,7 +9,7 @@ use-global-webhook: true
 # use-global-webhook: false -> each log can use its own webhook-url. If a log webhook-url is empty, the global one is used as fallback.
 
 # Global webhook identity/content. Leave blank to use Discord webhook defaults.
-username: "MaxStaff Alerts"
+username: "AxionStaff Alerts"
 avatar-url: ""
 content: ""
 
@@ -381,3 +381,4 @@ reports:
       - name: "🌍 Location"
         value: "`{world}` {x} {y} {z}"
         inline: false
+

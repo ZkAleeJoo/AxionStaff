@@ -15,13 +15,13 @@ import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.commands.DisabledModuleCommand;
 import java.util.Objects;
 
 public final class PluginCommandController {
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
     private final String fallbackPrefix;
     private final DisabledModuleCommand disabledCommand = new DisabledModuleCommand();
     private final Map<String, PluginCommand> declaredCommands = new LinkedHashMap<>();
@@ -31,7 +31,7 @@ public final class PluginCommandController {
     private boolean commandMapWarningLogged;
     private boolean knownCommandsMutationWarningLogged;
 
-    public PluginCommandController(MaxStaff plugin) {
+    public PluginCommandController(AxionStaff plugin) {
         this.plugin = plugin;
         this.fallbackPrefix = plugin.getName().toLowerCase(Locale.ROOT);
         this.commandMap = resolveCommandMap(plugin);
@@ -93,7 +93,7 @@ public final class PluginCommandController {
         for (String disabledCommandLabel : disabledCommands) {
             if (!declaredLabels.contains(disabledCommandLabel)) {
                 plugin.getLogger().warning("Disabled command label \"" + disabledCommandLabel
-                        + "\" does not belong to MaxStaff and will be ignored.");
+                        + "\" does not belong to AxionStaff and will be ignored.");
             }
         }
     }
@@ -345,7 +345,7 @@ public final class PluginCommandController {
         }
     }
 
-    private SimpleCommandMap resolveCommandMap(MaxStaff plugin) {
+    private SimpleCommandMap resolveCommandMap(AxionStaff plugin) {
         CommandMap publicCommandMap = Bukkit.getCommandMap();
         if (publicCommandMap instanceof SimpleCommandMap simpleCommandMap) {
             return simpleCommandMap;
@@ -402,3 +402,4 @@ public final class PluginCommandController {
         return null;
     }
 }
+

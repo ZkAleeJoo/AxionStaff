@@ -5,14 +5,14 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.managers.StaffManager;
 
 public class PlayerQuitListener implements Listener {
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
 
-    public PlayerQuitListener(MaxStaff plugin) {
+    public PlayerQuitListener(AxionStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -42,3 +42,4 @@ public class PlayerQuitListener implements Listener {
         clearSessionState.run();
     }
 }
+

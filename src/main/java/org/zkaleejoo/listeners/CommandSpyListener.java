@@ -8,14 +8,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.utils.MessageUtils;
 
 public class CommandSpyListener implements Listener {
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
 
-    public CommandSpyListener(MaxStaff plugin) {
+    public CommandSpyListener(AxionStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -24,7 +24,7 @@ public class CommandSpyListener implements Listener {
         Player sender = event.getPlayer();
         String rawCommand = event.getMessage();
 
-        if (sender.hasPermission("maxstaff.admin")) return;
+        if (sender.hasPermission("AxionStaff.admin")) return;
 
         for (Player staff : Bukkit.getOnlinePlayers()) {
             if (staff == null) continue;

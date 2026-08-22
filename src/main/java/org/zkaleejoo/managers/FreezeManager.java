@@ -18,7 +18,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.utils.MessageUtils;
 import org.zkaleejoo.utils.FoliaCompat;
 import org.zkaleejoo.utils.FoliaCompat.WrappedTask;
@@ -40,14 +40,14 @@ public class FreezeManager {
     private static final String SOUND_FREEZE_TARGET = "minecraft:block.note_block.pling";
     private static final String SOUND_UNFREEZE_TARGET = "minecraft:entity.player.levelup";
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
     private final NamespacedKey freezeDisplayOwnerKey;
     private final NamespacedKey freezeDisplayFlagKey;
     private final Set<UUID> frozenPlayers = new HashSet<>();
     private final Map<UUID, ItemStack> savedHelmets = new HashMap<>();
     private final Map<UUID, FrozenDisplayTracker> frozenDisplays = new HashMap<>();
 
-    public FreezeManager(MaxStaff plugin) {
+    public FreezeManager(AxionStaff plugin) {
         this.plugin = plugin;
         this.freezeDisplayOwnerKey = new NamespacedKey(plugin, "freeze_display_owner");
         this.freezeDisplayFlagKey = new NamespacedKey(plugin, "freeze_display");
@@ -405,7 +405,7 @@ public class FreezeManager {
     }
 
     private boolean canViewFrozenStats(Player viewer) {
-        return viewer.hasPermission("maxstaff.freeze") || viewer.hasPermission("maxstaff.admin");
+        return viewer.hasPermission("AxionStaff.freeze") || viewer.hasPermission("AxionStaff.admin");
     }
 
     public void removeAllDisplays() {
@@ -508,3 +508,4 @@ public class FreezeManager {
         }
     }
 }
+

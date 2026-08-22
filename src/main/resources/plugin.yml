@@ -1,262 +1,263 @@
-main: org.zkaleejoo.MaxStaff
+main: org.zkaleejoo.AxionStaff
 version: ${project.version}
-name: MaxStaff
+name: AxionStaff
 author: ZkAleeJoo
 api-version: '1.13'
 folia-supported: true
 
 commands:
-  maxstaff:
-    description: Main MaxStaff command
-    aliases: [ms]
-    permission: maxstaff.admin
+  AxionStaff:
+    description: Main AxionStaff command
+    aliases: [as]
+    permission: AxionStaff.admin
   staff:
     description: Eneable or disable staff mode
     aliases: [s, staffmode] 
-    permission: maxstaff.command.staff
+    permission: AxionStaff.command.staff
   ban:
     description: Ban a player
-    permission: maxstaff.punish.ban
+    permission: AxionStaff.punish.ban
     usage: /ban <player> [time] [reason]
   tempban:
     description: Temporarily ban a player
-    permission: maxstaff.punish.ban
+    permission: AxionStaff.punish.ban
   mute:
     description: Mute a player
-    permission: maxstaff.punish.mute
+    permission: AxionStaff.punish.mute
   tempmute:
     description: Temporarily mute a player
-    permission: maxstaff.punish.mute
+    permission: AxionStaff.punish.mute
   kick:
     description: Kick a player
-    permission: maxstaff.punish.kick
+    permission: AxionStaff.punish.kick
   unban:
     description: Unban a player
-    permission: maxstaff.punish.unban
+    permission: AxionStaff.punish.unban
   unmute:
     description: Unmute a player
-    permission: maxstaff.punish.unmute
+    permission: AxionStaff.punish.unmute
   warn:
     description: Warn a player
-    permission: maxstaff.punish.warn
+    permission: AxionStaff.punish.warn
   history:
     description: View sanction history
-    permission: maxstaff.history
+    permission: AxionStaff.history
   vanish:
     description: Toggle invisibility
-    permission: maxstaff.vanish
+    permission: AxionStaff.vanish
   ban-ip:
     description: Ban IP address
-    permission: maxstaff.punish.banip
+    permission: AxionStaff.punish.banip
   tempban-ip:
     description: Temporarily ban IP address
-    permission: maxstaff.punish.banip
+    permission: AxionStaff.punish.banip
   unban-ip:
     description: Unban IP address
-    permission: maxstaff.punish.unbanip
+    permission: AxionStaff.punish.unbanip
   sc:
     description: Staff chat
     aliases: [staffchat]
-    permission: maxstaff.staffchat
+    permission: AxionStaff.staffchat
   cmdspy:
     description: Spy on commands
-    permission: maxstaff.cmdspy
+    permission: AxionStaff.cmdspy
   chat:
     description: Manage global chat
-    permission: maxstaff.chat.admin
+    permission: AxionStaff.chat.admin
   gamemode:
     description: Gamemode selector
     aliases: [gm]
-    permission: maxstaff.gamemode
+    permission: AxionStaff.gamemode
   alts:
     description: View alt accounts
     aliases: [alt, accs]
-    permission: maxstaff.alts
+    permission: AxionStaff.alts
   sanction:
     description: Advanced sanction menu
   freeze:
     description: Freeze a player
     aliases: [ss]
-    permission: maxstaff.freeze
+    permission: AxionStaff.freeze
   unfreeze:
     description: Unfreeze a player
     aliases: [uss]
-    permission: maxstaff.freeze
+    permission: AxionStaff.freeze
   report:
     description: Report a player
     aliases: [reportar]
-    permission: maxstaff.report
+    permission: AxionStaff.report
   invsee:
     description: View a player inventory in real time
   revive:
     description: Restore inventories from recent player deaths
-    permission: maxstaff.revive
+    permission: AxionStaff.revive
   fly:
     description: Enable or configure staff flight
-    permission: maxstaff.fly
+    permission: AxionStaff.fly
   silent:
     description: Execute punishment commands silently (without broadcast/chat messages)
-    permission: maxstaff.punish.silent
+    permission: AxionStaff.punish.silent
   xray:
     description: Open the AntiXray suspects menu
-    permission: maxstaff.antixray.alert
+    permission: AxionStaff.antixray.alert
     
 permissions:
-  maxstaff.admin:
-    description: Full access to MaxStaff and administrative commands.
+  AxionStaff.admin:
+    description: Full access to AxionStaff and administrative commands.
     default: op
     children:
-      maxstaff.mode: true
-      maxstaff.punish.ban: true
-      maxstaff.punish.mute: true 
-      maxstaff.punish.kick: true
-      maxstaff.punish.warn: true
-      maxstaff.punish.unban: true
-      maxstaff.punish.unmute: true
-      maxstaff.see.vanish: true
-      maxstaff.history: true
-      maxstaff.vanish: true
-      maxstaff.punish.banip: true
-      maxstaff.punish.unbanip: true
-      maxstaff.staffchat: true
-      maxstaff.cmdspy: true
-      maxstaff.cmdspy.raw: true
-      maxstaff.cmdspy.raw.owners: true
-      maxstaff.chat.admin: true
-      maxstaff.gamemode: true
-      maxstaff.alts: true
-      maxstaff.punish: true
-      maxstaff.freeze: true
-      maxstaff.command.staff: true
-      maxstaff.report: true
-      maxstaff.report.notify: true
-      maxstaff.report.bypass: true
-      maxstaff.invsee: true
-      maxstaff.revive: true
-      maxstaff.fly: true
-      maxstaff.punish.override: true
-      maxstaff.alts.override: true
-      maxstaff.client.notify: true
-      maxstaff.antixray.alert: true
-      maxstaff.antixray.bypass: true
-      maxstaff.punish.silent: true
-      maxstaff.sanctions.list: true
-  maxstaff.punish.ban:
+      AxionStaff.mode: true
+      AxionStaff.punish.ban: true
+      AxionStaff.punish.mute: true 
+      AxionStaff.punish.kick: true
+      AxionStaff.punish.warn: true
+      AxionStaff.punish.unban: true
+      AxionStaff.punish.unmute: true
+      AxionStaff.see.vanish: true
+      AxionStaff.history: true
+      AxionStaff.vanish: true
+      AxionStaff.punish.banip: true
+      AxionStaff.punish.unbanip: true
+      AxionStaff.staffchat: true
+      AxionStaff.cmdspy: true
+      AxionStaff.cmdspy.raw: true
+      AxionStaff.cmdspy.raw.owners: true
+      AxionStaff.chat.admin: true
+      AxionStaff.gamemode: true
+      AxionStaff.alts: true
+      AxionStaff.punish: true
+      AxionStaff.freeze: true
+      AxionStaff.command.staff: true
+      AxionStaff.report: true
+      AxionStaff.report.notify: true
+      AxionStaff.report.bypass: true
+      AxionStaff.invsee: true
+      AxionStaff.revive: true
+      AxionStaff.fly: true
+      AxionStaff.punish.override: true
+      AxionStaff.alts.override: true
+      AxionStaff.client.notify: true
+      AxionStaff.antixray.alert: true
+      AxionStaff.antixray.bypass: true
+      AxionStaff.punish.silent: true
+      AxionStaff.sanctions.list: true
+  AxionStaff.punish.ban:
     description: Allows using /ban and /tempban.
     default: op
-  maxstaff.punish.mute:
+  AxionStaff.punish.mute:
     description: Allows using /mute and /tempmute.
     default: op
-  maxstaff.punish.kick:
+  AxionStaff.punish.kick:
     description: Allows using /kick.
     default: op
-  maxstaff.punish.warn:
+  AxionStaff.punish.warn:
     description: Allows using /warn.
     default: op
-  maxstaff.punish.unban:
+  AxionStaff.punish.unban:
     description: Allows using /unban.
     default: op
-  maxstaff.punish.unmute:
+  AxionStaff.punish.unmute:
     description: Allows using /unmute.
     default: op
-  maxstaff.mode:
+  AxionStaff.mode:
     description: Legacy alias for staff mode permission.
     default: op
     children:
-      maxstaff.command.staff: true
-  maxstaff.see.vanish:
+      AxionStaff.command.staff: true
+  AxionStaff.see.vanish:
     description: Allows seeing other staff members in vanish.
     default: op
-  maxstaff.history:
+  AxionStaff.history:
     description: Allows using /history.
     default: op
-  maxstaff.vanish:
+  AxionStaff.vanish:
     description: Allows using the /vanish command.
     default: op
-  maxstaff.vanish.join:
+  AxionStaff.vanish.join:
     description: Automatically enables vanish when joining a server.
     default: false
-  maxstaff.punish.banip:
+  AxionStaff.punish.banip:
     description: Allows using /ban-ip and /tempban-ip.
     default: op
-  maxstaff.punish.unbanip:
+  AxionStaff.punish.unbanip:
     description: Allows using /unban-ip.
     default: op
-  maxstaff.staffchat:
+  AxionStaff.staffchat:
     description: Allows using and viewing staff chat.
     default: op
-  maxstaff.cmdspy:
+  AxionStaff.cmdspy:
     description: Allows using /cmdspy to spy on commands.
     default: op
-  maxstaff.cmdspy.raw:
+  AxionStaff.cmdspy.raw:
     description: Allows viewing raw sensitive arguments in /cmdspy logs.
     default: false
-  maxstaff.cmdspy.raw.owners:
+  AxionStaff.cmdspy.raw.owners:
     description: Group node for highly restricted staff (e.g. owners) that includes raw cmdspy access.
     default: op
     children:
-      maxstaff.cmdspy.raw: true
-  maxstaff.chat.admin:
+      AxionStaff.cmdspy.raw: true
+  AxionStaff.chat.admin:
     description: Allows muting and clearing global chat.
     default: op
-  maxstaff.gamemode:
+  AxionStaff.gamemode:
     description: Allows using /gm to open the GUI.
     default: op
-  maxstaff.alts:
+  AxionStaff.alts:
     description: Allows using the alt tracking system.
     default: op
-  maxstaff.punish:
+  AxionStaff.punish:
     description: Allows using /sanction to open the advanced sanction menu.
     default: op
-  maxstaff.sanctions.list:
+  AxionStaff.sanctions.list:
     description: Allows using /sanction list to view active bans and mutes.
     default: op
-  maxstaff.freeze:
+  AxionStaff.freeze:
     description: Allows using /freeze and /unfreeze.
     default: op
-  maxstaff.command.staff:
+  AxionStaff.command.staff:
     description: Allows using the /staff command.
     default: op
-  maxstaff.report:
+  AxionStaff.report:
     description: Allows players to use /report.
     default: true
-  maxstaff.report.notify:
+  AxionStaff.report.notify:
     description: Allows staff to receive report notifications.
     default: op
-  maxstaff.report.bypass:
+  AxionStaff.report.bypass:
     description: Allows bypassing report cooldowns.
     default: op
-  maxstaff.invsee:
+  AxionStaff.invsee:
     description: Allows using /invsee.
     default: op
-  maxstaff.revive:
+  AxionStaff.revive:
     description: Allows using /revive to restore death inventories.
     default: op
-  maxstaff.punish.override:
+  AxionStaff.punish.override:
     description: Allows bypassing protected staff sanction checks.
     default: op
-  maxstaff.punish.protected:
+  AxionStaff.punish.protected:
     description: Protects a player from sanctions by lower staff.
     default: false
-  maxstaff.client.notify:
+  AxionStaff.client.notify:
     description: Allows staff to receive player client detection notifications.
     default: op
-  maxstaff.antixray.alert:
+  AxionStaff.antixray.alert:
     description: Allows staff to receive AntiXray mining alerts.
     default: op
-  maxstaff.antixray.bypass:
+  AxionStaff.antixray.bypass:
     description: Prevents AntiXray alerts from being generated by this player.
     default: false
-  maxstaff.fly:
+  AxionStaff.fly:
     description: Allows using /fly with speed levels.
     default: op
 
-  maxstaff.punish.silent:
+  AxionStaff.punish.silent:
     description: Allows using /silent for hidden punishment command execution.
     default: op
-  maxstaff.alts.override:
+  AxionStaff.alts.override:
     description: Allows viewing alts of protected players.
     default: op
-  maxstaff.alts.protected:
+  AxionStaff.alts.protected:
     description: Protects the player's alts from being seen by lower-rank staff.
     default: false
+

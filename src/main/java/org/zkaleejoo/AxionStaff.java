@@ -5,7 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bstats.bukkit.Metrics;
 import org.zkaleejoo.utils.FoliaCompat;
 import org.zkaleejoo.utils.FoliaCompat.WrappedTask;
-import org.zkaleejoo.commands.registration.MaxStaffCommandRegistrar;
+import org.zkaleejoo.commands.registration.AxionStaffCommandRegistrar;
 import org.zkaleejoo.config.MainConfigManager;
 
 import org.zkaleejoo.managers.StaffManager;
@@ -43,13 +43,13 @@ import org.zkaleejoo.config.CustomConfig;
 import org.zkaleejoo.listeners.AntiXrayListener;
 import org.zkaleejoo.listeners.VanishProtectionListener;
 
-public class MaxStaff extends JavaPlugin {
+public class AxionStaff extends JavaPlugin {
 
     private static final int BSTATS_PLUGIN_ID = 31109;
     private static final long UPDATE_CHECK_INTERVAL_TICKS = 20L * 60L * 60L * 5L;
 
     private MainConfigManager mainConfigManager;
-    private MaxStaffCommandRegistrar commandRegistrar;
+    private AxionStaffCommandRegistrar commandRegistrar;
     private StaffManager staffManager;
     private GuiManager guiManager;
     private FreezeManager freezeManager;
@@ -74,7 +74,7 @@ public class MaxStaff extends JavaPlugin {
 
         mainConfigManager = new MainConfigManager(this);
         syncMetricsState();
-        commandRegistrar = new MaxStaffCommandRegistrar(this);
+        commandRegistrar = new AxionStaffCommandRegistrar(this);
         freezeManager = new FreezeManager(this);
         freezeManager.cleanupOrphanDisplays();
         staffManager = new StaffManager(this);
@@ -106,7 +106,7 @@ public class MaxStaff extends JavaPlugin {
             try {
                 punishmentManager = new PunishmentManagerMysql(this);
                 Bukkit.getConsoleSender().sendMessage(
-                        MessageUtils.getColoredMessage("&4&lMaxStaff &8» &aSanctions system loaded: MySQL"));
+                        MessageUtils.getColoredMessage("&#5831F5&lAxionStaff &8» &aSanctions system loaded: MySQL"));
                 sendMysqlStatusReport();
             } catch (Exception e) {
                 getLogger().severe("Error connecting to MySQL, switching to local system: " + e.getMessage());
@@ -116,9 +116,9 @@ public class MaxStaff extends JavaPlugin {
         } else {
             punishmentManager = new PunishmentManager(this);
             Bukkit.getConsoleSender().sendMessage(
-                    MessageUtils.getColoredMessage("&4&lMaxStaff &8» &aSanctions system loaded: Local (YAML)"));
+                    MessageUtils.getColoredMessage("&#5831F5&lAxionStaff &8» &aSanctions system loaded: Local (YAML)"));
             Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                    "&4&lMaxStaff &8» &aYAML punishment storage is single-server only. &eNetwork-wide &asynchronization requires &edatabase.enabled=true."));
+                    "&#5831F5&lAxionStaff &8» &aYAML punishment storage is single-server only. &eNetwork-wide &asynchronization requires &edatabase.enabled=true."));
         }
 
         registerCommands();
@@ -126,25 +126,27 @@ public class MaxStaff extends JavaPlugin {
         startUpdateChecks();
 
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&4&lMaxStaff &8» &4   _____                   _________ __          _____  _____ "));
+                "&#5831F5&lAxionStaff &8» &5   _____         .__                _________ __          _____  _____ "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&4&lMaxStaff &8» &4  /     \\ _____  ___  ___ /   _____//  |______ _/ ____\\/ ____\\"));
+                "&#5831F5&lAxionStaff &8» &5  /  _  \\ ___  __|__| ____   ____  /   _____//  |______ _/ ____\\/ ____\\"));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&4&lMaxStaff &8» &4 /  \\ /  \\\\__  \\ \\  \\/  / \\_____  \\\\   __\\__  \\\\   __\\\\   __\\ "));
+                "&#5831F5&lAxionStaff &8» &5 /  /_\\  \\\\  \\/  /  |/  _ \\ /    \\ \\_____  \\\\   __\\__  \\\\   __\\\\   __\\ "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&4&lMaxStaff &8» &4/    Y    \\/ __ \\_>    <  /        \\|  |  / __ \\|  |   |  |   "));
+                "&#5831F5&lAxionStaff &8» &5/    |    \\>    <|  (  <_> )   |  \\/        \\|  |  / __ \\|  |   |  |   "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&4&lMaxStaff &8» &4\\____|__  (____  /__/\\_ \\/_______  /|__| (____  /__|   |__|   "));
+                "&#5831F5&lAxionStaff &8» &5\\____|__  /__/\\_ \\__|\\____/|___|  /_______  /|__| (____  /__|   |__|   "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&4&lMaxStaff &8» &4        \\/     \\/      \\/        \\/           \\/              "));
+                "&#5831F5&lAxionStaff &8» &5        \\/      \\/              \\/        \\/           \\/              "));
 
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-            new org.zkaleejoo.placeholders.MaxStaffExpansion(this).register();
+            new org.zkaleejoo.placeholders.AxionStaffExpansion(this).register();
             Bukkit.getConsoleSender().sendMessage(
-                    MessageUtils.getColoredMessage("&4&lMaxStaff &8» &aPlaceholderAPI Hook successfully registered!"));
+                    MessageUtils.getColoredMessage(
+                            "&#5831F5&lAxionStaff &8» &aPlaceholderAPI Hook successfully registered!"));
         } else {
             Bukkit.getConsoleSender().sendMessage(MessageUtils
-                    .getColoredMessage("&4&lMaxStaff &8» &4PlaceholderAPI not found, placeholders will not work."));
+                    .getColoredMessage(
+                            "&#5831F5&lAxionStaff &8» &4PlaceholderAPI not found, placeholders will not work."));
         }
 
     }
@@ -185,15 +187,16 @@ public class MaxStaff extends JavaPlugin {
             if (this.getPluginMeta().getVersion().equalsIgnoreCase(version)) {
                 this.latestVersion = null;
                 Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                        "&4&lMaxStaff &8» &aA check for updates was performed and nothing was found."));
+                        "&#5831F5&lAxionStaff &8» &aA check for updates was performed and nothing was found."));
             } else {
                 this.latestVersion = version;
 
                 Bukkit.getConsoleSender()
-                        .sendMessage(MessageUtils.getColoredMessage("&4&lMaxStaff &8» &f&lNEW VERSION: &7" + version));
+                        .sendMessage(MessageUtils
+                                .getColoredMessage("&#5831F5&lAxionStaff &8» &f&lNEW VERSION: &7" + version));
                 Bukkit.getConsoleSender().sendMessage(
                         MessageUtils.getColoredMessage(
-                                "&4&lMaxStaff &8» &fDownload it now at the following link: &7https://pixeleast.com/product/247263-maxstaff"));
+                                "&#5831F5&lAxionStaff &8» &fDownload it now at the following link: &7https://pixeleast.com/product/247263-maxstaff"));
             }
         });
     }
@@ -276,12 +279,13 @@ public class MaxStaff extends JavaPlugin {
         }
 
         Bukkit.getConsoleSender()
-                .sendMessage(MessageUtils.getColoredMessage("&4&lMaxStaff &8» &cIt was successfully deactivated"));
+                .sendMessage(
+                        MessageUtils.getColoredMessage("&#5831F5&lAxionStaff &8» &cIt was successfully deactivated"));
     }
 
     public void registerCommands() {
         if (commandRegistrar == null) {
-            commandRegistrar = new MaxStaffCommandRegistrar(this);
+            commandRegistrar = new AxionStaffCommandRegistrar(this);
         }
         commandRegistrar.registerCommands();
     }

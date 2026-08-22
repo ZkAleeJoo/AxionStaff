@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.utils.MessageUtils;
 import org.zkaleejoo.config.MainConfigManager;
 import org.zkaleejoo.utils.IPUtils;
@@ -13,9 +13,9 @@ import java.util.Objects;
 
 public class PlayerJoinListener implements Listener {
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
 
-    public PlayerJoinListener(MaxStaff plugin) {
+    public PlayerJoinListener(AxionStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -42,7 +42,7 @@ public class PlayerJoinListener implements Listener {
             plugin.getPunishmentManager().savePlayerIP(player.getUniqueId(), ip);
 
             if (config.isModuleEnabled("alts")) {
-                boolean isAltsProtected = player.hasPermission("maxstaff.alts.protected");
+                boolean isAltsProtected = player.hasPermission("AxionStaff.alts.protected");
                 FoliaCompat.runAsync(plugin, () -> {
                     java.util.List<java.util.UUID> alts = plugin.getPunishmentManager().getAllAccountsByIP(ip);
 
@@ -66,7 +66,7 @@ public class PlayerJoinListener implements Listener {
 
                         for (Player onlineStaff : org.bukkit.Bukkit.getOnlinePlayers()) {
                             if (onlineStaff != null && onlineStaff.hasPermission(config.getAltsNotifyPermission())) {
-                                if (isAltsProtected && !onlineStaff.hasPermission("maxstaff.alts.override")) {
+                                if (isAltsProtected && !onlineStaff.hasPermission("AxionStaff.alts.override")) {
                                     continue;
                                 }
                                 onlineStaff.sendMessage(message);
@@ -80,7 +80,7 @@ public class PlayerJoinListener implements Listener {
         for (java.util.UUID uuid : plugin.getStaffManager().getVanishedPlayers()) {
             Player staff = org.bukkit.Bukkit.getPlayer(uuid);
             if (staff != null && staff.isOnline()) {
-                if (!player.hasPermission("maxstaff.see.vanish")) {
+                if (!player.hasPermission("AxionStaff.see.vanish")) {
                     player.hidePlayer(Objects.requireNonNull(plugin), staff);
                     continue;
                 }
@@ -89,7 +89,7 @@ public class PlayerJoinListener implements Listener {
             }
         }
 
-        if (player.hasPermission("maxstaff.admin")) {
+        if (player.hasPermission("AxionStaff.admin")) {
             String latest = plugin.getLatestVersion();
             if (latest != null && !plugin.getPluginMeta().getVersion().equalsIgnoreCase(latest)) {
                 player.sendMessage(" ");
@@ -105,3 +105,4 @@ public class PlayerJoinListener implements Listener {
         }
     }
 }
+

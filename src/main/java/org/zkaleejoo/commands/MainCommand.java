@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.utils.MessageUtils;
 
 import java.util.ArrayList;
@@ -18,9 +18,9 @@ import java.util.Locale;
 
 public class MainCommand implements CommandExecutor, TabCompleter {
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
 
-    public MainCommand(MaxStaff plugin) {
+    public MainCommand(AxionStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -28,7 +28,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String alias, String[] args) {
 
         if (args.length >= 1 && args[0].equalsIgnoreCase("reload")) {
-            if (!sender.hasPermission("maxstaff.admin")) {
+            if (!sender.hasPermission("AxionStaff.admin")) {
                 sendNoPermission(sender);
                 return true;
             }
@@ -41,7 +41,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         }
 
         if (args.length >= 1 && args[0].equalsIgnoreCase("cleanupbans")) {
-            if (!sender.hasPermission("maxstaff.admin")) {
+            if (!sender.hasPermission("AxionStaff.admin")) {
                 sendNoPermission(sender);
                 return true;
             }
@@ -64,7 +64,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         Player player = (Player) sender;
 
         if (args.length == 0 || args[0].equalsIgnoreCase("help")) {
-            if (!player.hasPermission("maxstaff.admin")) {
+            if (!player.hasPermission("AxionStaff.admin")) {
                 sendNoPermission(player);
                 return true;
             }
@@ -75,7 +75,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         String sub = args[0].toLowerCase();
 
         if (sub.equals("reset")) {
-            if (!player.hasPermission("maxstaff.admin")) {
+            if (!player.hasPermission("AxionStaff.admin")) {
                 sendNoPermission(player);
                 return true;
             }
@@ -97,7 +97,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         }
 
         else if (sub.equals("take")) {
-            if (!player.hasPermission("maxstaff.admin")) {
+            if (!player.hasPermission("AxionStaff.admin")) {
                 sendNoPermission(player);
                 return true;
             }
@@ -135,14 +135,14 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         }
 
         else if (sub.equals("debugperm")) {
-            if (!player.hasPermission("maxstaff.admin")) {
+            if (!player.hasPermission("AxionStaff.admin")) {
                 sendNoPermission(player);
                 return true;
             }
 
             if (args.length < 3) {
                 sender.sendMessage(MessageUtils.getColoredMessage(
-                        plugin.getMainConfigManager().getPrefix() + "&cUso: /maxstaff debugperm <jugador> <tipo>"));
+                        plugin.getMainConfigManager().getPrefix() + "&cUso: /AxionStaff debugperm <jugador> <tipo>"));
                 return true;
             }
 
@@ -155,10 +155,10 @@ public class MainCommand implements CommandExecutor, TabCompleter {
 
             String sanctionType = args[2].toLowerCase(Locale.ROOT);
             String specificNode = switch (sanctionType) {
-                case "mute", "tempmute" -> "maxstaff.punish.mute";
-                case "ban", "tempban" -> "maxstaff.punish.ban";
-                case "kick" -> "maxstaff.punish.kick";
-                case "warn" -> "maxstaff.punish.warn";
+                case "mute", "tempmute" -> "AxionStaff.punish.mute";
+                case "ban", "tempban" -> "AxionStaff.punish.ban";
+                case "kick" -> "AxionStaff.punish.kick";
+                case "warn" -> "AxionStaff.punish.warn";
                 default -> null;
             };
 
@@ -172,9 +172,9 @@ public class MainCommand implements CommandExecutor, TabCompleter {
             sender.sendMessage(MessageUtils.getColoredMessage("&7Player: &e" + target.getName()));
             sender.sendMessage(MessageUtils.getColoredMessage("&7Type: &e" + sanctionType));
             sender.sendMessage(MessageUtils
-                    .getColoredMessage("&7maxstaff.admin: " + boolColor(target.hasPermission("maxstaff.admin"))));
+                    .getColoredMessage("&7AxionStaff.admin: " + boolColor(target.hasPermission("AxionStaff.admin"))));
             sender.sendMessage(MessageUtils
-                    .getColoredMessage("&7maxstaff.punish: " + boolColor(target.hasPermission("maxstaff.punish"))));
+                    .getColoredMessage("&7AxionStaff.punish: " + boolColor(target.hasPermission("AxionStaff.punish"))));
             sender.sendMessage(MessageUtils
                     .getColoredMessage("&7" + specificNode + ": " + boolColor(target.hasPermission(specificNode))));
 
@@ -184,8 +184,8 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                     continue;
                 }
                 String perm = info.getPermission();
-                if (perm.equals("maxstaff.admin") || perm.equals("maxstaff.punish")
-                        || perm.startsWith("maxstaff.punish.")) {
+                if (perm.equals("AxionStaff.admin") || perm.equals("AxionStaff.punish")
+                        || perm.startsWith("AxionStaff.punish.")) {
                     matched.add(perm);
                 }
             }
@@ -194,7 +194,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
             sender.sendMessage(MessageUtils.getColoredMessage("&7Detected nodes (&f" + matched.size() + "&7):"));
             if (matched.isEmpty()) {
                 sender.sendMessage(
-                        MessageUtils.getColoredMessage("&8 - &cNo relevant maxstaff nodes in effective permissions."));
+                        MessageUtils.getColoredMessage("&8 - &cNo relevant AxionStaff nodes in effective permissions."));
             } else {
                 for (String node : matched) {
                     sender.sendMessage(MessageUtils.getColoredMessage("&8 - &a" + node));
@@ -222,14 +222,14 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         List<String> helpLines = plugin.getMainConfigManager().getHelpLines();
 
         if (helpLines == null || helpLines.isEmpty()) {
-            if (sender.hasPermission("maxstaff.admin")) {
-                sender.sendMessage(MessageUtils.getColoredMessage("&9> &a/maxstaff reload &7- Reload settings"));
-                sender.sendMessage(MessageUtils.getColoredMessage("&9> &a/maxstaff help &7- View list of commands"));
-                sender.sendMessage(MessageUtils.getColoredMessage("&9> &a/maxstaff reset"));
-                sender.sendMessage(MessageUtils.getColoredMessage("&9> &a/maxstaff take"));
-                sender.sendMessage(MessageUtils.getColoredMessage("&9> &a/maxstaff cleanupbans &7- Remove expired bans/mutes from MySQL"));
+            if (sender.hasPermission("AxionStaff.admin")) {
+                sender.sendMessage(MessageUtils.getColoredMessage("&9> &a/AxionStaff reload &7- Reload settings"));
+                sender.sendMessage(MessageUtils.getColoredMessage("&9> &a/AxionStaff help &7- View list of commands"));
+                sender.sendMessage(MessageUtils.getColoredMessage("&9> &a/AxionStaff reset"));
+                sender.sendMessage(MessageUtils.getColoredMessage("&9> &a/AxionStaff take"));
+                sender.sendMessage(MessageUtils.getColoredMessage("&9> &a/AxionStaff cleanupbans &7- Remove expired bans/mutes from MySQL"));
                 sender.sendMessage(MessageUtils.getColoredMessage(
-                        "&9> &a/maxstaff debugperm <player> <mute|ban|kick|warn> &7- Diagnose permissions"));
+                        "&9> &a/AxionStaff debugperm <player> <mute|ban|kick|warn> &7- Diagnose permissions"));
             }
         } else {
             for (String line : helpLines) {
@@ -243,20 +243,20 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         List<String> completions = new ArrayList<>();
 
         if (args.length == 1) {
-            if (sender.hasPermission("maxstaff.admin")) {
+            if (sender.hasPermission("AxionStaff.admin")) {
                 completions.addAll(Arrays.asList("reload", "help", "reset", "take", "cleanupbans", "debugperm"));
             }
             return filterCompletions(completions, args[0]);
         }
 
         if (args.length == 2) {
-            if (sender.hasPermission("maxstaff.admin") && (args[0].equalsIgnoreCase("reset")
+            if (sender.hasPermission("AxionStaff.admin") && (args[0].equalsIgnoreCase("reset")
                     || args[0].equalsIgnoreCase("take") || args[0].equalsIgnoreCase("debugperm"))) {
                 return null;
             }
         }
 
-        if (args.length == 3 && sender.hasPermission("maxstaff.admin")) {
+        if (args.length == 3 && sender.hasPermission("AxionStaff.admin")) {
             if (args[0].equalsIgnoreCase("reset")) {
                 completions.addAll(Arrays.asList("BAN", "MUTE", "KICK", "WARN", "ALL"));
             } else if (args[0].equalsIgnoreCase("take")) {
@@ -284,3 +284,4 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         return filtered;
     }
 }
+

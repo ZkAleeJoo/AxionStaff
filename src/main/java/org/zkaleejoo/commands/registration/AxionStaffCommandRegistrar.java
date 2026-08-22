@@ -2,7 +2,7 @@ package org.zkaleejoo.commands.registration;
 
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.TabCompleter;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.commands.AltsCommand;
 import org.zkaleejoo.commands.ChatCommand;
 import org.zkaleejoo.commands.CommandSpyCommand;
@@ -21,7 +21,7 @@ import org.zkaleejoo.commands.StaffCommand;
 import org.zkaleejoo.commands.VanishCommand;
 import org.zkaleejoo.commands.XrayCommand;
 
-public final class MaxStaffCommandRegistrar {
+public final class AxionStaffCommandRegistrar {
 
     private static final String[] PUNISHMENT_COMMANDS = {
             "ban", "tempban", "mute", "tempmute", "kick",
@@ -29,17 +29,17 @@ public final class MaxStaffCommandRegistrar {
             "ban-ip", "tempban-ip", "unban-ip"
     };
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
     private final PluginCommandController commandController;
 
-    public MaxStaffCommandRegistrar(MaxStaff plugin) {
+    public AxionStaffCommandRegistrar(AxionStaff plugin) {
         this.plugin = plugin;
         this.commandController = new PluginCommandController(plugin);
     }
 
     public void registerCommands() {
         MainCommand mainCommand = new MainCommand(plugin);
-        enableCommand("maxstaff", mainCommand, mainCommand);
+        enableCommand("AxionStaff", mainCommand, mainCommand);
 
         if (plugin.isModuleEnabled("staff-mode")) {
             enableCommand("staff", new StaffCommand(plugin), null);
@@ -152,3 +152,4 @@ public final class MaxStaffCommandRegistrar {
         }
     }
 }
+

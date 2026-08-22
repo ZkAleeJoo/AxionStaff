@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.managers.PunishmentManagerMysql;
 import org.zkaleejoo.utils.BanUtils;
 import org.zkaleejoo.utils.IPUtils;
@@ -25,11 +25,11 @@ import java.util.UUID;
 
 public class GlobalPunishmentListener implements Listener {
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
     private static final long LIVE_BAN_SYNC_TICKS = 20L;
     private static final int SYNC_BATCH_LIMIT = 100;
 
-    public GlobalPunishmentListener(MaxStaff plugin) {
+    public GlobalPunishmentListener(AxionStaff plugin) {
         this.plugin = plugin;
         startLiveBanSyncTask();
         startSyncActionsConsumerTask();
@@ -50,11 +50,11 @@ public class GlobalPunishmentListener implements Listener {
             String banMessage = mysqlManager.getActiveBanMessage(event.getUniqueId(), event.getName());
             if (banMessage != null) {
                 disallowWithParsedBanScreen(event, banMessage);
-                plugin.getLogger().fine("[MaxStaff IP] PreLogin blocked by NAME/UUID ban for " + event.getName());
+                plugin.getLogger().fine("[AxionStaff IP] PreLogin blocked by NAME/UUID ban for " + event.getName());
                 return;
             }
         } catch (Exception e) {
-            plugin.getLogger().warning("[MaxStaff] Error checking ban for " + event.getName() + ": " + e.getMessage());
+            plugin.getLogger().warning("[AxionStaff] Error checking ban for " + event.getName() + ": " + e.getMessage());
         }
 
         String normalizedIp = normalizePreLoginIp(event);
@@ -65,11 +65,11 @@ public class GlobalPunishmentListener implements Listener {
         try {
             String ipBanMessage = mysqlManager.getActiveIPBanMessage(normalizedIp);
             if (ipBanMessage != null) {
-                plugin.getLogger().fine("[MaxStaff IP] PreLogin blocked by IP ban for " + event.getName() + " (" + normalizedIp + ")");
+                plugin.getLogger().fine("[AxionStaff IP] PreLogin blocked by IP ban for " + event.getName() + " (" + normalizedIp + ")");
                 disallowWithParsedBanScreen(event, ipBanMessage);
             }
         } catch (Exception e) {
-            plugin.getLogger().warning("[MaxStaff] Error checking IP ban for " + event.getName() + " (" + normalizedIp + "): " + e.getMessage());
+            plugin.getLogger().warning("[AxionStaff] Error checking IP ban for " + event.getName() + " (" + normalizedIp + "): " + e.getMessage());
         }
     }
 
@@ -78,11 +78,11 @@ public class GlobalPunishmentListener implements Listener {
             String banMessage = BanUtils.getPlayerBanReason(event.getName());
             if (banMessage != null && !banMessage.isBlank()) {
                 disallowWithParsedBanScreen(event, banMessage);
-                plugin.getLogger().fine("[MaxStaff IP] PreLogin blocked by local NAME ban for " + event.getName());
+                plugin.getLogger().fine("[AxionStaff IP] PreLogin blocked by local NAME ban for " + event.getName());
                 return;
             }
         } catch (Exception e) {
-            plugin.getLogger().warning("[MaxStaff] Error checking name ban for " + event.getName() + ": " + e.getMessage());
+            plugin.getLogger().warning("[AxionStaff] Error checking name ban for " + event.getName() + ": " + e.getMessage());
         }
 
         String normalizedIp = normalizePreLoginIp(event);
@@ -94,22 +94,22 @@ public class GlobalPunishmentListener implements Listener {
             String ipBanMessage = BanUtils.getIpBanReason(normalizedIp);
             if (ipBanMessage != null && !ipBanMessage.isBlank()) {
                 disallowWithParsedBanScreen(event, ipBanMessage);
-                plugin.getLogger().fine("[MaxStaff IP] PreLogin blocked by local IP ban for " + event.getName() + " (" + normalizedIp + ")");
+                plugin.getLogger().fine("[AxionStaff IP] PreLogin blocked by local IP ban for " + event.getName() + " (" + normalizedIp + ")");
             }
         } catch (Exception e) {
-            plugin.getLogger().warning("[MaxStaff] Error checking IP ban for " + event.getName() + " (" + normalizedIp + "): " + e.getMessage());
+            plugin.getLogger().warning("[AxionStaff] Error checking IP ban for " + event.getName() + " (" + normalizedIp + "): " + e.getMessage());
         }
     }
 
     private String normalizePreLoginIp(AsyncPlayerPreLoginEvent event) {
         if (event.getAddress() == null) {
-            plugin.getLogger().fine("[MaxStaff IP] PreLogin has no address for " + event.getName() + "; skipping IP-ban check.");
+            plugin.getLogger().fine("[AxionStaff IP] PreLogin has no address for " + event.getName() + "; skipping IP-ban check.");
             return null;
         }
 
         String normalizedIp = IPUtils.normalizeIp(event.getAddress().getHostAddress());
         if (normalizedIp == null) {
-            plugin.getLogger().fine("[MaxStaff IP] PreLogin IP normalization failed for " + event.getName());
+            plugin.getLogger().fine("[AxionStaff IP] PreLogin IP normalization failed for " + event.getName());
         }
         return normalizedIp;
     }
@@ -185,21 +185,21 @@ public class GlobalPunishmentListener implements Listener {
         long now = System.currentTimeMillis();
 
         try (Connection conn = mysqlManager.getSqlConnection()) {
-            try (PreparedStatement cleanupExpired = conn.prepareStatement("DELETE FROM maxstaff_sync_actions WHERE expires_at <= ?")) {
+            try (PreparedStatement cleanupExpired = conn.prepareStatement("DELETE FROM AxionStaff_sync_actions WHERE expires_at <= ?")) {
                 cleanupExpired.setLong(1, now);
                 cleanupExpired.executeUpdate();
             }
 
             try (PreparedStatement cleanupOrphanAcks = conn.prepareStatement(
-                    "DELETE ack FROM maxstaff_sync_action_acks ack LEFT JOIN maxstaff_sync_actions act ON act.id = ack.action_id WHERE act.id IS NULL")) {
+                    "DELETE ack FROM AxionStaff_sync_action_acks ack LEFT JOIN AxionStaff_sync_actions act ON act.id = ack.action_id WHERE act.id IS NULL")) {
                 cleanupOrphanAcks.executeUpdate();
             }
 
             String serverId = mysqlManager.getSyncSourceServer();
             try (PreparedStatement ps = conn.prepareStatement(
                     "SELECT act.id, act.action_type, act.target_uuid, act.target_name, act.reason, act.staff, act.duration " +
-                            "FROM maxstaff_sync_actions act " +
-                            "LEFT JOIN maxstaff_sync_action_acks ack ON ack.action_id = act.id AND ack.server_id = ? " +
+                            "FROM AxionStaff_sync_actions act " +
+                            "LEFT JOIN AxionStaff_sync_action_acks ack ON ack.action_id = act.id AND ack.server_id = ? " +
                             "WHERE act.source_server <> ? AND act.expires_at > ? AND ack.action_id IS NULL " +
                             "ORDER BY act.created_at ASC LIMIT ?")) {
                 ps.setString(1, serverId);
@@ -224,7 +224,7 @@ public class GlobalPunishmentListener implements Listener {
 
             if (!actions.isEmpty()) {
                 try (PreparedStatement ack = conn.prepareStatement(
-                        "INSERT INTO maxstaff_sync_action_acks (action_id, server_id, processed_at) VALUES (?, ?, ?) " +
+                        "INSERT INTO AxionStaff_sync_action_acks (action_id, server_id, processed_at) VALUES (?, ?, ?) " +
                                 "ON DUPLICATE KEY UPDATE processed_at = VALUES(processed_at)")) {
                     for (SyncAction action : actions) {
                         ack.setLong(1, action.id());
@@ -236,7 +236,7 @@ public class GlobalPunishmentListener implements Listener {
                 }
             }
         } catch (SQLException e) {
-            plugin.getLogger().warning("[MaxStaff SQL] Failed to poll sync actions: " + e.getMessage());
+            plugin.getLogger().warning("[AxionStaff SQL] Failed to poll sync actions: " + e.getMessage());
         }
 
         return actions;
@@ -270,7 +270,7 @@ public class GlobalPunishmentListener implements Listener {
             }
             case "UNBAN", "BAN", "MUTE" -> { 
             }
-            default -> plugin.getLogger().warning("[MaxStaff SQL] Sync action ignored (no handler): " + type + " id=" + action.id());
+            default -> plugin.getLogger().warning("[AxionStaff SQL] Sync action ignored (no handler): " + type + " id=" + action.id());
         }
     }
 
@@ -300,3 +300,4 @@ public class GlobalPunishmentListener implements Listener {
     private record SyncAction(long id, String type, String targetUuid, String targetName, String reason, String staff, String duration) {
     }
 }
+

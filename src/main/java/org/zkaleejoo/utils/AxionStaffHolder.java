@@ -5,14 +5,14 @@ import org.bukkit.inventory.InventoryHolder;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MaxStaffHolder implements InventoryHolder {
+public class AxionStaffHolder implements InventoryHolder {
     
     private Inventory inventory;
     private final String menuType; 
     private final String targetName; 
     private final Map<String, Object> data = new HashMap<>(); 
 
-    public MaxStaffHolder(String menuType, String targetName) {
+    public AxionStaffHolder(String menuType, String targetName) {
         this.menuType = menuType;
         this.targetName = targetName;
     }

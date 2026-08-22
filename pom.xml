@@ -3,10 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+ 
     <groupId>org.zkaleejoo</groupId>
-    <artifactId>maxstaff</artifactId>
-    <version>5.0.5</version>
+    <artifactId>AxionStaff</artifactId>
+    <version>1.0.0</version>
 
     <properties>
         <maven.compiler.release>25</maven.compiler.release>
@@ -70,7 +70,7 @@
     </dependencies>
 
     <build>
-        <finalName>MaxStaff Premium-${project.version}</finalName>
+        <finalName>AxionStaff-${project.version}</finalName>
 
         <resources>
             <resource>
@@ -146,3 +146,4 @@
     </build>
 
 </project>
+

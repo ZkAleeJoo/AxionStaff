@@ -5,13 +5,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.utils.MessageUtils;
 
 public class AltsCommand implements CommandExecutor { 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
 
-    public AltsCommand(MaxStaff plugin) { this.plugin = plugin; }
+    public AltsCommand(AxionStaff plugin) { this.plugin = plugin; }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -20,7 +20,7 @@ public class AltsCommand implements CommandExecutor {
             return true;
         }
 
-        if (!CommandContextUtil.requirePermission(player, "maxstaff.alts", plugin.getMainConfigManager())) {
+        if (!CommandContextUtil.requirePermission(player, "AxionStaff.alts", plugin.getMainConfigManager())) {
             return true;
         }
 
@@ -31,8 +31,8 @@ public class AltsCommand implements CommandExecutor {
 
         String targetName = args[0];
         Player target = Bukkit.getPlayerExact(targetName);
-        if (target != null && target.hasPermission("maxstaff.alts.protected")
-                && !player.hasPermission("maxstaff.alts.override")) {
+        if (target != null && target.hasPermission("AxionStaff.alts.protected")
+                && !player.hasPermission("AxionStaff.alts.override")) {
             player.sendMessage(MessageUtils.getColoredMessage(plugin.getMainConfigManager().getPrefix()
                     + plugin.getMainConfigManager().getAltsProtectedMessage().replace("{target}", target.getName())));
             return true;

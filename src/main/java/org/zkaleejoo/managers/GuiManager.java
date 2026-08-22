@@ -14,12 +14,12 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 import org.bukkit.persistence.PersistentDataType;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.config.MainConfigManager;
 import org.zkaleejoo.utils.FoliaCompat;
 import org.zkaleejoo.utils.BanUtils;
 import org.zkaleejoo.utils.MessageUtils;
-import org.zkaleejoo.utils.MaxStaffHolder;
+import org.zkaleejoo.utils.AxionStaffHolder;
 import org.zkaleejoo.utils.TimeUtils;
 import org.zkaleejoo.listeners.AntiXrayListener.XraySuspect;
 
@@ -37,7 +37,7 @@ import java.util.stream.Collectors;
 
 public class GuiManager {
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
     private final NamespacedKey actionKey;
     private final NamespacedKey reviveTargetKey;
     private final NamespacedKey reasonKey;
@@ -46,7 +46,7 @@ public class GuiManager {
     private final Map<UUID, FoliaCompat.WrappedTask> activePunishmentRefreshTasks = new HashMap<>();
     private ItemStack cachedBorderItem;
 
-    public GuiManager(MaxStaff plugin) {
+    public GuiManager(AxionStaff plugin) {
         this.plugin = plugin;
         this.actionKey = new NamespacedKey(plugin, "gui_action");
         this.reasonKey = new NamespacedKey(plugin, "reason_id");
@@ -94,7 +94,7 @@ public class GuiManager {
                 String title = MessageUtils
                         .getColoredMessage(config.getGuiInfoTitle().replace("{target}", target.getName()));
 
-                MaxStaffHolder holder = new MaxStaffHolder("INFO", target.getName());
+                AxionStaffHolder holder = new AxionStaffHolder("INFO", target.getName());
                 Inventory gui = Bukkit.createInventory(holder, 45, MessageUtils.legacyToComponentNoItalic(title));
                 holder.setInventory(gui);
 
@@ -159,7 +159,7 @@ public class GuiManager {
     }
 
     public void openPlayersMenu(Player player) {
-        MaxStaffHolder holder = new MaxStaffHolder("PLAYERS", null);
+        AxionStaffHolder holder = new AxionStaffHolder("PLAYERS", null);
 
         Inventory gui = Bukkit.createInventory(holder, 54,
                 MessageUtils.legacyToComponentNoItalic(plugin.getMainConfigManager().getGuiPlayersTitle()));
@@ -176,7 +176,7 @@ public class GuiManager {
     }
 
     public void openXrayMenu(Player staff) {
-        MaxStaffHolder holder = new MaxStaffHolder("XRAY", null);
+        AxionStaffHolder holder = new AxionStaffHolder("XRAY", null);
         Inventory gui = Bukkit.createInventory(holder, 54,
                 MessageUtils.legacyToComponentNoItalic(plugin.getMainConfigManager().getGuiXrayTitle()));
         holder.setInventory(gui);
@@ -224,7 +224,7 @@ public class GuiManager {
                 .replace("{page}", String.valueOf(currentPage + 1))
                 .replace("{total}", String.valueOf(totalPages)));
 
-        MaxStaffHolder holder = new MaxStaffHolder("PERMISSIONS", targetName);
+        AxionStaffHolder holder = new AxionStaffHolder("PERMISSIONS", targetName);
         holder.setData("page", currentPage);
         Inventory gui = Bukkit.createInventory(holder, 54, MessageUtils.legacyToComponentNoItalic(title));
         holder.setInventory(gui);
@@ -312,7 +312,7 @@ public class GuiManager {
         int end = Math.min(start + pageSize, records.size());
 
         String title = replacePagePlaceholders(config.getGuiActiveTitle(), currentPage, totalPages, records.size());
-        MaxStaffHolder holder = new MaxStaffHolder("ACTIVE_PUNISHMENTS", null);
+        AxionStaffHolder holder = new AxionStaffHolder("ACTIVE_PUNISHMENTS", null);
         holder.setData("page", currentPage);
         holder.setData("activeRecords", List.copyOf(records));
         Inventory gui = Bukkit.createInventory(holder, menuSize, MessageUtils.legacyToComponentNoItalic(title));
@@ -450,7 +450,7 @@ public class GuiManager {
 
     private boolean refreshOpenActivePunishmentsMenu(Player staff) {
         Inventory topInventory = staff.getOpenInventory().getTopInventory();
-        if (!(topInventory.getHolder() instanceof MaxStaffHolder holder)
+        if (!(topInventory.getHolder() instanceof AxionStaffHolder holder)
                 || !"ACTIVE_PUNISHMENTS".equals(holder.getMenuType())) {
             return false;
         }
@@ -510,7 +510,7 @@ public class GuiManager {
     }
 
     @SuppressWarnings("unchecked")
-    private List<ActivePunishmentRecord> getActiveRecords(MaxStaffHolder holder) {
+    private List<ActivePunishmentRecord> getActiveRecords(AxionStaffHolder holder) {
         Object records = holder.getData("activeRecords");
         if (records instanceof List<?>) {
             return (List<ActivePunishmentRecord>) records;
@@ -527,7 +527,7 @@ public class GuiManager {
         String titleTemplate = config.getGuiSanctionsTitle();
         String title = MessageUtils.getColoredMessage(titleTemplate.replace("{target}", targetName));
 
-        MaxStaffHolder holder = new MaxStaffHolder("SANCTIONS", targetName);
+        AxionStaffHolder holder = new AxionStaffHolder("SANCTIONS", targetName);
         Inventory gui = Bukkit.createInventory(holder, 27, MessageUtils.legacyToComponentNoItalic(title));
         holder.setInventory(gui);
 
@@ -562,7 +562,7 @@ public class GuiManager {
                 .replace("{page}", String.valueOf(page + 1))
                 .replace("{total}", String.valueOf(totalPages == 0 ? 1 : totalPages)));
 
-        MaxStaffHolder holder = new MaxStaffHolder("REASONS", targetName);
+        AxionStaffHolder holder = new AxionStaffHolder("REASONS", targetName);
         holder.setData("type", type);
         holder.setData("page", page);
 
@@ -675,7 +675,7 @@ public class GuiManager {
         String title = MessageUtils.getColoredMessage(applyConfirmPlaceholders(
                 config.getGuiConfirmTitle(), targetName, type, reasonName, duration));
 
-        MaxStaffHolder holder = new MaxStaffHolder("CONFIRM", targetName);
+        AxionStaffHolder holder = new AxionStaffHolder("CONFIRM", targetName);
         holder.setData("type", type);
         holder.setData("reasonId", reasonId);
         holder.setData("duration", duration);
@@ -716,7 +716,7 @@ public class GuiManager {
                 String title = MessageUtils
                         .getColoredMessage(config.getGuiHistoryTitle().replace("{target}", targetName));
 
-                MaxStaffHolder holder = new MaxStaffHolder("HISTORY", targetName);
+                AxionStaffHolder holder = new AxionStaffHolder("HISTORY", targetName);
                 Inventory gui = Bukkit.createInventory(holder, 27, MessageUtils.legacyToComponentNoItalic(title));
                 holder.setInventory(gui);
 
@@ -763,7 +763,7 @@ public class GuiManager {
                 String title = MessageUtils.getColoredMessage(config.getGuiDetailedTitle()
                         .replace("{type}", type).replace("{target}", targetName));
 
-                MaxStaffHolder holder = new MaxStaffHolder("DETAILED_HISTORY", targetName);
+                AxionStaffHolder holder = new AxionStaffHolder("DETAILED_HISTORY", targetName);
                 holder.setData("type", type);
 
                 Inventory gui = Bukkit.createInventory(holder, 45, MessageUtils.legacyToComponentNoItalic(title));
@@ -804,7 +804,7 @@ public class GuiManager {
     public void openGameModeMenu(Player player) {
         MainConfigManager config = plugin.getMainConfigManager();
 
-        MaxStaffHolder holder = new MaxStaffHolder("GAMEMODE", null);
+        AxionStaffHolder holder = new AxionStaffHolder("GAMEMODE", null);
         Inventory gui = Bukkit.createInventory(holder, 27,
                 MessageUtils.legacyToComponentNoItalic(config.getGuiGmTitle()));
         holder.setInventory(gui);
@@ -844,7 +844,7 @@ public class GuiManager {
 
                 MainConfigManager config = plugin.getMainConfigManager();
 
-                MaxStaffHolder holder = new MaxStaffHolder("ALTS", targetName);
+                AxionStaffHolder holder = new AxionStaffHolder("ALTS", targetName);
                 Inventory gui = Bukkit.createInventory(holder, 45, MessageUtils
                         .legacyToComponentNoItalic(config.getGuiAltsTitle().replace("{target}", targetName)));
                 holder.setInventory(gui);
@@ -916,7 +916,7 @@ public class GuiManager {
         int start = currentPage * pageSize;
         int end = Math.min(start + pageSize, snapshots.size());
 
-        MaxStaffHolder holder = new MaxStaffHolder("REVIVE", staff.getName());
+        AxionStaffHolder holder = new AxionStaffHolder("REVIVE", staff.getName());
         holder.setData("page", currentPage);
         Inventory gui = Bukkit.createInventory(holder, menuSize,
                 MessageUtils.legacyToComponentNoItalic(config.getGuiReviveTitle()
@@ -1172,3 +1172,4 @@ public class GuiManager {
     }
 
 }
+

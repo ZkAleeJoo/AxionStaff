@@ -21,7 +21,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.zkaleejoo.utils.InspectionInventoryBuilder;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.config.MainConfigManager;
 import org.zkaleejoo.utils.MessageUtils;
 import java.util.HashSet;
@@ -46,7 +46,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class StaffItemsListener implements Listener {
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
     private static final long WALL_COMPASS_COOLDOWN_MS = 350L;
 
     private final Map<UUID, Block> silentViewers = new HashMap<>();
@@ -54,7 +54,7 @@ public class StaffItemsListener implements Listener {
     private final Map<UUID, Long> wallCompassCooldowns = new HashMap<>();
     private final Set<UUID> silentEnderChestViewers = new HashSet<>();
 
-    public StaffItemsListener(MaxStaff plugin) {
+    public StaffItemsListener(AxionStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -263,13 +263,13 @@ public class StaffItemsListener implements Listener {
                     target,
                     config.getInvseeInspectionOnlineTitle().replace("{player}", target.getName()),
                     config,
-                    player.hasPermission("maxstaff.revive"))));
+                    player.hasPermission("AxionStaff.revive"))));
         } else if (toolType.equals("punish_tool")) {
             event.setCancelled(true);
             plugin.getGuiManager().openUserInfoMenu(player, target);
         } else if (toolType.equals("freeze_tool")) {
 
-            if (target.hasPermission("maxstaff.admin") || target.hasPermission("maxstaff.freeze")) {
+            if (target.hasPermission("AxionStaff.admin") || target.hasPermission("AxionStaff.freeze")) {
                 player.sendMessage(
                         MessageUtils.getColoredMessage(config.getPrefix() + "&cNo puedes congelar a este usuario."));
                 return;
@@ -577,3 +577,4 @@ public class StaffItemsListener implements Listener {
     }
 
 }
+

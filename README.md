@@ -1,6 +1,6 @@
-# MaxStaff
+# AxionStaff
 
-MaxStaff is a staff-management plugin for modern Minecraft servers. It provides staff mode, vanish, staff chat, command spy, punishments, punishment GUIs, reports, freeze tools, invsee, death-inventory restore, client detection, Anti Xray alerts, Discord webhooks, PlaceholderAPI support, and local or MySQL-backed punishment storage.
+AxionStaff is a staff-management plugin for modern Minecraft servers. It provides staff mode, vanish, staff chat, command spy, punishments, punishment GUIs, reports, freeze tools, invsee, death-inventory restore, client detection, Anti Xray alerts, Discord webhooks, PlaceholderAPI support, and local or MySQL-backed punishment storage.
 
 ## Requirements
 
@@ -13,10 +13,10 @@ MaxStaff is a staff-management plugin for modern Minecraft servers. It provides 
 
 ## Installation
 
-1. Place the MaxStaff JAR file in your server's `plugins/` folder.
+1. Place the AxionStaff JAR file in your server's `plugins/` folder.
 2. Restart the server to generate `config.yml`, `discord.yml`, `data.yml`, `staff_data.yml`, and the other data files.
 3. Configure `config.yml` and `discord.yml`.
-4. Use `/maxstaff reload` after making configuration changes while the server is running.
+4. Use `/AxionStaff reload` after making configuration changes while the server is running.
 
 ## Main Files
 
@@ -50,9 +50,9 @@ Modules are controlled from the `modules` section in `config.yml`.
 | `client-tracker` | `true` | Detects player client brands and notifies staff. |
 | `anti-xray` | `false` | Enables Anti Xray alerts and `/xray`. |
 
-### Releasing MaxStaff Commands
+### Releasing AxionStaff Commands
 
-`modules.disable-commands` lets MaxStaff release commands or aliases so another plugin can own them. By default:
+`modules.disable-commands` lets AxionStaff release commands or aliases so another plugin can own them. By default:
 
 ```yaml
 modules:
@@ -63,13 +63,13 @@ modules:
     - invsee
 ```
 
-If a command is listed there, MaxStaff attempts to unregister it even if the related module is enabled. Remove a command from that list if you want MaxStaff to handle it.
+If a command is listed there, AxionStaff attempts to unregister it even if the related module is enabled. Remove a command from that list if you want AxionStaff to handle it.
 
 ## Features
 
 ### Staff Mode
 
-`/staff` toggles staff mode. When enabled, MaxStaff saves the staff member's inventory and game mode, gives configured staff tools, and applies staff-specific protections.
+`/staff` toggles staff mode. When enabled, AxionStaff saves the staff member's inventory and game mode, gives configured staff tools, and applies staff-specific protections.
 
 Default staff tools:
 
@@ -91,13 +91,13 @@ Important options:
 
 ### Vanish
 
-`/vanish` hides staff members from players without `maxstaff.see.vanish`. The vanish state can persist depending on configuration and can be enabled automatically on join with `maxstaff.vanish.join`.
+`/vanish` hides staff members from players without `AxionStaff.see.vanish`. The vanish state can persist depending on configuration and can be enabled automatically on join with `AxionStaff.vanish.join`.
 
 Standalone vanish displays its own action bar. While staff mode is active, the staff-mode action bar takes priority; leaving staff mode also disables vanish.
 
 ### Staff Chat
 
-`/sc <message>` sends a message to staff chat. If a player runs `/sc` without arguments, MaxStaff toggles staff-chat mode so their normal chat messages are sent to staff chat.
+`/sc <message>` sends a message to staff chat. If a player runs `/sc` without arguments, AxionStaff toggles staff-chat mode so their normal chat messages are sent to staff chat.
 
 ### Command Spy
 
@@ -105,11 +105,11 @@ Standalone vanish displays its own action bar. While staff mode is active, the s
 
 ### Global Chat Management
 
-`/chat clear` clears global chat. `/chat mute` toggles global mute; players without `maxstaff.staffchat` cannot speak while global mute is active.
+`/chat clear` clears global chat. `/chat mute` toggles global mute; players without `AxionStaff.staffchat` cannot speak while global mute is active.
 
 ### Punishments
 
-MaxStaff supports bans, tempbans, IP bans, mutes, tempmutes, kicks, warns, history menus, GUI-based punishments, and silent punishments.
+AxionStaff supports bans, tempbans, IP bans, mutes, tempmutes, kicks, warns, history menus, GUI-based punishments, and silent punishments.
 
 Accepted duration tokens:
 
@@ -136,8 +136,8 @@ Important options:
 - `punishments.broadcast`: broadcasts punishments globally.
 - `punishments.broadcasts.warns.thresholds`: runs automatic commands when a player reaches configured warning counts.
 - `punishments.section-limits.enabled`: limits punishment durations by permission group.
-- `maxstaff.punish.protected`: protects a player from lower staff punishment actions.
-- `maxstaff.punish.override`: bypasses punishment protection.
+- `AxionStaff.punish.protected`: protects a player from lower staff punishment actions.
+- `AxionStaff.punish.override`: bypasses punishment protection.
 
 ### Punishment GUI
 
@@ -147,7 +147,7 @@ Punishment reasons, materials, and GUI durations are configured in `punishment-r
 
 ### Freeze
 
-`/freeze <player>` or `/ss <player>` freezes or toggles a target's frozen state. `/unfreeze <player>` or `/uss <player>` unfreezes the target. Players with `maxstaff.admin` or `maxstaff.freeze` cannot be frozen.
+`/freeze <player>` or `/ss <player>` freezes or toggles a target's frozen state. `/unfreeze <player>` or `/uss <player>` unfreezes the target. Players with `AxionStaff.admin` or `AxionStaff.freeze` cannot be frozen.
 
 Important behavior:
 
@@ -172,7 +172,7 @@ Important options:
 
 ### InvSee
 
-`/invsee <player>` opens an inventory inspection. If the target is online, changes can be synchronized to the target inventory. If the target is offline, MaxStaff attempts to load the last saved inventory snapshot.
+`/invsee <player>` opens an inventory inspection. If the target is online, changes can be synchronized to the target inventory. If the target is offline, AxionStaff attempts to load the last saved inventory snapshot.
 
 Inventory snapshots are saved when players leave and when the plugin shuts down.
 
@@ -222,11 +222,11 @@ Minecraft limits flight speed between `0.1` and `1.0`.
 
 ### Client Tracker
 
-Client Tracker detects player client brands through plugin messaging channels and notifies staff with `maxstaff.client.notify`. Custom signatures can be configured in `client-tracker.client-signatures`.
+Client Tracker detects player client brands through plugin messaging channels and notifies staff with `AxionStaff.client.notify`. Custom signatures can be configured in `client-tracker.client-signatures`.
 
 ### Anti Xray
 
-When `anti-xray` is enabled, MaxStaff monitors configured ores and alerts staff when a player reaches material, total, or session thresholds.
+When `anti-xray` is enabled, AxionStaff monitors configured ores and alerts staff when a player reaches material, total, or session thresholds.
 
 Important options:
 
@@ -263,113 +263,113 @@ From `general`:
 
 | Command | Aliases | Permission | Purpose |
 | --- | --- | --- | --- |
-| `/maxstaff` | `/ms` | `maxstaff.admin` | Main plugin command. |
-| `/maxstaff help` | `/ms help` | `maxstaff.admin` | Shows help. |
-| `/maxstaff reload` | `/ms reload` | `maxstaff.admin` | Reloads configuration, messages, commands, and listeners. |
-| `/maxstaff cleanupbans` | `/ms cleanupbans` | `maxstaff.admin` | Cleans expired punishments in MySQL mode. |
-| `/maxstaff reset <player> <BAN|MUTE|KICK|WARN|ALL>` | `/ms reset` | `maxstaff.admin` | Resets punishment history. |
-| `/maxstaff take <player> <BAN|MUTE|KICK|WARN> [amount]` | `/ms take` | `maxstaff.admin` | Removes entries from punishment history. |
-| `/maxstaff debugperm <player> <mute|ban|kick|warn>` | `/ms debugperm` | `maxstaff.admin` | Diagnoses punishment permissions for a player. |
-| `/staff` | `/s`, `/staffmode` | `maxstaff.command.staff` | Toggles staff mode. |
-| `/vanish` | - | `maxstaff.vanish` | Toggles vanish. |
-| `/sc [message]` | `/staffchat` | `maxstaff.staffchat` | Sends a message or toggles staff chat mode. |
-| `/cmdspy` | - | `maxstaff.cmdspy` | Toggles command spy. |
-| `/chat clear` | - | `maxstaff.chat.admin` | Clears global chat. |
-| `/chat mute` | - | `maxstaff.chat.admin` | Toggles global chat mute. |
-| `/gamemode [mode]` | `/gm` | `maxstaff.gamemode` | Opens the GUI or changes game mode. |
-| `/alts <player>` | `/alt`, `/accs` | `maxstaff.alts` | Shows related accounts. |
-| `/sanction <player>` | - | `maxstaff.punish` | Opens the punishment/info GUI. |
-| `/sanction list` | - | `maxstaff.sanctions.list` | Lists active punishments. |
-| `/freeze <player>` | `/ss` | `maxstaff.freeze` | Freezes or toggles the target. |
-| `/unfreeze <player>` | `/uss` | `maxstaff.freeze` | Unfreezes the target. |
-| `/report <player> <reason>` | `/reportar` | `maxstaff.report` | Sends a player report. |
-| `/invsee <player>` | - | `maxstaff.invsee` | Inspects online/offline inventory. |
-| `/revive` | - | `maxstaff.revive` | Opens the death-restore menu. |
-| `/fly [1|2|3]` | - | `maxstaff.fly` | Toggles flight or changes speed. |
-| `/xray` | - | `maxstaff.antixray.alert` | Opens the Anti Xray menu. |
-| `/ban <player> [time] [reason]` | - | `maxstaff.punish.ban` | Bans a player. |
-| `/tempban <player> [time] [reason]` | - | `maxstaff.punish.ban` | Temporarily bans a player. |
-| `/mute <player> [time] [reason]` | - | `maxstaff.punish.mute` | Mutes a player. |
-| `/tempmute <player> [time] [reason]` | - | `maxstaff.punish.mute` | Temporarily mutes a player. |
-| `/kick <player> [reason]` | - | `maxstaff.punish.kick` | Kicks a player. |
-| `/warn <player> [reason]` | - | `maxstaff.punish.warn` | Adds a warning. |
-| `/unban <player>` | - | `maxstaff.punish.unban` | Removes a ban. |
-| `/unmute <player>` | - | `maxstaff.punish.unmute` | Removes a mute. |
-| `/ban-ip <player/ip> [time] [reason]` | - | `maxstaff.punish.banip` | Bans an IP. |
-| `/tempban-ip <player/ip> [time] [reason]` | - | `maxstaff.punish.banip` | Temporarily bans an IP. |
-| `/unban-ip <ip>` | - | `maxstaff.punish.unbanip` | Removes an IP ban. |
-| `/history <player>` | - | `maxstaff.history` | Opens punishment history. |
-| `/silent <action> <player/ip> [time] [reason]` | - | `maxstaff.punish.silent` | Runs a punishment without broadcast/chat output. |
+| `/AxionStaff` | `/ms` | `AxionStaff.admin` | Main plugin command. |
+| `/AxionStaff help` | `/ms help` | `AxionStaff.admin` | Shows help. |
+| `/AxionStaff reload` | `/ms reload` | `AxionStaff.admin` | Reloads configuration, messages, commands, and listeners. |
+| `/AxionStaff cleanupbans` | `/ms cleanupbans` | `AxionStaff.admin` | Cleans expired punishments in MySQL mode. |
+| `/AxionStaff reset <player> <BAN|MUTE|KICK|WARN|ALL>` | `/ms reset` | `AxionStaff.admin` | Resets punishment history. |
+| `/AxionStaff take <player> <BAN|MUTE|KICK|WARN> [amount]` | `/ms take` | `AxionStaff.admin` | Removes entries from punishment history. |
+| `/AxionStaff debugperm <player> <mute|ban|kick|warn>` | `/ms debugperm` | `AxionStaff.admin` | Diagnoses punishment permissions for a player. |
+| `/staff` | `/s`, `/staffmode` | `AxionStaff.command.staff` | Toggles staff mode. |
+| `/vanish` | - | `AxionStaff.vanish` | Toggles vanish. |
+| `/sc [message]` | `/staffchat` | `AxionStaff.staffchat` | Sends a message or toggles staff chat mode. |
+| `/cmdspy` | - | `AxionStaff.cmdspy` | Toggles command spy. |
+| `/chat clear` | - | `AxionStaff.chat.admin` | Clears global chat. |
+| `/chat mute` | - | `AxionStaff.chat.admin` | Toggles global chat mute. |
+| `/gamemode [mode]` | `/gm` | `AxionStaff.gamemode` | Opens the GUI or changes game mode. |
+| `/alts <player>` | `/alt`, `/accs` | `AxionStaff.alts` | Shows related accounts. |
+| `/sanction <player>` | - | `AxionStaff.punish` | Opens the punishment/info GUI. |
+| `/sanction list` | - | `AxionStaff.sanctions.list` | Lists active punishments. |
+| `/freeze <player>` | `/ss` | `AxionStaff.freeze` | Freezes or toggles the target. |
+| `/unfreeze <player>` | `/uss` | `AxionStaff.freeze` | Unfreezes the target. |
+| `/report <player> <reason>` | `/reportar` | `AxionStaff.report` | Sends a player report. |
+| `/invsee <player>` | - | `AxionStaff.invsee` | Inspects online/offline inventory. |
+| `/revive` | - | `AxionStaff.revive` | Opens the death-restore menu. |
+| `/fly [1|2|3]` | - | `AxionStaff.fly` | Toggles flight or changes speed. |
+| `/xray` | - | `AxionStaff.antixray.alert` | Opens the Anti Xray menu. |
+| `/ban <player> [time] [reason]` | - | `AxionStaff.punish.ban` | Bans a player. |
+| `/tempban <player> [time] [reason]` | - | `AxionStaff.punish.ban` | Temporarily bans a player. |
+| `/mute <player> [time] [reason]` | - | `AxionStaff.punish.mute` | Mutes a player. |
+| `/tempmute <player> [time] [reason]` | - | `AxionStaff.punish.mute` | Temporarily mutes a player. |
+| `/kick <player> [reason]` | - | `AxionStaff.punish.kick` | Kicks a player. |
+| `/warn <player> [reason]` | - | `AxionStaff.punish.warn` | Adds a warning. |
+| `/unban <player>` | - | `AxionStaff.punish.unban` | Removes a ban. |
+| `/unmute <player>` | - | `AxionStaff.punish.unmute` | Removes a mute. |
+| `/ban-ip <player/ip> [time] [reason]` | - | `AxionStaff.punish.banip` | Bans an IP. |
+| `/tempban-ip <player/ip> [time] [reason]` | - | `AxionStaff.punish.banip` | Temporarily bans an IP. |
+| `/unban-ip <ip>` | - | `AxionStaff.punish.unbanip` | Removes an IP ban. |
+| `/history <player>` | - | `AxionStaff.history` | Opens punishment history. |
+| `/silent <action> <player/ip> [time] [reason]` | - | `AxionStaff.punish.silent` | Runs a punishment without broadcast/chat output. |
 
 ## Permissions
 
-`maxstaff.admin` grants administrative access and includes most operational plugin permissions.
+`AxionStaff.admin` grants administrative access and includes most operational plugin permissions.
 
 | Permission | Default | Purpose |
 | --- | --- | --- |
-| `maxstaff.admin` | `op` | Full administrative access. |
-| `maxstaff.command.staff` | `op` | Allows `/staff`. |
-| `maxstaff.mode` | `op` | Legacy alias that includes `maxstaff.command.staff`. |
-| `maxstaff.vanish` | `op` | Allows `/vanish`. |
-| `maxstaff.vanish.join` | `false` | Automatically enables vanish on join. |
-| `maxstaff.see.vanish` | `op` | Allows seeing vanished players. |
-| `maxstaff.staffchat` | `op` | Allows using and viewing staff chat. |
-| `maxstaff.cmdspy` | `op` | Allows command spy. |
-| `maxstaff.cmdspy.raw` | `false` | Shows sensitive command arguments without masking. |
-| `maxstaff.cmdspy.raw.owners` | `op` | Group node that includes `maxstaff.cmdspy.raw`. |
-| `maxstaff.chat.admin` | `op` | Allows `/chat clear` and `/chat mute`. |
-| `maxstaff.gamemode` | `op` | Allows `/gm` and the game mode GUI. |
-| `maxstaff.alts` | `op` | Allows `/alts`. |
-| `maxstaff.punish` | `op` | Allows `/sanction <player>`. |
-| `maxstaff.sanctions.list` | `op` | Allows `/sanction list`. |
-| `maxstaff.freeze` | `op` | Allows `/freeze` and `/unfreeze`; also protects from freeze. |
-| `maxstaff.report` | `true` | Allows `/report`. |
-| `maxstaff.report.notify` | `op` | Receives live report notifications. |
-| `maxstaff.report.bypass` | `op` | Bypasses report cooldowns. |
-| `maxstaff.invsee` | `op` | Allows `/invsee`. |
-| `maxstaff.revive` | `op` | Allows `/revive`. |
-| `maxstaff.fly` | `op` | Allows `/fly`. |
-| `maxstaff.history` | `op` | Allows `/history`. |
-| `maxstaff.punish.ban` | `op` | Allows `/ban` and `/tempban`. |
-| `maxstaff.punish.mute` | `op` | Allows `/mute` and `/tempmute`. |
-| `maxstaff.punish.kick` | `op` | Allows `/kick`. |
-| `maxstaff.punish.warn` | `op` | Allows `/warn`. |
-| `maxstaff.punish.unban` | `op` | Allows `/unban`. |
-| `maxstaff.punish.unmute` | `op` | Allows `/unmute`. |
-| `maxstaff.punish.banip` | `op` | Allows `/ban-ip` and `/tempban-ip`. |
-| `maxstaff.punish.unbanip` | `op` | Allows `/unban-ip`. |
-| `maxstaff.punish.silent` | `op` | Allows `/silent`. |
-| `maxstaff.punish.override` | `op` | Bypasses punishment protection. |
-| `maxstaff.punish.protected` | `false` | Protects a player from punishment actions by staff without override. |
-| `maxstaff.client.notify` | `op` | Receives client detection notifications. |
-| `maxstaff.antixray.alert` | `op` | Receives Anti Xray alerts and allows `/xray`. |
-| `maxstaff.antixray.bypass` | `false` | Prevents the player from generating Anti Xray alerts. |
+| `AxionStaff.admin` | `op` | Full administrative access. |
+| `AxionStaff.command.staff` | `op` | Allows `/staff`. |
+| `AxionStaff.mode` | `op` | Legacy alias that includes `AxionStaff.command.staff`. |
+| `AxionStaff.vanish` | `op` | Allows `/vanish`. |
+| `AxionStaff.vanish.join` | `false` | Automatically enables vanish on join. |
+| `AxionStaff.see.vanish` | `op` | Allows seeing vanished players. |
+| `AxionStaff.staffchat` | `op` | Allows using and viewing staff chat. |
+| `AxionStaff.cmdspy` | `op` | Allows command spy. |
+| `AxionStaff.cmdspy.raw` | `false` | Shows sensitive command arguments without masking. |
+| `AxionStaff.cmdspy.raw.owners` | `op` | Group node that includes `AxionStaff.cmdspy.raw`. |
+| `AxionStaff.chat.admin` | `op` | Allows `/chat clear` and `/chat mute`. |
+| `AxionStaff.gamemode` | `op` | Allows `/gm` and the game mode GUI. |
+| `AxionStaff.alts` | `op` | Allows `/alts`. |
+| `AxionStaff.punish` | `op` | Allows `/sanction <player>`. |
+| `AxionStaff.sanctions.list` | `op` | Allows `/sanction list`. |
+| `AxionStaff.freeze` | `op` | Allows `/freeze` and `/unfreeze`; also protects from freeze. |
+| `AxionStaff.report` | `true` | Allows `/report`. |
+| `AxionStaff.report.notify` | `op` | Receives live report notifications. |
+| `AxionStaff.report.bypass` | `op` | Bypasses report cooldowns. |
+| `AxionStaff.invsee` | `op` | Allows `/invsee`. |
+| `AxionStaff.revive` | `op` | Allows `/revive`. |
+| `AxionStaff.fly` | `op` | Allows `/fly`. |
+| `AxionStaff.history` | `op` | Allows `/history`. |
+| `AxionStaff.punish.ban` | `op` | Allows `/ban` and `/tempban`. |
+| `AxionStaff.punish.mute` | `op` | Allows `/mute` and `/tempmute`. |
+| `AxionStaff.punish.kick` | `op` | Allows `/kick`. |
+| `AxionStaff.punish.warn` | `op` | Allows `/warn`. |
+| `AxionStaff.punish.unban` | `op` | Allows `/unban`. |
+| `AxionStaff.punish.unmute` | `op` | Allows `/unmute`. |
+| `AxionStaff.punish.banip` | `op` | Allows `/ban-ip` and `/tempban-ip`. |
+| `AxionStaff.punish.unbanip` | `op` | Allows `/unban-ip`. |
+| `AxionStaff.punish.silent` | `op` | Allows `/silent`. |
+| `AxionStaff.punish.override` | `op` | Bypasses punishment protection. |
+| `AxionStaff.punish.protected` | `false` | Protects a player from punishment actions by staff without override. |
+| `AxionStaff.client.notify` | `op` | Receives client detection notifications. |
+| `AxionStaff.antixray.alert` | `op` | Receives Anti Xray alerts and allows `/xray`. |
+| `AxionStaff.antixray.bypass` | `false` | Prevents the player from generating Anti Xray alerts. |
 
 Example dynamic group permissions for punishment limits:
 
 | Permission | Purpose |
 | --- | --- |
-| `maxstaff.groups.helper` | Example helper group limit permission. |
-| `maxstaff.groups.mod` | Example moderator group limit permission. |
+| `AxionStaff.groups.helper` | Example helper group limit permission. |
+| `AxionStaff.groups.mod` | Example moderator group limit permission. |
 
 These can be changed in `punishments.section-limits.groups`.
 
 ## PlaceholderAPI
 
-If PlaceholderAPI is installed, MaxStaff registers the `maxstaff` expansion.
+If PlaceholderAPI is installed, AxionStaff registers the `AxionStaff` expansion.
 
 | Placeholder | Result |
 | --- | --- |
-| `%maxstaff_in_staff_mode%` | `status-true` if the player is in staff mode; otherwise `status-false`. |
-| `%maxstaff_vanished%` | Player vanish state. |
-| `%maxstaff_frozen%` | Player freeze state. |
-| `%maxstaff_is_spy%` | Player command-spy state. |
-| `%maxstaff_warn_count%` | Warning count from punishment history. |
-| `%maxstaff_ban_count%` | Ban count from punishment history. |
-| `%maxstaff_mute_count%` | Mute count from punishment history. |
-| `%maxstaff_kick_count%` | Kick count from punishment history. |
-| `%maxstaff_total_punishments%` | Total bans, mutes, and kicks. |
-| `%maxstaff_playtime%` | Online player playtime in `h m` format. |
+| `%AxionStaff_in_staff_mode%` | `status-true` if the player is in staff mode; otherwise `status-false`. |
+| `%AxionStaff_vanished%` | Player vanish state. |
+| `%AxionStaff_frozen%` | Player freeze state. |
+| `%AxionStaff_is_spy%` | Player command-spy state. |
+| `%AxionStaff_warn_count%` | Warning count from punishment history. |
+| `%AxionStaff_ban_count%` | Ban count from punishment history. |
+| `%AxionStaff_mute_count%` | Mute count from punishment history. |
+| `%AxionStaff_kick_count%` | Kick count from punishment history. |
+| `%AxionStaff_total_punishments%` | Total bans, mutes, and kicks. |
+| `%AxionStaff_playtime%` | Online player playtime in `h m` format. |
 
 Boolean output text is configured in:
 
@@ -457,12 +457,12 @@ In addition to action-specific placeholders, `discord.yml` supports:
 | Placeholder | Purpose |
 | --- | --- |
 | `{server}` | Name configured in `server-name`. |
-| `{timestamp}` | Timestamp generated by MaxStaff. |
+| `{timestamp}` | Timestamp generated by AxionStaff. |
 | `{face}` | Related player's face/avatar URL. |
 
 ## Database
 
-MaxStaff can store punishment data in two modes:
+AxionStaff can store punishment data in two modes:
 
 | Mode | Setting | Recommended use |
 | --- | --- | --- |
@@ -478,43 +478,43 @@ Note: the default `config.yml` warns that migrating from older local-storage ver
 ### Basic Staff
 
 ```text
-maxstaff.command.staff
-maxstaff.vanish
-maxstaff.see.vanish
-maxstaff.staffchat
-maxstaff.cmdspy
-maxstaff.freeze
-maxstaff.report.notify
-maxstaff.client.notify
+AxionStaff.command.staff
+AxionStaff.vanish
+AxionStaff.see.vanish
+AxionStaff.staffchat
+AxionStaff.cmdspy
+AxionStaff.freeze
+AxionStaff.report.notify
+AxionStaff.client.notify
 ```
 
 ### Punishment Moderator
 
 ```text
-maxstaff.punish
-maxstaff.punish.ban
-maxstaff.punish.mute
-maxstaff.punish.kick
-maxstaff.punish.warn
-maxstaff.history
-maxstaff.sanctions.list
+AxionStaff.punish
+AxionStaff.punish.ban
+AxionStaff.punish.mute
+AxionStaff.punish.kick
+AxionStaff.punish.warn
+AxionStaff.history
+AxionStaff.sanctions.list
 ```
 
 ### Regular Players
 
 ```text
-maxstaff.report
+AxionStaff.report
 ```
 
-`maxstaff.report` is already `default: true`.
+`AxionStaff.report` is already `default: true`.
 
 ## In-Server Testing Checklist
 
 After installing or changing configuration, test:
 
-1. `/maxstaff reload`
+1. `/AxionStaff reload`
 2. `/staff` to verify inventory save and restore.
-3. `/vanish` with a player who does not have `maxstaff.see.vanish`.
+3. `/vanish` with a player who does not have `AxionStaff.see.vanish`.
 4. `/sc` and `/sc message`.
 5. `/cmdspy` with normal and sensitive commands.
 6. `/report <player> <reason>` with cooldown behavior.
@@ -525,3 +525,4 @@ After installing or changing configuration, test:
 11. `/revive` after a recent death.
 12. `/xray` if `anti-xray` is enabled.
 13. PlaceholderAPI placeholders through a compatible plugin.
+

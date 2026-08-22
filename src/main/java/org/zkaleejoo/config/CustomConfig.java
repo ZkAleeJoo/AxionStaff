@@ -3,7 +3,7 @@ package org.zkaleejoo.config;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,14 +13,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 public class CustomConfig {
-    private MaxStaff plugin;
+    private AxionStaff plugin;
     private String fileName;
     private FileConfiguration fileConfiguration = null;
     private File file = null;
     private String folderName;
     private boolean newFile;
 
-    public CustomConfig(String fileName, String folderName, MaxStaff plugin, boolean newFile) {
+    public CustomConfig(String fileName, String folderName, AxionStaff plugin, boolean newFile) {
         this.fileName = fileName;
         this.folderName = folderName;
         this.plugin = plugin;
@@ -159,3 +159,4 @@ public class CustomConfig {
         return true;
     }
 }
+

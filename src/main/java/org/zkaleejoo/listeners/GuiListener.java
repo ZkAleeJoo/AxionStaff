@@ -18,9 +18,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.config.MainConfigManager;
-import org.zkaleejoo.utils.MaxStaffHolder;
+import org.zkaleejoo.utils.AxionStaffHolder;
 import org.zkaleejoo.utils.MessageUtils;
 import org.zkaleejoo.commands.CommandContextUtil;
 import org.zkaleejoo.utils.InspectionInventoryBuilder;
@@ -36,7 +36,7 @@ import org.zkaleejoo.utils.InvSeeSyncTask;
 
 public class GuiListener implements Listener {
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
     private final NamespacedKey reasonKey;
     private final NamespacedKey durationKey;
     private final NamespacedKey actionKey;
@@ -46,7 +46,7 @@ public class GuiListener implements Listener {
     /** Active bidirectional sync sessions keyed by the staff player's UUID. */
     private final Map<UUID, InvSeeSyncTask> activeSyncSessions = new ConcurrentHashMap<>();
 
-    public GuiListener(MaxStaff plugin) {
+    public GuiListener(AxionStaff plugin) {
         this.plugin = plugin;
         this.reasonKey = new NamespacedKey(plugin, "reason_id");
         this.durationKey = new NamespacedKey(plugin, "duration");
@@ -59,7 +59,7 @@ public class GuiListener implements Listener {
     public void onInventoryClick(InventoryClickEvent event) {
         if (!(event.getWhoClicked() instanceof Player player))
             return;
-        if (!(event.getInventory().getHolder() instanceof MaxStaffHolder holder))
+        if (!(event.getInventory().getHolder() instanceof AxionStaffHolder holder))
             return;
 
         if (isEditableOnlineInspection(holder, player)) {
@@ -88,7 +88,7 @@ public class GuiListener implements Listener {
         if (!(event.getWhoClicked() instanceof Player player)) {
             return;
         }
-        if (!(event.getInventory().getHolder() instanceof MaxStaffHolder holder)) {
+        if (!(event.getInventory().getHolder() instanceof AxionStaffHolder holder)) {
             return;
         }
         if (!isEditableOnlineInspection(holder, player)) {
@@ -118,7 +118,7 @@ public class GuiListener implements Listener {
         if (!(event.getPlayer() instanceof Player player)) {
             return;
         }
-        if (!(event.getInventory().getHolder() instanceof MaxStaffHolder holder)) {
+        if (!(event.getInventory().getHolder() instanceof AxionStaffHolder holder)) {
             return;
         }
         if (isEditableOnlineInspection(holder, player)) {
@@ -132,7 +132,7 @@ public class GuiListener implements Listener {
         }
     }
 
-    private void handleEditableInspectionClick(InventoryClickEvent event, Player player, MaxStaffHolder holder) {
+    private void handleEditableInspectionClick(InventoryClickEvent event, Player player, AxionStaffHolder holder) {
         Player target = getEditableInspectionTarget(holder);
         if (target == null) {
             event.setCancelled(true);
@@ -161,7 +161,7 @@ public class GuiListener implements Listener {
         }
     }
 
-    private void handleInspectionPlaceholderClick(InventoryClickEvent event, MaxStaffHolder holder) {
+    private void handleInspectionPlaceholderClick(InventoryClickEvent event, AxionStaffHolder holder) {
         event.setCancelled(true);
 
         ItemStack cursor = cloneInventoryItem(event.getCursor());
@@ -173,7 +173,7 @@ public class GuiListener implements Listener {
         event.getWhoClicked().setItemOnCursor(null);
     }
 
-    private boolean isEditableOnlineInspection(MaxStaffHolder holder, Player viewer) {
+    private boolean isEditableOnlineInspection(AxionStaffHolder holder, Player viewer) {
         String menuType = holder.getMenuType();
         if (!"INVSEE_ONLINE".equals(menuType) && !"INSPECT_ONLINE".equals(menuType)) {
             return false;
@@ -185,13 +185,13 @@ public class GuiListener implements Listener {
         }
 
         return switch (menuType) {
-            case "INVSEE_ONLINE" -> viewer.hasPermission("maxstaff.invsee");
-            case "INSPECT_ONLINE" -> viewer.hasPermission("maxstaff.revive");
+            case "INVSEE_ONLINE" -> viewer.hasPermission("AxionStaff.invsee");
+            case "INSPECT_ONLINE" -> viewer.hasPermission("AxionStaff.revive");
             default -> false;
         };
     }
 
-    private Player getEditableInspectionTarget(MaxStaffHolder holder) {
+    private Player getEditableInspectionTarget(AxionStaffHolder holder) {
         Object rawUuid = holder.getData("targetUuid");
         if (rawUuid instanceof UUID uuid) {
             Player target = Bukkit.getPlayer(uuid);
@@ -299,7 +299,7 @@ public class GuiListener implements Listener {
         return remainder;
     }
 
-    private void returnCursorRemainderToTarget(MaxStaffHolder holder, ItemStack remainder) {
+    private void returnCursorRemainderToTarget(AxionStaffHolder holder, ItemStack remainder) {
         if (remainder == null) {
             return;
         }
@@ -323,7 +323,7 @@ public class GuiListener implements Listener {
         return item.clone();
     }
 
-    private void handleMenuAction(Player player, ItemStack item, MaxStaffHolder holder, MainConfigManager config) {
+    private void handleMenuAction(Player player, ItemStack item, AxionStaffHolder holder, MainConfigManager config) {
         String menuType = holder.getMenuType();
         String targetName = holder.getTargetName();
 
@@ -349,12 +349,12 @@ public class GuiListener implements Listener {
         if (mat == config.getGuiInfoActionMat()) {
             plugin.getGuiManager().openSanctionMenu(player, targetName);
         } else if (mat == config.getGuiInfoHistoryMat()) {
-            if (checkPerm(player, "maxstaff.history"))
+            if (checkPerm(player, "AxionStaff.history"))
                 plugin.getGuiManager().openHistoryMenu(player, targetName);
         } else if (mat == config.getGuiInfoAltsMat()) {
             Player target = Bukkit.getPlayer(targetName);
-            if (target != null && target.hasPermission("maxstaff.alts.protected")
-                    && !player.hasPermission("maxstaff.alts.override")) {
+            if (target != null && target.hasPermission("AxionStaff.alts.protected")
+                    && !player.hasPermission("AxionStaff.alts.override")) {
                 player.sendMessage(MessageUtils.getColoredMessage(config.getPrefix()
                         + config.getAltsProtectedMessage().replace("{target}", target.getName())));
                 return;
@@ -366,7 +366,7 @@ public class GuiListener implements Listener {
             Player target = Bukkit.getPlayer(targetName);
             if (target != null) {
                 clickSound(player, Sound.BLOCK_CHEST_OPEN);
-                boolean editable = player.hasPermission("maxstaff.revive");
+                boolean editable = player.hasPermission("AxionStaff.revive");
                 Inventory inspection = Objects.requireNonNull(InspectionInventoryBuilder.createOnlineInspection(
                         "INSPECT_ONLINE",
                         target,
@@ -489,18 +489,18 @@ public class GuiListener implements Listener {
             Optional.ofNullable(Bukkit.getPlayer(targetName))
                     .ifPresent(target -> plugin.getGuiManager().openUserInfoMenu(player, target));
         } else if (mat == Material.IRON_SWORD) {
-            if (checkPerm(player, "maxstaff.punish.ban"))
+            if (checkPerm(player, "AxionStaff.punish.ban"))
                 plugin.getGuiManager().openReasonsMenu(player, targetName, "BAN", 0);
         } else if (mat == Material.PAPER) {
-            if (checkPerm(player, "maxstaff.punish.mute"))
+            if (checkPerm(player, "AxionStaff.punish.mute"))
                 plugin.getGuiManager().openReasonsMenu(player, targetName, "MUTE", 0);
         } else if (mat == Material.FEATHER) {
-            if (checkPerm(player, "maxstaff.punish.kick"))
+            if (checkPerm(player, "AxionStaff.punish.kick"))
                 plugin.getGuiManager().openReasonsMenu(player, targetName, "KICK", 0);
         }
     }
 
-    private void handleReasonsMenu(Player player, ItemStack item, MaxStaffHolder holder, MainConfigManager config) {
+    private void handleReasonsMenu(Player player, ItemStack item, AxionStaffHolder holder, MainConfigManager config) {
         String targetName = holder.getTargetName();
         String type = (String) holder.getData("type");
         int page = (int) holder.getData("page");
@@ -536,7 +536,7 @@ public class GuiListener implements Listener {
                     return;
                 }
 
-                if (!checkPerm(player, "maxstaff.punish." + type.toLowerCase())) {
+                if (!checkPerm(player, "AxionStaff.punish." + type.toLowerCase())) {
                     player.closeInventory();
                     return;
                 }
@@ -553,7 +553,7 @@ public class GuiListener implements Listener {
         }
     }
 
-    private void handleConfirmMenu(Player player, ItemStack item, MaxStaffHolder holder, MainConfigManager config) {
+    private void handleConfirmMenu(Player player, ItemStack item, AxionStaffHolder holder, MainConfigManager config) {
         if (!item.hasItemMeta())
             return;
         ItemMeta meta = item.getItemMeta();
@@ -570,7 +570,7 @@ public class GuiListener implements Listener {
         int page = (int) holder.getData("page");
 
         if ("confirm_yes".equals(action)) {
-            if (!checkPerm(player, "maxstaff.punish." + type.toLowerCase())) {
+            if (!checkPerm(player, "AxionStaff.punish." + type.toLowerCase())) {
                 player.closeInventory();
                 return;
             }
@@ -665,7 +665,7 @@ public class GuiListener implements Listener {
         }
     }
 
-    private void handlePermissionsMenu(Player player, ItemStack item, MaxStaffHolder holder, MainConfigManager config) {
+    private void handlePermissionsMenu(Player player, ItemStack item, AxionStaffHolder holder, MainConfigManager config) {
         String targetName = holder.getTargetName();
         int page = (int) holder.getData("page");
 
@@ -697,7 +697,7 @@ public class GuiListener implements Listener {
         }
     }
 
-    private void handleActivePunishmentsMenu(Player player, ItemStack item, MaxStaffHolder holder,
+    private void handleActivePunishmentsMenu(Player player, ItemStack item, AxionStaffHolder holder,
             MainConfigManager config) {
         if (!item.hasItemMeta()) {
             return;
@@ -732,7 +732,7 @@ public class GuiListener implements Listener {
 
         String action = meta.getPersistentDataContainer().get(Objects.requireNonNull(actionKey),
                 Objects.requireNonNull(PersistentDataType.STRING));
-        MaxStaffHolder holder = (MaxStaffHolder) player.getOpenInventory().getTopInventory().getHolder();
+        AxionStaffHolder holder = (AxionStaffHolder) player.getOpenInventory().getTopInventory().getHolder();
         int page = holder != null && holder.getData("page") instanceof Integer ? (int) holder.getData("page") : 0;
 
         if ("revive_next_page".equals(action)) {
@@ -837,3 +837,4 @@ public class GuiListener implements Listener {
         return false;
     }
 }
+

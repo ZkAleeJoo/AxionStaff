@@ -1,7 +1,7 @@
 package org.zkaleejoo.managers;
 
 import org.bukkit.configuration.file.FileConfiguration;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.config.CustomConfig;
 
 import java.text.SimpleDateFormat;
@@ -18,13 +18,13 @@ public class ReportManager {
     public record ReportRecordMeta(String id, long sequentialIndex, long createdAtEpochMillis, String timestamp) {
     }
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
     private final CustomConfig reportFile;
     private final Map<UUID, Long> cooldowns = new ConcurrentHashMap<>();
     private final AtomicLong reportSequence;
     private final WrappedTask cooldownCleanupTask;
 
-    public ReportManager(MaxStaff plugin) {
+    public ReportManager(AxionStaff plugin) {
         this.plugin = plugin;
         this.reportFile = new CustomConfig("reports.yml", null, plugin, true);
         this.reportFile.registerConfig();

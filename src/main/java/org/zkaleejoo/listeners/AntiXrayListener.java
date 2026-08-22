@@ -25,20 +25,20 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.config.MainConfigManager.ClickActionType;
 import org.zkaleejoo.utils.MessageUtils;
 
 public class AntiXrayListener implements Listener {
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
     private final Set<Material> alertBlocks;
     private final Map<UUID, EnumMap<Material, Integer>> minedRates = new ConcurrentHashMap<>();
     private final Map<UUID, EnumMap<Material, Deque<Long>>> recentMines = new ConcurrentHashMap<>();
     private final Map<UUID, XraySuspect> suspects = new ConcurrentHashMap<>();
     private final Map<UUID, Long> alertCooldowns = new ConcurrentHashMap<>();
 
-    public AntiXrayListener(MaxStaff plugin) {
+    public AntiXrayListener(AxionStaff plugin) {
         this.plugin = plugin;
         this.alertBlocks = plugin.getMainConfigManager().getAntiXrayAlertBlocks();
     }
@@ -365,3 +365,4 @@ public class AntiXrayListener implements Listener {
         }
     }
 }
+

@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.zkaleejoo.utils.FoliaCompat;
 import org.zkaleejoo.utils.FoliaCompat.WrappedTask;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.utils.BanUtils;
 import org.zkaleejoo.utils.DatabaseManager;
 import org.zkaleejoo.utils.IPUtils;
@@ -36,7 +36,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
     private final String syncSourceServer;
     private WrappedTask muteCacheCleanupTask;
 
-    public PunishmentManagerMysql(MaxStaff plugin) {
+    public PunishmentManagerMysql(AxionStaff plugin) {
         super(plugin);
         this.db = new DatabaseManager(plugin);
         this.syncSourceServer = plugin.getMainConfigManager().getDbServerId();
@@ -73,7 +73,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
     private void loadMuteCache() {
         FoliaCompat.runAsync(plugin, () -> {
             try (Connection conn = db.getConnection();
-                    PreparedStatement ps = conn.prepareStatement("SELECT uuid, expiry FROM maxstaff_mutes")) {
+                    PreparedStatement ps = conn.prepareStatement("SELECT uuid, expiry FROM AxionStaff_mutes")) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
                     muteCache().put(UUID.fromString(rs.getString("uuid")), rs.getLong("expiry"));
@@ -117,7 +117,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
     private UUID resolveUuidFromNameCache(String targetName) {
         try (Connection conn = db.getConnection();
                 PreparedStatement ps = conn.prepareStatement(
-                        "SELECT uuid FROM maxstaff_name_cache WHERE LOWER(last_name) = LOWER(?) ORDER BY updated_at DESC LIMIT 1")) {
+                        "SELECT uuid FROM AxionStaff_name_cache WHERE LOWER(last_name) = LOWER(?) ORDER BY updated_at DESC LIMIT 1")) {
             ps.setString(1, targetName);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
@@ -133,9 +133,9 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
 
     private UUID resolveUuidFromPunishmentTables(String targetName) {
         String[] queries = {
-                "SELECT uuid FROM maxstaff_mutes WHERE LOWER(name) = LOWER(?) LIMIT 1",
-                "SELECT uuid FROM maxstaff_bans WHERE LOWER(name) = LOWER(?) ORDER BY created_at DESC LIMIT 1",
-                "SELECT uuid FROM maxstaff_history WHERE LOWER(name) = LOWER(?) ORDER BY created_at DESC LIMIT 1"
+                "SELECT uuid FROM AxionStaff_mutes WHERE LOWER(name) = LOWER(?) LIMIT 1",
+                "SELECT uuid FROM AxionStaff_bans WHERE LOWER(name) = LOWER(?) ORDER BY created_at DESC LIMIT 1",
+                "SELECT uuid FROM AxionStaff_history WHERE LOWER(name) = LOWER(?) ORDER BY created_at DESC LIMIT 1"
         };
 
         for (String query : queries) {
@@ -156,7 +156,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
 
     @Override
     protected String getStorageLogTag() {
-        return "MaxStaff SQL";
+        return "AxionStaff SQL";
     }
 
     @Override
@@ -170,7 +170,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
         FoliaCompat.runAsync(plugin, () -> {
             try (Connection conn = db.getConnection();
                     PreparedStatement ps = conn.prepareStatement(
-                            "INSERT INTO maxstaff_mutes (uuid, name, reason, staff, expiry) VALUES (?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE name=?, reason=?, staff=?, expiry=?")) {
+                            "INSERT INTO AxionStaff_mutes (uuid, name, reason, staff, expiry) VALUES (?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE name=?, reason=?, staff=?, expiry=?")) {
                 ps.setString(1, uuid.toString());
                 ps.setString(2, currentName);
                 ps.setString(3, reason);
@@ -193,7 +193,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
 
         try (Connection conn = db.getConnection()) {
             try (PreparedStatement ps = conn
-                    .prepareStatement("SELECT uuid FROM maxstaff_mutes WHERE LOWER(name) = LOWER(?)")) {
+                    .prepareStatement("SELECT uuid FROM AxionStaff_mutes WHERE LOWER(name) = LOWER(?)")) {
                 ps.setString(1, targetName);
                 try (ResultSet rs = ps.executeQuery()) {
                     while (rs.next()) {
@@ -208,7 +208,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
             }
 
             try (PreparedStatement ps = conn
-                    .prepareStatement("DELETE FROM maxstaff_mutes WHERE LOWER(name) = LOWER(?)")) {
+                    .prepareStatement("DELETE FROM AxionStaff_mutes WHERE LOWER(name) = LOWER(?)")) {
                 ps.setString(1, targetName);
                 removed = ps.executeUpdate() > 0;
             }
@@ -227,7 +227,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
 
         try (Connection conn = db.getConnection();
                 PreparedStatement check = conn
-                        .prepareStatement("SELECT 1 FROM maxstaff_mutes WHERE uuid = ? LIMIT 1")) {
+                        .prepareStatement("SELECT 1 FROM AxionStaff_mutes WHERE uuid = ? LIMIT 1")) {
             check.setString(1, uuid.toString());
             try (ResultSet rs = check.executeQuery()) {
                 existedInDatabase = rs.next();
@@ -242,7 +242,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
         }
 
         try (Connection conn = db.getConnection();
-                PreparedStatement ps = conn.prepareStatement("DELETE FROM maxstaff_mutes WHERE uuid = ?")) {
+                PreparedStatement ps = conn.prepareStatement("DELETE FROM AxionStaff_mutes WHERE uuid = ?")) {
             ps.setString(1, uuid.toString());
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -293,7 +293,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
     private Long getMuteExpiry(UUID uuid) {
         try (Connection conn = db.getConnection();
                 PreparedStatement ps = conn
-                        .prepareStatement("SELECT expiry FROM maxstaff_mutes WHERE uuid = ? LIMIT 1")) {
+                        .prepareStatement("SELECT expiry FROM AxionStaff_mutes WHERE uuid = ? LIMIT 1")) {
             ps.setString(1, uuid.toString());
             try (ResultSet rs = ps.executeQuery()) {
                 if (!rs.next()) {
@@ -399,7 +399,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
             long expiry = (duration == -1) ? -1 : System.currentTimeMillis() + duration;
             try (Connection conn = db.getConnection();
                     PreparedStatement ps = conn.prepareStatement(
-                            "INSERT INTO maxstaff_bans (uuid, name, reason, staff, expiry, created_at) VALUES (?, ?, ?, ?, ?, ?) "
+                            "INSERT INTO AxionStaff_bans (uuid, name, reason, staff, expiry, created_at) VALUES (?, ?, ?, ?, ?, ?) "
                                     + "ON DUPLICATE KEY UPDATE name=?, reason=?, staff=?, expiry=?, created_at=?")) {
                 long now = System.currentTimeMillis();
                 ps.setString(1, uuid.toString());
@@ -470,14 +470,14 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
             try (Connection conn = db.getConnection()) {
                 if (uuid != null) {
                     try (PreparedStatement ps = conn
-                            .prepareStatement("DELETE FROM maxstaff_bans WHERE uuid = ? OR LOWER(name) = LOWER(?)")) {
+                            .prepareStatement("DELETE FROM AxionStaff_bans WHERE uuid = ? OR LOWER(name) = LOWER(?)")) {
                         ps.setString(1, uuid.toString());
                         ps.setString(2, targetName);
                         rowsAffected = ps.executeUpdate();
                     }
                 } else {
                     try (PreparedStatement ps = conn
-                            .prepareStatement("DELETE FROM maxstaff_bans WHERE LOWER(name) = LOWER(?)")) {
+                            .prepareStatement("DELETE FROM AxionStaff_bans WHERE LOWER(name) = LOWER(?)")) {
                         ps.setString(1, targetName);
                         rowsAffected = ps.executeUpdate();
                     }
@@ -521,22 +521,22 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
             int ipBansRemoved = 0;
 
             try (Connection conn = db.getConnection()) {
-                try (PreparedStatement ps = conn.prepareStatement("DELETE FROM maxstaff_bans WHERE expiry <> -1 AND expiry <= ?")) {
+                try (PreparedStatement ps = conn.prepareStatement("DELETE FROM AxionStaff_bans WHERE expiry <> -1 AND expiry <= ?")) {
                     ps.setLong(1, now);
                     bansRemoved = ps.executeUpdate();
                 }
 
-                try (PreparedStatement ps = conn.prepareStatement("DELETE FROM maxstaff_mutes WHERE expiry <> -1 AND expiry <= ?")) {
+                try (PreparedStatement ps = conn.prepareStatement("DELETE FROM AxionStaff_mutes WHERE expiry <> -1 AND expiry <= ?")) {
                     ps.setLong(1, now);
                     mutesRemoved = ps.executeUpdate();
                 }
 
-                try (PreparedStatement ps = conn.prepareStatement("DELETE FROM maxstaff_ip_bans WHERE expiry <> -1 AND expiry <= ?")) {
+                try (PreparedStatement ps = conn.prepareStatement("DELETE FROM AxionStaff_ip_bans WHERE expiry <> -1 AND expiry <= ?")) {
                     ps.setLong(1, now);
                     ipBansRemoved = ps.executeUpdate();
                 }
             } catch (SQLException e) {
-                plugin.getLogger().warning("[MaxStaff SQL] cleanupExpiredPunishments failed: " + e.getMessage());
+                plugin.getLogger().warning("[AxionStaff SQL] cleanupExpiredPunishments failed: " + e.getMessage());
             }
 
             int finalBansRemoved = bansRemoved;
@@ -607,7 +607,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
         List<String> names = new ArrayList<>();
         try (Connection conn = db.getConnection();
                 PreparedStatement ps = conn
-                        .prepareStatement("SELECT uuid, name, expiry FROM maxstaff_bans ORDER BY created_at DESC")) {
+                        .prepareStatement("SELECT uuid, name, expiry FROM AxionStaff_bans ORDER BY created_at DESC")) {
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     long expiry = rs.getLong("expiry");
@@ -635,7 +635,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
 
         try (Connection conn = db.getConnection()) {
             try (PreparedStatement ps = conn.prepareStatement(
-                    "SELECT uuid, name, reason, staff, expiry FROM maxstaff_bans ORDER BY created_at DESC");
+                    "SELECT uuid, name, reason, staff, expiry FROM AxionStaff_bans ORDER BY created_at DESC");
                     ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     long expiry = rs.getLong("expiry");
@@ -655,7 +655,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
             }
 
             try (PreparedStatement ps = conn.prepareStatement(
-                    "SELECT ip, reason, staff, expiry FROM maxstaff_ip_bans ORDER BY created_at DESC");
+                    "SELECT ip, reason, staff, expiry FROM AxionStaff_ip_bans ORDER BY created_at DESC");
                     ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     long expiry = rs.getLong("expiry");
@@ -675,7 +675,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
             }
 
             try (PreparedStatement ps = conn.prepareStatement(
-                    "SELECT uuid, name, reason, staff, expiry FROM maxstaff_mutes ORDER BY name ASC");
+                    "SELECT uuid, name, reason, staff, expiry FROM AxionStaff_mutes ORDER BY name ASC");
                     ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     long expiry = rs.getLong("expiry");
@@ -708,7 +708,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
     public String getActiveBanMessage(UUID uuid, String targetName) {
         try (Connection conn = db.getConnection();
                 PreparedStatement ps = conn.prepareStatement(
-                        "SELECT reason, staff, expiry FROM maxstaff_bans WHERE uuid = ? OR LOWER(name) = LOWER(?) LIMIT 1")) {
+                        "SELECT reason, staff, expiry FROM AxionStaff_bans WHERE uuid = ? OR LOWER(name) = LOWER(?) LIMIT 1")) {
             ps.setString(1, uuid.toString());
             ps.setString(2, targetName);
 
@@ -742,7 +742,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
     private void removeExpiredBan(UUID uuid) {
         FoliaCompat.runAsync(plugin, () -> {
             try (Connection conn = db.getConnection();
-                    PreparedStatement ps = conn.prepareStatement("DELETE FROM maxstaff_bans WHERE uuid = ?")) {
+                    PreparedStatement ps = conn.prepareStatement("DELETE FROM AxionStaff_bans WHERE uuid = ?")) {
                 ps.setString(1, uuid.toString());
                 ps.executeUpdate();
             } catch (SQLException e) {
@@ -755,7 +755,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
     protected void removeMuteAsync(UUID uuid) {
         FoliaCompat.runAsync(plugin, () -> {
             try (Connection conn = db.getConnection();
-                    PreparedStatement ps = conn.prepareStatement("DELETE FROM maxstaff_mutes WHERE uuid = ?")) {
+                    PreparedStatement ps = conn.prepareStatement("DELETE FROM AxionStaff_mutes WHERE uuid = ?")) {
                 ps.setString(1, uuid.toString());
                 ps.executeUpdate();
             } catch (SQLException e) {
@@ -779,7 +779,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
 
             try (Connection conn = db.getConnection();
                     PreparedStatement ps = conn.prepareStatement(
-                            "INSERT INTO maxstaff_history (uuid, name, type, reason, staff, duration, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
+                            "INSERT INTO AxionStaff_history (uuid, name, type, reason, staff, duration, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
                 ps.setString(1, uuid.toString());
                 ps.setString(2, targetName);
                 ps.setString(3, type.toUpperCase());
@@ -802,7 +802,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
         }
         try (Connection conn = db.getConnection();
                 PreparedStatement ps = conn
-                        .prepareStatement("SELECT COUNT(*) FROM maxstaff_history WHERE uuid = ? AND type = ?")) {
+                        .prepareStatement("SELECT COUNT(*) FROM AxionStaff_history WHERE uuid = ? AND type = ?")) {
             ps.setString(1, uuid.toString());
             ps.setString(2, type.toUpperCase());
             ResultSet rs = ps.executeQuery();
@@ -824,7 +824,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
         List<String> details = new ArrayList<>();
         try (Connection conn = db.getConnection();
                 PreparedStatement ps = conn.prepareStatement(
-                        "SELECT created_at, staff, reason, duration FROM maxstaff_history WHERE uuid = ? AND type = ? ORDER BY created_at DESC, id DESC")) {
+                        "SELECT created_at, staff, reason, duration FROM AxionStaff_history WHERE uuid = ? AND type = ? ORDER BY created_at DESC, id DESC")) {
             ps.setString(1, uuid.toString());
             ps.setString(2, type.toUpperCase());
             ResultSet rs = ps.executeQuery();
@@ -863,13 +863,13 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
         FoliaCompat.runAsync(plugin, () -> {
             try (Connection conn = db.getConnection()) {
                 if (type.equalsIgnoreCase("all")) {
-                    try (PreparedStatement ps = conn.prepareStatement("DELETE FROM maxstaff_history WHERE uuid = ?")) {
+                    try (PreparedStatement ps = conn.prepareStatement("DELETE FROM AxionStaff_history WHERE uuid = ?")) {
                         ps.setString(1, uuid.toString());
                         ps.executeUpdate();
                     }
                 } else {
                     try (PreparedStatement ps = conn
-                            .prepareStatement("DELETE FROM maxstaff_history WHERE uuid = ? AND type = ?")) {
+                            .prepareStatement("DELETE FROM AxionStaff_history WHERE uuid = ? AND type = ?")) {
                         ps.setString(1, uuid.toString());
                         ps.setString(2, type.toUpperCase());
                         ps.executeUpdate();
@@ -895,7 +895,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
         FoliaCompat.runAsync(plugin, () -> {
             try (Connection conn = db.getConnection();
                     PreparedStatement ps = conn.prepareStatement(
-                            "DELETE FROM maxstaff_history WHERE uuid = ? AND type = ? ORDER BY id DESC LIMIT ?")) {
+                            "DELETE FROM AxionStaff_history WHERE uuid = ? AND type = ? ORDER BY id DESC LIMIT ?")) {
                 ps.setString(1, uuid.toString());
                 ps.setString(2, type.toUpperCase());
                 ps.setInt(3, amount);
@@ -912,7 +912,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
         FoliaCompat.runAsync(plugin, () -> {
             try (Connection conn = db.getConnection();
                     PreparedStatement ps = conn.prepareStatement(
-                            "INSERT INTO maxstaff_ip_cache (uuid, ip) VALUES (?, ?) ON DUPLICATE KEY UPDATE ip=?")) {
+                            "INSERT INTO AxionStaff_ip_cache (uuid, ip) VALUES (?, ?) ON DUPLICATE KEY UPDATE ip=?")) {
                 ps.setString(1, uuid.toString());
                 ps.setString(2, ip);
                 ps.setString(3, ip);
@@ -926,7 +926,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
     @Override
     protected String getCachedIP(UUID uuid) {
         try (Connection conn = db.getConnection();
-                PreparedStatement ps = conn.prepareStatement("SELECT ip FROM maxstaff_ip_cache WHERE uuid = ?")) {
+                PreparedStatement ps = conn.prepareStatement("SELECT ip FROM AxionStaff_ip_cache WHERE uuid = ?")) {
             ps.setString(1, uuid.toString());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -963,8 +963,8 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
 
     private String getLatestIpByKnownName(String targetName) {
         String sql = "SELECT ic.ip " +
-                "FROM maxstaff_name_cache nc " +
-                "JOIN maxstaff_ip_cache ic ON ic.uuid = nc.uuid " +
+                "FROM AxionStaff_name_cache nc " +
+                "JOIN AxionStaff_ip_cache ic ON ic.uuid = nc.uuid " +
                 "WHERE LOWER(nc.last_name) = LOWER(?) " +
                 "ORDER BY nc.updated_at DESC LIMIT 1";
 
@@ -985,9 +985,9 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
 
     private String getIpFromIpBansAssociation(String targetName) {
         String sql = "SELECT ib.ip " +
-                "FROM maxstaff_ip_bans ib " +
-                "JOIN maxstaff_ip_cache ic ON ic.ip = ib.ip " +
-                "JOIN maxstaff_name_cache nc ON nc.uuid = ic.uuid " +
+                "FROM AxionStaff_ip_bans ib " +
+                "JOIN AxionStaff_ip_cache ic ON ic.ip = ib.ip " +
+                "JOIN AxionStaff_name_cache nc ON nc.uuid = ic.uuid " +
                 "WHERE LOWER(nc.last_name) = LOWER(?) " +
                 "ORDER BY ib.created_at DESC LIMIT 1";
 
@@ -1010,7 +1010,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
     public List<UUID> getAllAccountsByIP(String ip) {
         List<UUID> alts = new ArrayList<>();
         try (Connection conn = db.getConnection();
-                PreparedStatement ps = conn.prepareStatement("SELECT uuid FROM maxstaff_ip_cache WHERE ip = ?")) {
+                PreparedStatement ps = conn.prepareStatement("SELECT uuid FROM AxionStaff_ip_cache WHERE ip = ?")) {
             ps.setString(1, ip);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -1067,7 +1067,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
         FoliaCompat.runAsync(plugin, () -> {
             try (Connection conn = db.getConnection();
                     PreparedStatement ps = conn.prepareStatement(
-                            "INSERT INTO maxstaff_ip_bans (ip, reason, staff, expiry, created_at) VALUES (?, ?, ?, ?, ?) "
+                            "INSERT INTO AxionStaff_ip_bans (ip, reason, staff, expiry, created_at) VALUES (?, ?, ?, ?, ?) "
                                     +
                                     "ON DUPLICATE KEY UPDATE reason=?, staff=?, expiry=?, created_at=?")) {
                 long now = System.currentTimeMillis();
@@ -1126,7 +1126,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
         FoliaCompat.runAsync(plugin, () -> {
             int rowsAffected = 0;
             try (Connection conn = db.getConnection();
-                    PreparedStatement ps = conn.prepareStatement("DELETE FROM maxstaff_ip_bans WHERE ip = ?")) {
+                    PreparedStatement ps = conn.prepareStatement("DELETE FROM AxionStaff_ip_bans WHERE ip = ?")) {
                 ps.setString(1, ip);
                 rowsAffected = ps.executeUpdate();
             } catch (SQLException e) {
@@ -1171,7 +1171,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
     public String getActiveIPBanMessage(String ip) {
         try (Connection conn = db.getConnection();
                 PreparedStatement ps = conn
-                        .prepareStatement("SELECT reason, staff, expiry FROM maxstaff_ip_bans WHERE ip = ? LIMIT 1")) {
+                        .prepareStatement("SELECT reason, staff, expiry FROM AxionStaff_ip_bans WHERE ip = ? LIMIT 1")) {
             ps.setString(1, ip);
             try (ResultSet rs = ps.executeQuery()) {
                 if (!rs.next()) {
@@ -1202,7 +1202,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
     private void removeExpiredIpBan(String ip) {
         FoliaCompat.runAsync(plugin, () -> {
             try (Connection conn = db.getConnection();
-                    PreparedStatement ps = conn.prepareStatement("DELETE FROM maxstaff_ip_bans WHERE ip = ?")) {
+                    PreparedStatement ps = conn.prepareStatement("DELETE FROM AxionStaff_ip_bans WHERE ip = ?")) {
                 ps.setString(1, ip);
                 ps.executeUpdate();
             } catch (SQLException e) {
@@ -1219,7 +1219,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
         List<String> activeIpBans = new ArrayList<>();
         try (Connection conn = db.getConnection();
                 PreparedStatement ps = conn
-                        .prepareStatement("SELECT ip, expiry FROM maxstaff_ip_bans ORDER BY created_at DESC")) {
+                        .prepareStatement("SELECT ip, expiry FROM AxionStaff_ip_bans ORDER BY created_at DESC")) {
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     long expiry = rs.getLong("expiry");
@@ -1259,7 +1259,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
         FoliaCompat.runAsync(plugin, () -> {
             try (Connection conn = db.getConnection();
                     PreparedStatement ps = conn.prepareStatement(
-                            "INSERT INTO maxstaff_sync_actions (action_type, target_uuid, target_name, reason, staff, duration, created_at, expires_at, source_server) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+                            "INSERT INTO AxionStaff_sync_actions (action_type, target_uuid, target_name, reason, staff, duration, created_at, expires_at, source_server) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
                 ps.setString(1, actionType);
                 ps.setString(2, targetUuid);
                 ps.setString(3, targetName);
@@ -1281,7 +1281,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
         FoliaCompat.runAsync(plugin, () -> {
             try (Connection conn = db.getConnection();
                     PreparedStatement ps = conn.prepareStatement(
-                            "INSERT INTO maxstaff_name_cache (uuid, last_name, updated_at) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE last_name = VALUES(last_name), updated_at = VALUES(updated_at)")) {
+                            "INSERT INTO AxionStaff_name_cache (uuid, last_name, updated_at) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE last_name = VALUES(last_name), updated_at = VALUES(updated_at)")) {
                 ps.setString(1, uuid.toString());
                 ps.setString(2, name);
                 ps.setLong(3, System.currentTimeMillis());
@@ -1296,7 +1296,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
     public List<String> getMutedPlayerNames() {
         List<String> names = new ArrayList<>();
         try (Connection conn = db.getConnection();
-                PreparedStatement ps = conn.prepareStatement("SELECT uuid, name, expiry FROM maxstaff_mutes")) {
+                PreparedStatement ps = conn.prepareStatement("SELECT uuid, name, expiry FROM AxionStaff_mutes")) {
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     long expiry = rs.getLong("expiry");
@@ -1340,7 +1340,7 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
 
         try (Connection conn = db.getConnection();
                 PreparedStatement ps = conn
-                        .prepareStatement("SELECT last_name FROM maxstaff_name_cache WHERE uuid = ? LIMIT 1")) {
+                        .prepareStatement("SELECT last_name FROM AxionStaff_name_cache WHERE uuid = ? LIMIT 1")) {
             ps.setString(1, uuid.toString());
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
@@ -1354,3 +1354,4 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
         return null;
     }
 }
+

@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.config.MainConfigManager;
 
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public final class InspectionInventoryBuilder {
 
     public static Inventory createOnlineInspection(String menuType, Player target, String title,
             MainConfigManager config, boolean editable) {
-        MaxStaffHolder holder = new MaxStaffHolder(menuType, target.getName());
+        AxionStaffHolder holder = new AxionStaffHolder(menuType, target.getName());
         holder.setData("targetUuid", target.getUniqueId());
         holder.setData("editable", editable);
         Inventory inventory = Bukkit.createInventory(
@@ -254,7 +254,7 @@ public final class InspectionInventoryBuilder {
     }
 
     private static NamespacedKey getPlaceholderKey() {
-        return new NamespacedKey(JavaPlugin.getPlugin(MaxStaff.class), PLACEHOLDER_KEY);
+        return new NamespacedKey(JavaPlugin.getPlugin(AxionStaff.class), PLACEHOLDER_KEY);
     }
 
     private static String armorSlotName(int index, MainConfigManager config) {
@@ -288,3 +288,4 @@ public final class InspectionInventoryBuilder {
         return false;
     }
 }
+

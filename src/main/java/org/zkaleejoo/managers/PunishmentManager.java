@@ -5,7 +5,7 @@ import org.zkaleejoo.utils.FoliaCompat;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.config.CustomConfig;
 import org.zkaleejoo.utils.BanUtils;
 
@@ -23,7 +23,7 @@ public class PunishmentManager extends AbstractPunishmentManager {
     private final CustomConfig dataFile;
     private final Map<String, UUID> nameToUuidCache = new ConcurrentHashMap<>();
 
-    public PunishmentManager(MaxStaff plugin) {
+    public PunishmentManager(AxionStaff plugin) {
         super(plugin);
         this.dataFile = new CustomConfig("data.yml", null, plugin, true);
         this.dataFile.registerConfig();
@@ -113,7 +113,7 @@ public class PunishmentManager extends AbstractPunishmentManager {
 
     @Override
     protected String getStorageLogTag() {
-        return "MaxStaff Log";
+        return "AxionStaff Log";
     }
 
     @Override
@@ -382,3 +382,4 @@ public class PunishmentManager extends AbstractPunishmentManager {
     }
 
 }
+

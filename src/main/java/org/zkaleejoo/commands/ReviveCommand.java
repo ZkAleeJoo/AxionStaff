@@ -4,15 +4,15 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.config.MainConfigManager;
 import org.zkaleejoo.utils.MessageUtils;
 
 public class ReviveCommand implements CommandExecutor {
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
 
-    public ReviveCommand(MaxStaff plugin) {
+    public ReviveCommand(AxionStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -25,7 +25,7 @@ public class ReviveCommand implements CommandExecutor {
             return true;
         }
 
-        if (!player.hasPermission("maxstaff.revive")) {
+        if (!player.hasPermission("AxionStaff.revive")) {
             player.sendMessage(MessageUtils.getColoredMessage(config.getPrefix() + config.getNoPermission()));
             return true;
         }
@@ -39,3 +39,4 @@ public class ReviveCommand implements CommandExecutor {
         return true;
     }
 }
+

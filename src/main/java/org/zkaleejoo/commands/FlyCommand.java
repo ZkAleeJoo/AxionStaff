@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.MaxStaff;
+import org.zkaleejoo.AxionStaff;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,13 +15,13 @@ import java.util.stream.Collectors;
 
 public class FlyCommand implements CommandExecutor, TabCompleter {
 
-    private static final String FLY_PERMISSION = "maxstaff.fly";
+    private static final String FLY_PERMISSION = "AxionStaff.fly";
     private static final float MIN_FLY_SPEED = 0.1F;
     private static final float MAX_FLY_SPEED = 1.0F;
 
-    private final MaxStaff plugin;
+    private final AxionStaff plugin;
 
-    public FlyCommand(MaxStaff plugin) {
+    public FlyCommand(AxionStaff plugin) {
         this.plugin = plugin;
     }
 
