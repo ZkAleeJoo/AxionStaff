@@ -106,7 +106,7 @@ public class AxionStaff extends JavaPlugin {
             try {
                 punishmentManager = new PunishmentManagerMysql(this);
                 Bukkit.getConsoleSender().sendMessage(
-                        MessageUtils.getColoredMessage("&#5831F5&lAxionStaff &8» &aSanctions system loaded: MySQL"));
+                        MessageUtils.getColoredMessage("&5&lAxionStaff &8» &fSanctions system loaded: MySQL"));
                 sendMysqlStatusReport();
             } catch (Exception e) {
                 getLogger().severe("Error connecting to MySQL, switching to local system: " + e.getMessage());
@@ -116,9 +116,9 @@ public class AxionStaff extends JavaPlugin {
         } else {
             punishmentManager = new PunishmentManager(this);
             Bukkit.getConsoleSender().sendMessage(
-                    MessageUtils.getColoredMessage("&#5831F5&lAxionStaff &8» &aSanctions system loaded: Local (YAML)"));
+                    MessageUtils.getColoredMessage("&5&lAxionStaff &8» &fSanctions system loaded: Local (YAML)"));
             Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                    "&#5831F5&lAxionStaff &8» &aYAML punishment storage is single-server only. &eNetwork-wide &asynchronization requires &edatabase.enabled=true."));
+                    "&5&lAxionStaff &8» &fYAML punishment storage is single-server only. &eNetwork-wide &asynchronization requires &edatabase.enabled=true."));
         }
 
         registerCommands();
@@ -126,27 +126,27 @@ public class AxionStaff extends JavaPlugin {
         startUpdateChecks();
 
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&#5831F5&lAxionStaff &8» &5   _____         .__                _________ __          _____  _____ "));
+                "&5&lAxionStaff &8» &5   _____         .__                _________ __          _____  _____ "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&#5831F5&lAxionStaff &8» &5  /  _  \\ ___  __|__| ____   ____  /   _____//  |______ _/ ____\\/ ____\\"));
+                "&5&lAxionStaff &8» &5  /  _  \\ ___  __|__| ____   ____  /   _____//  |______ _/ ____\\/ ____\\"));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&#5831F5&lAxionStaff &8» &5 /  /_\\  \\\\  \\/  /  |/  _ \\ /    \\ \\_____  \\\\   __\\__  \\\\   __\\\\   __\\ "));
+                "&5&lAxionStaff &8» &5 /  /_\\  \\\\  \\/  /  |/  _ \\ /    \\ \\_____  \\\\   __\\__  \\\\   __\\\\   __\\ "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&#5831F5&lAxionStaff &8» &5/    |    \\>    <|  (  <_> )   |  \\/        \\|  |  / __ \\|  |   |  |   "));
+                "&5&lAxionStaff &8» &5/    |    \\>    <|  (  <_> )   |  \\/        \\|  |  / __ \\|  |   |  |   "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&#5831F5&lAxionStaff &8» &5\\____|__  /__/\\_ \\__|\\____/|___|  /_______  /|__| (____  /__|   |__|   "));
+                "&5&lAxionStaff &8» &5\\____|__  /__/\\_ \\__|\\____/|___|  /_______  /|__| (____  /__|   |__|   "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&#5831F5&lAxionStaff &8» &5        \\/      \\/              \\/        \\/           \\/              "));
+                "&5&lAxionStaff &8» &5        \\/      \\/              \\/        \\/           \\/              "));
 
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new org.zkaleejoo.placeholders.AxionStaffExpansion(this).register();
             Bukkit.getConsoleSender().sendMessage(
                     MessageUtils.getColoredMessage(
-                            "&#5831F5&lAxionStaff &8» &aPlaceholderAPI Hook successfully registered!"));
+                            "&5&lAxionStaff &8» &fPlaceholderAPI Hook successfully registered!"));
         } else {
             Bukkit.getConsoleSender().sendMessage(MessageUtils
                     .getColoredMessage(
-                            "&#5831F5&lAxionStaff &8» &4PlaceholderAPI not found, placeholders will not work."));
+                            "&5&lAxionStaff &8» &cPlaceholderAPI not found, placeholders will not work."));
         }
 
     }
@@ -174,7 +174,7 @@ public class AxionStaff extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
                 "&c✖ Main host: &f" + mainConfigManager.getDbHost() + ":" + mainConfigManager.getDbPort()));
         Bukkit.getConsoleSender().sendMessage(MessageUtils
-                .getColoredMessage("&c✖ Detail: &f" + (e.getMessage() == null ? "Sin detalle" : e.getMessage())));
+                .getColoredMessage("&c✖ Detail: &f" + (e.getMessage() == null ? "Without details" : e.getMessage())));
         Bukkit.getConsoleSender()
                 .sendMessage(MessageUtils.getColoredMessage("&8&m----------------------------------------------"));
     }
@@ -280,7 +280,7 @@ public class AxionStaff extends JavaPlugin {
 
         Bukkit.getConsoleSender()
                 .sendMessage(
-                        MessageUtils.getColoredMessage("&#5831F5&lAxionStaff &8» &cIt was successfully deactivated"));
+                        MessageUtils.getColoredMessage("&5&lAxionStaff &8» &cIt was successfully deactivated"));
     }
 
     public void registerCommands() {
