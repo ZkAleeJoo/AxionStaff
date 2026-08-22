@@ -39,7 +39,7 @@ public class ChatListener implements Listener {
         }
 
         if (plugin.isModuleEnabled("chat") && plugin.getChatManager().isGlobalMute()) {
-            if (!player.hasPermission("AxionStaff.staffchat")) {
+            if (!player.hasPermission("axionstaff.staffchat")) {
                 event.setCancelled(true);
                 String msg = plugin.getMainConfigManager().getMsgChatIsMuted();
                 FoliaCompat.runForEntity(plugin, player, () -> player.sendMessage(MessageUtils.getColoredMessage(
@@ -52,7 +52,7 @@ public class ChatListener implements Listener {
     }
 
     private boolean handleStaffChatToggle(Player player, Cancellable event) {
-        if (!player.hasPermission("AxionStaff.staffchat") || !plugin.isStaffChatToggled(player.getUniqueId())) {
+        if (!player.hasPermission("axionstaff.staffchat") || !plugin.isStaffChatToggled(player.getUniqueId())) {
             return false;
         }
 
@@ -68,14 +68,15 @@ public class ChatListener implements Listener {
 
     private void sendStaffMessage(Player sender, String message) {
         String formattedMessage = plugin.getMainConfigManager().getStaffChatFormat()
-            .replace("{player}", sender.getName())
-            .replace("{message}", message);
+                .replace("{player}", sender.getName())
+                .replace("{message}", message);
 
         String coloredMessage = MessageUtils.getColoredMessage(formattedMessage);
 
         for (Player online : Bukkit.getOnlinePlayers()) {
-            if (online == null) continue;
-            if (online.hasPermission("AxionStaff.staffchat")) {
+            if (online == null)
+                continue;
+            if (online.hasPermission("axionstaff.staffchat")) {
                 online.sendMessage(coloredMessage);
             }
         }
@@ -91,4 +92,3 @@ public class ChatListener implements Listener {
         return null;
     }
 }
-

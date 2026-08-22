@@ -207,7 +207,8 @@ public class AntiXrayListener implements Listener {
                 player.getName(), mineral, world, x, y, z, rate, windowRate, windowTotal, null);
 
         if (plugin.getDiscordManager() != null) {
-            plugin.getDiscordManager().sendXrayAlertWebhook(player.getName(), mineral, world, block.getX(), block.getY(),
+            plugin.getDiscordManager().sendXrayAlertWebhook(player.getName(), mineral, world, block.getX(),
+                    block.getY(),
                     block.getZ(), rate, windowRate, windowTotal,
                     plugin.getMainConfigManager().getAntiXrayRateWindowSeconds());
         }
@@ -285,7 +286,8 @@ public class AntiXrayListener implements Listener {
                 .replace("{rate}", String.valueOf(rate))
                 .replace("{window_rate}", String.valueOf(windowRate))
                 .replace("{window_total}", String.valueOf(windowTotal))
-                .replace("{window_seconds}", String.valueOf(plugin.getMainConfigManager().getAntiXrayRateWindowSeconds()));
+                .replace("{window_seconds}",
+                        String.valueOf(plugin.getMainConfigManager().getAntiXrayRateWindowSeconds()));
         return staff == null ? parsed : parsed.replace("{staff}", staff);
     }
 
@@ -365,4 +367,3 @@ public class AntiXrayListener implements Listener {
         }
     }
 }
-

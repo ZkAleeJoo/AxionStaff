@@ -42,7 +42,7 @@ public class PlayerJoinListener implements Listener {
             plugin.getPunishmentManager().savePlayerIP(player.getUniqueId(), ip);
 
             if (config.isModuleEnabled("alts")) {
-                boolean isAltsProtected = player.hasPermission("AxionStaff.alts.protected");
+                boolean isAltsProtected = player.hasPermission("axionstaff.alts.protected");
                 FoliaCompat.runAsync(plugin, () -> {
                     java.util.List<java.util.UUID> alts = plugin.getPunishmentManager().getAllAccountsByIP(ip);
 
@@ -66,7 +66,7 @@ public class PlayerJoinListener implements Listener {
 
                         for (Player onlineStaff : org.bukkit.Bukkit.getOnlinePlayers()) {
                             if (onlineStaff != null && onlineStaff.hasPermission(config.getAltsNotifyPermission())) {
-                                if (isAltsProtected && !onlineStaff.hasPermission("AxionStaff.alts.override")) {
+                                if (isAltsProtected && !onlineStaff.hasPermission("axionstaff.alts.override")) {
                                     continue;
                                 }
                                 onlineStaff.sendMessage(message);
@@ -80,7 +80,7 @@ public class PlayerJoinListener implements Listener {
         for (java.util.UUID uuid : plugin.getStaffManager().getVanishedPlayers()) {
             Player staff = org.bukkit.Bukkit.getPlayer(uuid);
             if (staff != null && staff.isOnline()) {
-                if (!player.hasPermission("AxionStaff.see.vanish")) {
+                if (!player.hasPermission("axionstaff.see.vanish")) {
                     player.hidePlayer(Objects.requireNonNull(plugin), staff);
                     continue;
                 }
@@ -89,7 +89,7 @@ public class PlayerJoinListener implements Listener {
             }
         }
 
-        if (player.hasPermission("AxionStaff.admin")) {
+        if (player.hasPermission("axionstaff.admin")) {
             String latest = plugin.getLatestVersion();
             if (latest != null && !plugin.getPluginMeta().getVersion().equalsIgnoreCase(latest)) {
                 player.sendMessage(" ");
@@ -99,10 +99,9 @@ public class PlayerJoinListener implements Listener {
                         config.getMsgUpdateCurrent().replace("{version}", plugin.getPluginMeta().getVersion())));
                 player.sendMessage(MessageUtils.getColoredMessage(config.getMsgUpdateDownload()));
                 player.sendMessage(
-                        MessageUtils.getColoredMessage("&7https://pixeleast.com/product/247263-maxstaff"));
+                        MessageUtils.getColoredMessage("&7https://modrinth.com/plugin/axionstaff"));
                 player.sendMessage(" ");
             }
         }
     }
 }
-

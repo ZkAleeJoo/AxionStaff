@@ -25,7 +25,7 @@ public class ReviveCommand implements CommandExecutor {
             return true;
         }
 
-        if (!player.hasPermission("AxionStaff.revive")) {
+        if (!player.hasPermission("axionstaff.revive")) {
             player.sendMessage(MessageUtils.getColoredMessage(config.getPrefix() + config.getNoPermission()));
             return true;
         }
@@ -39,4 +39,3 @@ public class ReviveCommand implements CommandExecutor {
         return true;
     }
 }
-

@@ -39,7 +39,7 @@ public class SilentPunishmentCommand implements CommandExecutor, TabCompleter {
         }
 
         String baseAction = normalizeAction(action);
-        String permission = baseAction.equals("ban-ip") ? "AxionStaff.punish.banip" : "AxionStaff.punish." + baseAction;
+        String permission = baseAction.equals("ban-ip") ? "axionstaff.punish.banip" : "axionstaff.punish." + baseAction;
         if (!CommandContextUtil.hasPermissionOrAdmin(sender, permission)) {
             sender.sendMessage(MessageUtils.getColoredMessage(
                     plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getNoPermission()));
@@ -151,7 +151,8 @@ public class SilentPunishmentCommand implements CommandExecutor, TabCompleter {
             }
 
             String baseAction = normalizeAction(action);
-            String permission = baseAction.equals("ban-ip") ? "AxionStaff.punish.banip" : "AxionStaff.punish." + baseAction;
+            String permission = baseAction.equals("ban-ip") ? "axionstaff.punish.banip"
+                    : "axionstaff.punish." + baseAction;
             if (!CommandContextUtil.hasPermissionOrAdmin(sender, permission)) {
                 return new ArrayList<>();
             }
@@ -171,4 +172,3 @@ public class SilentPunishmentCommand implements CommandExecutor, TabCompleter {
         return new ArrayList<>();
     }
 }
-

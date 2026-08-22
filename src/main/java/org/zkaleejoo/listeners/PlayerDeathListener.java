@@ -39,4 +39,3 @@ public class PlayerDeathListener implements Listener {
         return "Unknown";
     }
 }
-

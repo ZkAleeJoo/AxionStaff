@@ -4,7 +4,7 @@
 
 general:
   #The plugin's global prefix
-  prefix: "&#5831F5&lAxionStaff &8» "
+  prefix: "&#8727F5&lAxionStaff &8» "
   #Check for updates on startup and every hour?
   update-check: true
   #Send anonymous usage metrics to bStats?

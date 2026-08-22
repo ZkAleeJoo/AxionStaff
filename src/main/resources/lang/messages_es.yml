@@ -19,7 +19,7 @@ messages:
   staff-take-success: "&#00E676&l✔ &#E0E0E0Se han eliminado &#FFFFFF{amount} &#E0E0E0sanciones de tipo &#FFD700{type} &#E0E0E0a &#FFD700{target}."
   take-number-invalid: "&#FF3333&l✖ &#FF5555La cantidad debe ser un número válido."
   player-no-history: "&#FF5555Ese jugador no tiene historial de sanciones."
-  command-help-title: "&#5831F5&lAxionStaff &#E0E0E0Lista de Comandos: &#FFFFFF{version}"
+  command-help-title: "&#8727F5&lAxionStaff &#E0E0E0Lista de Comandos: &#FFFFFF{version}"
   command-help-list:
     - 'https://docs.maxking.lat/maxstaff/' 
   update-available: "&f&lNUEVA VERSION: &7{version}"

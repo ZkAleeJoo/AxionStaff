@@ -287,7 +287,6 @@ public final class PluginCommandController {
             plugin.getLogger().warning(
                     "No commands were registered from plugin.yml. If commands do not work, ensure the server loaded the correct plugin jar and that plugin.yml is valid.");
         } else if (plugin.getMainConfigManager() != null && plugin.getMainConfigManager().isUpdateCheckEnabled()) {
-            // Keep this log at FINE to avoid clutter unless the server enables fine logging.
             plugin.getLogger().fine("Loaded " + declaredCommands.size() + " command(s) from plugin.yml.");
         }
     }
@@ -402,4 +401,3 @@ public final class PluginCommandController {
         return null;
     }
 }
-

@@ -124,7 +124,8 @@ public abstract class AbstractPunishmentManager implements IPunishmentManager {
         if (staff instanceof Player) {
             org.bukkit.Location staffLoc = ((Player) staff).getLocation();
             if (staffLoc != null) {
-                ((Player) staff).playSound(staffLoc, Objects.requireNonNull(Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR), 1.0f, 0.5f);
+                ((Player) staff).playSound(staffLoc, Objects.requireNonNull(Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR), 1.0f,
+                        0.5f);
             }
         }
 
@@ -182,7 +183,8 @@ public abstract class AbstractPunishmentManager implements IPunishmentManager {
         if (staff instanceof Player) {
             org.bukkit.Location staffLoc = ((Player) staff).getLocation();
             if (staffLoc != null) {
-                ((Player) staff).playSound(staffLoc, Objects.requireNonNull(Sound.ENTITY_LIGHTNING_BOLT_THUNDER), 0.6f, 1.0f);
+                ((Player) staff).playSound(staffLoc, Objects.requireNonNull(Sound.ENTITY_LIGHTNING_BOLT_THUNDER), 0.6f,
+                        1.0f);
             }
         }
 
@@ -273,7 +275,8 @@ public abstract class AbstractPunishmentManager implements IPunishmentManager {
                 if (staff instanceof Player) {
                     org.bukkit.Location staffLoc = ((Player) staff).getLocation();
                     if (staffLoc != null) {
-                        ((Player) staff).playSound(staffLoc, Objects.requireNonNull(Sound.BLOCK_ANVIL_LAND), 0.8f, 1.2f);
+                        ((Player) staff).playSound(staffLoc, Objects.requireNonNull(Sound.BLOCK_ANVIL_LAND), 0.8f,
+                                1.2f);
                     }
                 }
 
@@ -453,7 +456,8 @@ public abstract class AbstractPunishmentManager implements IPunishmentManager {
             plugin.getLogger().warning("/ban-ip could not find a cached IP for target " + target + ".");
             if (!silent) {
                 staff.sendMessage(
-                        prefixed(cfg().getMsgNoIPFound() + " \u00a77(Target: \u00a7f" + target + "\u00a77) \u00a7cUsa IP literal."));
+                        prefixed(cfg().getMsgNoIPFound() + " \u00a77(Target: \u00a7f" + target
+                                + "\u00a77) \u00a7cUsa IP literal."));
             }
             return;
         }
@@ -583,4 +587,3 @@ public abstract class AbstractPunishmentManager implements IPunishmentManager {
         }
     }
 }
-

@@ -43,11 +43,11 @@ public class CommandBlockListener implements Listener {
         return plugin.isModuleEnabled("staff-mode")
                 && plugin.getStaffManager() != null
                 && plugin.getStaffManager().isInStaffMode(player)
-                && CommandBlockPolicy.isBlocked(command, plugin.getMainConfigManager().getStaffModeBlacklistedCommands());
+                && CommandBlockPolicy.isBlocked(command,
+                        plugin.getMainConfigManager().getStaffModeBlacklistedCommands());
     }
 
     private void sendBlockedMessage(Player player, String message) {
         player.sendMessage(MessageUtils.getColoredMessage(plugin.getMainConfigManager().getPrefix() + message));
     }
 }
-

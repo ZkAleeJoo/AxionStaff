@@ -20,13 +20,15 @@ public class ChatCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!sender.hasPermission("AxionStaff.chat.admin")) {
-            sender.sendMessage(MessageUtils.getColoredMessage(plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getNoPermission()));
+        if (!sender.hasPermission("axionstaff.chat.admin")) {
+            sender.sendMessage(MessageUtils.getColoredMessage(
+                    plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getNoPermission()));
             return true;
         }
 
         if (args.length < 1) {
-            sender.sendMessage(MessageUtils.getColoredMessage(plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getMsgChatUsage()));
+            sender.sendMessage(MessageUtils.getColoredMessage(
+                    plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getMsgChatUsage()));
             return true;
         }
 
@@ -35,15 +37,15 @@ public class ChatCommand implements CommandExecutor, TabCompleter {
         if (sub.equals("clear")) {
             plugin.getChatManager().clearChat(sender);
             plugin.getDiscordManager().sendWebhook("chat_clear", null, sender.getName(), null, null, null);
-        } 
-        else if (sub.equals("mute")) {
+        } else if (sub.equals("mute")) {
             boolean currentStatus = plugin.getChatManager().isGlobalMute();
 
             plugin.getChatManager().setGlobalMute(!currentStatus);
-            
-            String msg = (!currentStatus ? plugin.getMainConfigManager().getMsgGlobalMuteEnabled() : plugin.getMainConfigManager().getMsgGlobalMuteDisabled())
+
+            String msg = (!currentStatus ? plugin.getMainConfigManager().getMsgGlobalMuteEnabled()
+                    : plugin.getMainConfigManager().getMsgGlobalMuteDisabled())
                     .replace("{player}", sender.getName());
-            
+
             MessageUtils.broadcastToPlayersOnly(plugin.getMainConfigManager().getPrefix() + msg);
 
             String type = !currentStatus ? "chat_mute" : "chat_unmute";

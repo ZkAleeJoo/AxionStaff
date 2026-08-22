@@ -35,13 +35,13 @@ public class PunishmentCommand implements CommandExecutor, TabCompleter {
 
         String permission;
         if (baseLabel.equals("history")) {
-            permission = "AxionStaff.history";
+            permission = "axionstaff.history";
         } else if (baseLabel.equals("ban-ip")) {
-            permission = "AxionStaff.punish.banip";
+            permission = "axionstaff.punish.banip";
         } else if (baseLabel.equals("unban-ip")) {
-            permission = "AxionStaff.punish.unbanip";
+            permission = "axionstaff.punish.unbanip";
         } else {
-            permission = "AxionStaff.punish." + baseLabel;
+            permission = "axionstaff.punish." + baseLabel;
         }
 
         if (!CommandContextUtil.hasPermissionOrAdmin(sender, permission)) {
@@ -112,7 +112,7 @@ public class PunishmentCommand implements CommandExecutor, TabCompleter {
             if (looksLikeDurationAttempt && !looksLikeTime) {
                 sender.sendMessage(MessageUtils.getColoredMessage(
                         plugin.getMainConfigManager().getPrefix()
-                                + "&cFormato de duración inválido. Usa: &e<numero><s|m|h|d|w> &co &eperm/permanent/permanentemente"));
+                                + "&cInvalid duration format. Use: &e<number><s|m|h|d|w> &cor &eperm/permanent"));
                 return true;
             }
 
@@ -159,10 +159,10 @@ public class PunishmentCommand implements CommandExecutor, TabCompleter {
             baseLabel = "ban-ip";
 
         String permission = switch (baseLabel) {
-            case "history" -> "AxionStaff.history";
-            case "ban-ip" -> "AxionStaff.punish.banip";
-            case "unban-ip" -> "AxionStaff.punish.unbanip";
-            default -> "AxionStaff.punish." + baseLabel;
+            case "history" -> "axionstaff.history";
+            case "ban-ip" -> "axionstaff.punish.banip";
+            case "unban-ip" -> "axionstaff.punish.unbanip";
+            default -> "axionstaff.punish" + baseLabel;
         };
 
         if (!CommandContextUtil.hasPermissionOrAdmin(sender, permission))
@@ -215,4 +215,3 @@ public class PunishmentCommand implements CommandExecutor, TabCompleter {
         return false;
     }
 }
-

@@ -35,14 +35,13 @@ public final class CommandContextUtil {
     }
 
     public static boolean hasPermissionOrAdmin(CommandSender sender, String permission) {
-        return sender.hasPermission("AxionStaff.admin") || sender.hasPermission(permission);
+        return sender.hasPermission("axionstaff.admin") || sender.hasPermission(permission);
     }
 
     public static void sendPrefixed(CommandSender sender, String message) {
         sender.sendMessage(MessageUtils.getColoredMessage(message));
     }
 
-    @SuppressWarnings("null")
     public static List<String> filterOnlinePlayerNamesByPrefix(String prefix) {
         if (prefix == null) {
             return Collections.emptyList();

@@ -21,7 +21,7 @@ public class VanishCommand implements CommandExecutor {
             return true;
         }
 
-        if (!CommandContextUtil.requirePermission(player, "AxionStaff.vanish", plugin.getMainConfigManager())) {
+        if (!CommandContextUtil.requirePermission(player, "axionstaff.vanish", plugin.getMainConfigManager())) {
             return true;
         }
 

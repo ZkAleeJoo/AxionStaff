@@ -42,4 +42,3 @@ public class PlayerQuitListener implements Listener {
         clearSessionState.run();
     }
 }
-

@@ -4,7 +4,7 @@ import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter; 
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.zkaleejoo.AxionStaff;
 import org.zkaleejoo.utils.MessageUtils;
@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GameModeCommand implements CommandExecutor, TabCompleter { 
+public class GameModeCommand implements CommandExecutor, TabCompleter {
 
     private final AxionStaff plugin;
 
@@ -24,13 +24,15 @@ public class GameModeCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(MessageUtils.getColoredMessage(plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getMsgConsole()));
+            sender.sendMessage(MessageUtils.getColoredMessage(
+                    plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getMsgConsole()));
             return true;
         }
 
         Player player = (Player) sender;
-        if (!player.hasPermission("AxionStaff.gamemode")) {
-            player.sendMessage(MessageUtils.getColoredMessage(plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getNoPermission()));
+        if (!player.hasPermission("axionstaff.gamemode")) {
+            player.sendMessage(MessageUtils.getColoredMessage(
+                    plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getNoPermission()));
             return true;
         }
 
@@ -38,36 +40,51 @@ public class GameModeCommand implements CommandExecutor, TabCompleter {
             if (plugin.getMainConfigManager().isGmMenuEnabled()) {
                 plugin.getGuiManager().openGameModeMenu(player);
             } else {
-                player.sendMessage(MessageUtils.getColoredMessage(plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getGmUse()));
+                player.sendMessage(MessageUtils.getColoredMessage(
+                        plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getGmUse()));
             }
             return true;
         }
 
         GameMode mode = matchGameMode(args[0]);
         if (mode == null) {
-            player.sendMessage(MessageUtils.getColoredMessage(plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getGmModeInvalid()));
+            player.sendMessage(MessageUtils.getColoredMessage(
+                    plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getGmModeInvalid()));
             return true;
         }
 
         player.setGameMode(mode);
-        
+
         if (plugin.getStaffManager().isInStaffMode(player)) {
             plugin.getStaffManager().updateSavedGameMode(player, mode);
         }
 
-        player.sendMessage(MessageUtils.getColoredMessage(plugin.getMainConfigManager().getPrefix() + 
-            plugin.getMainConfigManager().getGuiGmFeedback().replace("{mode}", mode.name())));
-        
+        player.sendMessage(MessageUtils.getColoredMessage(plugin.getMainConfigManager().getPrefix() +
+                plugin.getMainConfigManager().getGuiGmFeedback().replace("{mode}", mode.name())));
+
         return true;
     }
 
     private GameMode matchGameMode(String arg) {
         switch (arg.toLowerCase()) {
-            case "0": case "survival": case "s": return GameMode.SURVIVAL;
-            case "1": case "creative": case "c": return GameMode.CREATIVE;
-            case "2": case "adventure": case "a": return GameMode.ADVENTURE;
-            case "3": case "spectator": case "sp": return GameMode.SPECTATOR;
-            default: return null;
+            case "0":
+            case "survival":
+            case "s":
+                return GameMode.SURVIVAL;
+            case "1":
+            case "creative":
+            case "c":
+                return GameMode.CREATIVE;
+            case "2":
+            case "adventure":
+            case "a":
+                return GameMode.ADVENTURE;
+            case "3":
+            case "spectator":
+            case "sp":
+                return GameMode.SPECTATOR;
+            default:
+                return null;
         }
     }
 

@@ -228,7 +228,7 @@ public class MainConfigManager {
         langFile.registerConfig();
         FileConfiguration lang = langFile.getConfig();
 
-        prefix = config.getString("general.prefix", "&#5831F5&lAxionStaff &8» ");
+        prefix = config.getString("general.prefix", "&#8727F5&lAxionStaff &8» ");
         updateCheckEnabled = config.getBoolean("general.update-check", true);
         bStatsEnabled = config.getBoolean("general.bstats", true);
         modules = loadModules(config);
@@ -2912,4 +2912,3 @@ public class MainConfigManager {
         return Material.matchMaterial(matName != null ? matName : "PAPER");
     }
 }
-

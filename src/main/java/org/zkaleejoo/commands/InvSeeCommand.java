@@ -42,7 +42,7 @@ public class InvSeeCommand implements CommandExecutor, TabCompleter {
             return true;
         }
 
-        boolean canViewInventory = staff.hasPermission("AxionStaff.invsee");
+        boolean canViewInventory = staff.hasPermission("axionstaff.invsee");
         boolean canEditOnlineInventory = canViewInventory;
         if (!canViewInventory && !canEditOnlineInventory) {
             staff.sendMessage(MessageUtils.getColoredMessage(config.getPrefix() + config.getNoPermission()));
@@ -142,7 +142,7 @@ public class InvSeeCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        if (!sender.hasPermission("AxionStaff.invsee") && !sender.hasPermission("AxionStaff.revive")) {
+        if (!sender.hasPermission("axionstaff.invsee") && !sender.hasPermission("axionstaff.revive")) {
             return Collections.emptyList();
         }
 
@@ -153,4 +153,3 @@ public class InvSeeCommand implements CommandExecutor, TabCompleter {
         return CommandContextUtil.filterOnlinePlayerNamesByPrefix(args[0]);
     }
 }
-

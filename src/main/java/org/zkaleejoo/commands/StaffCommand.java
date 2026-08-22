@@ -21,12 +21,12 @@ public class StaffCommand implements CommandExecutor {
             return true;
         }
 
-        if (!CommandContextUtil.requirePermission(player, "AxionStaff.command.staff", plugin.getMainConfigManager())) {
+        if (!CommandContextUtil.requirePermission(player, "axionstaff.command.staff", plugin.getMainConfigManager())) {
             return true;
         }
 
-        plugin.getStaffManager().toggleStaffMode(player); 
-        
+        plugin.getStaffManager().toggleStaffMode(player);
+
         return true;
     }
 }

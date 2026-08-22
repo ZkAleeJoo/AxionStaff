@@ -28,31 +28,35 @@ public class SanctionCommand implements CommandExecutor, TabCompleter {
         }
 
         if (args.length < 1) {
-            staff.sendMessage(MessageUtils.getColoredMessage(plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getCommandSanctionUse()));
+            staff.sendMessage(MessageUtils.getColoredMessage(
+                    plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getCommandSanctionUse()));
             return true;
         }
 
         if (args[0].equalsIgnoreCase("list")) {
-            if (!CommandContextUtil.requirePermission(staff, "AxionStaff.sanctions.list", plugin.getMainConfigManager())) {
+            if (!CommandContextUtil.requirePermission(staff, "axionstaff.sanctions.list",
+                    plugin.getMainConfigManager())) {
                 return true;
             }
             plugin.getGuiManager().openActivePunishmentsMenu(staff);
             return true;
         }
 
-        if (!CommandContextUtil.requirePermission(staff, "AxionStaff.punish", plugin.getMainConfigManager())) {
+        if (!CommandContextUtil.requirePermission(staff, "axionstaff.punish", plugin.getMainConfigManager())) {
             return true;
         }
 
         Player target = Bukkit.getPlayer(args[0]);
 
         if (target == null) {
-            staff.sendMessage(MessageUtils.getColoredMessage(plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getMsgOffline()));
+            staff.sendMessage(MessageUtils.getColoredMessage(
+                    plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getMsgOffline()));
             return true;
         }
 
         if (target.equals(staff)) {
-            staff.sendMessage(MessageUtils.getColoredMessage(plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getCommandSanctionSelf()));
+            staff.sendMessage(MessageUtils.getColoredMessage(plugin.getMainConfigManager().getPrefix()
+                    + plugin.getMainConfigManager().getCommandSanctionSelf()));
             return true;
         }
 
@@ -64,10 +68,10 @@ public class SanctionCommand implements CommandExecutor, TabCompleter {
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 1) {
             List<String> completions = new ArrayList<>();
-            if (CommandContextUtil.hasPermissionOrAdmin(sender, "AxionStaff.sanctions.list")) {
+            if (CommandContextUtil.hasPermissionOrAdmin(sender, "axionstaff.sanctions.list")) {
                 completions.add("list");
             }
-            if (CommandContextUtil.hasPermissionOrAdmin(sender, "AxionStaff.punish")) {
+            if (CommandContextUtil.hasPermissionOrAdmin(sender, "axionstaff.punish")) {
                 completions.addAll(CommandContextUtil.filterOnlinePlayerNamesByPrefix(args[0]));
             }
             String prefix = args[0].toLowerCase();
@@ -78,4 +82,3 @@ public class SanctionCommand implements CommandExecutor, TabCompleter {
         return new ArrayList<>();
     }
 }
-

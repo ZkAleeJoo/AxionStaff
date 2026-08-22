@@ -19,7 +19,7 @@ messages:
   staff-take-success: "&#00E676&l✔ &#E0E0E0They have been removed &#FFFFFF{amount} &#E0E0E0sanctions of the type &#FFD700{type} &#E0E0E0to &#FFD700{target}."
   take-number-invalid: "&#FF3333&l✖ &#FF5555The quantity must be a valid number."
   player-no-history: "&#FF5555That player has no punishment history."
-  command-help-title: "&#5831F5&lAxionStaff &#E0E0E0Commands List: &#FFFFFF{version}"
+  command-help-title: "&#8727F5&lAxionStaff &#E0E0E0Commands List: &#FFFFFF{version}"
   command-help-list: 
     - '&#555555> &#FFFFFFhttps://docs.maxking.lat/en/maxstaff/'
   update-available: "&f&lNEW VERSION: &7{version}"

@@ -43,7 +43,6 @@ public class GuiListener implements Listener {
     private final NamespacedKey reviveTargetKey;
     private final NamespacedKey targetPlayerKey;
 
-    /** Active bidirectional sync sessions keyed by the staff player's UUID. */
     private final Map<UUID, InvSeeSyncTask> activeSyncSessions = new ConcurrentHashMap<>();
 
     public GuiListener(AxionStaff plugin) {
@@ -349,12 +348,12 @@ public class GuiListener implements Listener {
         if (mat == config.getGuiInfoActionMat()) {
             plugin.getGuiManager().openSanctionMenu(player, targetName);
         } else if (mat == config.getGuiInfoHistoryMat()) {
-            if (checkPerm(player, "AxionStaff.history"))
+            if (checkPerm(player, "axionstaff.history"))
                 plugin.getGuiManager().openHistoryMenu(player, targetName);
         } else if (mat == config.getGuiInfoAltsMat()) {
             Player target = Bukkit.getPlayer(targetName);
-            if (target != null && target.hasPermission("AxionStaff.alts.protected")
-                    && !player.hasPermission("AxionStaff.alts.override")) {
+            if (target != null && target.hasPermission("axionstaff.alts.protected")
+                    && !player.hasPermission("axionstaff.alts.override")) {
                 player.sendMessage(MessageUtils.getColoredMessage(config.getPrefix()
                         + config.getAltsProtectedMessage().replace("{target}", target.getName())));
                 return;
@@ -366,7 +365,7 @@ public class GuiListener implements Listener {
             Player target = Bukkit.getPlayer(targetName);
             if (target != null) {
                 clickSound(player, Sound.BLOCK_CHEST_OPEN);
-                boolean editable = player.hasPermission("AxionStaff.revive");
+                boolean editable = player.hasPermission("axionstaff.revive");
                 Inventory inspection = Objects.requireNonNull(InspectionInventoryBuilder.createOnlineInspection(
                         "INSPECT_ONLINE",
                         target,
@@ -489,13 +488,13 @@ public class GuiListener implements Listener {
             Optional.ofNullable(Bukkit.getPlayer(targetName))
                     .ifPresent(target -> plugin.getGuiManager().openUserInfoMenu(player, target));
         } else if (mat == Material.IRON_SWORD) {
-            if (checkPerm(player, "AxionStaff.punish.ban"))
+            if (checkPerm(player, "axionstaff.punish.ban"))
                 plugin.getGuiManager().openReasonsMenu(player, targetName, "BAN", 0);
         } else if (mat == Material.PAPER) {
-            if (checkPerm(player, "AxionStaff.punish.mute"))
+            if (checkPerm(player, "axionstaff.punish.mute"))
                 plugin.getGuiManager().openReasonsMenu(player, targetName, "MUTE", 0);
         } else if (mat == Material.FEATHER) {
-            if (checkPerm(player, "AxionStaff.punish.kick"))
+            if (checkPerm(player, "axionstaff.punish.kick"))
                 plugin.getGuiManager().openReasonsMenu(player, targetName, "KICK", 0);
         }
     }
@@ -536,7 +535,7 @@ public class GuiListener implements Listener {
                     return;
                 }
 
-                if (!checkPerm(player, "AxionStaff.punish." + type.toLowerCase())) {
+                if (!checkPerm(player, "axionstaff.punish." + type.toLowerCase())) {
                     player.closeInventory();
                     return;
                 }
@@ -570,7 +569,7 @@ public class GuiListener implements Listener {
         int page = (int) holder.getData("page");
 
         if ("confirm_yes".equals(action)) {
-            if (!checkPerm(player, "AxionStaff.punish." + type.toLowerCase())) {
+            if (!checkPerm(player, "axionstaff.punish." + type.toLowerCase())) {
                 player.closeInventory();
                 return;
             }
@@ -665,7 +664,8 @@ public class GuiListener implements Listener {
         }
     }
 
-    private void handlePermissionsMenu(Player player, ItemStack item, AxionStaffHolder holder, MainConfigManager config) {
+    private void handlePermissionsMenu(Player player, ItemStack item, AxionStaffHolder holder,
+            MainConfigManager config) {
         String targetName = holder.getTargetName();
         int page = (int) holder.getData("page");
 
@@ -837,4 +837,3 @@ public class GuiListener implements Listener {
         return false;
     }
 }
-

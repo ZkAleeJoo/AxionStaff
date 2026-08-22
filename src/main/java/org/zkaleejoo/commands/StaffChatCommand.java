@@ -10,7 +10,7 @@ import org.zkaleejoo.utils.MessageUtils;
 
 public class StaffChatCommand implements CommandExecutor {
 
-    private static final String STAFF_CHAT_PERMISSION = "AxionStaff.staffchat";
+    private static final String STAFF_CHAT_PERMISSION = "axionstaff.staffchat";
 
     private final AxionStaff plugin;
 
@@ -22,27 +22,24 @@ public class StaffChatCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!sender.hasPermission(STAFF_CHAT_PERMISSION)) {
             sender.sendMessage(MessageUtils.getColoredMessage(
-                plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getNoPermission()
-            ));
+                    plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getNoPermission()));
             return true;
         }
 
         if (args.length == 0) {
             if (!(sender instanceof Player player)) {
                 sender.sendMessage(MessageUtils.getColoredMessage(
-                    plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getChatStaffUse()
-                ));
+                        plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getChatStaffUse()));
                 return true;
             }
 
             boolean enabled = plugin.toggleStaffChat(player.getUniqueId());
             String feedback = enabled
-                ? plugin.getMainConfigManager().getStaffChatToggleOn()
-                : plugin.getMainConfigManager().getStaffChatToggleOff();
+                    ? plugin.getMainConfigManager().getStaffChatToggleOn()
+                    : plugin.getMainConfigManager().getStaffChatToggleOff();
 
             player.sendMessage(MessageUtils.getColoredMessage(
-                plugin.getMainConfigManager().getPrefix() + feedback
-            ));
+                    plugin.getMainConfigManager().getPrefix() + feedback));
             return true;
         }
 
@@ -54,13 +51,14 @@ public class StaffChatCommand implements CommandExecutor {
 
     public void sendStaffMessage(CommandSender sender, String message) {
         String formattedMessage = plugin.getMainConfigManager().getStaffChatFormat()
-            .replace("{player}", sender.getName())
-            .replace("{message}", message);
+                .replace("{player}", sender.getName())
+                .replace("{message}", message);
 
         String coloredMessage = MessageUtils.getColoredMessage(formattedMessage);
 
         for (Player online : Bukkit.getOnlinePlayers()) {
-            if (online == null) continue;
+            if (online == null)
+                continue;
             if (online.hasPermission(STAFF_CHAT_PERMISSION)) {
                 online.sendMessage(coloredMessage);
             }

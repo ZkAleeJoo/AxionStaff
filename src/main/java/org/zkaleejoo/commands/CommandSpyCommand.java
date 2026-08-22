@@ -21,7 +21,7 @@ public class CommandSpyCommand implements CommandExecutor {
             return true;
         }
 
-        if (!CommandContextUtil.requirePermission(player, "AxionStaff.cmdspy", plugin.getMainConfigManager())) {
+        if (!CommandContextUtil.requirePermission(player, "axionstaff.cmdspy", plugin.getMainConfigManager())) {
             return true;
         }
 

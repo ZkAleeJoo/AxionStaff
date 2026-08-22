@@ -22,13 +22,14 @@ public class XrayCommand implements CommandExecutor {
             return true;
         }
 
-        if (!CommandContextUtil.requirePermission(player, "AxionStaff.antixray.alert", plugin.getMainConfigManager())) {
+        if (!CommandContextUtil.requirePermission(player, "axionstaff.antixray.alert", plugin.getMainConfigManager())) {
             return true;
         }
 
         if (!plugin.getMainConfigManager().isAntiXrayEnabled() || plugin.getAntiXrayListener() == null) {
             player.sendMessage(org.zkaleejoo.utils.MessageUtils.getColoredMessage(
-                    plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getAntiXrayMenuDisabledMessage()));
+                    plugin.getMainConfigManager().getPrefix()
+                            + plugin.getMainConfigManager().getAntiXrayMenuDisabledMessage()));
             return true;
         }
 
@@ -36,4 +37,3 @@ public class XrayCommand implements CommandExecutor {
         return true;
     }
 }
-

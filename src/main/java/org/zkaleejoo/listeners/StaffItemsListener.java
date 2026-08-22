@@ -120,9 +120,13 @@ public class StaffItemsListener implements Listener {
 
                     if (thruLoc != null) {
                         FoliaCompat.teleport(player, thruLoc);
-                        Location _loc = player.getLocation(); if (_loc != null) player.playSound(_loc, Objects.requireNonNull(Sound.ENTITY_ENDERMAN_TELEPORT), 1.0f, 1.0f);
+                        Location _loc = player.getLocation();
+                        if (_loc != null)
+                            player.playSound(_loc, Objects.requireNonNull(Sound.ENTITY_ENDERMAN_TELEPORT), 1.0f, 1.0f);
                     } else {
-                        Location _loc2 = player.getLocation(); if (_loc2 != null) player.playSound(_loc2, Objects.requireNonNull(Sound.BLOCK_NOTE_BLOCK_BASS), 0.9f, 0.5f);
+                        Location _loc2 = player.getLocation();
+                        if (_loc2 != null)
+                            player.playSound(_loc2, Objects.requireNonNull(Sound.BLOCK_NOTE_BLOCK_BASS), 0.9f, 0.5f);
                     }
                 }
                 return;
@@ -136,7 +140,9 @@ public class StaffItemsListener implements Listener {
                 } else if (toolType.equals("players_tool")) {
                     event.setCancelled(true);
                     plugin.getGuiManager().openPlayersMenu(player);
-                    Location _loc3 = player.getLocation(); if (_loc3 != null) player.playSound(_loc3, Objects.requireNonNull(Sound.BLOCK_NOTE_BLOCK_CHIME), 1.0f, 1.0f);
+                    Location _loc3 = player.getLocation();
+                    if (_loc3 != null)
+                        player.playSound(_loc3, Objects.requireNonNull(Sound.BLOCK_NOTE_BLOCK_CHIME), 1.0f, 1.0f);
                     player.sendMessage(MessageUtils.getColoredMessage(config.getPrefix() + config.getMsgPlayers()));
                 } else if (toolType.equals("random_tp_tool")) {
                     event.setCancelled(true);
@@ -146,16 +152,21 @@ public class StaffItemsListener implements Listener {
                             .toList();
 
                     if (candidates.isEmpty()) {
-                        Location _loc2 = player.getLocation(); if (_loc2 != null) player.playSound(_loc2, Objects.requireNonNull(Sound.BLOCK_NOTE_BLOCK_BASS), 0.9f, 0.5f);
+                        Location _loc2 = player.getLocation();
+                        if (_loc2 != null)
+                            player.playSound(_loc2, Objects.requireNonNull(Sound.BLOCK_NOTE_BLOCK_BASS), 0.9f, 0.5f);
                         player.sendMessage(
                                 MessageUtils.getColoredMessage(config.getPrefix() + config.getMsgRandomTpNoTargets()));
                         return;
                     }
 
                     Player target = candidates.get(ThreadLocalRandom.current().nextInt(candidates.size()));
-                    if (target == null) return;
+                    if (target == null)
+                        return;
                     FoliaCompat.teleport(player, target.getLocation());
-                    Location _loc = player.getLocation(); if (_loc != null) player.playSound(_loc, Objects.requireNonNull(Sound.ENTITY_ENDERMAN_TELEPORT), 1.0f, 1.0f);
+                    Location _loc = player.getLocation();
+                    if (_loc != null)
+                        player.playSound(_loc, Objects.requireNonNull(Sound.ENTITY_ENDERMAN_TELEPORT), 1.0f, 1.0f);
                     player.sendMessage(MessageUtils.getColoredMessage(
                             config.getPrefix() + config.getMsgRandomTp().replace("{player}", target.getName())));
                 } else if (toolType.equals("wall_compass_tool")) {
@@ -167,18 +178,24 @@ public class StaffItemsListener implements Listener {
                     Block targetBlock = player.getTargetBlockExact(maxDistance);
 
                     if (targetBlock == null) {
-                        Location _loc2 = player.getLocation(); if (_loc2 != null) player.playSound(_loc2, Objects.requireNonNull(Sound.BLOCK_NOTE_BLOCK_BASS), 0.9f, 0.5f);
+                        Location _loc2 = player.getLocation();
+                        if (_loc2 != null)
+                            player.playSound(_loc2, Objects.requireNonNull(Sound.BLOCK_NOTE_BLOCK_BASS), 0.9f, 0.5f);
                         return;
                     }
 
                     Location destination = findSafeTopLocation(targetBlock, player.getLocation());
                     if (destination == null) {
-                        Location _loc6 = player.getLocation(); if (_loc6 != null) player.playSound(_loc6, Objects.requireNonNull(Sound.BLOCK_NOTE_BLOCK_BASS), 0.9f, 0.5f);
+                        Location _loc6 = player.getLocation();
+                        if (_loc6 != null)
+                            player.playSound(_loc6, Objects.requireNonNull(Sound.BLOCK_NOTE_BLOCK_BASS), 0.9f, 0.5f);
                         return;
                     }
 
                     FoliaCompat.teleport(player, destination);
-                    Location _loc = player.getLocation(); if (_loc != null) player.playSound(_loc, Objects.requireNonNull(Sound.ENTITY_ENDERMAN_TELEPORT), 1.0f, 1.0f);
+                    Location _loc = player.getLocation();
+                    if (_loc != null)
+                        player.playSound(_loc, Objects.requireNonNull(Sound.ENTITY_ENDERMAN_TELEPORT), 1.0f, 1.0f);
                 } else if (toolType.equals("punish_tool")) {
                     event.setCancelled(true);
                     org.bukkit.util.RayTraceResult ray = player.getWorld().rayTraceEntities(
@@ -213,7 +230,9 @@ public class StaffItemsListener implements Listener {
 
                             player.sendMessage(MessageUtils.getColoredMessage(config.getPrefix() +
                                     "&cError: El contenedor ya está siendo inspeccionado por &e" + name));
-                            Location _loc5 = player.getLocation(); if (_loc5 != null) player.playSound(_loc5, Objects.requireNonNull(Sound.ENTITY_VILLAGER_NO), 1.0f, 1.0f);
+                            Location _loc5 = player.getLocation();
+                            if (_loc5 != null)
+                                player.playSound(_loc5, Objects.requireNonNull(Sound.ENTITY_VILLAGER_NO), 1.0f, 1.0f);
                             return;
                         }
 
@@ -577,4 +596,3 @@ public class StaffItemsListener implements Listener {
     }
 
 }
-

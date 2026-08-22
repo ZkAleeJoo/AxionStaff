@@ -9,255 +9,254 @@ commands:
   AxionStaff:
     description: Main AxionStaff command
     aliases: [as]
-    permission: AxionStaff.admin
+    permission: axionstaff.admin
   staff:
     description: Eneable or disable staff mode
     aliases: [s, staffmode] 
-    permission: AxionStaff.command.staff
+    permission: axionstaff.command.staff
   ban:
     description: Ban a player
-    permission: AxionStaff.punish.ban
+    permission: axionstaff.punish.ban
     usage: /ban <player> [time] [reason]
   tempban:
     description: Temporarily ban a player
-    permission: AxionStaff.punish.ban
+    permission: axionstaff.punish.ban
   mute:
     description: Mute a player
-    permission: AxionStaff.punish.mute
+    permission: axionstaff.punish.mute
   tempmute:
     description: Temporarily mute a player
-    permission: AxionStaff.punish.mute
+    permission: axionstaff.punish.mute
   kick:
     description: Kick a player
-    permission: AxionStaff.punish.kick
+    permission: axionstaff.punish.kick
   unban:
     description: Unban a player
-    permission: AxionStaff.punish.unban
+    permission: axionstaff.punish.unban
   unmute:
     description: Unmute a player
-    permission: AxionStaff.punish.unmute
+    permission: axionstaff.punish.unmute
   warn:
     description: Warn a player
-    permission: AxionStaff.punish.warn
+    permission: axionstaff.punish.warn
   history:
     description: View sanction history
-    permission: AxionStaff.history
+    permission: axionstaff.history
   vanish:
     description: Toggle invisibility
-    permission: AxionStaff.vanish
+    permission: axionstaff.vanish
   ban-ip:
     description: Ban IP address
-    permission: AxionStaff.punish.banip
+    permission: axionstaff.punish.banip
   tempban-ip:
     description: Temporarily ban IP address
-    permission: AxionStaff.punish.banip
+    permission: axionstaff.punish.banip
   unban-ip:
     description: Unban IP address
-    permission: AxionStaff.punish.unbanip
+    permission: axionstaff.punish.unbanip
   sc:
     description: Staff chat
     aliases: [staffchat]
-    permission: AxionStaff.staffchat
+    permission: axionstaff.staffchat
   cmdspy:
     description: Spy on commands
-    permission: AxionStaff.cmdspy
+    permission: axionstaff.cmdspy
   chat:
     description: Manage global chat
-    permission: AxionStaff.chat.admin
+    permission: axionstaff.chat.admin
   gamemode:
     description: Gamemode selector
     aliases: [gm]
-    permission: AxionStaff.gamemode
+    permission: axionstaff.gamemode
   alts:
     description: View alt accounts
     aliases: [alt, accs]
-    permission: AxionStaff.alts
+    permission: axionstaff.alts
   sanction:
     description: Advanced sanction menu
   freeze:
     description: Freeze a player
     aliases: [ss]
-    permission: AxionStaff.freeze
+    permission: axionstaff.freeze
   unfreeze:
     description: Unfreeze a player
     aliases: [uss]
-    permission: AxionStaff.freeze
+    permission: axionstaff.freeze
   report:
     description: Report a player
     aliases: [reportar]
-    permission: AxionStaff.report
+    permission: axionstaff.report
   invsee:
     description: View a player inventory in real time
   revive:
     description: Restore inventories from recent player deaths
-    permission: AxionStaff.revive
+    permission: axionstaff.revive
   fly:
     description: Enable or configure staff flight
-    permission: AxionStaff.fly
+    permission: axionstaff.fly
   silent:
     description: Execute punishment commands silently (without broadcast/chat messages)
-    permission: AxionStaff.punish.silent
+    permission: axionstaff.punish.silent
   xray:
     description: Open the AntiXray suspects menu
-    permission: AxionStaff.antixray.alert
+    permission: axionstaff.antixray.alert
     
 permissions:
-  AxionStaff.admin:
+  axionstaff.admin:
     description: Full access to AxionStaff and administrative commands.
     default: op
     children:
-      AxionStaff.mode: true
-      AxionStaff.punish.ban: true
-      AxionStaff.punish.mute: true 
-      AxionStaff.punish.kick: true
-      AxionStaff.punish.warn: true
-      AxionStaff.punish.unban: true
-      AxionStaff.punish.unmute: true
-      AxionStaff.see.vanish: true
-      AxionStaff.history: true
-      AxionStaff.vanish: true
-      AxionStaff.punish.banip: true
-      AxionStaff.punish.unbanip: true
-      AxionStaff.staffchat: true
-      AxionStaff.cmdspy: true
-      AxionStaff.cmdspy.raw: true
-      AxionStaff.cmdspy.raw.owners: true
-      AxionStaff.chat.admin: true
-      AxionStaff.gamemode: true
-      AxionStaff.alts: true
-      AxionStaff.punish: true
-      AxionStaff.freeze: true
-      AxionStaff.command.staff: true
-      AxionStaff.report: true
-      AxionStaff.report.notify: true
-      AxionStaff.report.bypass: true
-      AxionStaff.invsee: true
-      AxionStaff.revive: true
-      AxionStaff.fly: true
-      AxionStaff.punish.override: true
-      AxionStaff.alts.override: true
-      AxionStaff.client.notify: true
-      AxionStaff.antixray.alert: true
-      AxionStaff.antixray.bypass: true
-      AxionStaff.punish.silent: true
-      AxionStaff.sanctions.list: true
-  AxionStaff.punish.ban:
+      axionstaff.mode: true
+      axionstaff.punish.ban: true
+      axionstaff.punish.mute: true 
+      axionstaff.punish.kick: true
+      axionstaff.punish.warn: true
+      axionstaff.punish.unban: true
+      axionstaff.punish.unmute: true
+      axionstaff.see.vanish: true
+      axionstaff.history: true
+      axionstaff.vanish: true
+      axionstaff.punish.banip: true
+      axionstaff.punish.unbanip: true
+      axionstaff.staffchat: true
+      axionstaff.cmdspy: true
+      axionstaff.cmdspy.raw: true
+      axionstaff.cmdspy.raw.owners: true
+      axionstaff.chat.admin: true
+      axionstaff.gamemode: true
+      axionstaff.alts: true
+      axionstaff.punish: true
+      axionstaff.freeze: true
+      axionstaff.command.staff: true
+      axionstaff.report: true
+      axionstaff.report.notify: true
+      axionstaff.report.bypass: true
+      axionstaff.invsee: true
+      axionstaff.revive: true
+      axionstaff.fly: true
+      axionstaff.punish.override: true
+      axionstaff.alts.override: true
+      axionstaff.client.notify: true
+      axionstaff.antixray.alert: true
+      axionstaff.antixray.bypass: true
+      axionstaff.punish.silent: true
+      axionstaff.sanctions.list: true
+  axionstaff.punish.ban:
     description: Allows using /ban and /tempban.
     default: op
-  AxionStaff.punish.mute:
+  axionstaff.punish.mute:
     description: Allows using /mute and /tempmute.
     default: op
-  AxionStaff.punish.kick:
+  axionstaff.punish.kick:
     description: Allows using /kick.
     default: op
-  AxionStaff.punish.warn:
+  axionstaff.punish.warn:
     description: Allows using /warn.
     default: op
-  AxionStaff.punish.unban:
+  axionstaff.punish.unban:
     description: Allows using /unban.
     default: op
-  AxionStaff.punish.unmute:
+  axionstaff.punish.unmute:
     description: Allows using /unmute.
     default: op
-  AxionStaff.mode:
+  axionstaff.mode:
     description: Legacy alias for staff mode permission.
     default: op
     children:
-      AxionStaff.command.staff: true
-  AxionStaff.see.vanish:
+      axionstaff.command.staff: true
+  axionstaff.see.vanish:
     description: Allows seeing other staff members in vanish.
     default: op
-  AxionStaff.history:
+  axionstaff.history:
     description: Allows using /history.
     default: op
-  AxionStaff.vanish:
+  axionstaff.vanish:
     description: Allows using the /vanish command.
     default: op
-  AxionStaff.vanish.join:
+  axionstaff.vanish.join:
     description: Automatically enables vanish when joining a server.
     default: false
-  AxionStaff.punish.banip:
+  axionstaff.punish.banip:
     description: Allows using /ban-ip and /tempban-ip.
     default: op
-  AxionStaff.punish.unbanip:
+  axionstaff.punish.unbanip:
     description: Allows using /unban-ip.
     default: op
-  AxionStaff.staffchat:
+  axionstaff.staffchat:
     description: Allows using and viewing staff chat.
     default: op
-  AxionStaff.cmdspy:
+  axionstaff.cmdspy:
     description: Allows using /cmdspy to spy on commands.
     default: op
-  AxionStaff.cmdspy.raw:
+  axionstaff.cmdspy.raw:
     description: Allows viewing raw sensitive arguments in /cmdspy logs.
     default: false
-  AxionStaff.cmdspy.raw.owners:
+  axionstaff.cmdspy.raw.owners:
     description: Group node for highly restricted staff (e.g. owners) that includes raw cmdspy access.
     default: op
     children:
-      AxionStaff.cmdspy.raw: true
-  AxionStaff.chat.admin:
+      axionstaff.cmdspy.raw: true
+  axionstaff.chat.admin:
     description: Allows muting and clearing global chat.
     default: op
-  AxionStaff.gamemode:
+  axionstaff.gamemode:
     description: Allows using /gm to open the GUI.
     default: op
-  AxionStaff.alts:
+  axionstaff.alts:
     description: Allows using the alt tracking system.
     default: op
-  AxionStaff.punish:
+  axionstaff.punish:
     description: Allows using /sanction to open the advanced sanction menu.
     default: op
-  AxionStaff.sanctions.list:
+  axionstaff.sanctions.list:
     description: Allows using /sanction list to view active bans and mutes.
     default: op
-  AxionStaff.freeze:
+  axionstaff.freeze:
     description: Allows using /freeze and /unfreeze.
     default: op
-  AxionStaff.command.staff:
+  axionstaff.command.staff:
     description: Allows using the /staff command.
     default: op
-  AxionStaff.report:
+  axionstaff.report:
     description: Allows players to use /report.
     default: true
-  AxionStaff.report.notify:
+  axionstaff.report.notify:
     description: Allows staff to receive report notifications.
     default: op
-  AxionStaff.report.bypass:
+  axionstaff.report.bypass:
     description: Allows bypassing report cooldowns.
     default: op
-  AxionStaff.invsee:
+  axionstaff.invsee:
     description: Allows using /invsee.
     default: op
-  AxionStaff.revive:
+  axionstaff.revive:
     description: Allows using /revive to restore death inventories.
     default: op
-  AxionStaff.punish.override:
+  axionstaff.punish.override:
     description: Allows bypassing protected staff sanction checks.
     default: op
-  AxionStaff.punish.protected:
+  axionstaff.punish.protected:
     description: Protects a player from sanctions by lower staff.
     default: false
-  AxionStaff.client.notify:
+  axionstaff.client.notify:
     description: Allows staff to receive player client detection notifications.
     default: op
-  AxionStaff.antixray.alert:
+  axionstaff.antixray.alert:
     description: Allows staff to receive AntiXray mining alerts.
     default: op
-  AxionStaff.antixray.bypass:
+  axionstaff.antixray.bypass:
     description: Prevents AntiXray alerts from being generated by this player.
     default: false
-  AxionStaff.fly:
+  axionstaff.fly:
     description: Allows using /fly with speed levels.
     default: op
-
-  AxionStaff.punish.silent:
+  axionstaff.punish.silent:
     description: Allows using /silent for hidden punishment command execution.
     default: op
-  AxionStaff.alts.override:
+  axionstaff.alts.override:
     description: Allows viewing alts of protected players.
     default: op
-  AxionStaff.alts.protected:
+  axionstaff.alts.protected:
     description: Protects the player's alts from being seen by lower-rank staff.
     default: false
 

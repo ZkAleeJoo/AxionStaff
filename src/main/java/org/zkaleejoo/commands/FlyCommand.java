@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 public class FlyCommand implements CommandExecutor, TabCompleter {
 
-    private static final String FLY_PERMISSION = "AxionStaff.fly";
+    private static final String FLY_PERMISSION = "axionstaff.fly";
     private static final float MIN_FLY_SPEED = 0.1F;
     private static final float MAX_FLY_SPEED = 1.0F;
 

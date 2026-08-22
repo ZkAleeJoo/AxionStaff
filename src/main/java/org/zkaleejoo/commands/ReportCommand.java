@@ -44,7 +44,7 @@ public class ReportCommand implements CommandExecutor, TabCompleter {
             return true;
         }
 
-        if (!reporter.hasPermission("AxionStaff.report")) {
+        if (!reporter.hasPermission("axionstaff.report")) {
             reporter.sendMessage(MessageUtils.getColoredMessage(
                     plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getNoPermission()));
             return true;
@@ -172,7 +172,8 @@ public class ReportCommand implements CommandExecutor, TabCompleter {
                         if (hasHoverLines) {
                             hover = hover.append(Component.newline());
                         }
-                        hover = hover.append(java.util.Objects.requireNonNull(MessageUtils.legacyToComponentNoItalic(parsedHover)));
+                        hover = hover.append(
+                                java.util.Objects.requireNonNull(MessageUtils.legacyToComponentNoItalic(parsedHover)));
                         hasHoverLines = true;
                     }
 
@@ -200,7 +201,6 @@ public class ReportCommand implements CommandExecutor, TabCompleter {
         return true;
     }
 
-    @SuppressWarnings("null")
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 1) {
