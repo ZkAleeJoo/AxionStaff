@@ -118,7 +118,7 @@ public class AxionStaff extends JavaPlugin {
             Bukkit.getConsoleSender().sendMessage(
                     MessageUtils.getColoredMessage("&5&lAxionStaff &8» &fSanctions system loaded: Local (YAML)"));
             Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                    "&5&lAxionStaff &8» &fYAML punishment storage is single-server only. &eNetwork-wide &asynchronization requires &edatabase.enabled=true."));
+                    "&5&lAxionStaff &8» &fYAML punishment storage is single-server only. &fNetwork-wide &asynchronization requires &fdatabase.enabled=true."));
         }
 
         registerCommands();
@@ -126,17 +126,17 @@ public class AxionStaff extends JavaPlugin {
         startUpdateChecks();
 
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&5&lAxionStaff &8» &5   _____         .__                _________ __          _____  _____ "));
+                "&5&lAxionStaff &8» &5&l   _____         .__                _________ __          _____  _____ "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&5&lAxionStaff &8» &5  /  _  \\ ___  __|__| ____   ____  /   _____//  |______ _/ ____\\/ ____\\"));
+                "&5&lAxionStaff &8» &5&l  /  _  \\ ___  __|__| ____   ____  /   _____//  |______ _/ ____\\/ ____\\"));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&5&lAxionStaff &8» &5 /  /_\\  \\\\  \\/  /  |/  _ \\ /    \\ \\_____  \\\\   __\\__  \\\\   __\\\\   __\\ "));
+                "&5&lAxionStaff &8» &5&l /  /_\\  \\\\  \\/  /  |/  _ \\ /    \\ \\_____  \\\\   __\\__  \\\\   __\\\\   __\\ "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&5&lAxionStaff &8» &5/    |    \\>    <|  (  <_> )   |  \\/        \\|  |  / __ \\|  |   |  |   "));
+                "&5&lAxionStaff &8» &5&l/    |    \\>    <|  (  <_> )   |  \\/        \\|  |  / __ \\|  |   |  |   "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&5&lAxionStaff &8» &5\\____|__  /__/\\_ \\__|\\____/|___|  /_______  /|__| (____  /__|   |__|   "));
+                "&5&lAxionStaff &8» &5&l\\____|__  /__/\\_ \\__|\\____/|___|  /_______  /|__| (____  /__|   |__|   "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&5&lAxionStaff &8» &5        \\/      \\/              \\/        \\/           \\/              "));
+                "&5&lAxionStaff &8» &5&l        \\/      \\/              \\/        \\/           \\/              "));
 
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new org.zkaleejoo.placeholders.AxionStaffExpansion(this).register();
@@ -187,7 +187,7 @@ public class AxionStaff extends JavaPlugin {
             if (this.getPluginMeta().getVersion().equalsIgnoreCase(version)) {
                 this.latestVersion = null;
                 Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                        "&#5831F5&lAxionStaff &8» &aA check for updates was performed and nothing was found."));
+                        "&#5831F5&lAxionStaff &8» &fA check for updates was performed and nothing was found."));
             } else {
                 this.latestVersion = version;
 
@@ -196,7 +196,7 @@ public class AxionStaff extends JavaPlugin {
                                 .getColoredMessage("&#5831F5&lAxionStaff &8» &f&lNEW VERSION: &7" + version));
                 Bukkit.getConsoleSender().sendMessage(
                         MessageUtils.getColoredMessage(
-                                "&#5831F5&lAxionStaff &8» &fDownload it now at the following link: &7https://pixeleast.com/product/247263-maxstaff"));
+                                "&#5831F5&lAxionStaff &8» &fDownload it now at the following link: &7https://modrinth.com/plugin/axionstaff"));
             }
         });
     }
