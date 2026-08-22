@@ -1,4 +1,4 @@
-#==========================================
+﻿#==========================================
 #       AxionStaff - Technical Configuration
 #==========================================
 
@@ -272,7 +272,7 @@ staff-mode:
               color: "&6"
             high:
               label: "HIGH"
-              color: "&c"
+              color: "&#441BFA"
           bar:
             # Total segments shown in {risk_bar}
             total-bars: 5
@@ -287,7 +287,7 @@ staff-mode:
           - "&fPlayer: &b{name}"
           - "&fHistory: {risk_bar} &8(&7{total}&8)"
           - "&fRisk: {risk_color}&l{risk_label}"
-          - "&cBans: &f{bans}  &6Mutes: &f{mutes}  &eKicks: &f{kicks}"
+          - "&#441BFABans: &f{bans}  &6Mutes: &f{mutes}  &eKicks: &f{kicks}"
           - "&8&m---------------------------"
     players:
       material: "CLOCK"
@@ -462,7 +462,7 @@ punishment-reasons:
       material: "DIAMOND_ORE"
       durations: ["7d", "14d", "30d", "perm"]
     combat: 
-      name: "&cCombat Hacks"
+      name: "&#441BFACombat Hacks"
       material: "NETHERITE_SWORD"
       durations: ["30d", "60d", "90d", "perm"] 
     movement: 
@@ -482,7 +482,7 @@ punishment-reasons:
       material: "CHEST"
       durations: ["7d", "14d", "30d", "perm"] 
     toxicity: 
-      name: "&4Toxicity"
+      name: "&#441BFAToxicity"
       material: "WITHER_SKELETON_SKULL"
       durations: ["14d", "30d", "perm", "perm"] 
     bugs: 
@@ -511,7 +511,7 @@ punishment-reasons:
       material: "WATER_BUCKET"
       durations: ["15m", "30m", "1h", "12h"] 
     toxic_chat: 
-      name: "&cChat Toxicity"
+      name: "&#441BFAChat Toxicity"
       material: "POISONOUS_POTATO"
       durations: ["1h", "6h", "1d", "7d"] 
     language: 
@@ -548,7 +548,7 @@ punishment-reasons:
       material: "LEATHER_CHESTPLATE"
       durations: ["inst"] 
     bad_behavior: 
-      name: "&cMal Comportamiento"
+      name: "&#441BFAMal Comportamiento"
       material: "BONE"
       durations: ["inst"] 
     trolling: 
