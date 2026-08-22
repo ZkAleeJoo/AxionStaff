@@ -360,4 +360,3 @@ public class DiscordManager {
         discordConfig.reloadConfig();
     }
 }
-
