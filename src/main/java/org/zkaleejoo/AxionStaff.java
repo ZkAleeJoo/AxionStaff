@@ -187,16 +187,16 @@ public class AxionStaff extends JavaPlugin {
             if (this.getPluginMeta().getVersion().equalsIgnoreCase(version)) {
                 this.latestVersion = null;
                 Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                        "&#5831F5&lAxionStaff &8» &fA check for updates was performed and nothing was found."));
+                        "&5&lAxionStaff &8» &fA check for updates was performed and nothing was found."));
             } else {
                 this.latestVersion = version;
 
                 Bukkit.getConsoleSender()
                         .sendMessage(MessageUtils
-                                .getColoredMessage("&#5831F5&lAxionStaff &8» &f&lNEW VERSION: &7" + version));
+                                .getColoredMessage("&5&lAxionStaff &8» &f&lNEW VERSION: &7" + version));
                 Bukkit.getConsoleSender().sendMessage(
                         MessageUtils.getColoredMessage(
-                                "&#5831F5&lAxionStaff &8» &fDownload it now at the following link: &7https://modrinth.com/plugin/axionstaff"));
+                                "&5&lAxionStaff &8» &fDownload it now at the following link: &7https://modrinth.com/plugin/axionstaff"));
             }
         });
     }
