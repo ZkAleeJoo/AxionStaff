@@ -57,7 +57,6 @@ public class ClientTrackerManager implements Listener, PluginMessageListener {
         registerOutgoingChannel(LEGACY_FORGE_ALT_CHANNEL);
     }
 
-    @SuppressWarnings("null")
     public void unregisterChannels() {
         unregisterIncomingChannel(MODERN_CHANNEL);
         unregisterIncomingChannel(LEGACY_CHANNEL);
@@ -132,7 +131,8 @@ public class ClientTrackerManager implements Listener, PluginMessageListener {
         }
 
         int timeoutTicks = Math.max(20, config.getClientTrackerTimeoutTicks());
-        WrappedTask task = FoliaCompat.runForEntityLater(plugin, player, () -> handleUnknownClient(player), timeoutTicks);
+        WrappedTask task = FoliaCompat.runForEntityLater(plugin, player, () -> handleUnknownClient(player),
+                timeoutTicks);
         pendingTimeouts.put(uuid, task);
     }
 
