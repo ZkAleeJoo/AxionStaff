@@ -446,7 +446,6 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
         });
     }
 
-    @SuppressWarnings("null")
     @Override
     public void unbanPlayer(CommandSender staff, String targetName) {
         UUID directUuid = tryParseUuid(targetName);
@@ -503,7 +502,8 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
 
                     staff.sendMessage(prefixed(cfg().getMsgUnbanSuccess().replace("{target}", feedbackTarget)));
                     logStaffPunishment("UNBAN", actor, targetName);
-                    enqueueSyncAction("UNBAN", finalUuid != null ? finalUuid.toString() : null, targetName, null, actor, null,
+                    enqueueSyncAction("UNBAN", finalUuid != null ? finalUuid.toString() : null, targetName, null, actor,
+                            null,
                             SYNC_ACTION_TTL_MS);
                 } else {
                     staff.sendMessage(prefixed("&cThe player &f" + targetName + " &cwas not banned."));
@@ -521,17 +521,20 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
             int ipBansRemoved = 0;
 
             try (Connection conn = db.getConnection()) {
-                try (PreparedStatement ps = conn.prepareStatement("DELETE FROM AxionStaff_bans WHERE expiry <> -1 AND expiry <= ?")) {
+                try (PreparedStatement ps = conn
+                        .prepareStatement("DELETE FROM AxionStaff_bans WHERE expiry <> -1 AND expiry <= ?")) {
                     ps.setLong(1, now);
                     bansRemoved = ps.executeUpdate();
                 }
 
-                try (PreparedStatement ps = conn.prepareStatement("DELETE FROM AxionStaff_mutes WHERE expiry <> -1 AND expiry <= ?")) {
+                try (PreparedStatement ps = conn
+                        .prepareStatement("DELETE FROM AxionStaff_mutes WHERE expiry <> -1 AND expiry <= ?")) {
                     ps.setLong(1, now);
                     mutesRemoved = ps.executeUpdate();
                 }
 
-                try (PreparedStatement ps = conn.prepareStatement("DELETE FROM AxionStaff_ip_bans WHERE expiry <> -1 AND expiry <= ?")) {
+                try (PreparedStatement ps = conn
+                        .prepareStatement("DELETE FROM AxionStaff_ip_bans WHERE expiry <> -1 AND expiry <= ?")) {
                     ps.setLong(1, now);
                     ipBansRemoved = ps.executeUpdate();
                 }
@@ -543,7 +546,8 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
             int finalMutesRemoved = mutesRemoved;
             int finalIpBansRemoved = ipBansRemoved;
             FoliaCompat.runGlobal(plugin, () -> {
-                requester.sendMessage(prefixed("&aCleanup complete. Removed &f" + finalBansRemoved + " &aexpired bans, &f"
+                requester.sendMessage(prefixed("&aCleanup complete. Removed &f" + finalBansRemoved
+                        + " &aexpired bans, &f"
                         + finalMutesRemoved + " &aexpired mutes, &f" + finalIpBansRemoved + " &aexpired IP bans."));
             });
         });
@@ -863,7 +867,8 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
         FoliaCompat.runAsync(plugin, () -> {
             try (Connection conn = db.getConnection()) {
                 if (type.equalsIgnoreCase("all")) {
-                    try (PreparedStatement ps = conn.prepareStatement("DELETE FROM AxionStaff_history WHERE uuid = ?")) {
+                    try (PreparedStatement ps = conn
+                            .prepareStatement("DELETE FROM AxionStaff_history WHERE uuid = ?")) {
                         ps.setString(1, uuid.toString());
                         ps.executeUpdate();
                     }
@@ -1094,7 +1099,8 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
         BanUtils.banIp(ip, banMessage, (expiry == -1 ? null : new java.util.Date(expiry)), actor);
 
         for (Player online : Bukkit.getOnlinePlayers()) {
-            if (online == null) continue;
+            if (online == null)
+                continue;
             String onlineIp = resolveIp(online);
             if (ip.equals(onlineIp)) {
                 online.kick(MessageUtils.toComponent(banMessage));
@@ -1171,7 +1177,8 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
     public String getActiveIPBanMessage(String ip) {
         try (Connection conn = db.getConnection();
                 PreparedStatement ps = conn
-                        .prepareStatement("SELECT reason, staff, expiry FROM AxionStaff_ip_bans WHERE ip = ? LIMIT 1")) {
+                        .prepareStatement(
+                                "SELECT reason, staff, expiry FROM AxionStaff_ip_bans WHERE ip = ? LIMIT 1")) {
             ps.setString(1, ip);
             try (ResultSet rs = ps.executeQuery()) {
                 if (!rs.next()) {
@@ -1354,4 +1361,3 @@ public class PunishmentManagerMysql extends AbstractPunishmentManager {
         return null;
     }
 }
-
