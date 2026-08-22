@@ -12,7 +12,8 @@ import java.util.function.Consumer;
 
 public class UpdateChecker {
 
-    private static final String GITHUB_VERSION_URL = "https://gist.githubusercontent.com/ZkAleeJoo/33cdd64e6c58a490e77284cf9fb1ceca/raw/MaxStaff-Version.txt";
+    private static final String GITHUB_VERSION_URL = "https://gist.githubusercontent.com/ZkAleeJoo/be4bcf6afd0f4981de630ac0c48af74a/raw/AxionStaff";
+
     private final AxionStaff plugin;
 
     public UpdateChecker(AxionStaff plugin) {
@@ -25,7 +26,7 @@ public class UpdateChecker {
             try {
                 URL url = URI.create(GITHUB_VERSION_URL).toURL();
                 connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestProperty("User-Agent", "MaxStaff-UpdateChecker");
+                connection.setRequestProperty("User-Agent", "AxionStaff-UpdateChecker");
                 connection.setConnectTimeout(5000);
                 connection.setReadTimeout(5000);
 
@@ -57,4 +58,3 @@ public class UpdateChecker {
         });
     }
 }
-
