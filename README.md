@@ -1,222 +1,222 @@
-# AxionStaff - Wiki Oficial
+# AxionStaff - Official Wiki
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg) ![Java](https://img.shields.io/badge/Java-25%2B-red.svg) ![PaperMC](https://img.shields.io/badge/Paper--Folia-1.21--26.2%2B-green.svg) ![Languages](https://img.shields.io/badge/Languages-🇺🇸_EN_%7C_🇪🇸_ES-blue.svg)
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg) ![Java](https://img.shields.io/badge/Java-25%2B-red.svg) ![PaperMC](https://img.shields.io/badge/Paper--Folia-1.21--26.2%2B-green.svg) ![Languages](https://img.shields.io/badge/Languages-EN_|_ES-blue.svg)
 
-¡Bienvenido a la Wiki oficial de **AxionStaff**! 
-AxionStaff es un plugin avanzado de moderación diseñado para servidores de Minecraft. Construido nativamente para PaperMC y compatible con la arquitectura multihilo de Folia, proporciona una suite completa de herramientas de moderación, incluyendo sistemas de sanciones, modo staff, detección anti-xray y sincronización entre servidores vía bases de datos MySQL.
-
----
-
-## Tabla de Contenidos
-1. [Características Principales](#1-características-principales) 
-2. [Guía de Instalación](#2-guía-de-instalación)
-3. [Archivos de Configuración](#3-archivos-de-configuración)
-4. [Lista de Comandos](#4-lista-de-comandos)
-5. [Nodos de Permisos](#5-nodos-de-permisos)
-6. [Variables de PlaceholderAPI](#6-variables-de-placeholderapi)
-7. [Detalles de Módulos y Sistemas](#7-detalles-de-módulos-y-sistemas)
-8. [Guía de Integración con Discord](#8-guía-de-integración-con-discord)
+Welcome to the official **AxionStaff** Wiki! 
+AxionStaff is an advanced moderation plugin designed for Minecraft servers. Built natively for PaperMC and compatible with the multi-threading architecture of Folia, it provides a complete suite of moderation tools, including sanction systems, staff mode, anti-xray detection, and cross-server synchronization via MySQL databases.
 
 ---
 
-## 1. Características Principales
-* **Modo Staff Completo:** Inventario de herramientas personalizable (Freeze, Sancionar, Vanish, Modo Vuelo, etc.).
-* **Sistema Avanzado de Sanciones:** Soporte para Bans, Mutes, Kicks, Warns, Bans de IP, Historial interactivo y menú GUI de sanciones.
-* **Sincronización Multi-Servidor (MySQL):** Comparte el historial de castigos, mutes activos y estados de Vanish en toda tu red (BungeeCord/Velocity).
-* **Sistema Anti-Xray Inteligente:** Alertas de minería configurables basadas en umbrales de tiempo y sesión para evitar el spam en el chat.
-* **Client Tracker:** Detecta si los jugadores entran con clientes modificados (LunarClient, LabyMod, PvPLounge, etc.) interceptando el paquete "Brand".
-* **Integración con Discord:** Envía registros de sanciones, reportes del servidor y chat del staff directamente a webhooks de Discord.
-* **Rastreo de Cuentas Alternas (Alts):** Detecta múltiples cuentas jugando desde la misma dirección IP.
-* **Revivir al Morir (Death Revive):** Restaura el inventario exacto y la experiencia de los jugadores que han muerto recientemente.
-* **Soporte Multi-Idioma:** Archivos en Inglés y Español integrados por defecto.
+## Table of Contents
+1. [Main Features](#1-main-features) 
+2. [Installation Guide](#2-installation-guide)
+3. [Configuration Files](#3-configuration-files)
+4. [Commands List](#4-commands-list)
+5. [Permission Nodes](#5-permission-nodes)
+6. [PlaceholderAPI Variables](#6-placeholderapi-variables)
+7. [Modules and Systems Details](#7-modules-and-systems-details)
+8. [Discord Integration Guide](#8-discord-integration-guide)
 
 ---
 
-## 2. Guía de Instalación
-
-### Requisitos Previos
-1. **Java 25** o superior (Estrictamente requerido por el motor interno del plugin).
-2. Un servidor usando **PaperMC** (API 1.13 a 1.21+) o forks compatibles como Purpur y **Folia**.
-3. *(Opcional)* Base de datos **MySQL/MariaDB** para habilitar la sincronización en la red (Network).
-4. *(Opcional)* **PlaceholderAPI** para usar variables en otros plugins o scoreboards.
-
-### Pasos de Instalación
-1. Descarga el archivo `.jar` compilado más reciente desde la página oficial de Descarga.
-2. Coloca el archivo (ej. `AxionStaff-1.0.0.jar`) en la carpeta `plugins/` de tu servidor.
-3. Inicia el servidor por primera vez para generar los archivos de configuración por defecto.
-4. *(Opcional)* Navega a `plugins/AxionStaff/config.yml` para configurar tu conexión a la base de datos MySQL (ideal si usas BungeeCord/Velocity).
-5. Usa el comando `/axionstaff reload` o reinicia el servidor para aplicar los cambios.
-
-> **Nota:** ¡No necesitas compilar nada! Solo arrastra el archivo `.jar` y el plugin estará listo para usarse en tu servidor.
+## 1. Main Features
+* **Complete Staff Mode:** Customizable tool inventory (Freeze, Sanction, Vanish, Fly Mode, etc.).
+* **Advanced Sanctions System:** Support for Bans, Mutes, Kicks, Warns, IP Bans, interactive History, and Sanctions GUI menu.
+* **Multi-Server Synchronization (MySQL):** Share punishment history, active mutes, and Vanish states across your network (BungeeCord/Velocity).
+* **Smart Anti-Xray System:** Configurable mining alerts based on time and session thresholds to avoid chat spam.
+* **Client Tracker:** Detects if players join with modified clients (LunarClient, LabyMod, PvPLounge, etc.) by intercepting the "Brand" packet.
+* **Discord Integration:** Sends sanction logs, server reports, and staff chat directly to Discord webhooks.
+* **Alt Account Tracking:** Detects multiple accounts playing from the same IP address.
+* **Death Revive:** Restores the exact inventory and experience of players who have recently died.
+* **Multi-Language Support:** English and Spanish files integrated by default.
 
 ---
 
-## 3. Archivos de Configuración
+## 2. Installation Guide
 
-AxionStaff genera múltiples archivos dentro del directorio `plugins/AxionStaff/`. Cada archivo tiene un propósito específico:
+### Prerequisites
+1. **Java 25** or higher (Strictly required by the plugin's internal engine).
+2. A server using **PaperMC** (API 1.13 to 1.21+) or compatible forks such as Purpur and **Folia**.
+3. *(Optional)* **MySQL/MariaDB** database to enable network synchronization.
+4. *(Optional)* **PlaceholderAPI** to use variables in other plugins or scoreboards.
+
+### Installation Steps
+1. Download the most recent compiled `.jar` file from the official Download page.
+2. Place the file (e.g., `AxionStaff-1.0.0.jar`) in your server's `plugins/` folder.
+3. Start the server for the first time to generate the default configuration files.
+4. *(Optional)* Navigate to `plugins/AxionStaff/config.yml` to configure your MySQL database connection (ideal if you use BungeeCord/Velocity).
+5. Use the `/axionstaff reload` command or restart the server to apply the changes.
+
+> **Note:** You do not need to compile anything! Just drag and drop the `.jar` file and the plugin will be ready to use on your server.
+
+---
+
+## 3. Configuration Files
+
+AxionStaff generates multiple files within the `plugins/AxionStaff/` directory. Each file has a specific purpose:
 
 ### `config.yml`
-Este es el archivo principal donde se define el comportamiento general del plugin:
-* **Módulos:** Permite desactivar sistemas enteros bajo la sección `modules:` (ej. poner `anti-xray: false` si usas una alternativa externa).
-* **Base de Datos:** Cambia `database.enabled` a `true` y configura tus credenciales para conectar a MySQL. Es imperativo configurar un `server-id` único para cada servidor en la red para evitar conflictos de datos.
-* **Idioma:** En la sección `general.language`, pon `"es"` para Español o `"en"` para Inglés.
-* **Anti-Xray:** Define los bloques monitoreados y los umbrales de alerta por ventana de tiempo y por sesión.
-* **Command Spy:** Configura comandos sensibles que deben ser ocultados para proteger la privacidad del usuario (ej. contraseñas de /login).
+This is the main file where the general behavior of the plugin is defined:
+* **Modules:** Allows disabling entire systems under the `modules:` section (e.g., setting `anti-xray: false` if you use an external alternative).
+* **Database:** Change `database.enabled` to `true` and configure your credentials to connect to MySQL. It is imperative to configure a unique `server-id` for each server in the network to avoid data conflicts.
+* **Language:** In the `general.language` section, set `"es"` for Spanish or `"en"` for English.
+* **Anti-Xray:** Define monitored blocks and alert thresholds per time window and per session.
+* **Command Spy:** Configure sensitive commands that must be hidden to protect user privacy (e.g., /login passwords).
 
 ### `discord.yml`
-Vincula las acciones de tu Staff a tu servidor de Discord. Soporta múltiples canales para diferentes tipos de notificaciones (Reportes, Sanciones, Chat del Staff). Para usarlo, habilita la opción deseada e inserta tu URL de Webhook.
+Links your Staff actions to your Discord server. Supports multiple channels for different types of notifications (Reports, Sanctions, Staff Chat). To use it, enable the desired option and insert your Webhook URL.
 
-### Directorio `lang/` (`messages_en.yml` y `messages_es.yml`)
-Estos archivos contienen todas las cadenas de texto, prefijos y mensajes enviados por el plugin. Pueden ser totalmente personalizados (colores, formatos y traducciones).
+### `lang/` Directory (`messages_en.yml` and `messages_es.yml`)
+These files contain all text strings, prefixes, and messages sent by the plugin. They can be fully customized (colors, formats, and translations).
 
 ---
 
-## 4. Lista de Comandos
+## 4. Commands List
 
-### Comandos de Moderación
-| Comando | Alias | Descripción |
+### Moderation Commands
+| Command | Aliases | Description |
 | :--- | :--- | :--- |
-| `/axionstaff` | `/as` | Comando principal para información del plugin y recargas. |
-| `/staff` | `/s`, `/staffmode` | Activa o desactiva el Modo Staff. |
-| `/ban <jugador> [tiempo] [razón]` | - | Aplica un ban temporal o permanente a un jugador. |
-| `/mute <jugador> [tiempo] [razón]` | - | Mutea el chat de un jugador temporal o permanentemente. |
-| `/kick <jugador> [razón]` | - | Expulsa a un jugador del servidor. |
-| `/warn <jugador> [razón]` | - | Emite una advertencia formal a un jugador. |
-| `/history <jugador>` | - | Abre un menú visual mostrando el historial de sanciones. |
-| `/sanction <jugador>` | - | Abre el menú GUI avanzado de sanciones. |
-| `/silent <comando>` | - | Ejecuta un castigo (ban, mute) sin anunciar el mensaje en el chat público. |
-| `/ban-ip <ip/jugador>` | - | Banea permanentemente una dirección IP. |
-| `/tempban-ip <ip/jugador>` | - | Banea temporalmente una dirección IP. |
-| `/unban <jugador>` | - | Elimina el ban de un jugador. |
-| `/unmute <jugador>` | - | Elimina el mute de chat de un jugador. |
-| `/unban-ip <ip>` | - | Elimina el ban de una dirección IP. |
+| `/axionstaff` | `/as` | Main command for plugin information and reloads. |
+| `/staff` | `/s`, `/staffmode` | Toggles Staff Mode on or off. |
+| `/ban <player> [time] [reason]` | - | Applies a temporary or permanent ban to a player. |
+| `/mute <player> [time] [reason]` | - | Mutes a player's chat temporarily or permanently. |
+| `/kick <player> [reason]` | - | Kicks a player from the server. |
+| `/warn <player> [reason]` | - | Issues a formal warning to a player. |
+| `/history <player>` | - | Opens a visual menu showing the sanction history. |
+| `/sanction <player>` | - | Opens the advanced sanctions GUI menu. |
+| `/silent <command>` | - | Executes a punishment (ban, mute) without announcing the message in public chat. |
+| `/ban-ip <ip/player>` | - | Permanently bans an IP address. |
+| `/tempban-ip <ip/player>` | - | Temporarily bans an IP address. |
+| `/unban <player>` | - | Removes a player's ban. |
+| `/unmute <player>` | - | Removes a player's chat mute. |
+| `/unban-ip <ip>` | - | Removes an IP address ban. |
 
-### Comandos de Utilidad y Staff
-| Comando | Alias | Descripción |
+### Utility and Staff Commands
+| Command | Aliases | Description |
 | :--- | :--- | :--- |
-| `/vanish` | `/v` | Entra en modo espectador oculto (el estado persiste entre sesiones). |
-| `/freeze <jugador>` | `/ss` | Congela a un jugador para revisión (SS). |
-| `/unfreeze <jugador>` | `/uss` | Descongela a un jugador. |
-| `/sc <mensaje>` | `/staffchat` | Envía un mensaje al chat privado del equipo de administración. |
-| `/cmdspy` | - | Monitorea los comandos ejecutados por los usuarios en tiempo real. |
-| `/chat` | - | Opciones de administración del chat global (Mute/Clear). |
-| `/alts <jugador>` | `/accs` | Muestra las cuentas asociadas por dirección IP al jugador especificado. |
-| `/report <jugador> <razón>` | `/reportar` | Permite a los usuarios reportar comportamientos inapropiados. |
-| `/invsee <jugador>` | - | Inspecciona el inventario de otro jugador en tiempo real. |
-| `/revive <jugador>` | - | Restaura el inventario y estado reciente de muerte del jugador. |
-| `/xray` | - | Menú para revisar jugadores que han generado alertas de Anti-Xray. |
-| `/fly [velocidad]` | - | Alterna el modo vuelo o establece la velocidad de vuelo (0.1 - 1.0). |
-| `/gamemode` | `/gm` | Selector de modo de juego interactivo vía GUI. |
+| `/vanish` | `/v` | Enters hidden spectator mode (state persists between sessions). |
+| `/freeze <player>` | `/ss` | Freezes a player for review (SS). |
+| `/unfreeze <player>` | `/uss` | Unfreezes a player. |
+| `/sc <message>` | `/staffchat` | Sends a message to the private administration team chat. |
+| `/cmdspy` | - | Monitors user-executed commands in real-time. |
+| `/chat` | - | Global chat administration options (Mute/Clear). |
+| `/alts <player>` | `/accs` | Shows accounts associated by IP address to the specified player. |
+| `/report <player> <reason>` | `/reportar` | Allows users to report inappropriate behavior. |
+| `/invsee <player>` | - | Inspects another player's inventory in real-time. |
+| `/revive <player>` | - | Restores the player's recent death state and inventory. |
+| `/xray` | - | Menu to review players who have generated Anti-Xray alerts. |
+| `/fly [speed]` | - | Toggles flight mode or sets flight speed (0.1 - 1.0). |
+| `/gamemode` | `/gm` | Interactive game mode selector via GUI. |
 
 ---
 
-## 5. Nodos de Permisos
+## 5. Permission Nodes
 
-El sistema de permisos de AxionStaff es detallado, diseñado para mantener una jerarquía estricta.
+AxionStaff's permission system is detailed, designed to maintain a strict hierarchy.
 
-| Nodo de Permiso | Valor por Defecto | Descripción |
+| Permission Node | Default Value | Description |
 | :--- | :--- | :--- |
-| `axionstaff.admin` | `op` | Acceso total a AxionStaff y a todos los comandos administrativos. |
-| `axionstaff.command.staff` | `op` | Permite el uso del comando `/staff` para entrar al modo moderador. |
-| `axionstaff.punish.ban` | `op` | Permite el uso de `/ban` y `/tempban`. |
-| `axionstaff.punish.mute` | `op` | Permite el uso de `/mute` y `/tempmute`. |
-| `axionstaff.punish.kick` | `op` | Permite el uso de `/kick`. |
-| `axionstaff.punish.warn` | `op` | Permite el uso de `/warn`. |
-| `axionstaff.punish.unban` | `op` | Permite el uso de `/unban`. |
-| `axionstaff.punish.unmute` | `op` | Permite el uso de `/unmute`. |
-| `axionstaff.punish.banip` | `op` | Permite el uso de `/ban-ip` y `/tempban-ip`. |
-| `axionstaff.punish.unbanip`| `op` | Permite el uso de `/unban-ip`. |
-| `axionstaff.history` | `op` | Permite ver el historial de sanciones vía `/history`. |
-| `axionstaff.punish` | `op` | Permite abrir el menú avanzado usando `/sanction`. |
-| `axionstaff.sanctions.list`| `op` | Permite ver los bans activos usando `/sanction list`. |
-| `axionstaff.punish.silent` | `op` | Permite ejecutar castigos silenciosos vía `/silent`. |
-| `axionstaff.punish.override`| `op` | Permite saltar las comprobaciones de protección y sancionar a otros miembros del Staff. |
-| `axionstaff.punish.protected`| `false` | Protege al jugador de ser sancionado por miembros del Staff de menor rango. |
-| `axionstaff.vanish` | `op` | Permite el uso del comando `/vanish`. |
-| `axionstaff.see.vanish` | `op` | Permite ver a otros miembros del Staff que están en modo Vanish. |
-| `axionstaff.vanish.join` | `false` | Activa automáticamente el modo Vanish al entrar al servidor. |
-| `axionstaff.staffchat` | `op` | Permite leer y escribir en el chat del Staff. |
-| `axionstaff.cmdspy` | `op` | Permite usar `/cmdspy` para auditar comandos de usuarios. |
-| `axionstaff.cmdspy.raw` | `false` | *(Crítico)* Permite ver argumentos sensibles y contraseñas sin censura en los registros de `/cmdspy`. |
-| `axionstaff.cmdspy.raw.owners`| `op` | Nodo de agrupación destinado exclusivamente para owners, incluye acceso al cmdspy sin censura. |
-| `axionstaff.chat.admin` | `op` | Permite mutear y limpiar el chat global. |
-| `axionstaff.gamemode` | `op` | Permite usar el menú `/gm`. |
-| `axionstaff.alts` | `op` | Permite el uso del sistema de rastreo de cuentas alternas. |
-| `axionstaff.alts.override` | `op` | Permite ver las cuentas alternas de jugadores protegidos jerárquicamente. |
-| `axionstaff.alts.protected`| `false` | Oculta las cuentas alternas del jugador al escrutinio del Staff de menor rango. |
-| `axionstaff.freeze` | `op` | Permite el uso de `/freeze` y `/unfreeze`. |
-| `axionstaff.report` | `true` | Permite a los jugadores ejecutar `/report` (Otorgado a todos por defecto). |
-| `axionstaff.report.notify` | `op` | Permite al Staff recibir notificaciones en tiempo real sobre nuevos reportes. |
-| `axionstaff.report.bypass` | `op` | Permite saltar los tiempos de espera (cooldowns) al enviar reportes. |
-| `axionstaff.invsee` | `op` | Permite el uso de `/invsee`. |
-| `axionstaff.revive` | `op` | Permite el uso de `/revive` para restaurar inventarios perdidos al morir. |
-| `axionstaff.fly` | `op` | Permite el uso de `/fly` y la modificación de su velocidad. |
-| `axionstaff.client.notify` | `op` | Permite recibir notificaciones cuando se detecta el uso de un cliente modificado. |
-| `axionstaff.antixray.alert`| `op` | Permite recibir notificaciones del sistema Anti-Xray en tiempo real. |
-| `axionstaff.antixray.bypass`| `false` | Evita que el sistema Anti-Xray genere alertas de minería para este jugador. |
+| `axionstaff.admin` | `op` | Full access to AxionStaff and all administrative commands. |
+| `axionstaff.command.staff` | `op` | Allows the use of the `/staff` command to enter moderator mode. |
+| `axionstaff.punish.ban` | `op` | Allows the use of `/ban` and `/tempban`. |
+| `axionstaff.punish.mute` | `op` | Allows the use of `/mute` and `/tempmute`. |
+| `axionstaff.punish.kick` | `op` | Allows the use of `/kick`. |
+| `axionstaff.punish.warn` | `op` | Allows the use of `/warn`. |
+| `axionstaff.punish.unban` | `op` | Allows the use of `/unban`. |
+| `axionstaff.punish.unmute` | `op` | Allows the use of `/unmute`. |
+| `axionstaff.punish.banip` | `op` | Allows the use of `/ban-ip` and `/tempban-ip`. |
+| `axionstaff.punish.unbanip`| `op` | Allows the use of `/unban-ip`. |
+| `axionstaff.history` | `op` | Allows viewing sanction history via `/history`. |
+| `axionstaff.punish` | `op` | Allows opening the advanced menu using `/sanction`. |
+| `axionstaff.sanctions.list`| `op` | Allows viewing active bans using `/sanction list`. |
+| `axionstaff.punish.silent` | `op` | Allows executing silent punishments via `/silent`. |
+| `axionstaff.punish.override`| `op` | Allows bypassing protection checks and sanctioning other Staff members. |
+| `axionstaff.punish.protected`| `false` | Protects the player from being sanctioned by lower-ranking Staff members. |
+| `axionstaff.vanish` | `op` | Allows the use of the `/vanish` command. |
+| `axionstaff.see.vanish` | `op` | Allows viewing other Staff members who are in Vanish mode. |
+| `axionstaff.vanish.join` | `false` | Automatically enables Vanish mode upon joining the server. |
+| `axionstaff.staffchat` | `op` | Allows reading and writing in the Staff chat. |
+| `axionstaff.cmdspy` | `op` | Allows using `/cmdspy` to audit user commands. |
+| `axionstaff.cmdspy.raw` | `false` | *(Critical)* Allows viewing sensitive arguments and uncensored passwords in `/cmdspy` logs. |
+| `axionstaff.cmdspy.raw.owners`| `op` | Grouping node intended exclusively for owners, includes access to raw cmdspy. |
+| `axionstaff.chat.admin` | `op` | Allows muting and clearing the global chat. |
+| `axionstaff.gamemode` | `op` | Allows using the `/gm` menu. |
+| `axionstaff.alts` | `op` | Allows the use of the alternate account tracking system. |
+| `axionstaff.alts.override` | `op` | Allows viewing alternate accounts of hierarchically protected players. |
+| `axionstaff.alts.protected`| `false` | Hides the player's alternate accounts from lower-ranking Staff scrutiny. |
+| `axionstaff.freeze` | `op` | Allows the use of `/freeze` and `/unfreeze`. |
+| `axionstaff.report` | `true` | Allows players to execute `/report` (Granted to all by default). |
+| `axionstaff.report.notify` | `op` | Allows Staff to receive real-time notifications about new reports. |
+| `axionstaff.report.bypass` | `op` | Allows bypassing cooldowns when sending reports. |
+| `axionstaff.invsee` | `op` | Allows the use of `/invsee`. |
+| `axionstaff.revive` | `op` | Allows the use of `/revive` to restore inventories lost upon death. |
+| `axionstaff.fly` | `op` | Allows the use of `/fly` and modifying its speed. |
+| `axionstaff.client.notify` | `op` | Allows receiving notifications when modified client usage is detected. |
+| `axionstaff.antixray.alert`| `op` | Allows receiving real-time Anti-Xray system notifications. |
+| `axionstaff.antixray.bypass`| `false` | Prevents the Anti-Xray system from generating mining alerts for this player. |
 
 ---
 
-## 6. Variables de PlaceholderAPI
+## 6. PlaceholderAPI Variables
 
-Si PlaceholderAPI está instalado en el servidor, AxionStaff expone las siguientes variables para su integración en scoreboards, chats y otros plugins compatibles.
+If PlaceholderAPI is installed on the server, AxionStaff exposes the following variables for integration into scoreboards, chats, and other compatible plugins.
 
-* `%axionstaff_in_staff_mode%` - Devuelve el estado actual del Modo Staff (true/false).
-* `%axionstaff_vanished%` - Devuelve el estado actual del modo Vanish (true/false).
-* `%axionstaff_frozen%` - Devuelve si el jugador está actualmente congelado (true/false).
-* `%axionstaff_is_spy%` - Devuelve si el jugador tiene CommandSpy activado (true/false).
-* `%axionstaff_warn_count%` - Devuelve el número total de advertencias emitidas al jugador.
-* `%axionstaff_ban_count%` - Devuelve el número total de bans emitidos al jugador.
-* `%axionstaff_mute_count%` - Devuelve el número total de mutes emitidos al jugador.
-* `%axionstaff_kick_count%` - Devuelve el número total de kicks emitidos al jugador.
-* `%axionstaff_total_punishments%` - Devuelve la suma total de castigos aplicados al jugador.
-* `%axionstaff_playtime%` - Devuelve el tiempo de juego formateado del jugador (ej. `12h 30m`).
+* `%axionstaff_in_staff_mode%` - Returns the current Staff Mode state (true/false).
+* `%axionstaff_vanished%` - Returns the current Vanish mode state (true/false).
+* `%axionstaff_frozen%` - Returns whether the player is currently frozen (true/false).
+* `%axionstaff_is_spy%` - Returns whether the player has CommandSpy enabled (true/false).
+* `%axionstaff_warn_count%` - Returns the total number of warnings issued to the player.
+* `%axionstaff_ban_count%` - Returns the total number of bans issued to the player.
+* `%axionstaff_mute_count%` - Returns the total number of mutes issued to the player.
+* `%axionstaff_kick_count%` - Returns the total number of kicks issued to the player.
+* `%axionstaff_total_punishments%` - Returns the total sum of punishments applied to the player.
+* `%axionstaff_playtime%` - Returns the player's formatted playtime (e.g., `12h 30m`).
 
-*(Nota: El texto de salida para las variables booleanas (true/false) puede ser configurado en la sección correspondiente de `config.yml`).*
-
----
-
-## 7. Detalles de Módulos y Sistemas
-
-### Sistema Visual de Freeze (TextDisplay)
-A diferencia de los sistemas de freeze convencionales, el comando `/freeze` invoca una entidad de texto (TextDisplay) directamente en el campo de visión del usuario objetivo. Esto bloquea toda entrada de comandos, movimiento de cámara e interacción física.
-* Si el infractor intenta desconectarse mientras el sistema está activo, el plugin ejecutará un **Ban de Seguridad Automático** (establecido en 7 días de duración por defecto) por evasión.
-
-### Privacidad y Seguridad (CommandSpy)
-AxionStaff protege activamente la información confidencial. Cuando CommandSpy está activado, los comandos sensibles definidos en `config.yml` (como contraseñas de AuthMe o tokens de autenticación) son censurados usando una máscara (ej. `******`). Esto permite al equipo de moderación auditar el uso de comandos sin comprometer las credenciales de los usuarios. Solo el staff de alto rango con el permiso `axionstaff.cmdspy.raw` puede ver los argumentos originales.
-
-### Inspección de Inventario Compacta (InvSee)
-El comando InvSee genera una interfaz unificada que renderiza el inventario principal, la mano secundaria y las piezas de armadura simultáneamente. Este diseño compacto elimina la necesidad de ventanas secundarias y facilita las revisiones rápidas (ScreenShares).
-
-### Sistema de Restauración (Death Revive)
-El plugin almacena el estado exacto del inventario y la experiencia cada vez que un jugador muere. Si ocurre una muerte debido a una falla técnica del servidor o intervención no autorizada de terceros, el comando `/revive` abre un panel interactivo permitiendo una restauración completa del inventario perdido con un solo clic.
+*(Note: The output text for boolean variables (true/false) can be configured in the corresponding section of `config.yml`).*
 
 ---
 
-## 8. Guía de Integración con Discord
+## 7. Modules and Systems Details
 
-Para configurar `discord.yml` y conectar AxionStaff a tu servidor de Discord, sigue estos pasos para configurar los Webhooks:
+### Visual Freeze System (TextDisplay)
+Unlike conventional freeze systems, the `/freeze` command invokes a text entity (TextDisplay) directly into the target user's field of view. This blocks all command entry, camera movement, and physical interaction.
+* If the offender attempts to disconnect while the system is active, the plugin will execute an **Automatic Security Ban** (set to 7 days duration by default) for evasion.
 
-1. **Abre los Ajustes de tu Servidor de Discord**
-   Ve a **Ajustes del Servidor** > **Integraciones** > **Webhooks**.
+### Privacy and Security (CommandSpy)
+AxionStaff actively protects confidential information. When CommandSpy is enabled, sensitive commands defined in `config.yml` (such as AuthMe passwords or authentication tokens) are censored using a mask (e.g., `******`). This allows the moderation team to audit command usage without compromising user credentials. Only high-ranking staff with the `axionstaff.cmdspy.raw` permission can view the original arguments.
 
-2. **Crea un Nuevo Webhook**
-   Haz clic en **Nuevo Webhook**. Ponle nombre (ej. "AxionStaff") y selecciona el canal donde quieres que aparezcan las notificaciones (como `#chat-staff` o `#sanciones`).
+### Compact Inventory Inspection (InvSee)
+The InvSee command generates a unified interface that renders the primary inventory, off-hand, and armor pieces simultaneously. This compact layout eliminates the need for secondary windows and facilitates quick reviews (ScreenShares).
 
-3. **Copia la URL del Webhook**
-   Haz clic en el botón **Copiar URL de Webhook**.
+### Restoration System (Death Revive)
+The plugin stores the exact inventory state and experience every time a player dies. If a death occurs due to a technical server failure or unauthorized third-party intervention, the `/revive` command opens an interactive panel allowing a complete restoration of the lost inventory with a single click.
 
-4. **Pégalo en `discord.yml`**
-   Abre `plugins/AxionStaff/discord.yml` en tu servidor de Minecraft.
-   Localiza el módulo que quieres habilitar (por ejemplo, `sanctions` o `staff-chat`) y pega la URL en el campo `webhook-url`:
+---
+
+## 8. Discord Integration Guide
+
+To configure `discord.yml` and connect AxionStaff to your Discord server, follow these steps to set up Webhooks:
+
+1. **Open your Discord Server Settings**
+   Go to **Server Settings** > **Integrations** > **Webhooks**.
+
+2. **Create a New Webhook**
+   Click on **New Webhook**. Name it (e.g., "AxionStaff") and select the channel where you want the notifications to appear (like `#staff-chat` or `#sanctions`).
+
+3. **Copy the Webhook URL**
+   Click the **Copy Webhook URL** button.
+
+4. **Paste it into `discord.yml`**
+   Open `plugins/AxionStaff/discord.yml` on your Minecraft server.
+   Locate the module you want to enable (for example, `sanctions` or `staff-chat`) and paste the URL in the `webhook-url` field:
    ```yaml
    sanctions:
      enabled: true
-     webhook-url: "https://discord.com/api/webhooks/tu_url_de_webhook_aqui"
+     webhook-url: "https://discord.com/api/webhooks/your_webhook_url_here"
    ```
 
-5. **Recarga el Plugin**
-   Guarda el archivo y ejecuta `/axionstaff reload` en tu juego o en la consola del servidor. ¡Tu integración con Discord ahora está activa!
+5. **Reload the Plugin**
+   Save the file and run `/axionstaff reload` in your game or server console. Your Discord integration is now active!
 
 ---
-> ¿Necesitas soporte adicional? ¡Únete a nuestro **Servidor de Discord** https://discord.gg/ym4x6jmSNh
+> Need additional support? Join our **Discord Server** https://discord.gg/ym4x6jmSNh
