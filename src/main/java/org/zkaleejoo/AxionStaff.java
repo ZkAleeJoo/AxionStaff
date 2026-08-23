@@ -45,7 +45,7 @@ import org.zkaleejoo.listeners.VanishProtectionListener;
 
 public class AxionStaff extends JavaPlugin {
 
-    private static final int BSTATS_PLUGIN_ID = 31109;
+    private static final int BSTATS_PLUGIN_ID = 33594;
     private static final long UPDATE_CHECK_INTERVAL_TICKS = 20L * 60L * 60L * 5L;
 
     private MainConfigManager mainConfigManager;
