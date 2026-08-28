@@ -1,6 +1,12 @@
-# AxionStaff - Official Wiki
-
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg) ![Java](https://img.shields.io/badge/Java-25%2B-red.svg) ![PaperMC](https://img.shields.io/badge/Paper--Folia-1.21--26.2%2B-green.svg) ![Languages](https://img.shields.io/badge/Languages-EN_|_ES-blue.svg)
+<div align="center">
+  <h1>OnlyClans - Official Wiki</h1>
+  <p>
+    <img src="https://img.shields.io/badge/version-1.0.1-blue" alt="Version">
+    <img src="https://img.shields.io/badge/Java-25+-red" alt="Java">
+    <img src="https://img.shields.io/badge/Paper--Folia-1.21--26.1.2+-green" alt="Paper-Folia">
+    <img src="https://img.shields.io/badge/Languages-EN_|_ES-blue" alt="Languages">
+  </p>
+</div>
 
 Welcome to the official **AxionStaff** Wiki! 
 AxionStaff is an advanced moderation plugin designed for Minecraft servers. Built natively for PaperMC and compatible with the multi-threading architecture of Folia, it provides a complete suite of moderation tools, including sanction systems, staff mode, anti-xray detection, and cross-server synchronization via MySQL databases.
