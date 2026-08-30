@@ -14,7 +14,7 @@ avatar-url: ""
 content: ""
 
 # Global embed defaults. Section values override these.
-global-image: "https://imgur.com/xLVotZb"
+global-image: "https://i.pinimg.com/736x/a5/92/c7/a592c77109fdc86813aa8ae4f384b765.jpg"
 footer: "{server} • {timestamp}"
 footer-icon: ""
 timestamp: false
