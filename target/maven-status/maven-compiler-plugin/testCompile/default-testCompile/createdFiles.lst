@@ -1,8 +1,0 @@
-org\zkaleejoo\config\CustomConfigTest.class
-org\zkaleejoo\managers\ActivePunishmentRecordTest.class
-org\zkaleejoo\managers\StaffActionBarPolicyTest.class
-org\zkaleejoo\listeners\AntiXrayWorldPolicyTest.class
-org\zkaleejoo\listeners\CommandBlockPolicyTest.class
-org\zkaleejoo\listeners\StaffItemsListenerTest.class
-org\zkaleejoo\utils\TimeUtilsTest.class
-org\zkaleejoo\listeners\PlayerQuitListenerTest.class

@@ -1,0 +1,6 @@
+src/test/**
+.vscode/
+target/
+find_reds.ps1
+replace_colors.ps1
+replace_reds.ps1
