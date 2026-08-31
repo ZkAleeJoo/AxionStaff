@@ -42,8 +42,8 @@ AxionStaff is an advanced moderation plugin designed for Minecraft servers. Buil
 
 ### Prerequisites
 1. **Java 25** or higher (Strictly required by the plugin's internal engine).
-2. A server using **PaperMC** (API 1.13 to 1.21+) or compatible forks such as Purpur and **Folia**.
-3. *(Optional)* **MySQL/MariaDB** database to enable network synchronization.
+2. A server using **PaperMC** (API 1.21 to 26.2) or compatible forks such as Purpur and **Folia**.
+3. *(Optional)* **MySQL** database to enable network synchronization.
 4. *(Optional)* **PlaceholderAPI** to use variables in other plugins or scoreboards.
 
 ### Installation Steps
