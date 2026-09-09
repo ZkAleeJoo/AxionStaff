@@ -128,15 +128,15 @@ public class MaxStaff extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
                 "&c&lMaxStaff &8» &c&l   _____                   _________ __          _____  _____ "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&c&lMaxStaff &8» &c&l  /     \ _____  ___  ___ /   _____//  |______ _/ ____\/ ____\"));
+                "&c&lMaxStaff &8» &c&l  /     \\ _____  ___  ___ /   _____//  |______ _/ ____\\/ ____\\"));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&c&lMaxStaff &8» &c&l /  \ /  \\__  \ \  \/  / \_____  \\   __\__  \\   __\\   __\ "));
+                "&c&lMaxStaff &8» &c&l /  \\ /  \\\\__  \\ \\  \\/  / \\_____  \\\\   __\\__  \\\\   __\\\\   __\\ "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&c&lMaxStaff &8» &c&l/    Y    \/ __ \_>    <  /        \|  |  / __ \|  |   |  |   "));
+                "&c&lMaxStaff &8» &c&l/    Y    \\/ __ \\_>    <  /        \\|  |  / __ \\|  |   |  |   "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&c&lMaxStaff &8» &c&l\____|__  (____  /__/\_ \/_______  /|__| (____  /__|   |__|   "));
+                "&c&lMaxStaff &8» &c&l\\____|__  (____  /__/\\_ \\/_______  /|__| (____  /__|   |__|   "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&c&lMaxStaff &8» &5&l        \/     \/      \/        \/           \/              "));
+                "&c&lMaxStaff &8» &5&l        \\/     \\/      \\/        \\/           \\/              "));
 
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new org.zkaleejoo.placeholders.MaxStaffExpansion(this).register();
