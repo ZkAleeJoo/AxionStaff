@@ -2,7 +2,7 @@ package org.zkaleejoo.managers;
 
 import org.zkaleejoo.utils.FoliaCompat;
 import org.bukkit.configuration.ConfigurationSection;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 import org.zkaleejoo.config.CustomConfig;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -18,10 +18,10 @@ import java.util.Map;
 
 public class DiscordManager {
 
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
     private CustomConfig discordConfig;
 
-    public DiscordManager(AxionStaff plugin) {
+    public DiscordManager(MaxStaff plugin) {
         this.plugin = plugin;
         this.discordConfig = new CustomConfig("discord.yml", null, plugin, false);
         this.discordConfig.registerConfig();
@@ -103,14 +103,14 @@ public class DiscordManager {
                 if (webhookUrl.isEmpty())
                     return;
 
-                String serverName = discordConfig.getConfig().getString("server-name", "AxionStaff");
+                String serverName = discordConfig.getConfig().getString("server-name", "MaxStaff");
                 safePlaceholders.putIfAbsent("server", serverName);
                 safePlaceholders.put("timestamp", new SimpleDateFormat("dd/MM/yyyy HH:mm").format(new Date()));
 
                 String faceUrl = "https://mc-heads.net/avatar/" + resolvedNameForImage + "/100";
                 safePlaceholders.putIfAbsent("face", faceUrl);
 
-                String authorName = resolveText(section, "author", "AxionStaff Action", safePlaceholders,
+                String authorName = resolveText(section, "author", "MaxStaff Action", safePlaceholders,
                         path + ".author");
                 String authorIcon = resolveImage(section, "author-icon", faceUrl, safePlaceholders, faceUrl);
                 String authorUrl = resolveText(section, "author-url", "", safePlaceholders, path + ".author-url");
@@ -237,7 +237,7 @@ public class DiscordManager {
                 URL url = URI.create(webhookUrl).toURL();
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.addRequestProperty("Content-Type", "application/json");
-                connection.addRequestProperty("User-Agent", "AxionStaff-Plugin");
+                connection.addRequestProperty("User-Agent", "MaxStaff-Plugin");
                 connection.setDoOutput(true);
                 connection.setRequestMethod("POST");
 

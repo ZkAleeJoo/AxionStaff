@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 import org.zkaleejoo.utils.MessageUtils;
 import org.zkaleejoo.utils.TimeUtils;
 
@@ -16,9 +16,9 @@ import java.util.stream.Collectors;
 
 public class PunishmentCommand implements CommandExecutor, TabCompleter {
 
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
 
-    public PunishmentCommand(AxionStaff plugin) {
+    public PunishmentCommand(MaxStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -35,13 +35,13 @@ public class PunishmentCommand implements CommandExecutor, TabCompleter {
 
         String permission;
         if (baseLabel.equals("history")) {
-            permission = "axionstaff.history";
+            permission = "maxstaff.history";
         } else if (baseLabel.equals("ban-ip")) {
-            permission = "axionstaff.punish.banip";
+            permission = "maxstaff.punish.banip";
         } else if (baseLabel.equals("unban-ip")) {
-            permission = "axionstaff.punish.unbanip";
+            permission = "maxstaff.punish.unbanip";
         } else {
-            permission = "axionstaff.punish." + baseLabel;
+            permission = "maxstaff.punish." + baseLabel;
         }
 
         if (!CommandContextUtil.hasPermissionOrAdmin(sender, permission)) {
@@ -159,10 +159,10 @@ public class PunishmentCommand implements CommandExecutor, TabCompleter {
             baseLabel = "ban-ip";
 
         String permission = switch (baseLabel) {
-            case "history" -> "axionstaff.history";
-            case "ban-ip" -> "axionstaff.punish.banip";
-            case "unban-ip" -> "axionstaff.punish.unbanip";
-            default -> "axionstaff.punish" + baseLabel;
+            case "history" -> "maxstaff.history";
+            case "ban-ip" -> "maxstaff.punish.banip";
+            case "unban-ip" -> "maxstaff.punish.unbanip";
+            default -> "maxstaff.punish" + baseLabel;
         };
 
         if (!CommandContextUtil.hasPermissionOrAdmin(sender, permission))

@@ -13,13 +13,13 @@ import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 
 public class FreezeListener implements Listener {
 
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
 
-    public FreezeListener(AxionStaff plugin) {
+    public FreezeListener(MaxStaff plugin) {
         this.plugin = plugin;
     }
 

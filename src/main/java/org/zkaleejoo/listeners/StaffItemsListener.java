@@ -21,7 +21,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.zkaleejoo.utils.InspectionInventoryBuilder;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 import org.zkaleejoo.config.MainConfigManager;
 import org.zkaleejoo.utils.MessageUtils;
 import java.util.HashSet;
@@ -46,7 +46,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class StaffItemsListener implements Listener {
 
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
     private static final long WALL_COMPASS_COOLDOWN_MS = 350L;
 
     private final Map<UUID, Block> silentViewers = new HashMap<>();
@@ -54,7 +54,7 @@ public class StaffItemsListener implements Listener {
     private final Map<UUID, Long> wallCompassCooldowns = new HashMap<>();
     private final Set<UUID> silentEnderChestViewers = new HashSet<>();
 
-    public StaffItemsListener(AxionStaff plugin) {
+    public StaffItemsListener(MaxStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -280,13 +280,13 @@ public class StaffItemsListener implements Listener {
                     target,
                     config.getInvseeInspectionOnlineTitle().replace("{player}", target.getName()),
                     config,
-                    player.hasPermission("AxionStaff.revive"))));
+                    player.hasPermission("MaxStaff.revive"))));
         } else if (toolType.equals("punish_tool")) {
             event.setCancelled(true);
             plugin.getGuiManager().openUserInfoMenu(player, target);
         } else if (toolType.equals("freeze_tool")) {
 
-            if (target.hasPermission("AxionStaff.admin") || target.hasPermission("AxionStaff.freeze")) {
+            if (target.hasPermission("MaxStaff.admin") || target.hasPermission("MaxStaff.freeze")) {
                 player.sendMessage(
                         MessageUtils.getColoredMessage(config.getPrefix() + "&cNo puedes congelar a este usuario."));
                 return;

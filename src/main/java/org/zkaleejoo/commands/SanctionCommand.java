@@ -6,7 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 import org.zkaleejoo.utils.MessageUtils;
 
 import java.util.ArrayList;
@@ -14,9 +14,9 @@ import java.util.List;
 
 public class SanctionCommand implements CommandExecutor, TabCompleter {
 
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
 
-    public SanctionCommand(AxionStaff plugin) {
+    public SanctionCommand(MaxStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -34,7 +34,7 @@ public class SanctionCommand implements CommandExecutor, TabCompleter {
         }
 
         if (args[0].equalsIgnoreCase("list")) {
-            if (!CommandContextUtil.requirePermission(staff, "axionstaff.sanctions.list",
+            if (!CommandContextUtil.requirePermission(staff, "maxstaff.sanctions.list",
                     plugin.getMainConfigManager())) {
                 return true;
             }
@@ -42,7 +42,7 @@ public class SanctionCommand implements CommandExecutor, TabCompleter {
             return true;
         }
 
-        if (!CommandContextUtil.requirePermission(staff, "axionstaff.punish", plugin.getMainConfigManager())) {
+        if (!CommandContextUtil.requirePermission(staff, "maxstaff.punish", plugin.getMainConfigManager())) {
             return true;
         }
 
@@ -68,10 +68,10 @@ public class SanctionCommand implements CommandExecutor, TabCompleter {
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 1) {
             List<String> completions = new ArrayList<>();
-            if (CommandContextUtil.hasPermissionOrAdmin(sender, "axionstaff.sanctions.list")) {
+            if (CommandContextUtil.hasPermissionOrAdmin(sender, "maxstaff.sanctions.list")) {
                 completions.add("list");
             }
-            if (CommandContextUtil.hasPermissionOrAdmin(sender, "axionstaff.punish")) {
+            if (CommandContextUtil.hasPermissionOrAdmin(sender, "maxstaff.punish")) {
                 completions.addAll(CommandContextUtil.filterOnlinePlayerNamesByPrefix(args[0]));
             }
             String prefix = args[0].toLowerCase();

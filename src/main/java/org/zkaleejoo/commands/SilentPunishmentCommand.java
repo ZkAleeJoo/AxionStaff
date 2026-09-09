@@ -4,7 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 import org.zkaleejoo.utils.MessageUtils;
 import org.zkaleejoo.utils.TimeUtils;
 
@@ -17,9 +17,9 @@ public class SilentPunishmentCommand implements CommandExecutor, TabCompleter {
 
     private static final List<String> SUPPORTED_ACTIONS = Arrays.asList("ban", "tempban", "mute", "tempmute", "kick",
             "warn", "ban-ip", "tempban-ip");
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
 
-    public SilentPunishmentCommand(AxionStaff plugin) {
+    public SilentPunishmentCommand(MaxStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -39,7 +39,7 @@ public class SilentPunishmentCommand implements CommandExecutor, TabCompleter {
         }
 
         String baseAction = normalizeAction(action);
-        String permission = baseAction.equals("ban-ip") ? "axionstaff.punish.banip" : "axionstaff.punish." + baseAction;
+        String permission = baseAction.equals("ban-ip") ? "maxstaff.punish.banip" : "maxstaff.punish." + baseAction;
         if (!CommandContextUtil.hasPermissionOrAdmin(sender, permission)) {
             sender.sendMessage(MessageUtils.getColoredMessage(
                     plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getNoPermission()));
@@ -151,8 +151,8 @@ public class SilentPunishmentCommand implements CommandExecutor, TabCompleter {
             }
 
             String baseAction = normalizeAction(action);
-            String permission = baseAction.equals("ban-ip") ? "axionstaff.punish.banip"
-                    : "axionstaff.punish." + baseAction;
+            String permission = baseAction.equals("ban-ip") ? "maxstaff.punish.banip"
+                    : "maxstaff.punish." + baseAction;
             if (!CommandContextUtil.hasPermissionOrAdmin(sender, permission)) {
                 return new ArrayList<>();
             }

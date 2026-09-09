@@ -6,7 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 import org.zkaleejoo.utils.MessageUtils;
 
 import java.util.Arrays;
@@ -15,9 +15,9 @@ import java.util.stream.Collectors;
 
 public class GameModeCommand implements CommandExecutor, TabCompleter {
 
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
 
-    public GameModeCommand(AxionStaff plugin) {
+    public GameModeCommand(MaxStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -30,7 +30,7 @@ public class GameModeCommand implements CommandExecutor, TabCompleter {
         }
 
         Player player = (Player) sender;
-        if (!player.hasPermission("axionstaff.gamemode")) {
+        if (!player.hasPermission("maxstaff.gamemode")) {
             player.sendMessage(MessageUtils.getColoredMessage(
                     plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getNoPermission()));
             return true;

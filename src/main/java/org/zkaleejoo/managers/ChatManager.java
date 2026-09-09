@@ -1,14 +1,14 @@
 package org.zkaleejoo.managers;
 
 import org.bukkit.command.CommandSender;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 import org.zkaleejoo.utils.MessageUtils;
 
 public class ChatManager {
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
     private boolean globalMute = false;
 
-    public ChatManager(AxionStaff plugin) {
+    public ChatManager(MaxStaff plugin) {
         this.plugin = plugin;
     }
 

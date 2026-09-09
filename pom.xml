@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
  
     <groupId>org.zkaleejoo</groupId>
-    <artifactId>AxionStaff</artifactId>
+    <artifactId>MaxStaff</artifactId>
     <version>1.0.2</version>
 
     <properties>
@@ -70,7 +70,7 @@
     </dependencies>
 
     <build>
-        <finalName>AxionStaff-${project.version}</finalName>
+        <finalName>MaxStaff-${project.version}</finalName>
 
         <resources>
             <resource>

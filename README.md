@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>AxionStaff - Official Wiki</h1>
+  <h1>MaxStaff - Official Wiki</h1>
   <p>
     <img src="https://img.shields.io/badge/version-1.0.1-blue" alt="Version">
     <img src="https://img.shields.io/badge/Java-25+-red" alt="Java">
@@ -8,8 +8,8 @@
   </p>
 </div>
 
-Welcome to the official **AxionStaff** Wiki! 
-AxionStaff is an advanced moderation plugin designed for Minecraft servers. Built natively for PaperMC and compatible with the multi-threading architecture of Folia, it provides a complete suite of moderation tools, including sanction systems, staff mode, anti-xray detection, and cross-server synchronization via MySQL databases.
+Welcome to the official **MaxStaff** Wiki! 
+MaxStaff is an advanced moderation plugin designed for Minecraft servers. Built natively for PaperMC and compatible with the multi-threading architecture of Folia, it provides a complete suite of moderation tools, including sanction systems, staff mode, anti-xray detection, and cross-server synchronization via MySQL databases.
 
 ---
 
@@ -48,10 +48,10 @@ AxionStaff is an advanced moderation plugin designed for Minecraft servers. Buil
 
 ### Installation Steps
 1. Download the most recent compiled `.jar` file from the official Download page.
-2. Place the file (e.g., `AxionStaff-1.0.0.jar`) in your server's `plugins/` folder.
+2. Place the file (e.g., `MaxStaff-1.0.0.jar`) in your server's `plugins/` folder.
 3. Start the server for the first time to generate the default configuration files.
-4. *(Optional)* Navigate to `plugins/AxionStaff/config.yml` to configure your MySQL database connection (ideal if you use BungeeCord/Velocity).
-5. Use the `/axionstaff reload` command or restart the server to apply the changes.
+4. *(Optional)* Navigate to `plugins/MaxStaff/config.yml` to configure your MySQL database connection (ideal if you use BungeeCord/Velocity).
+5. Use the `/maxstaff reload` command or restart the server to apply the changes.
 
 > **Note:** You do not need to compile anything! Just drag and drop the `.jar` file and the plugin will be ready to use on your server.
 
@@ -59,7 +59,7 @@ AxionStaff is an advanced moderation plugin designed for Minecraft servers. Buil
 
 ## 3. Configuration Files
 
-AxionStaff generates multiple files within the `plugins/AxionStaff/` directory. Each file has a specific purpose:
+MaxStaff generates multiple files within the `plugins/MaxStaff/` directory. Each file has a specific purpose:
 
 ### `config.yml`
 This is the main file where the general behavior of the plugin is defined:
@@ -82,7 +82,7 @@ These files contain all text strings, prefixes, and messages sent by the plugin.
 ### Moderation Commands
 | Command | Aliases | Description |
 | :--- | :--- | :--- |
-| `/axionstaff` | `/as` | Main command for plugin information and reloads. |
+| `/maxstaff` | `/as` | Main command for plugin information and reloads. |
 | `/staff` | `/s`, `/staffmode` | Toggles Staff Mode on or off. |
 | `/ban <player> [time] [reason]` | - | Applies a temporary or permanent ban to a player. |
 | `/mute <player> [time] [reason]` | - | Mutes a player's chat temporarily or permanently. |
@@ -118,65 +118,65 @@ These files contain all text strings, prefixes, and messages sent by the plugin.
 
 ## 5. Permission Nodes
 
-AxionStaff's permission system is detailed, designed to maintain a strict hierarchy.
+MaxStaff's permission system is detailed, designed to maintain a strict hierarchy.
 
 | Permission Node | Default Value | Description |
 | :--- | :--- | :--- |
-| `axionstaff.admin` | `op` | Full access to AxionStaff and all administrative commands. |
-| `axionstaff.command.staff` | `op` | Allows the use of the `/staff` command to enter moderator mode. |
-| `axionstaff.punish.ban` | `op` | Allows the use of `/ban` and `/tempban`. |
-| `axionstaff.punish.mute` | `op` | Allows the use of `/mute` and `/tempmute`. |
-| `axionstaff.punish.kick` | `op` | Allows the use of `/kick`. |
-| `axionstaff.punish.warn` | `op` | Allows the use of `/warn`. |
-| `axionstaff.punish.unban` | `op` | Allows the use of `/unban`. |
-| `axionstaff.punish.unmute` | `op` | Allows the use of `/unmute`. |
-| `axionstaff.punish.banip` | `op` | Allows the use of `/ban-ip` and `/tempban-ip`. |
-| `axionstaff.punish.unbanip`| `op` | Allows the use of `/unban-ip`. |
-| `axionstaff.history` | `op` | Allows viewing sanction history via `/history`. |
-| `axionstaff.punish` | `op` | Allows opening the advanced menu using `/sanction`. |
-| `axionstaff.sanctions.list`| `op` | Allows viewing active bans using `/sanction list`. |
-| `axionstaff.punish.silent` | `op` | Allows executing silent punishments via `/silent`. |
-| `axionstaff.punish.override`| `op` | Allows bypassing protection checks and sanctioning other Staff members. |
-| `axionstaff.punish.protected`| `false` | Protects the player from being sanctioned by lower-ranking Staff members. |
-| `axionstaff.vanish` | `op` | Allows the use of the `/vanish` command. |
-| `axionstaff.see.vanish` | `op` | Allows viewing other Staff members who are in Vanish mode. |
-| `axionstaff.vanish.join` | `false` | Automatically enables Vanish mode upon joining the server. |
-| `axionstaff.staffchat` | `op` | Allows reading and writing in the Staff chat. |
-| `axionstaff.cmdspy` | `op` | Allows using `/cmdspy` to audit user commands. |
-| `axionstaff.cmdspy.raw` | `false` | *(Critical)* Allows viewing sensitive arguments and uncensored passwords in `/cmdspy` logs. |
-| `axionstaff.cmdspy.raw.owners`| `op` | Grouping node intended exclusively for owners, includes access to raw cmdspy. |
-| `axionstaff.chat.admin` | `op` | Allows muting and clearing the global chat. |
-| `axionstaff.gamemode` | `op` | Allows using the `/gm` menu. |
-| `axionstaff.alts` | `op` | Allows the use of the alternate account tracking system. |
-| `axionstaff.alts.override` | `op` | Allows viewing alternate accounts of hierarchically protected players. |
-| `axionstaff.alts.protected`| `false` | Hides the player's alternate accounts from lower-ranking Staff scrutiny. |
-| `axionstaff.freeze` | `op` | Allows the use of `/freeze` and `/unfreeze`. |
-| `axionstaff.report` | `true` | Allows players to execute `/report` (Granted to all by default). |
-| `axionstaff.report.notify` | `op` | Allows Staff to receive real-time notifications about new reports. |
-| `axionstaff.report.bypass` | `op` | Allows bypassing cooldowns when sending reports. |
-| `axionstaff.invsee` | `op` | Allows the use of `/invsee`. |
-| `axionstaff.revive` | `op` | Allows the use of `/revive` to restore inventories lost upon death. |
-| `axionstaff.fly` | `op` | Allows the use of `/fly` and modifying its speed. |
-| `axionstaff.client.notify` | `op` | Allows receiving notifications when modified client usage is detected. |
-| `axionstaff.antixray.alert`| `op` | Allows receiving real-time Anti-Xray system notifications. |
-| `axionstaff.antixray.bypass`| `false` | Prevents the Anti-Xray system from generating mining alerts for this player. |
+| `maxstaff.admin` | `op` | Full access to MaxStaff and all administrative commands. |
+| `maxstaff.command.staff` | `op` | Allows the use of the `/staff` command to enter moderator mode. |
+| `maxstaff.punish.ban` | `op` | Allows the use of `/ban` and `/tempban`. |
+| `maxstaff.punish.mute` | `op` | Allows the use of `/mute` and `/tempmute`. |
+| `maxstaff.punish.kick` | `op` | Allows the use of `/kick`. |
+| `maxstaff.punish.warn` | `op` | Allows the use of `/warn`. |
+| `maxstaff.punish.unban` | `op` | Allows the use of `/unban`. |
+| `maxstaff.punish.unmute` | `op` | Allows the use of `/unmute`. |
+| `maxstaff.punish.banip` | `op` | Allows the use of `/ban-ip` and `/tempban-ip`. |
+| `maxstaff.punish.unbanip`| `op` | Allows the use of `/unban-ip`. |
+| `maxstaff.history` | `op` | Allows viewing sanction history via `/history`. |
+| `maxstaff.punish` | `op` | Allows opening the advanced menu using `/sanction`. |
+| `maxstaff.sanctions.list`| `op` | Allows viewing active bans using `/sanction list`. |
+| `maxstaff.punish.silent` | `op` | Allows executing silent punishments via `/silent`. |
+| `maxstaff.punish.override`| `op` | Allows bypassing protection checks and sanctioning other Staff members. |
+| `maxstaff.punish.protected`| `false` | Protects the player from being sanctioned by lower-ranking Staff members. |
+| `maxstaff.vanish` | `op` | Allows the use of the `/vanish` command. |
+| `maxstaff.see.vanish` | `op` | Allows viewing other Staff members who are in Vanish mode. |
+| `maxstaff.vanish.join` | `false` | Automatically enables Vanish mode upon joining the server. |
+| `maxstaff.staffchat` | `op` | Allows reading and writing in the Staff chat. |
+| `maxstaff.cmdspy` | `op` | Allows using `/cmdspy` to audit user commands. |
+| `maxstaff.cmdspy.raw` | `false` | *(Critical)* Allows viewing sensitive arguments and uncensored passwords in `/cmdspy` logs. |
+| `maxstaff.cmdspy.raw.owners`| `op` | Grouping node intended exclusively for owners, includes access to raw cmdspy. |
+| `maxstaff.chat.admin` | `op` | Allows muting and clearing the global chat. |
+| `maxstaff.gamemode` | `op` | Allows using the `/gm` menu. |
+| `maxstaff.alts` | `op` | Allows the use of the alternate account tracking system. |
+| `maxstaff.alts.override` | `op` | Allows viewing alternate accounts of hierarchically protected players. |
+| `maxstaff.alts.protected`| `false` | Hides the player's alternate accounts from lower-ranking Staff scrutiny. |
+| `maxstaff.freeze` | `op` | Allows the use of `/freeze` and `/unfreeze`. |
+| `maxstaff.report` | `true` | Allows players to execute `/report` (Granted to all by default). |
+| `maxstaff.report.notify` | `op` | Allows Staff to receive real-time notifications about new reports. |
+| `maxstaff.report.bypass` | `op` | Allows bypassing cooldowns when sending reports. |
+| `maxstaff.invsee` | `op` | Allows the use of `/invsee`. |
+| `maxstaff.revive` | `op` | Allows the use of `/revive` to restore inventories lost upon death. |
+| `maxstaff.fly` | `op` | Allows the use of `/fly` and modifying its speed. |
+| `maxstaff.client.notify` | `op` | Allows receiving notifications when modified client usage is detected. |
+| `maxstaff.antixray.alert`| `op` | Allows receiving real-time Anti-Xray system notifications. |
+| `maxstaff.antixray.bypass`| `false` | Prevents the Anti-Xray system from generating mining alerts for this player. |
 
 ---
 
 ## 6. PlaceholderAPI Variables
 
-If PlaceholderAPI is installed on the server, AxionStaff exposes the following variables for integration into scoreboards, chats, and other compatible plugins.
+If PlaceholderAPI is installed on the server, MaxStaff exposes the following variables for integration into scoreboards, chats, and other compatible plugins.
 
-* `%axionstaff_in_staff_mode%` - Returns the current Staff Mode state (true/false).
-* `%axionstaff_vanished%` - Returns the current Vanish mode state (true/false).
-* `%axionstaff_frozen%` - Returns whether the player is currently frozen (true/false).
-* `%axionstaff_is_spy%` - Returns whether the player has CommandSpy enabled (true/false).
-* `%axionstaff_warn_count%` - Returns the total number of warnings issued to the player.
-* `%axionstaff_ban_count%` - Returns the total number of bans issued to the player.
-* `%axionstaff_mute_count%` - Returns the total number of mutes issued to the player.
-* `%axionstaff_kick_count%` - Returns the total number of kicks issued to the player.
-* `%axionstaff_total_punishments%` - Returns the total sum of punishments applied to the player.
-* `%axionstaff_playtime%` - Returns the player's formatted playtime (e.g., `12h 30m`).
+* `%maxstaff_in_staff_mode%` - Returns the current Staff Mode state (true/false).
+* `%maxstaff_vanished%` - Returns the current Vanish mode state (true/false).
+* `%maxstaff_frozen%` - Returns whether the player is currently frozen (true/false).
+* `%maxstaff_is_spy%` - Returns whether the player has CommandSpy enabled (true/false).
+* `%maxstaff_warn_count%` - Returns the total number of warnings issued to the player.
+* `%maxstaff_ban_count%` - Returns the total number of bans issued to the player.
+* `%maxstaff_mute_count%` - Returns the total number of mutes issued to the player.
+* `%maxstaff_kick_count%` - Returns the total number of kicks issued to the player.
+* `%maxstaff_total_punishments%` - Returns the total sum of punishments applied to the player.
+* `%maxstaff_playtime%` - Returns the player's formatted playtime (e.g., `12h 30m`).
 
 *(Note: The output text for boolean variables (true/false) can be configured in the corresponding section of `config.yml`).*
 
@@ -189,7 +189,7 @@ Unlike conventional freeze systems, the `/freeze` command invokes a text entity 
 * If the offender attempts to disconnect while the system is active, the plugin will execute an **Automatic Security Ban** (set to 7 days duration by default) for evasion.
 
 ### Privacy and Security (CommandSpy)
-AxionStaff actively protects confidential information. When CommandSpy is enabled, sensitive commands defined in `config.yml` (such as AuthMe passwords or authentication tokens) are censored using a mask (e.g., `******`). This allows the moderation team to audit command usage without compromising user credentials. Only high-ranking staff with the `axionstaff.cmdspy.raw` permission can view the original arguments.
+MaxStaff actively protects confidential information. When CommandSpy is enabled, sensitive commands defined in `config.yml` (such as AuthMe passwords or authentication tokens) are censored using a mask (e.g., `******`). This allows the moderation team to audit command usage without compromising user credentials. Only high-ranking staff with the `maxstaff.cmdspy.raw` permission can view the original arguments.
 
 ### Compact Inventory Inspection (InvSee)
 The InvSee command generates a unified interface that renders the primary inventory, off-hand, and armor pieces simultaneously. This compact layout eliminates the need for secondary windows and facilitates quick reviews (ScreenShares).
@@ -201,19 +201,19 @@ The plugin stores the exact inventory state and experience every time a player d
 
 ## 8. Discord Integration Guide
 
-To configure `discord.yml` and connect AxionStaff to your Discord server, follow these steps to set up Webhooks:
+To configure `discord.yml` and connect MaxStaff to your Discord server, follow these steps to set up Webhooks:
 
 1. **Open your Discord Server Settings**
    Go to **Server Settings** > **Integrations** > **Webhooks**.
 
 2. **Create a New Webhook**
-   Click on **New Webhook**. Name it (e.g., "AxionStaff") and select the channel where you want the notifications to appear (like `#staff-chat` or `#sanctions`).
+   Click on **New Webhook**. Name it (e.g., "MaxStaff") and select the channel where you want the notifications to appear (like `#staff-chat` or `#sanctions`).
 
 3. **Copy the Webhook URL**
    Click the **Copy Webhook URL** button.
 
 4. **Paste it into `discord.yml`**
-   Open `plugins/AxionStaff/discord.yml` on your Minecraft server.
+   Open `plugins/MaxStaff/discord.yml` on your Minecraft server.
    Locate the module you want to enable (for example, `sanctions` or `staff-chat`) and paste the URL in the `webhook-url` field:
    ```yaml
    sanctions:
@@ -222,7 +222,7 @@ To configure `discord.yml` and connect AxionStaff to your Discord server, follow
    ```
 
 5. **Reload the Plugin**
-   Save the file and run `/axionstaff reload` in your game or server console. Your Discord integration is now active!
+   Save the file and run `/maxstaff reload` in your game or server console. Your Discord integration is now active!
 
 ---
 > Need additional support? Join our **Discord Server** https://discord.gg/ym4x6jmSNh

@@ -4,13 +4,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 
 public class CommandSpyCommand implements CommandExecutor {
 
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
 
-    public CommandSpyCommand(AxionStaff plugin) {
+    public CommandSpyCommand(MaxStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -21,7 +21,7 @@ public class CommandSpyCommand implements CommandExecutor {
             return true;
         }
 
-        if (!CommandContextUtil.requirePermission(player, "axionstaff.cmdspy", plugin.getMainConfigManager())) {
+        if (!CommandContextUtil.requirePermission(player, "maxstaff.cmdspy", plugin.getMainConfigManager())) {
             return true;
         }
 

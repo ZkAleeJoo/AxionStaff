@@ -2,7 +2,7 @@ package org.zkaleejoo.utils;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -12,10 +12,10 @@ import java.sql.Statement;
 
 public class DatabaseManager {
 
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
     private HikariDataSource dataSource;
 
-    public DatabaseManager(AxionStaff plugin) {
+    public DatabaseManager(MaxStaff plugin) {
         this.plugin = plugin;
         connect();
         setupTables();
@@ -40,7 +40,7 @@ public class DatabaseManager {
 
     private void setupTables() {
         try (Connection conn = getConnection(); Statement stmt = conn.createStatement()) {
-            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS AxionStaff_history (" +
+            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS MaxStaff_history (" +
                     "id INT AUTO_INCREMENT PRIMARY KEY, " +
                     "uuid VARCHAR(36), " +
                     "name VARCHAR(16), " +
@@ -51,14 +51,14 @@ public class DatabaseManager {
                     "created_at BIGINT NOT NULL)");
 
 
-            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS AxionStaff_mutes (" +
+            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS MaxStaff_mutes (" +
                     "uuid VARCHAR(36) PRIMARY KEY, " +
                     "name VARCHAR(16), " +
                     "reason TEXT, " +
                     "staff VARCHAR(16), " +
                     "expiry BIGINT)");
 
-            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS AxionStaff_bans (" +
+            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS MaxStaff_bans (" +
                     "uuid VARCHAR(36) PRIMARY KEY, " +
                     "name VARCHAR(16), " +
                     "reason TEXT, " +
@@ -66,14 +66,14 @@ public class DatabaseManager {
                     "expiry BIGINT, " +
                     "created_at BIGINT NOT NULL)");
 
-            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS AxionStaff_ip_bans (" +
+            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS MaxStaff_ip_bans (" +
                     "ip VARCHAR(45) PRIMARY KEY, " +
                     "reason TEXT, " +
                     "staff VARCHAR(16), " +
                     "expiry BIGINT, " +
                     "created_at BIGINT NOT NULL)");
 
-            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS AxionStaff_sync_actions (" +
+            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS MaxStaff_sync_actions (" +
                     "id BIGINT AUTO_INCREMENT PRIMARY KEY, " +
                     "action_type VARCHAR(20), " +
                     "target_uuid VARCHAR(36), " +
@@ -85,22 +85,22 @@ public class DatabaseManager {
                     "expires_at BIGINT, " +
                     "source_server VARCHAR(64))");
 
-            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS AxionStaff_ip_cache (" +
+            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS MaxStaff_ip_cache (" +
                     "uuid VARCHAR(36) PRIMARY KEY, " +
                     "ip VARCHAR(45))");
 
-            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS AxionStaff_sync_action_acks (" +
+            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS MaxStaff_sync_action_acks (" +
                     "action_id BIGINT NOT NULL, " +
                     "server_id VARCHAR(64) NOT NULL, " +
                     "processed_at BIGINT NOT NULL, " +
                     "PRIMARY KEY (action_id, server_id))");
 
-            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS AxionStaff_name_cache (" +
+            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS MaxStaff_name_cache (" +
                     "uuid VARCHAR(36) PRIMARY KEY, " +
                     "last_name VARCHAR(16), " +
                     "updated_at BIGINT NOT NULL)");
 
-            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS AxionStaff_vanish_states (" +
+            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS MaxStaff_vanish_states (" +
                     "uuid VARCHAR(36) PRIMARY KEY, " +
                     "name VARCHAR(16), " +
                     "enabled BOOLEAN NOT NULL DEFAULT TRUE, " +
@@ -116,39 +116,39 @@ public class DatabaseManager {
     }
 
     private void migrateTables(Connection conn, Statement stmt) throws SQLException {
-        if (!columnExists(conn, "AxionStaff_history", "created_at")) {
-            stmt.executeUpdate("ALTER TABLE AxionStaff_history ADD COLUMN created_at BIGINT NOT NULL DEFAULT 0");
-            plugin.getLogger().info("[AxionStaff SQL] Added created_at column to AxionStaff_history.");
+        if (!columnExists(conn, "MaxStaff_history", "created_at")) {
+            stmt.executeUpdate("ALTER TABLE MaxStaff_history ADD COLUMN created_at BIGINT NOT NULL DEFAULT 0");
+            plugin.getLogger().info("[MaxStaff SQL] Added created_at column to MaxStaff_history.");
         }
 
-        if (columnExists(conn, "AxionStaff_history", "date")) {
-            stmt.executeUpdate("UPDATE AxionStaff_history " +
+        if (columnExists(conn, "MaxStaff_history", "date")) {
+            stmt.executeUpdate("UPDATE MaxStaff_history " +
                     "SET created_at = COALESCE(UNIX_TIMESTAMP(STR_TO_DATE(date, '%d/%m/%Y %H:%i')) * 1000, created_at) " +
                     "WHERE (created_at = 0 OR created_at IS NULL) AND date IS NOT NULL AND date <> ''");
         }
 
-        stmt.executeUpdate("UPDATE AxionStaff_history SET created_at = " + System.currentTimeMillis() + " WHERE created_at = 0 OR created_at IS NULL");
+        stmt.executeUpdate("UPDATE MaxStaff_history SET created_at = " + System.currentTimeMillis() + " WHERE created_at = 0 OR created_at IS NULL");
 
-        createIndexIfMissing(conn, stmt, "AxionStaff_history", "idx_history_uuid_type", "uuid, type");
-        createIndexIfMissing(conn, stmt, "AxionStaff_history", "idx_history_uuid_created_at", "uuid, created_at");
+        createIndexIfMissing(conn, stmt, "MaxStaff_history", "idx_history_uuid_type", "uuid, type");
+        createIndexIfMissing(conn, stmt, "MaxStaff_history", "idx_history_uuid_created_at", "uuid, created_at");
 
-        if (!columnExists(conn, "AxionStaff_mutes", "name")) {
-            stmt.executeUpdate("ALTER TABLE AxionStaff_mutes ADD COLUMN name VARCHAR(16) NULL AFTER uuid");
-            plugin.getLogger().info("[AxionStaff SQL] Added name column to AxionStaff_mutes.");
+        if (!columnExists(conn, "MaxStaff_mutes", "name")) {
+            stmt.executeUpdate("ALTER TABLE MaxStaff_mutes ADD COLUMN name VARCHAR(16) NULL AFTER uuid");
+            plugin.getLogger().info("[MaxStaff SQL] Added name column to MaxStaff_mutes.");
         }
 
-        createIndexIfMissing(conn, stmt, "AxionStaff_bans", "idx_bans_name", "name");
-        createIndexIfMissing(conn, stmt, "AxionStaff_bans", "idx_bans_expiry", "expiry");
-        createIndexIfMissing(conn, stmt, "AxionStaff_ip_bans", "idx_ip_bans_expiry", "expiry");
-        createIndexIfMissing(conn, stmt, "AxionStaff_sync_actions", "idx_sync_created_at", "created_at");
-        createIndexIfMissing(conn, stmt, "AxionStaff_sync_actions", "idx_sync_target_uuid", "target_uuid");
-        createIndexIfMissing(conn, stmt, "AxionStaff_sync_actions", "idx_sync_expires_at", "expires_at");
+        createIndexIfMissing(conn, stmt, "MaxStaff_bans", "idx_bans_name", "name");
+        createIndexIfMissing(conn, stmt, "MaxStaff_bans", "idx_bans_expiry", "expiry");
+        createIndexIfMissing(conn, stmt, "MaxStaff_ip_bans", "idx_ip_bans_expiry", "expiry");
+        createIndexIfMissing(conn, stmt, "MaxStaff_sync_actions", "idx_sync_created_at", "created_at");
+        createIndexIfMissing(conn, stmt, "MaxStaff_sync_actions", "idx_sync_target_uuid", "target_uuid");
+        createIndexIfMissing(conn, stmt, "MaxStaff_sync_actions", "idx_sync_expires_at", "expires_at");
 
-        createIndexIfMissing(conn, stmt, "AxionStaff_sync_action_acks", "idx_sync_acks_server", "server_id");
-        createIndexIfMissing(conn, stmt, "AxionStaff_sync_action_acks", "idx_sync_acks_processed", "processed_at");
+        createIndexIfMissing(conn, stmt, "MaxStaff_sync_action_acks", "idx_sync_acks_server", "server_id");
+        createIndexIfMissing(conn, stmt, "MaxStaff_sync_action_acks", "idx_sync_acks_processed", "processed_at");
 
-        createIndexIfMissing(conn, stmt, "AxionStaff_name_cache", "idx_name_cache_last_name", "last_name");
-        createIndexIfMissing(conn, stmt, "AxionStaff_vanish_states", "idx_vanish_enabled", "enabled");
+        createIndexIfMissing(conn, stmt, "MaxStaff_name_cache", "idx_name_cache_last_name", "last_name");
+        createIndexIfMissing(conn, stmt, "MaxStaff_vanish_states", "idx_vanish_enabled", "enabled");
     }
 
     private boolean columnExists(Connection conn, String tableName, String columnName) throws SQLException {

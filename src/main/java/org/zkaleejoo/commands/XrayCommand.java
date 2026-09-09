@@ -4,13 +4,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 
 public class XrayCommand implements CommandExecutor {
 
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
 
-    public XrayCommand(AxionStaff plugin) {
+    public XrayCommand(MaxStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -22,7 +22,7 @@ public class XrayCommand implements CommandExecutor {
             return true;
         }
 
-        if (!CommandContextUtil.requirePermission(player, "axionstaff.antixray.alert", plugin.getMainConfigManager())) {
+        if (!CommandContextUtil.requirePermission(player, "maxstaff.antixray.alert", plugin.getMainConfigManager())) {
             return true;
         }
 

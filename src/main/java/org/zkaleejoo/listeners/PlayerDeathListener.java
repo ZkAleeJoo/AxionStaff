@@ -4,15 +4,15 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 
 public class PlayerDeathListener implements Listener {
 
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
 
-    public PlayerDeathListener(AxionStaff plugin) {
+    public PlayerDeathListener(MaxStaff plugin) {
         this.plugin = plugin;
     }
 

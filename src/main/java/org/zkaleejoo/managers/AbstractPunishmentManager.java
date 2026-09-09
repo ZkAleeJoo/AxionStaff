@@ -5,7 +5,7 @@ import org.bukkit.Sound;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 import org.zkaleejoo.config.MainConfigManager;
 import org.zkaleejoo.utils.FoliaCompat;
 import org.zkaleejoo.utils.BanUtils;
@@ -23,10 +23,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class AbstractPunishmentManager implements IPunishmentManager {
 
-    protected final AxionStaff plugin;
+    protected final MaxStaff plugin;
     private final Map<UUID, Long> muteCache = new ConcurrentHashMap<>();
 
-    protected AbstractPunishmentManager(AxionStaff plugin) {
+    protected AbstractPunishmentManager(MaxStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -552,11 +552,11 @@ public abstract class AbstractPunishmentManager implements IPunishmentManager {
             return false;
         }
 
-        if (!target.hasPermission("AxionStaff.punish.protected")) {
+        if (!target.hasPermission("MaxStaff.punish.protected")) {
             return false;
         }
 
-        if (staff.hasPermission("AxionStaff.punish.override")) {
+        if (staff.hasPermission("MaxStaff.punish.override")) {
             return false;
         }
 

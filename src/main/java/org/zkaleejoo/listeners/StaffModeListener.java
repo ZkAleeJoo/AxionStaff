@@ -6,13 +6,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 
 public class StaffModeListener implements Listener {
 
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
 
-    public StaffModeListener(AxionStaff plugin) {
+    public StaffModeListener(MaxStaff plugin) {
         this.plugin = plugin;
     }
 

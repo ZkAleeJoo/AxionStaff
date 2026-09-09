@@ -9,15 +9,15 @@ import org.bukkit.event.Listener;
 import io.papermc.paper.event.player.AsyncChatEvent;
 import io.papermc.paper.event.player.AbstractChatEvent;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 import org.zkaleejoo.utils.MessageUtils;
 import org.zkaleejoo.utils.FoliaCompat;
 
 public class ChatListener implements Listener {
 
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
 
-    public ChatListener(AxionStaff plugin) {
+    public ChatListener(MaxStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -39,7 +39,7 @@ public class ChatListener implements Listener {
         }
 
         if (plugin.isModuleEnabled("chat") && plugin.getChatManager().isGlobalMute()) {
-            if (!player.hasPermission("axionstaff.staffchat")) {
+            if (!player.hasPermission("maxstaff.staffchat")) {
                 event.setCancelled(true);
                 String msg = plugin.getMainConfigManager().getMsgChatIsMuted();
                 FoliaCompat.runForEntity(plugin, player, () -> player.sendMessage(MessageUtils.getColoredMessage(
@@ -52,7 +52,7 @@ public class ChatListener implements Listener {
     }
 
     private boolean handleStaffChatToggle(Player player, Cancellable event) {
-        if (!player.hasPermission("axionstaff.staffchat") || !plugin.isStaffChatToggled(player.getUniqueId())) {
+        if (!player.hasPermission("maxstaff.staffchat") || !plugin.isStaffChatToggled(player.getUniqueId())) {
             return false;
         }
 
@@ -76,7 +76,7 @@ public class ChatListener implements Listener {
         for (Player online : Bukkit.getOnlinePlayers()) {
             if (online == null)
                 continue;
-            if (online.hasPermission("axionstaff.staffchat")) {
+            if (online.hasPermission("maxstaff.staffchat")) {
                 online.sendMessage(coloredMessage);
             }
         }

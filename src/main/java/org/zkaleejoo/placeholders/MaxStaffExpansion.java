@@ -4,15 +4,15 @@ import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 import org.zkaleejoo.utils.MessageUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class AxionStaffExpansion extends PlaceholderExpansion {
+public class MaxStaffExpansion extends PlaceholderExpansion {
 
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
 
-    public AxionStaffExpansion(AxionStaff plugin) {
+    public MaxStaffExpansion(MaxStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -23,7 +23,7 @@ public class AxionStaffExpansion extends PlaceholderExpansion {
 
     @Override
     public @NotNull String getIdentifier() {
-        return "axionstaff";
+        return "maxstaff";
     }
 
     @Override
@@ -48,46 +48,46 @@ public class AxionStaffExpansion extends PlaceholderExpansion {
 
         switch (params.toLowerCase()) {
 
-            // %axionstaff_in_staff_mode%
+            // %maxstaff_in_staff_mode%
             case "in_staff_mode":
                 return (online != null && plugin.getStaffManager().isInStaffMode(online)) ? textTrue : textFalse;
 
-            // %axionstaff_vanished%
+            // %maxstaff_vanished%
             case "vanished":
                 return (online != null && plugin.getStaffManager().isVanished(online)) ? textTrue : textFalse;
 
-            // %axionstaff_frozen%
+            // %maxstaff_frozen%
             case "frozen":
                 return (online != null && plugin.getFreezeManager().isFrozen(online)) ? textTrue : textFalse;
 
-            // %axionstaff_is_spy%
+            // %maxstaff_is_spy%
             case "is_spy":
                 return (online != null && plugin.getStaffManager().isSpying(online)) ? textTrue : textFalse;
 
-            // %axionstaff_warn_count%
+            // %maxstaff_warn_count%
             case "warn_count":
                 return String.valueOf(plugin.getPunishmentManager().getHistoryCount(player.getName(), "WARN"));
 
-            // %axionstaff_ban_count%
+            // %maxstaff_ban_count%
             case "ban_count":
                 return String.valueOf(plugin.getPunishmentManager().getHistoryCount(player.getName(), "BAN"));
 
-            // %axionstaff_mute_count%
+            // %maxstaff_mute_count%
             case "mute_count":
                 return String.valueOf(plugin.getPunishmentManager().getHistoryCount(player.getName(), "MUTE"));
 
-            // %axionstaff_kick_count%
+            // %maxstaff_kick_count%
             case "kick_count":
                 return String.valueOf(plugin.getPunishmentManager().getHistoryCount(player.getName(), "KICK"));
 
-            // %axionstaff_total_punishments%
+            // %maxstaff_total_punishments%
             case "total_punishments":
                 int total = plugin.getPunishmentManager().getHistoryCount(player.getName(), "BAN") +
                         plugin.getPunishmentManager().getHistoryCount(player.getName(), "MUTE") +
                         plugin.getPunishmentManager().getHistoryCount(player.getName(), "KICK");
                 return String.valueOf(total);
 
-            // %axionstaff_playtime%
+            // %maxstaff_playtime%
             case "playtime":
                 if (online == null)
                     return "0h 0m";

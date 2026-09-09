@@ -10,7 +10,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 import org.zkaleejoo.utils.MessageUtils;
 
 import java.util.Arrays;
@@ -22,9 +22,9 @@ import org.zkaleejoo.config.MainConfigManager.ClickActionType;
 
 public class ReportCommand implements CommandExecutor, TabCompleter {
 
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
 
-    public ReportCommand(AxionStaff plugin) {
+    public ReportCommand(MaxStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -44,7 +44,7 @@ public class ReportCommand implements CommandExecutor, TabCompleter {
             return true;
         }
 
-        if (!reporter.hasPermission("axionstaff.report")) {
+        if (!reporter.hasPermission("maxstaff.report")) {
             reporter.sendMessage(MessageUtils.getColoredMessage(
                     plugin.getMainConfigManager().getPrefix() + plugin.getMainConfigManager().getNoPermission()));
             return true;

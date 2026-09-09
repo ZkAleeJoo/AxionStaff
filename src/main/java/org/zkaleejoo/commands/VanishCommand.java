@@ -4,13 +4,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 
 public class VanishCommand implements CommandExecutor {
 
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
 
-    public VanishCommand(AxionStaff plugin) {
+    public VanishCommand(MaxStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -21,7 +21,7 @@ public class VanishCommand implements CommandExecutor {
             return true;
         }
 
-        if (!CommandContextUtil.requirePermission(player, "axionstaff.vanish", plugin.getMainConfigManager())) {
+        if (!CommandContextUtil.requirePermission(player, "maxstaff.vanish", plugin.getMainConfigManager())) {
             return true;
         }
 

@@ -4,13 +4,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 
 public class StaffCommand implements CommandExecutor {
 
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
 
-    public StaffCommand(AxionStaff plugin) {
+    public StaffCommand(MaxStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -21,7 +21,7 @@ public class StaffCommand implements CommandExecutor {
             return true;
         }
 
-        if (!CommandContextUtil.requirePermission(player, "axionstaff.command.staff", plugin.getMainConfigManager())) {
+        if (!CommandContextUtil.requirePermission(player, "maxstaff.command.staff", plugin.getMainConfigManager())) {
             return true;
         }
 

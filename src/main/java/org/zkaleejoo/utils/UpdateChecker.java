@@ -1,6 +1,6 @@
 package org.zkaleejoo.utils;
 
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -12,11 +12,11 @@ import java.util.function.Consumer;
 
 public class UpdateChecker {
 
-    private static final String GITHUB_VERSION_URL = "https://gist.githubusercontent.com/ZkAleeJoo/be4bcf6afd0f4981de630ac0c48af74a/raw/AxionStaff";
+    private static final String GITHUB_VERSION_URL = "https://gist.githubusercontent.com/ZkAleeJoo/be4bcf6afd0f4981de630ac0c48af74a/raw/MaxStaff";
 
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
 
-    public UpdateChecker(AxionStaff plugin) {
+    public UpdateChecker(MaxStaff plugin) {
         this.plugin = plugin;
     }
 
@@ -26,7 +26,7 @@ public class UpdateChecker {
             try {
                 URL url = URI.create(GITHUB_VERSION_URL).toURL();
                 connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestProperty("User-Agent", "AxionStaff-UpdateChecker");
+                connection.setRequestProperty("User-Agent", "MaxStaff-UpdateChecker");
                 connection.setConnectTimeout(5000);
                 connection.setReadTimeout(5000);
 

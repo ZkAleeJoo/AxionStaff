@@ -1,68 +1,68 @@
 ﻿#==========================================
-#      AxionStaff - Mensajes en Español
+#      MaxStaff - Mensajes en Español
 #==========================================
 
 messages:
-  no-permission: "&#441BFA&l✖ &#441BFANo tienes permiso para usar este comando."
+  no-permission: "&c&l✖ &cNo tienes permiso para usar este comando."
   plugin-reload: "&#00E676&l✔ &#E0E0E0Configuración recargada exitosamente."
-  subcommand-invalid: "&#441BFA&l✖ &#441BFASubcomando inválido. Usa &#FFD700/AxionStaff help&#441BFA."
-  subcommand-specified: "&#441BFA&l✖ &#441BFAPor favor especifica un subcomando."
-  player-click-pls: "&#441BFA&l✖ &#441BFAPor favor haz click derecho en un jugador para sancionarlo."
-  invalid-material: "&#441BFA&l[Error] &#E0E0E0El material '&#FFD700{path}&#E0E0E0' no existe. Usando: &#FFFFFF{default}"
+  subcommand-invalid: "&c&l✖ &cSubcomando inválido. Usa &#FFD700/MaxStaff help&c."
+  subcommand-specified: "&c&l✖ &cPor favor especifica un subcomando."
+  player-click-pls: "&c&l✖ &cPor favor haz click derecho en un jugador para sancionarlo."
+  invalid-material: "&c&l[Error] &#E0E0E0El material '&#FFD700{path}&#E0E0E0' no existe. Usando: &#FFFFFF{default}"
   teleport-success: "&#00E676&l✔ &#E0E0E0Has sido teletransportado a &#FFD700{player}"
-  message-console: "&#441BFA&l✖ &#441BFAEste comando solo puede ser ejecutado por jugadores."
+  message-console: "&c&l✖ &cEste comando solo puede ser ejecutado por jugadores."
   no-reason: "Sin motivo proporcionado"
-  player-muted: "&#441BFA&l¡Estás silenciado! &#E0E0E0No puedes hablar."
-  use-staffreset: "&#441BFAUso: &#FFD700/staff reset <jugador> <BAN|MUTE|KICK|WARN|ALL>"
-  use-stafftake: "&#441BFAUso: &#FFD700/staff take <jugador> <tipo> [cantidad]"
+  player-muted: "&c&l¡Estás silenciado! &#E0E0E0No puedes hablar."
+  use-staffreset: "&cUso: &#FFD700/staff reset <jugador> <BAN|MUTE|KICK|WARN|ALL>"
+  use-stafftake: "&cUso: &#FFD700/staff take <jugador> <tipo> [cantidad]"
   staff-reset-success: "&#00E676&l✔ &#E0E0E0El historial de &#FFD700{type} &#E0E0E0de &#FFD700{target} &#E0E0E0ha sido reiniciado."
   staff-take-success: "&#00E676&l✔ &#E0E0E0Se han eliminado &#FFFFFF{amount} &#E0E0E0sanciones de tipo &#FFD700{type} &#E0E0E0a &#FFD700{target}."
-  take-number-invalid: "&#441BFA&l✖ &#441BFALa cantidad debe ser un número válido."
-  player-no-history: "&#441BFAEse jugador no tiene historial de sanciones."
-  command-help-title: "&#8727F5&lAxionStaff &#E0E0E0Lista de Comandos: &#FFFFFF{version}"
+  take-number-invalid: "&c&l✖ &cLa cantidad debe ser un número válido."
+  player-no-history: "&cEse jugador no tiene historial de sanciones."
+  command-help-title: "&4&lMaxStaff &#E0E0E0Lista de Comandos: &#FFFFFF{version}"
   command-help-list:
-    - '&#555555> https://github.com/ZkAleeJoo/AxionStaff/blob/main/README.md' 
+    - '&#555555> https://github.com/ZkAleeJoo/MaxStaff/blob/main/README.md' 
   update-available: "&f&lNUEVA VERSION: &7{version}"
-  update-current: "&7Tu version actual: &#441BFA{version}"
+  update-current: "&7Tu version actual: &c{version}"
   update-download: "&eDescargala para recibir mejoras y correcciones."
-  staff-chat-format: "&#555555[&#441BFA&lSTAFF&#555555] &#FFD700{player}&#555555: &#E0E0E0{message}"
+  staff-chat-format: "&#555555[&c&lSTAFF&#555555] &#FFD700{player}&#555555: &#E0E0E0{message}"
   command-spy-enabled: "&#00E676&l✔ &#E0E0E0Modo Espía de Comandos &#00E676&lACTIVADO&#E0E0E0."
-  command-spy-disabled: "&#441BFA&l✖ &#441BFAModo Espía de Comandos &#441BFA&lDESACTIVADO&#441BFA."
-  command-spy-format: "&#555555[&#441BFA&lSPY&#555555] &#FFD700{player}&#555555: &#E0E0E0{command}"
-  gamemode-use: "&#441BFAUso: &#FFD700/gm <0|1|2|3>"
-  gamemode-modeinvalid: "&#441BFA&l✖ &#441BFAModo de juego inválido"
-  fly-use: "&#441BFAUso: &#FFD700/fly <1|2|3>"
-  fly-disabled: "&#441BFA&l✖ &#441BFAVuelo desactivado."
+  command-spy-disabled: "&c&l✖ &cModo Espía de Comandos &c&lDESACTIVADO&c."
+  command-spy-format: "&#555555[&c&lSPY&#555555] &#FFD700{player}&#555555: &#E0E0E0{command}"
+  gamemode-use: "&cUso: &#FFD700/gm <0|1|2|3>"
+  gamemode-modeinvalid: "&c&l✖ &cModo de juego inválido"
+  fly-use: "&cUso: &#FFD700/fly <1|2|3>"
+  fly-disabled: "&c&l✖ &cVuelo desactivado."
   fly-enabled-default: "&#00E676&l✔ &#E0E0E0Vuelo activado &#AAAAAA(nivel 1). Usa &#FFD700/fly <1|2|3> &#AAAAAApara cambiar velocidad."
   fly-enabled-level: "&#00E676&l✔ &#E0E0E0Vuelo activado en nivel &#FFD700{level}&#E0E0E0. Velocidad: &#FFD700{speed}"
-  chatstaff-use: "&#441BFA&l(!) &#441BFAEscribe un mensaje para el staff. Uso: &#FFD700/sc <mensaje>"
+  chatstaff-use: "&c&l(!) &cEscribe un mensaje para el staff. Uso: &#FFD700/sc <mensaje>"
   chatstaff-toggle-on: "&#00E676&l✔ &#E0E0E0Modo staff chat &#00E676&lACTIVADO&#E0E0E0. Todo lo que escribas irá al staff chat."
-  chatstaff-toggle-off: "&#441BFA&l✖ &#441BFAModo staff chat &#441BFA&lDESACTIVADO&#441BFA."
+  chatstaff-toggle-off: "&c&l✖ &cModo staff chat &c&lDESACTIVADO&c."
   restore-inventory: "&#00E676&l[!] &#E0E0E0Tu inventario ha sido restaurado automáticamente tras el reinicio."
-  command-sanction-use: "&#441BFAUso: &#FFD700/sanction <jugador|list>"
-  command-sanction-self: "&#441BFA&l✖ &#441BFANo puedes sancionarte a ti mismo."
-  freeze-staff: "&#441BFA&l✖ &#441BFANo puedes congelar a otro miembro del Staff"
-  freeze-already: "&#441BFAEste jugador ya está congelado."
-  unfreeze-already: "&#441BFAEste jugador no está congelado."
-  frozen-command-blocked: "&#441BFA&l✖ &#441BFANo puedes usar comandos mientras estás congelado."
-  alts-use: "&#441BFAUso: &#FFD700/alts <jugador>"
-  freeze-use: "&#441BFAUso: &#FFD700/ss <jugador>"
-  report-use: "&#441BFAUso: &#FFD700/report <jugador> <motivo>"
-  report-disabled: "&#441BFA&l✖ &#441BFAEl sistema de reportes está deshabilitado."
-  report-self: "&#441BFA&l✖ &#441BFANo puedes reportarte a ti mismo."
-  report-offline: "&#441BFAEse jugador no está en línea."
-  report-reason-short: "&#441BFAEl motivo debe tener al menos &#FFD700{min} &#441BFAcaracteres."
-  report-reason-long: "&#441BFAEl motivo no puede superar &#FFD700{max} &#441BFAcaracteres."
-  report-cooldown: "&#441BFADebes esperar &#FFD700{seconds}s &#441BFApara reportar nuevamente."
+  command-sanction-use: "&cUso: &#FFD700/sanction <jugador|list>"
+  command-sanction-self: "&c&l✖ &cNo puedes sancionarte a ti mismo."
+  freeze-staff: "&c&l✖ &cNo puedes congelar a otro miembro del Staff"
+  freeze-already: "&cEste jugador ya está congelado."
+  unfreeze-already: "&cEste jugador no está congelado."
+  frozen-command-blocked: "&c&l✖ &cNo puedes usar comandos mientras estás congelado."
+  alts-use: "&cUso: &#FFD700/alts <jugador>"
+  freeze-use: "&cUso: &#FFD700/ss <jugador>"
+  report-use: "&cUso: &#FFD700/report <jugador> <motivo>"
+  report-disabled: "&c&l✖ &cEl sistema de reportes está deshabilitado."
+  report-self: "&c&l✖ &cNo puedes reportarte a ti mismo."
+  report-offline: "&cEse jugador no está en línea."
+  report-reason-short: "&cEl motivo debe tener al menos &#FFD700{min} &ccaracteres."
+  report-reason-long: "&cEl motivo no puede superar &#FFD700{max} &ccaracteres."
+  report-cooldown: "&cDebes esperar &#FFD700{seconds}s &cpara reportar nuevamente."
   report-sent: "&#00E676&l✔ &#E0E0E0Reporte enviado correctamente &#555555(&#FFD700#{sequence}&#555555)&#E0E0E0. ¡Gracias por ayudar al staff!"
-  report-staff-notify: "&#555555[&#441BFA&lREPORTE&#555555] &#FFFFFF#{sequence} &#FFD700{reporter} &#555555» &#441BFA{target} &#555555| &#E0E0E0{reason}"
+  report-staff-notify: "&#555555[&c&lREPORTE&#555555] &#FFFFFF#{sequence} &#FFD700{reporter} &#555555» &c{target} &#555555| &#E0E0E0{reason}"
   report-staff-notify-hover:
     - "&#555555&m----------------------------------------"
-    - "&#441BFA&lREPORTE RECIBIDO"
+    - "&c&lREPORTE RECIBIDO"
     - ""
     - "&#AAAAAAID del reporte: &#FFFFFF#{sequence}"
     - "&#AAAAAAReportante: &#FFD700{reporter}"
-    - "&#AAAAAAJugador reportado: &#441BFA{target}"
+    - "&#AAAAAAJugador reportado: &c{target}"
     - ""
     - "&#AAAAAAMotivo:"
     - "&#E0E0E0{reason}"
@@ -72,13 +72,13 @@ messages:
     - ""
     - "&#00E676&l» &#00E676Click para preparar el comando de atención"
     - "&#555555&m----------------------------------------"
-  invsee-use: "&#441BFAUso: &#FFD700/invsee <jugador>"
-  invsee-self: "&#441BFA&l✖ &#441BFANo puedes ver tu propio inventario."
+  invsee-use: "&cUso: &#FFD700/invsee <jugador>"
+  invsee-self: "&c&l✖ &cNo puedes ver tu propio inventario."
   invsee-check: "&#FFD700Abriendo el inventario del jugador..."
   invsee-offline-loaded: "&#00E676Abriendo el último inventario guardado de &#FFD700{player}&#00E676 (guardado: &#AAAAAA{date}&#00E676)."
-  invsee-offline-unavailable: "&#441BFA&l✖ &#441BFANo se encontró un inventario guardado para ese jugador desconectado."
-  invsee-inspection-online-title: "&#222222Inspección de &#FFD700{player}"
-  invsee-inspection-offline-title: "&#222222Invsee Offline: &#FFD700{player}"
+  invsee-offline-unavailable: "&c&l✖ &cNo se encontró un inventario guardado para ese jugador desconectado."
+  invsee-inspection-online-title: "&b&lInspección de &#FFD700{player}"
+  invsee-inspection-offline-title: "&b&lInvsee Offline: &#FFD700{player}"
   invsee-legacy-mainhand-warning: "&#FFD700Nota: este snapshot es antiguo y no guardaba la mano principal. Por eso puede aparecer como &#AAAAAA'Sin objeto'&#FFD700 aunque el jugador sí la tuviera."
   inspect-labels:
     armor-boots: "&#FFFFFFBotas"
@@ -91,24 +91,24 @@ messages:
   inspect-status:
     title: "&#FFFFFFInformación de {player}"
     lore:
-      - "&#AAAAAASalud: &#441BFA{health}"
+      - "&#AAAAAASalud: &c{health}"
       - "&#AAAAAAComida: &#FFD700{food}"
       - "&#AAAAAANivel: &#00E676{level}"
       - "&#AAAAAAGamemode: &#E0E0E0{gamemode}"
       - "&#AAAAAAMundo: &#E0E0E0{world}"
       - "&#AAAAAACoordenadas: &#E0E0E0{x}, {y}, {z}"
-  revive-use: "&#441BFAUso: &#FFD700/revive"
-  revive-no-deaths: "&#441BFA&l✖ &#441BFANo hay muertes recientes para restaurar."
-  revive-target-offline: "&#441BFA{player} está desconectado. Debe estar en línea para restaurar su inventario."
+  revive-use: "&cUso: &#FFD700/revive"
+  revive-no-deaths: "&c&l✖ &cNo hay muertes recientes para restaurar."
+  revive-target-offline: "&c{player} está desconectado. Debe estar en línea para restaurar su inventario."
   revive-restored: "&#00E676&l✔ &#E0E0E0Inventario restaurado a &#FFD700{player}&#E0E0E0. Causa de muerte: &#E0E0E0{cause}"
-  client-detected: "&#555555[&#441BFA&lClient&#555555] &#E0E0E0{player} &#AAAAAAusa &#FFD700{client} &#555555(&#AAAAAAraw: {raw_client}&#555555)"
-  anti-xray-alert: "{prefix}&#441BFA&lALERTA XRAY &#555555» &#E0E0E0El jugador &#FFD700{player} &#E0E0E0se identificó como &#441BFAposible Xray &#555555(&#AAAAAArate: &#FFD700{window_rate}&#555555/&#FFD700{window_seconds}s&#555555, &#AAAAAAtotal: &#FFD700{window_total}&#555555)"
+  client-detected: "&#555555[&c&lClient&#555555] &#E0E0E0{player} &#AAAAAAusa &#FFD700{client} &#555555(&#AAAAAAraw: {raw_client}&#555555)"
+  anti-xray-alert: "{prefix}&c&lALERTA XRAY &#555555» &#E0E0E0El jugador &#FFD700{player} &#E0E0E0se identificó como &cposible Xray &#555555(&#AAAAAArate: &#FFD700{window_rate}&#555555/&#FFD700{window_seconds}s&#555555, &#AAAAAAtotal: &#FFD700{window_total}&#555555)"
   anti-xray-alert-hover:
     - "&#555555&m----------------------------------------"
-    - "&#441BFA&lALERTA ANTIXRAY"
+    - "&c&lALERTA ANTIXRAY"
     - ""
     - "&#AAAAAAJugador: &#FFD700{player}"
-    - "&#AAAAAAMineral: &#441BFA{mineral}"
+    - "&#AAAAAAMineral: &c{mineral}"
     - "&#AAAAAARate del mineral: &#FFD700{window_rate}&#555555/&#FFD700{window_seconds}s"
     - "&#AAAAAATotal de minerales en ventana: &#FFD700{window_total}"
     - "&#AAAAAATotal de este mineral en sesión: &#FFD700{rate}"
@@ -116,45 +116,45 @@ messages:
     - ""
     - "&#00E676&l>> &#00E676Click para preparar teleport"
     - "&#555555&m----------------------------------------"
-  anti-xray-disabled: "&#441BFA&l✖ &#441BFAEl módulo Anti Xray está desactivado."
-  silent-punishment-use: "&#441BFAUso: &#FFD700/silent <ban|tempban|mute|tempmute|kick|warn|ban-ip|tempban-ip> <jugador/ip> [tiempo] [razón]"
-  silent-invalid: "&#441BFA&l✖ &#441BFAAcción inválida. Usa: &#FFD700ban, tempban, mute, tempmute, kick, warn, ban-ip, tempban-ip"
-  silent-format-invalid: "&#441BFA&l✖ &#441BFAFormato de duración inválido. Usa: &#FFD700<numero><s|m|h|d|w> &#441BFAo &#FFD700perm/permanent/permanentemente"
-  alts-detected: "&#555555[&#441BFA&lAlts&#555555] &#E0E0E0El jugador &#FFD700{player} &#E0E0E0está usando la misma IP que: &#441BFA{alts}"
-  alts-protected: "&#441BFA&l✖ &#441BFANo puedes ver las alts de &#FFD700{target}&#441BFA porque está protegido."
+  anti-xray-disabled: "&c&l✖ &cEl módulo Anti Xray está desactivado."
+  silent-punishment-use: "&cUso: &#FFD700/silent <ban|tempban|mute|tempmute|kick|warn|ban-ip|tempban-ip> <jugador/ip> [tiempo] [razón]"
+  silent-invalid: "&c&l✖ &cAcción inválida. Usa: &#FFD700ban, tempban, mute, tempmute, kick, warn, ban-ip, tempban-ip"
+  silent-format-invalid: "&c&l✖ &cFormato de duración inválido. Usa: &#FFD700<numero><s|m|h|d|w> &co &#FFD700perm/permanent/permanentemente"
+  alts-detected: "&#555555[&c&lAlts&#555555] &#E0E0E0El jugador &#FFD700{player} &#E0E0E0está usando la misma IP que: &c{alts}"
+  alts-protected: "&c&l✖ &cNo puedes ver las alts de &#FFD700{target}&c porque está protegido."
 staff-mode:
   enabled: "&#00E676&l✔ &#E0E0E0Modo Staff &#00E676&lACTIVADO&#E0E0E0!"
-  disabled: "&#441BFA&l✖ &#441BFAModo Staff &#441BFA&lDESACTIVADO&#441BFA."
+  disabled: "&c&l✖ &cModo Staff &c&lDESACTIVADO&c."
   inventory-saved: "&#00E676Tu inventario ha sido guardado."
   inventory-restored: "&#00E676Tu inventario ha sido restaurado."
-  cannot-drop: "&#441BFA&l✖ &#441BFANo puedes tirar objetos en modo staff."
-  cannot-place: "&#441BFA&l✖ &#441BFANo puedes poner bloques en modo staff."
-  command-blocked: "&#441BFA&l✖ &#441BFANo puedes usar ese comando mientras estás en modo staff."
-  action-bar: "&#441BFA&lMODO STAFF &#555555| &#E0E0E0Vanish: {status}"
+  cannot-drop: "&c&l✖ &cNo puedes tirar objetos en modo staff."
+  cannot-place: "&c&l✖ &cNo puedes poner bloques en modo staff."
+  command-blocked: "&c&l✖ &cNo puedes usar ese comando mientras estás en modo staff."
+  action-bar: "&c&lMODO STAFF &#555555| &#E0E0E0Vanish: {status}"
   vanish:
     action-bar: "&#00E676&lVANISH &#555555| {status}"
   status-enabled: "&#00E676&lACTIVADO"
-  status-disabled: "&#441BFA&lDESACTIVADO"
+  status-disabled: "&c&lDESACTIVADO"
   items:
     punish:
-      name: "&#441BFA&lSancionar &#AAAAAA(Click Derecho)"
+      name: "&c&lSancionar &#AAAAAA(Click Derecho)"
       message: "&#FFD700Abriendo menú de sanciones..."
     freeze:
       name: "&#FFFFFF&lCongelar &#AAAAAA(Click al Jugador)"
       message-freeze: "&#E0E0E0Has congelado a &#FFD700{player}"
       message-unfreeze: "&#E0E0E0Has descongelado a &#FFD700{player}"
       target-frozen:
-        - "&#441BFA&m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        - "&c&m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
         - " &#FFD700&lALERTA DE MODERACIÓN"
         - ""
-        - " &#441BFA&l¡TE HAN CONGELADO!"
+        - " &c&l¡TE HAN CONGELADO!"
         - " &#E0E0E0Por favor conéctate a nuestro &#FFFFFFDiscord"
         - " &#FFFFFFdiscord.gg/tu-servidor"
         - ""
         - " &#AAAAAATiempo disponible: &#FFD7005 minutos"
         - ""
-        - " &#441BFA&lɴᴏ ᴄɪᴇʀʀᴇꜱ ʟᴀ ꜱᴇꜱɪóɴ ᴏ ꜱᴇʀáꜱ ʙᴀɴᴇᴀᴅᴏ"
-        - "&#441BFA&m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        - " &c&lɴᴏ ᴄɪᴇʀʀᴇꜱ ʟᴀ ꜱᴇꜱɪóɴ ᴏ ꜱᴇʀáꜱ ʙᴀɴᴇᴀᴅᴏ"
+        - "&c&m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
       target-unfrozen: "&#00E676¡Has sido descongelado!"
     players:
       name: "&#FFFFFF&lJugadores Online &#AAAAAA(Click Derecho)"
@@ -162,7 +162,7 @@ staff-mode:
     random-tp:
       name: "&#FFD700&lRandom TP &#AAAAAA(Click Derecho)"
       message: "&#00E676&l✔ &#E0E0E0Teletransportado aleatoriamente a &#FFD700{player}"
-      no-targets: "&#441BFA&l✖ &#441BFANo hay jugadores disponibles para hacer random tp."
+      no-targets: "&c&l✖ &cNo hay jugadores disponibles para hacer random tp."
     inspect:
       name: "&#E0E0E0&lInspeccionar &#AAAAAA(Click al Jugador)"
       message: "&#FFD700Inspeccionando a: &#E0E0E0{player}"
@@ -171,12 +171,12 @@ staff-mode:
     vanish:
       name: "&#00E676&lVanish &#AAAAAA(Click para alternar)"
       message-on: "&#00E676&l✔ &#E0E0E0Vanish: &#00E676&lACTIVADO &#AAAAAA(Eres invisible)"
-      message-off: "&#441BFA&l✖ &#441BFAVanish: &#441BFA&lDESACTIVADO &#AAAAAA(Eres visible)"
+      message-off: "&c&l✖ &cVanish: &c&lDESACTIVADO &#AAAAAA(Eres visible)"
 
 gui:
-  player-offline: "&#441BFA&l✖ &#441BFAEse jugador no está conectado."
+  player-offline: "&c&l✖ &cEse jugador no está conectado."
   players:
-    title: "&#222222Jugadores Online"
+    title: "&b&lJugadores Online"
     head-lore: "&#AAAAAAClick para teletransportarte"
     random-tp:
       name: "&#FFD700&lRandom TP"
@@ -184,11 +184,11 @@ gui:
         - "&#AAAAAAClick para teletransportarte"
         - "&#AAAAAAa un jugador aleatorio online"
   xray:
-    title: "&#222222Posibles Xray"
+    title: "&b&lPosibles Xray"
     head:
-      name: "&#441BFA&l{player} &#555555| &#FFD700{mineral}"
+      name: "&c&l{player} &#555555| &#FFD700{mineral}"
       lore:
-        - "&#AAAAAAÚltimo mineral: &#441BFA{mineral}"
+        - "&#AAAAAAÚltimo mineral: &c{mineral}"
         - "&#AAAAAARate mineral: &#FFD700{window_rate}&#555555/&#FFD700{window_seconds}s"
         - "&#AAAAAATotal ventana: &#FFD700{window_total}"
         - "&#AAAAAATotal sesión: &#FFD700{rate}"
@@ -202,24 +202,24 @@ gui:
         - "&#AAAAAANingún jugador ha sido"
         - "&#AAAAAAidentificado como posible Xray."
     teleport-success: "&#00E676&l✔ &#E0E0E0Teletransportado al posible Xray &#FFD700{player}"
-    target-offline: "&#441BFA&l✖ &#441BFAEste posible Xray está desconectado."
+    target-offline: "&c&l✖ &cEste posible Xray está desconectado."
   sanctions:
-    title: "&#222222Sancionar: &#441BFA{target}"
+    title: "&b&lSancionar: &c{target}"
     items:
-      ban: { name: "&#441BFA&lBANEAR", lore: ["&#AAAAAAClick para seleccionar motivo y duración"] }
+      ban: { name: "&c&lBANEAR", lore: ["&#AAAAAAClick para seleccionar motivo y duración"] }
       mute: { name: "&#FFD700&lMUTEAR", lore: ["&#AAAAAAClick para seleccionar motivo y duración"] }
       kick: { name: "&#FFFFFF&lEXPULSAR", lore: ["&#AAAAAAClick para expulsar ahora"] }
   info:
-    title: "&#222222Información: &#FFD700{target}"
+    title: "&b&lInformación: &#FFD700{target}"
     status:
       online: "&#00E676En línea"
-      offline: "&#441BFADesconectado"
+      offline: "&cDesconectado"
     items:
       head:
         name: "&#FFFFFF&lVisualizando a: &#FFD700{target}"
         lore:
           - "&#AAAAAAEstado: {status}"
-          - "&#AAAAAAVida: &#441BFA{health}&#AAAAAA/&#441BFA20 ❤"
+          - "&#AAAAAAVida: &c{health}&#AAAAAA/&c20 ❤"
           - "&#AAAAAAHambre: &#FFD700{food}&#AAAAAA/&#FFD70020 🍖"
           - "&#AAAAAAGamemode: &#E0E0E0{gm}"
           - "&#AAAAAAIP Actual: &#FFFFFF{ip}"
@@ -229,23 +229,23 @@ gui:
           - "&#AAAAAAJugador: &#E0E0E0{target}"
           - "&#AAAAAAUUID: &#555555{uuid}"
           - "&#AAAAAATiempo jugado: &#FFFFFF{playtime}"
-          - "&#AAAAAASanciones totales: &#441BFA{total_punishments}"
+          - "&#AAAAAASanciones totales: &c{total_punishments}"
       history:
         name: "&#FFD700&lHistorial de Sanciones"
         lore:
-          - "&#AAAAAABans: &#441BFA{bans}"
+          - "&#AAAAAABans: &c{bans}"
           - "&#AAAAAAMutes: &#FFD700{mutes}"
           - "&#AAAAAAKicks: &#FFFFFF{kicks}"
           - "&#AAAAAAWarns: &#FFD700{warns}"
           - ""
           - "&#FFD700Click para ver detalles"
       action_punish:
-        name: "&#441BFA&lSancionar"
+        name: "&c&lSancionar"
         lore:
           - "&#AAAAAAAbrir menú de sanciones"
           - "&#AAAAAApara este jugador."
           - ""
-          - "&#441BFAClick para continuar"
+          - "&cClick para continuar"
       alts:
         name: "&#FFFFFF&lCuentas Relacionadas"
         lore:
@@ -268,16 +268,16 @@ gui:
           - ""
           - "&#FFFFFFClick para ver permisos"
   permissions:
-    title: "&#222222Permisos: &#FFD700{target} &#555555({page}/{total})"
+    title: "&b&lPermisos: &#FFD700{target} &#555555({page}/{total})"
     permission-item-name: "&#E0E0E0{permission}"
     permission-item-lore: "&#555555Permiso activo"
-    empty-name: "&#441BFASin permisos activos"
+    empty-name: "&cSin permisos activos"
     empty-lore:
       - "&#AAAAAAEste jugador no tiene"
       - "&#AAAAAApermisos activos detectados."
   reasons:
-    title: "&#222222Sanción [{type}] - {target} ({page}/{total})"
-    item-name: "&#441BFA&lSanción #{number}"
+    title: "&b&lSanción [{type}] - {target} ({page}/{total})"
+    item-name: "&c&lSanción #{number}"
     item-lore: ["&#AAAAAAMotivo: &#E0E0E0{reason}", "&#555555ID: {id}"]
     dye-name: "&#FFD700Duración: &#E0E0E0{duration}"
     dye-lore:
@@ -291,7 +291,7 @@ gui:
       lore-back: "&#AAAAAAVolver al menú anterior"
       lore-page: "&#AAAAAAIr a la página {page}"
   confirm:
-    title: "&#222222Confirmar {type} - {target}"
+    title: "&b&lConfirmar {type} - {target}"
     items:
       yes:
         name: "&#00E676&lCONFIRMAR"
@@ -302,7 +302,7 @@ gui:
           - ""
           - "&#00E676Click para confirmar"
       no:
-        name: "&#441BFA&lCANCELAR"
+        name: "&c&lCANCELAR"
         lore:
           - "&#AAAAAAJugador: &#E0E0E0{target}"
           - "&#AAAAAARazón: &#FFD700{reason}"
@@ -310,14 +310,14 @@ gui:
           - ""
           - "&#AAAAAAVolver al menú de razones"
           - ""
-          - "&#441BFAClick para cancelar"
+          - "&cClick para cancelar"
   history:
-    title: "&#222222Historial: &#FFD700{target}"
+    title: "&b&lHistorial: &#FFD700{target}"
     back-lore:
       - "&#AAAAAAVolver a la información del jugador"
     items:
       bans:
-        name: "&#441BFA&lBaneos"
+        name: "&c&lBaneos"
         lore: ["&#AAAAAATotal en el registro: &#E0E0E0{count}", "", "&#FFFFFFSanciones permanentes o temporales."]
       mutes:
         name: "&#FFD700&lSilencios"
@@ -329,18 +329,18 @@ gui:
         name: "&#E0E0E0&lExpulsiones"
         lore: ["&#AAAAAATotal en el registro: &#E0E0E0{count}", "", "&#FFFFFFExpulsiones directas del servidor."]
   history-detailed:
-    title: "&#222222Detalles [{type}] - {target}"
+    title: "&b&lDetalles [{type}] - {target}"
     item-name: "&#FFFFFF&lRegistro #{number}"
     item-lore:
       date: "&#AAAAAAFecha: &#E0E0E0{date}"
-      staff: "&#AAAAAAStaff: &#441BFA{staff}"
+      staff: "&#AAAAAAStaff: &c{staff}"
       reason: "&#AAAAAAMotivo: &#FFD700{reason}"
       duration: "&#AAAAAADuración: &#FFFFFF{duration}"
     back-lore: 
       - "&#AAAAAAVolver al resumen"
   active-sanctions:
-    title: "&#222222Sanciones Activas &#555555({page}/{total})"
-    item-name: "&#441BFA&l{type} &#555555- &#FFFFFF{target}"
+    title: "&b&lSanciones Activas &#555555({page}/{total})"
+    item-name: "&c&l{type} &#555555- &#FFFFFF{target}"
     item-lore:
       - "&#AAAAAAStaff: &#E0E0E0{staff}"
       - "&#AAAAAAMotivo: &#FFD700{reason}"
@@ -357,7 +357,7 @@ gui:
       lore:
         - "&#AAAAAASanciones activas: &#FFFFFF{total-records}"
   gamemode:
-    title: "&#222222Selector de Modo de Juego"
+    title: "&b&lSelector de Modo de Juego"
     survival:
       name: "&#00E676&lMODO SUPERVIVENCIA"
       lore: ["&#AAAAAAHaz click para cambiar a modo supervivencia.", "&#555555Command /gm"]
@@ -367,7 +367,7 @@ gui:
       lore: ["&#AAAAAAHaz click para cambiar a modo creativo.", "&#555555Command /gm"]
       material: "BEACON"
     adventure:
-      name: "&#441BFA&lMODO AVENTURA"
+      name: "&c&lMODO AVENTURA"
       lore: ["&#AAAAAAHaz click para cambiar a modo aventura.", "&#555555Command /gm"]
       material: "MAP"
     spectator:
@@ -377,17 +377,17 @@ gui:
   feedback:
     gamemode-changed: "&#00E676&l✔ &#E0E0E0Tu modo de juego ha sido cambiado a &#FFD700{mode}&#E0E0E0."
   alts:
-    title: "&#222222Cuentas de: &#FFD700{target}"
+    title: "&b&lCuentas de: &#FFD700{target}"
     dynamic: "Dinámico"
     status-online: "&#00E676En línea"
     status-offline: "&#AAAAAADesconectado"
-    status-banned: "&#441BFA&lBANEADO"
+    status-banned: "&c&lBANEADO"
     head-lore:
       - "&#E0E0E0{dynamic}"
       - "&#AAAAAAEstado: {status}"
       - "&#555555IP: {ip}"
   revive:
-    title: "&#222222Menú de Revive &#555555({page}/{total})"
+    title: "&b&lMenú de Revive &#555555({page}/{total})"
     item-name: "&#00E676{player}"
     item-lore:
       - "&#AAAAAACausa: &#E0E0E0{death-cause}"
@@ -401,7 +401,7 @@ gui:
 
 gui-style:
   navigation:
-    back-name: "&#441BFA« Volver"
+    back-name: "&c« Volver"
     next-name: "&#FFFFFFSiguiente Página »"
     prev-name: "&#FFFFFF« Página Anterior"
 
@@ -416,15 +416,15 @@ punishments:
   broadcasts:
     ban: |- #NO BORRAR
       &r
-      &#555555(&#441BFA&l⚡&#555555) &#441BFA&lUSUARIO SANCIONADO
-      &#555555 ▸ &#E0E0E0El usuario &#441BFA{target} &#E0E0E0ha sido baneado.
+      &#555555(&c&l⚡&#555555) &c&lUSUARIO SANCIONADO
+      &#555555 ▸ &#E0E0E0El usuario &c{target} &#E0E0E0ha sido baneado.
       &#555555 ▸ &#AAAAAAStaff: &#FFFFFF{staff} &#555555| &#AAAAAADuración: &#FFD700{duration}
       &#555555 ▸ &#AAAAAAMotivo: &#E0E0E0{reason}
       &r
     ban-ip: |- #NO BORRAR
       &r
-      &#555555(&#441BFA&l⚡&#555555) &#441BFA&lIP-BAN EMITIDO
-      &#555555 ▸ &#E0E0E0El usuario &#441BFA{target} &#AAAAAAfue baneado por IP.
+      &#555555(&c&l⚡&#555555) &c&lIP-BAN EMITIDO
+      &#555555 ▸ &#E0E0E0El usuario &c{target} &#AAAAAAfue baneado por IP.
       &#555555 ▸ &#AAAAAAStaff: &#FFFFFF{staff} &#555555| &#AAAAAADuración: &#FFD700{duration}
       &r
     mute: |- #NO BORRAR
@@ -444,14 +444,14 @@ punishments:
       broadcast: |- #NO BORRAR
         &r
         &#555555(&#FFD700&l⚠&#555555) &#FFD700&lADVERTENCIA EMITIDA
-        &#555555 ▸ &#E0E0E0Jugador: &#FFD700{target} &#555555(&#441BFA{count} warns&#555555)
+        &#555555 ▸ &#E0E0E0Jugador: &#FFD700{target} &#555555(&c{count} warns&#555555)
         &#555555 ▸ &#AAAAAAStaff: &#FFFFFF{staff} &#555555| &#AAAAAAMotivo: &#E0E0E0{reason}
         &r
-      received: "&#441BFA&l¡ADVERTENCIA! &#E0E0E0Has sido advertido por: &#FFD700{reason}"
+      received: "&c&l¡ADVERTENCIA! &#E0E0E0Has sido advertido por: &#FFD700{reason}"
   screens:
     ban: |- #NO BORRAR
       &f
-      &#441BFA&l¡ACCESO DENEGADO! &#555555(&#441BFA&l⚡&#555555)
+      &c&l¡ACCESO DENEGADO! &#555555(&c&l⚡&#555555)
       &#AAAAAAHas sido sancionado por incumplir las reglas.
       
       &#555555&m-----------------------------------
@@ -470,30 +470,30 @@ punishments:
       &#555555 ▸ &#AAAAAAMotivo: &#E0E0E0{reason}
       
       &#E0E0E0Por favor, mantén un comportamiento adecuado.
-    mute: "&#555555(&#FFD700&l●&#555555) &#441BFA¡Has sido silenciado por &#FFD700{staff}&#441BFA!"
+    mute: "&#555555(&#FFD700&l●&#555555) &c¡Has sido silenciado por &#FFD700{staff}&c!"
     unmute: "&#555555(&#00E676&l✔&#555555) &#00E676¡Tu silencio ha sido retirado! Ya puedes hablar."
-    muted-chat: "&#441BFA&l¡MUTE! &#AAAAAANo puedes hablar en este momento."
+    muted-chat: "&c&l¡MUTE! &#AAAAAANo puedes hablar en este momento."
   feedback:
-    player-offline: "&#441BFA&l✖ &#441BFAEse jugador no está conectado."
-    not-muted: "&#441BFA&l✖ &#441BFAEse jugador no está silenciado."
-    target-protected: "&#441BFA&l✖ &#441BFANo puedes sancionar a &#FFD700{target}&#441BFA porque está protegido."
+    player-offline: "&c&l✖ &cEse jugador no está conectado."
+    not-muted: "&c&l✖ &cEse jugador no está silenciado."
+    target-protected: "&c&l✖ &cNo puedes sancionar a &#FFD700{target}&c porque está protegido."
     unban-success: "&#00E676&l✔ &#E0E0E0Has desbaneado a &#FFD700{target}"
     unmute-success: "&#00E676&l✔ &#E0E0E0Has desilenciado a &#FFD700{target}"
-    usage: "&#441BFAUso: &#FFD700/{command} <jugador> [tiempo] [motivo]"
-    limit-exceeded: "&#441BFA&l✖ &#441BFANo puedes aplicar &#FFFFFF{type}&#441BFA por &#FFD700{duration}&#441BFA. Tu máximo permitido es &#FFD700{max}&#441BFA."
-    no-ip-found: "&#441BFA&l✖ &#441BFANo se encontró una IP registrada para este jugador."
+    usage: "&cUso: &#FFD700/{command} <jugador> [tiempo] [motivo]"
+    limit-exceeded: "&c&l✖ &cNo puedes aplicar &#FFFFFF{type}&c por &#FFD700{duration}&c. Tu máximo permitido es &#FFD700{max}&c."
+    no-ip-found: "&c&l✖ &cNo se encontró una IP registrada para este jugador."
     unban-ip-success: "&#00E676&l✔ &#E0E0E0La IP &#FFFFFF{ip} &#E0E0E0ha sido desbaneada correctamente."
-    invalid-ip: "&#441BFA&l✖ &#441BFANo se pudo encontrar una IP válida para: &#FFD700{target}"
+    invalid-ip: "&c&l✖ &cNo se pudo encontrar una IP válida para: &#FFD700{target}"
 
 chat:
-  global-mute-enabled: "&#441BFAEl chat global ha sido &#441BFA&lSILENCIADO &#441BFApor &#FFD700{player}&#441BFA."
+  global-mute-enabled: "&cEl chat global ha sido &c&lSILENCIADO &cpor &#FFD700{player}&c."
   global-mute-disabled: "&#00E676El chat global ha sido &#00E676&lACTIVADO &#00E676por &#FFD700{player}&#00E676."
-  chat-is-muted: "&#441BFA&l✖ &#441BFAEl chat está silenciado globalmente en este momento."
+  chat-is-muted: "&c&l✖ &cEl chat está silenciado globalmente en este momento."
   cleared: "&#FFFFFF&lCHAT LIMPIADO &#AAAAAApor &#FFD700{player}&#AAAAAA."
-  usage: "&#441BFAUso: &#FFD700/chat <mute|clear>"
+  usage: "&cUso: &#FFD700/chat <mute|clear>"
 
 placeholders:
   status-true: "&#00E676Sí"
-  status-false: "&#441BFANo"
+  status-false: "&cNo"
   playtime-format: "{hours}h {minutes}m"
 

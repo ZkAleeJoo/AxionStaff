@@ -5,7 +5,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,14 +24,14 @@ public class InventorySnapshotManager {
     private static final int STORAGE_SIZE = 36;
     private static final int ARMOR_SIZE = 4;
 
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
     private final File dataFolder;
     private final ConcurrentMap<String, IndexedSnapshotFile> indexedFilesByPath = new ConcurrentHashMap<>();
     private final ConcurrentMap<UUID, IndexedSnapshotFile> indexedFilesByUuid = new ConcurrentHashMap<>();
     private final ConcurrentMap<String, IndexedSnapshotFile> snapshotEntriesByName = new ConcurrentHashMap<>();
     private final ConcurrentMap<String, IndexedSnapshotFile> deathEntriesByName = new ConcurrentHashMap<>();
 
-    public InventorySnapshotManager(AxionStaff plugin) {
+    public InventorySnapshotManager(MaxStaff plugin) {
         this.plugin = plugin;
         this.dataFolder = new File(plugin.getDataFolder(), "invsee-cache");
 

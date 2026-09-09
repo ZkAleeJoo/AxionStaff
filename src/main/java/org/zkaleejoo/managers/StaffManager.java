@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
-import org.zkaleejoo.AxionStaff;
+import org.zkaleejoo.MaxStaff;
 import org.zkaleejoo.config.CustomConfig;
 import org.zkaleejoo.config.MainConfigManager;
 import org.zkaleejoo.utils.MessageUtils;
@@ -38,7 +38,7 @@ import java.util.LinkedHashMap;
 
 public class StaffManager {
 
-    private final AxionStaff plugin;
+    private final MaxStaff plugin;
     private final CustomConfig staffData;
     private final Map<UUID, ItemStack[]> savedInventory = new HashMap<>();
     private final Map<UUID, ItemStack[]> savedArmor = new HashMap<>();
@@ -56,7 +56,7 @@ public class StaffManager {
     private final Map<String, ItemStack> cachedStaffTools = new HashMap<>();
     private final NamespacedKey vanishedKey;
 
-    public StaffManager(AxionStaff plugin) {
+    public StaffManager(MaxStaff plugin) {
         this.plugin = plugin;
         this.staffData = new CustomConfig("staff_data.yml", null, plugin, true);
         this.vanishedKey = new NamespacedKey(plugin, "vanished");
@@ -446,7 +446,7 @@ public class StaffManager {
             }
 
             for (Player target : Bukkit.getOnlinePlayers()) {
-                if (!target.hasPermission("AxionStaff.see.vanish")) {
+                if (!target.hasPermission("MaxStaff.see.vanish")) {
                     target.hidePlayer(plugin, player);
                     continue;
                 }
@@ -565,7 +565,7 @@ public class StaffManager {
     private boolean loadVanishStateFromDatabase(PunishmentManagerMysql mysqlManager, UUID uuid) {
         try (Connection conn = mysqlManager.getSqlConnection();
                 PreparedStatement ps = conn.prepareStatement(
-                        "SELECT enabled FROM AxionStaff_vanish_states WHERE uuid = ? LIMIT 1")) {
+                        "SELECT enabled FROM MaxStaff_vanish_states WHERE uuid = ? LIMIT 1")) {
             ps.setString(1, uuid.toString());
             try (ResultSet rs = ps.executeQuery()) {
                 return rs.next() && rs.getBoolean("enabled");
@@ -609,7 +609,7 @@ public class StaffManager {
         FoliaCompat.runAsync(plugin, () -> {
             try (Connection conn = mysqlManager.getSqlConnection();
                     PreparedStatement ps = conn.prepareStatement(
-                            "INSERT INTO AxionStaff_vanish_states (uuid, name, enabled, updated_at, server_id) "
+                            "INSERT INTO MaxStaff_vanish_states (uuid, name, enabled, updated_at, server_id) "
                                     + "VALUES (?, ?, ?, ?, ?) "
                                     + "ON DUPLICATE KEY UPDATE name = VALUES(name), enabled = VALUES(enabled), "
                                     + "updated_at = VALUES(updated_at), server_id = VALUES(server_id)")) {
