@@ -136,7 +136,7 @@ public class MaxStaff extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
                 "&c&lMaxStaff &8» &c&l\\____|__  (____  /__/\\_ \\/_______  /|__| (____  /__|   |__|   "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&c&lMaxStaff &8» &5&l        \\/     \\/      \\/        \\/           \\/              "));
+                "&c&lMaxStaff &8» &c&l        \\/     \\/      \\/        \\/           \\/              "));
 
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new org.zkaleejoo.placeholders.MaxStaffExpansion(this).register();
