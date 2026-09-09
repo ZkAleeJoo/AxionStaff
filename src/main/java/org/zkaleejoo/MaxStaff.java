@@ -45,7 +45,7 @@ import org.zkaleejoo.listeners.VanishProtectionListener;
 
 public class MaxStaff extends JavaPlugin {
 
-    private static final int BSTATS_PLUGIN_ID = 33594;
+    private static final int BSTATS_PLUGIN_ID = 33948;
     private static final long UPDATE_CHECK_INTERVAL_TICKS = 20L * 60L * 60L * 5L;
 
     private MainConfigManager mainConfigManager;
@@ -126,17 +126,17 @@ public class MaxStaff extends JavaPlugin {
         startUpdateChecks();
 
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&c&lMaxStaff &8» &5&l   _____         .__                _________ __          _____  _____ "));
+                "&c&lMaxStaff &8» &c&l   _____                   _________ __          _____  _____ "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&c&lMaxStaff &8» &5&l  /  _  \\ ___  __|__| ____   ____  /   _____//  |______ _/ ____\\/ ____\\"));
+                "&c&lMaxStaff &8» &c&l  /     \ _____  ___  ___ /   _____//  |______ _/ ____\/ ____\"));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&c&lMaxStaff &8» &5&l /  /_\\  \\\\  \\/  /  |/  _ \\ /    \\ \\_____  \\\\   __\\__  \\\\   __\\\\   __\\ "));
+                "&c&lMaxStaff &8» &c&l /  \ /  \\__  \ \  \/  / \_____  \\   __\__  \\   __\\   __\ "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&c&lMaxStaff &8» &5&l/    |    \\>    <|  (  <_> )   |  \\/        \\|  |  / __ \\|  |   |  |   "));
+                "&c&lMaxStaff &8» &c&l/    Y    \/ __ \_>    <  /        \|  |  / __ \|  |   |  |   "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&c&lMaxStaff &8» &5&l\\____|__  /__/\\_ \\__|\\____/|___|  /_______  /|__| (____  /__|   |__|   "));
+                "&c&lMaxStaff &8» &c&l\____|__  (____  /__/\_ \/_______  /|__| (____  /__|   |__|   "));
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(
-                "&c&lMaxStaff &8» &5&l        \\/      \\/              \\/        \\/           \\/              "));
+                "&c&lMaxStaff &8» &5&l        \/     \/      \/        \/           \/              "));
 
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new org.zkaleejoo.placeholders.MaxStaffExpansion(this).register();
