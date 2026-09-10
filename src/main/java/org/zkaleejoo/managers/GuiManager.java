@@ -95,7 +95,7 @@ public class GuiManager {
                         .getColoredMessage(config.getGuiInfoTitle().replace("{target}", target.getName()));
 
                 MaxStaffHolder holder = new MaxStaffHolder("INFO", target.getName());
-                Inventory gui = Bukkit.createInventory(holder, 45, MessageUtils.legacyToComponentNoItalic(title));
+                Inventory gui = Bukkit.createInventory(holder, 45, MessageUtils.createMenuTitle(title));
                 holder.setInventory(gui);
 
                 setupBorder(gui);
@@ -162,7 +162,7 @@ public class GuiManager {
         MaxStaffHolder holder = new MaxStaffHolder("PLAYERS", null);
 
         Inventory gui = Bukkit.createInventory(holder, 54,
-                MessageUtils.legacyToComponentNoItalic(plugin.getMainConfigManager().getGuiPlayersTitle()));
+                MessageUtils.createMenuTitle(plugin.getMainConfigManager().getGuiPlayersTitle()));
         holder.setInventory(gui);
 
         setupBorder(gui);
@@ -178,7 +178,7 @@ public class GuiManager {
     public void openXrayMenu(Player staff) {
         MaxStaffHolder holder = new MaxStaffHolder("XRAY", null);
         Inventory gui = Bukkit.createInventory(holder, 54,
-                MessageUtils.legacyToComponentNoItalic(plugin.getMainConfigManager().getGuiXrayTitle()));
+                MessageUtils.createMenuTitle(plugin.getMainConfigManager().getGuiXrayTitle()));
         holder.setInventory(gui);
 
         setupBorder(gui);
@@ -225,7 +225,7 @@ public class GuiManager {
 
         MaxStaffHolder holder = new MaxStaffHolder("PERMISSIONS", targetName);
         holder.setData("page", currentPage);
-        Inventory gui = Bukkit.createInventory(holder, 54, MessageUtils.legacyToComponentNoItalic(title));
+        Inventory gui = Bukkit.createInventory(holder, 54, MessageUtils.createMenuTitle(title));
         holder.setInventory(gui);
 
         setupBorder(gui);
@@ -314,7 +314,7 @@ public class GuiManager {
         MaxStaffHolder holder = new MaxStaffHolder("ACTIVE_PUNISHMENTS", null);
         holder.setData("page", currentPage);
         holder.setData("activeRecords", List.copyOf(records));
-        Inventory gui = Bukkit.createInventory(holder, menuSize, MessageUtils.legacyToComponentNoItalic(title));
+        Inventory gui = Bukkit.createInventory(holder, menuSize, MessageUtils.createMenuTitle(title));
         holder.setInventory(gui);
 
         setupBorder(gui);
@@ -527,7 +527,7 @@ public class GuiManager {
         String title = MessageUtils.getColoredMessage(titleTemplate.replace("{target}", targetName));
 
         MaxStaffHolder holder = new MaxStaffHolder("SANCTIONS", targetName);
-        Inventory gui = Bukkit.createInventory(holder, 27, MessageUtils.legacyToComponentNoItalic(title));
+        Inventory gui = Bukkit.createInventory(holder, 27, MessageUtils.createMenuTitle(title));
         holder.setInventory(gui);
 
         setupBorder(gui);
@@ -565,7 +565,7 @@ public class GuiManager {
         holder.setData("type", type);
         holder.setData("page", page);
 
-        Inventory gui = Bukkit.createInventory(holder, 54, MessageUtils.legacyToComponentNoItalic(title));
+        Inventory gui = Bukkit.createInventory(holder, 54, MessageUtils.createMenuTitle(title));
         holder.setInventory(gui);
 
         setupBorder(gui);
@@ -680,7 +680,7 @@ public class GuiManager {
         holder.setData("duration", duration);
         holder.setData("page", page);
 
-        Inventory gui = Bukkit.createInventory(holder, 27, MessageUtils.legacyToComponentNoItalic(title));
+        Inventory gui = Bukkit.createInventory(holder, 27, MessageUtils.createMenuTitle(title));
         holder.setInventory(gui);
 
         setupBorder(gui);
@@ -716,7 +716,7 @@ public class GuiManager {
                         .getColoredMessage(config.getGuiHistoryTitle().replace("{target}", targetName));
 
                 MaxStaffHolder holder = new MaxStaffHolder("HISTORY", targetName);
-                Inventory gui = Bukkit.createInventory(holder, 27, MessageUtils.legacyToComponentNoItalic(title));
+                Inventory gui = Bukkit.createInventory(holder, 27, MessageUtils.createMenuTitle(title));
                 holder.setInventory(gui);
 
                 setupBorder(gui);
@@ -765,7 +765,7 @@ public class GuiManager {
                 MaxStaffHolder holder = new MaxStaffHolder("DETAILED_HISTORY", targetName);
                 holder.setData("type", type);
 
-                Inventory gui = Bukkit.createInventory(holder, 45, MessageUtils.legacyToComponentNoItalic(title));
+                Inventory gui = Bukkit.createInventory(holder, 45, MessageUtils.createMenuTitle(title));
                 holder.setInventory(gui);
 
                 setupBorder(gui);
@@ -805,7 +805,7 @@ public class GuiManager {
 
         MaxStaffHolder holder = new MaxStaffHolder("GAMEMODE", null);
         Inventory gui = Bukkit.createInventory(holder, 27,
-                MessageUtils.legacyToComponentNoItalic(config.getGuiGmTitle()));
+                MessageUtils.createMenuTitle(config.getGuiGmTitle()));
         holder.setInventory(gui);
 
         setupBorder(gui);
@@ -845,7 +845,7 @@ public class GuiManager {
 
                 MaxStaffHolder holder = new MaxStaffHolder("ALTS", targetName);
                 Inventory gui = Bukkit.createInventory(holder, 45, MessageUtils
-                        .legacyToComponentNoItalic(config.getGuiAltsTitle().replace("{target}", targetName)));
+                        .createMenuTitle(config.getGuiAltsTitle().replace("{target}", targetName)));
                 holder.setInventory(gui);
 
                 setupBorder(gui);
@@ -918,7 +918,7 @@ public class GuiManager {
         MaxStaffHolder holder = new MaxStaffHolder("REVIVE", staff.getName());
         holder.setData("page", currentPage);
         Inventory gui = Bukkit.createInventory(holder, menuSize,
-                MessageUtils.legacyToComponentNoItalic(config.getGuiReviveTitle()
+                MessageUtils.createMenuTitle(config.getGuiReviveTitle()
                         .replace("{page}", String.valueOf(currentPage + 1))
                         .replace("{total}", String.valueOf(totalPages))));
         holder.setInventory(gui);

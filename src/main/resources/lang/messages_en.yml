@@ -1,4 +1,4 @@
-﻿#==========================================
+#==========================================
 #       MaxStaff - English Messages
 #==========================================
 
@@ -77,8 +77,8 @@ messages:
   invsee-check: "&#FFD700Opening the player's inventory..."
   invsee-offline-loaded: "&#00E676Opening last saved inventory of &#FFD700{player}&#00E676 (saved: &#AAAAAA{date}&#00E676)."
   invsee-offline-unavailable: "&c&l✖ &cNo saved inventory was found for that offline player."
-  invsee-inspection-online-title: "&b&lInspecting &#FFD700{player}"
-  invsee-inspection-offline-title: "&b&lInvsee Offline: &#FFD700{player}"
+  invsee-inspection-online-title: "&#222222ɪɴꜱᴘᴇᴄᴛɪɴɢ &#FFD700{player}"
+  invsee-inspection-offline-title: "&#222222ɪɴᴠꜱᴇᴇ ᴏꜰꜰʟɪɴᴇ: &#FFD700{player}"
   invsee-legacy-mainhand-warning: "&#FFD700Note: this is a legacy snapshot and it did not save main-hand data. The slot may show &#AAAAAA'No item'&#FFD700 even if the player had one."
   inspect-labels:
     armor-boots: "&#FFFFFFBoots"
@@ -176,7 +176,7 @@ staff-mode:
 gui:
   player-offline: "&c&l✖ &cThat player is not online."
   players:
-    title: "&b&lOnline Players"
+    title: "&#222222ᴏɴʟɪɴᴇ ᴘʟᴀʏᴇʀꜱ"
     head-lore: "&#AAAAAAClick to teleport"
     random-tp:
       name: "&#FFD700&lRandom TP"
@@ -184,7 +184,7 @@ gui:
         - "&#AAAAAAClick to teleport to"
         - "&#AAAAAAa random online player"
   xray:
-    title: "&b&lPossible Xray"
+    title: "&#222222ᴘᴏꜱꜱɪʙʟᴇ xʀᴀʏ"
     head:
       name: "&c&l{player} &#555555| &#FFD700{mineral}"
       lore:
@@ -204,13 +204,13 @@ gui:
     teleport-success: "&#00E676&l✔ &#E0E0E0Teleported to possible Xray &#FFD700{player}"
     target-offline: "&c&l✖ &cThis possible Xray player is offline."
   sanctions:
-    title: "&b&lPunish: &c{target}"
+    title: "&#222222ᴘᴜɴɪꜱʜ: &#FF3333{target}"
     items:
-      ban: { name: "&c&lBAN", lore: ["&#AAAAAAClick to select reason and duration"] }
+      ban: { name: "&#FF3333&lBAN", lore: ["&#AAAAAAClick to select reason and duration"] }
       mute: { name: "&#FFD700&lMUTE", lore: ["&#AAAAAAClick to select reason and duration"] }
       kick: { name: "&#FFFFFF&lKICK", lore: ["&#AAAAAAClick to kick now"] }
   info:
-    title: "&b&lInformation: &#FFD700{target}"
+    title: "&#222222ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ: &#FFD700{target}"
     status:
       online: "&#00E676Online"
       offline: "&cOffline"
@@ -219,7 +219,7 @@ gui:
         name: "&#FFFFFF&lViewing: &#FFD700{target}"
         lore:
           - "&#AAAAAAStatus: {status}"
-          - "&#AAAAAAHealth: &c{health}&#AAAAAA/&c20 ❤"
+          - "&#AAAAAAHealth: &#FF3333{health}&#AAAAAA/&#FF333320 ❤"
           - "&#AAAAAAHunger: &#FFD700{food}&#AAAAAA/&#FFD70020 🍖"
           - "&#AAAAAAGamemode: &#E0E0E0{gm}"
           - "&#AAAAAACurrent IP: &#FFFFFF{ip}"
@@ -229,23 +229,23 @@ gui:
           - "&#AAAAAAPlayer: &#E0E0E0{target}"
           - "&#AAAAAAUUID: &#555555{uuid}"
           - "&#AAAAAAPlaytime: &#FFFFFF{playtime}"
-          - "&#AAAAAATotal punishments: &c{total_punishments}"
+          - "&#AAAAAATotal punishments: &#FF3333{total_punishments}"
       history:
         name: "&#FFD700&lPunishment History"
         lore:
-          - "&#AAAAAABans: &c{bans}"
+          - "&#AAAAAABans: &#FF3333{bans}"
           - "&#AAAAAAMutes: &#FFD700{mutes}"
           - "&#AAAAAAKicks: &#FFFFFF{kicks}"
           - "&#AAAAAAWarns: &#FFD700{warns}"
           - ""
           - "&#FFD700Click to view details"
       action_punish:
-        name: "&c&lPunish"
+        name: "&#FF3333&lPunish"
         lore:
           - "&#AAAAAAOpen the sanction menu"
           - "&#AAAAAAfor this player."
           - ""
-          - "&cClick to continue"
+          - "&#FF3333Click to continue"
       alts:
         name: "&#FFFFFF&lRelated Accounts"
         lore:
@@ -268,7 +268,7 @@ gui:
           - ""
           - "&#FFFFFFClick to view permissions"
   permissions:
-    title: "&b&lPermissions: &#FFD700{target} &#555555({page}/{total})"
+    title: "&#222222ᴘᴇʀᴍɪꜱꜱɪᴏɴꜱ: &#FFD700{target} &#555555({page}/{total})"
     permission-item-name: "&#E0E0E0{permission}"
     permission-item-lore: "&#555555Active permission"
     empty-name: "&cNo active permissions"
@@ -276,8 +276,8 @@ gui:
       - "&#AAAAAAThis player has no"
       - "&#AAAAAAactive permissions detected."
   reasons:
-    title: "&b&lSanction [{type}] - {target} ({page}/{total})"
-    item-name: "&c&lSanction #{number}"
+    title: "&#222222ꜱᴀɴᴄᴛɪᴏɴ [{type}] - {target} ({page}/{total})"
+    item-name: "&#FF3333&lSanction #{number}"
     item-lore: ["&#AAAAAAReason: &#E0E0E0{reason}", "&#555555ID: {id}"]
     dye-name: "&#FFD700Duration: &#E0E0E0{duration}"
     dye-lore:
@@ -291,7 +291,7 @@ gui:
       lore-back: "&#AAAAAAReturn to previous menu"
       lore-page: "&#AAAAAAGo to page {page}"
   confirm:
-    title: "&b&lConfirm {type} - {target}"
+    title: "&#222222ᴄᴏɴꜰɪʀᴍ {type} - {target}"
     items:
       yes:
         name: "&#00E676&lCONFIRM"
@@ -302,7 +302,7 @@ gui:
           - ""
           - "&#00E676Click to confirm"
       no:
-        name: "&c&lCANCEL"
+        name: "&#FF3333&lCANCEL"
         lore:
           - "&#AAAAAATarget: &#E0E0E0{target}"
           - "&#AAAAAAReason: &#FFD700{reason}"
@@ -310,14 +310,14 @@ gui:
           - ""
           - "&#AAAAAAReturn to reasons menu"
           - ""
-          - "&cClick to cancel"
+          - "&#FF3333Click to cancel"
   history:
-    title: "&b&lHistory: &#FFD700{target}"
+    title: "&#222222ʜɪꜱᴛᴏʀʏ: &#FFD700{target}"
     back-lore:
       - "&#AAAAAAReturn to player info"
     items:
       bans:
-        name: "&c&lBans"
+        name: "&#FF3333&lBans"
         lore: ["&#AAAAAATotal in records: &#E0E0E0{count}", "", "&#FFFFFFPermanent or temporary sanctions."]
       mutes:
         name: "&#FFD700&lMutes"
@@ -329,18 +329,18 @@ gui:
         name: "&#E0E0E0&lKicks"
         lore: ["&#AAAAAATotal in records: &#E0E0E0{count}", "", "&#FFFFFFDirect server kicks."]
   history-detailed:
-    title: "&b&lDetails [{type}] - {target}"
+    title: "&#222222ᴅᴇᴛᴀɪʟꜱ [{type}] - {target}"
     item-name: "&#FFFFFF&lRecord #{number}"
     item-lore:
       date: "&#AAAAAADate: &#E0E0E0{date}"
-      staff: "&#AAAAAAStaff: &c{staff}"
+      staff: "&#AAAAAAStaff: &#FF5555{staff}"
       reason: "&#AAAAAAReason: &#FFD700{reason}"
       duration: "&#AAAAAADuration: &#FFFFFF{duration}"
     back-lore: 
       - "&#AAAAAABack to summary"
   active-sanctions:
-    title: "&b&lActive Sanctions &#555555({page}/{total})"
-    item-name: "&c&l{type} &#555555- &#FFFFFF{target}"
+    title: "&#222222ᴀᴄᴛɪᴠᴇ ꜱᴀɴᴄᴛɪᴏɴꜱ &#555555({page}/{total})"
+    item-name: "&#FF5555&l{type} &#555555- &#FFFFFF{target}"
     item-lore:
       - "&#AAAAAAStaff: &#E0E0E0{staff}"
       - "&#AAAAAAReason: &#FFD700{reason}"
@@ -357,7 +357,7 @@ gui:
       lore:
         - "&#AAAAAAActive sanctions: &#FFFFFF{total-records}"
   gamemode:
-    title: "&b&lGame Mode Selector"
+    title: "&#222222ɢᴀᴍᴇ ᴍᴏᴅᴇ ꜱᴇʟᴇᴄᴛᴏʀ"
     survival:
       name: "&#00E676&lSURVIVAL MODE"
       lore: ["&#AAAAAAClick to switch to survival mode.", "&#555555Command /gm"]
@@ -367,7 +367,7 @@ gui:
       lore: ["&#AAAAAAClick to switch to creative mode.", "&#555555Command /gm"]
       material: "BEACON"
     adventure:
-      name: "&c&lADVENTURE MODE"
+      name: "&#FF3333&lADVENTURE MODE"
       lore: ["&#AAAAAAClick to switch to adventure mode.", "&#555555Command /gm"]
       material: "MAP"
     spectator:
@@ -377,17 +377,17 @@ gui:
   feedback:
     gamemode-changed: "&#00E676&l✔ &#E0E0E0Your game mode has been changed to &#FFD700{mode}&#E0E0E0."
   alts:
-    title: "&b&lAccounts of: &#FFD700{target}"
+    title: "&#222222ᴀᴄᴄᴏᴜɴᴛꜱ ᴏꜰ: &#FFD700{target}"
     dynamic: "Dynamic"
     status-online: "&#00E676Online"
     status-offline: "&#AAAAAAOffline"
-    status-banned: "&c&lBANNED"
+    status-banned: "&#FF3333&lBANNED"
     head-lore:
       - "&#E0E0E0{dynamic}"
       - "&#AAAAAAStatus: {status}"
       - "&#555555IP: {ip}"
   revive:
-    title: "&b&lRevive Menu &#555555({page}/{total})"
+    title: "&#222222ʀᴇᴠɪᴠᴇ ᴍᴇɴᴜ &#555555({page}/{total})"
     item-name: "&#00E676{player}"
     item-lore:
       - "&#AAAAAACause: &#E0E0E0{death-cause}"
@@ -401,7 +401,7 @@ gui:
 
 gui-style:
   navigation:
-    back-name: "&c« Back"
+    back-name: "&#FF3333« Back"
     next-name: "&#FFFFFFNext Page »"
     prev-name: "&#FFFFFF« Previous Page"
 

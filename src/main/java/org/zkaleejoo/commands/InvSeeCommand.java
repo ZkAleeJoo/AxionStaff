@@ -12,7 +12,6 @@ import org.bukkit.inventory.ItemStack;
 import org.zkaleejoo.MaxStaff;
 import org.zkaleejoo.config.MainConfigManager;
 import org.zkaleejoo.managers.InventorySnapshotManager;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.zkaleejoo.utils.MaxStaffHolder;
 import org.zkaleejoo.utils.MessageUtils;
 import org.zkaleejoo.listeners.GuiListener;
@@ -103,9 +102,8 @@ public class InvSeeCommand implements CommandExecutor, TabCompleter {
 
         MaxStaffHolder holder = new MaxStaffHolder("INVSEE_OFFLINE", snapshot.playerName());
         Inventory inventory = Bukkit.createInventory(holder, SNAPSHOT_GUI_SIZE,
-                LegacyComponentSerializer.legacySection().deserialize(
-                        Objects.requireNonNull(MessageUtils.getColoredMessage(
-                                config.getInvseeInspectionOfflineTitle().replace("{player}", snapshot.playerName())))));
+                MessageUtils.createMenuTitle(
+                        config.getInvseeInspectionOfflineTitle().replace("{player}", snapshot.playerName())));
         holder.setInventory(inventory);
 
         inventory.setContents(createEmptyContents(SNAPSHOT_GUI_SIZE));

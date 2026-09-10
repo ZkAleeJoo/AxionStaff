@@ -468,14 +468,14 @@ public class MainConfigManager {
         itemNameWallCompass = lang.getString("staff-mode.items.wall-compass.name", "&d&lWall Compass &7(Right Click)");
         guiPlayerOffline = lang.getString("gui.player-offline",
                 lang.getString("punishments.feedback.player-offline", "&cPlayer is offline"));
-        guiPlayersTitle = lang.getString("gui.players.title");
+        guiPlayersTitle = lang.getString("gui.players.title", "&#222222Online Players");
         guiHeadLore = lang.getString("gui.players.head-lore");
         guiPlayersRandomTpName = lang.getString("gui.players.random-tp.name", "&d&lRandom TP");
         guiPlayersRandomTpLore = lang.getStringList("gui.players.random-tp.lore");
         if (guiPlayersRandomTpLore == null || guiPlayersRandomTpLore.isEmpty()) {
             guiPlayersRandomTpLore = Arrays.asList("&7Teleport to a random online player");
         }
-        guiXrayTitle = lang.getString("gui.xray.title", "&8Possible Xray Alerts");
+        guiXrayTitle = lang.getString("gui.xray.title", "&#222222Possible Xray");
         guiXrayHeadName = lang.getString("gui.xray.head.name", "&c&l{player}");
         guiXrayHeadLore = lang.getStringList("gui.xray.head.lore");
         if (guiXrayHeadLore == null || guiXrayHeadLore.isEmpty()) {
@@ -506,14 +506,14 @@ public class MainConfigManager {
         if (guiItemKickLore == null || guiItemKickLore.isEmpty()) {
             guiItemKickLore = Arrays.asList("&7Click to kick now");
         }
-        guiInfoTitle = lang.getString("gui.info.title", "&8Information: &0{target}");
+        guiInfoTitle = lang.getString("gui.info.title", "&#222222Information: &#FFD700{target}");
         guiInfoStatsName = lang.getString("gui.info.items.stats.name");
         guiInfoStatsLore = lang.getStringList("gui.info.items.stats.lore");
         guiInfoHistoryName = lang.getString("gui.info.items.history.name");
         guiInfoHistoryLore = lang.getStringList("gui.info.items.history.lore");
         guiInfoActionName = lang.getString("gui.info.items.action_punish.name");
         guiInfoActionLore = lang.getStringList("gui.info.items.action_punish.lore");
-        guiConfirmTitle = lang.getString("gui.confirm.title", "&8Confirm action");
+        guiConfirmTitle = lang.getString("gui.confirm.title", "&#222222Confirm action");
         guiConfirmYesName = lang.getString("gui.confirm.items.yes.name", "&aConfirm");
         guiConfirmYesLore = lang.getStringList("gui.confirm.items.yes.lore");
         if (guiConfirmYesLore == null || guiConfirmYesLore.isEmpty()) {
@@ -528,7 +528,8 @@ public class MainConfigManager {
                     "&7Duration: &f{duration}", "", "&7Return to previous menu");
         }
 
-        guiReasonsTitle = lang.getString("gui.reasons.title");
+        guiReasonsTitle = lang.getString("gui.reasons.title",
+                "&#222222Sanction [{type}] - {target} ({page}/{total})");
         guiReasonsItemName = lang.getString("gui.reasons.item-name");
         guiReasonsItemLore = lang.getStringList("gui.reasons.item-lore");
         guiReasonsDyeName = lang.getString("gui.reasons.dye-name");
@@ -576,7 +577,7 @@ public class MainConfigManager {
         vanishActionBar = lang.getString("staff-mode.vanish.action-bar", "&a&lVANISH &8| {status}");
         statusEnabled = lang.getString("staff-mode.status-enabled", "&aENABLED");
         statusDisabled = lang.getString("staff-mode.status-disabled", "&cDISABLED");
-        guiHistoryTitle = lang.getString("gui.history.title");
+        guiHistoryTitle = lang.getString("gui.history.title", "&#222222History: &#FFD700{target}");
         guiHistoryBansName = lang.getString("gui.history.items.bans.name");
         guiHistoryBansLore = lang.getStringList("gui.history.items.bans.lore");
         guiHistoryMutesName = lang.getString("gui.history.items.mutes.name");
@@ -589,7 +590,8 @@ public class MainConfigManager {
         if (guiHistoryBackLore.isEmpty()) {
             guiHistoryBackLore = List.of("&7Volver a la información del jugador");
         }
-        guiDetailedTitle = lang.getString("gui.history-detailed.title");
+        guiDetailedTitle = lang.getString("gui.history-detailed.title",
+                "&#222222Details [{type}] - {target}");
         guiDetailedItemName = lang.getString("gui.history-detailed.item-name");
         guiDetailedBackLore = lang.getStringList("gui.history-detailed.back-lore");
         guiDetailedDate = lang.getString("gui.history-detailed.item-lore.date");
@@ -597,7 +599,7 @@ public class MainConfigManager {
         guiDetailedReason = lang.getString("gui.history-detailed.item-lore.reason");
         guiDetailedDuration = lang.getString("gui.history-detailed.item-lore.duration");
         guiActiveTitle = lang.getString("gui.active-sanctions.title",
-                "&8Active sanctions ({page}/{total})");
+                "&#222222Active Sanctions ({page}/{total})");
         guiActiveItemName = lang.getString("gui.active-sanctions.item-name", "&c&l{type} &8- &f{target}");
         guiActiveItemLore = lang.getStringList("gui.active-sanctions.item-lore");
         if (guiActiveItemLore == null || guiActiveItemLore.isEmpty()) {
@@ -619,7 +621,7 @@ public class MainConfigManager {
         msgUnbanIPSuccess = lang.getString("punishments.feedback.unban-ip-success", "&aIP &e{ip} &ahas been unbanned.");
         msgInvalidIP = lang.getString("punishments.feedback.invalid-ip", "&cCould not find a valid IP for: &e{target}");
         bcBanIP = lang.getString("punishments.broadcasts.ban-ip",
-                "&c&lIP-BAN &8» &f{target} &7was IP banned by &c{staff} &7({duration}).");
+            "&c&lIP-BAN &8» &f{target} &7was IP banned by &c{staff} &7({duration}).");
         staffChatFormat = lang.getString("messages.staff-chat-format", "&8[&4&lSTAFF&8] &b{player}&8: &f{message}");
         msgCmdSpyEnabled = lang.getString("messages.command-spy-enabled", "&aModo Espía de Comandos ACTIVADO.");
         msgCmdSpyDisabled = lang.getString("messages.command-spy-disabled", "&cModo Espía de Comandos DESACTIVADO.");
@@ -631,7 +633,7 @@ public class MainConfigManager {
         msgChatIsMuted = lang.getString("chat.chat-is-muted", "&cEl chat está silenciado globalmente en este momento.");
         msgChatCleared = lang.getString("chat.cleared", "&6&lCHAT LIMPIADO &7por &e{player}&7.");
         msgChatUsage = lang.getString("chat.usage", "&cUso: /chat <mute|clear>");
-        guiGmTitle = lang.getString("gui.gamemode.title", "&8Selector de Modo de Juego");
+        guiGmTitle = lang.getString("gui.gamemode.title", "&#222222Selector de Modo de Juego");
         guiGmFeedback = lang.getString("gui.feedback.gamemode-changed",
                 "&aTu modo de juego ha sido cambiado a &e{mode}&a.");
         guiGmSurvivalName = lang.getString("gui.gamemode.survival.name");
@@ -663,7 +665,7 @@ public class MainConfigManager {
         placeholderPlaytimeFormat = lang.getString("placeholders.playtime-format", "{hours}h {minutes}m");
         restoredinventory = lang.getString("messages.restore-inventory",
                 "&6&l[!] &eYour inventory has been automatically restored after the restart.");
-        guiAltsTitle = lang.getString("gui.alts.title", "&8Cuentas de: &0{target}");
+        guiAltsTitle = lang.getString("gui.alts.title", "&#222222Cuentas de: &#FFD700{target}");
         guiAltsDynamic = lang.getString("gui.alts.dynamic", "Dinámico");
         guiAltsStatusOnline = lang.getString("gui.alts.status-online", "&aEn línea");
         guiAltsStatusOffline = lang.getString("gui.alts.status-offline", "&7Desconectado");
@@ -685,7 +687,7 @@ public class MainConfigManager {
         guiInfoInvLore = lang.getStringList("gui.info.items.inventory.lore");
         guiInfoPermissionsName = lang.getString("gui.info.items.permissions.name", "&d&lPermisos");
         guiInfoPermissionsLore = lang.getStringList("gui.info.items.permissions.lore");
-        guiPermissionsTitle = lang.getString("gui.permissions.title", "&8Permisos: &0{target} ({page}/{total})");
+        guiPermissionsTitle = lang.getString("gui.permissions.title", "&#222222Permisos: &#FFD700{target} ({page}/{total})");
         guiPermissionsItemName = lang.getString("gui.permissions.permission-item-name", "&f{permission}");
         guiPermissionsItemLore = lang.getString("gui.permissions.permission-item-lore",
                 "&7Click izquierdo para copiar visualmente");
@@ -734,9 +736,9 @@ public class MainConfigManager {
         invseeOfflineUnavailable = lang.getString("messages.invsee-offline-unavailable",
                 "&cNo saved inventory was found for that offline player.");
         invseeInspectionOnlineTitle = lang.getString("messages.invsee-inspection-online-title",
-                "&8Inspección de &f{player}");
+                "&#222222Inspección de &#FFD700{player}");
         invseeInspectionOfflineTitle = lang.getString("messages.invsee-inspection-offline-title",
-                "&8Invsee Offline: &f{player}");
+                "&#222222Invsee Offline: &#FFD700{player}");
         invseeLegacyMainHandNotice = lang.getString("messages.invsee-legacy-mainhand-warning",
                 "&eNota: este snapshot es antiguo y no guardaba la mano principal. "
                         + "Por eso puede aparecer como &7'Sin objeto'&e aunque el jugador sí la tuviera.");
@@ -771,7 +773,7 @@ public class MainConfigManager {
         reviveRestored = lang.getString("messages.revive-restored",
                 "&aRestored inventory to &e{player}&a. Cause: &f{cause}");
 
-        guiReviveTitle = lang.getString("gui.revive.title", "&8Revive Menu");
+        guiReviveTitle = lang.getString("gui.revive.title", "&#222222Revive Menu");
         guiReviveItemName = lang.getString("gui.revive.item-name", "&a{player}");
         guiReviveItemLore = lang.getStringList("gui.revive.item-lore");
         if (guiReviveItemLore == null || guiReviveItemLore.isEmpty()) {

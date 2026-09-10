@@ -48,7 +48,7 @@ public final class InspectionInventoryBuilder {
         Inventory inventory = Bukkit.createInventory(
                 holder,
                 INVENTORY_SIZE,
-                MessageUtils.toComponent(title));
+                MessageUtils.createMenuTitle(title));
         holder.setInventory(inventory);
 
         fillStorage(inventory, target.getInventory().getStorageContents());
