@@ -2,7 +2,7 @@ main: org.zkaleejoo.MaxStaff
 version: ${project.version}
 name: MaxStaff
 author: ZkAleeJoo
-api-version: '1.13'
+api-version: '1.21'
 folia-supported: true
 
 commands:
